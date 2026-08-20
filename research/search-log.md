@@ -1061,13 +1061,13 @@ The registry was updated only for terms discovered or materially recalibrated in
 | information foraging | test provisionally | Related developer-information tradition; needs software-development qualification. |
 | program comprehension | retain as contextual term | Connects information needs and mental workload; not equivalent to information sufficiency. |
 | missing context | test with software-development qualifier | No direct F4 search was needed after information-needs results; retain as a contextual phrase and do not assume it is established terminology. |
-| cognitive load | retain as related term with population screening | Strong general/HCI/education tradition, but professional developer retrieval is noisy. |
+| cognitive load | split from information overload; retain as a related term with population screening | P8 confirms a professional-programmer mental-workload branch, while broad cognitive-load retrieval remains measurement- and population-sensitive. |
 | mental workload / cognitive workload | retain as primary F4-C measurement terms | Programmer program-comprehension experiment and measurement literature were retrieved. |
 | NASA-TLX / subjective workload | retain as measurement terms | Measurement vocabulary, not a software-work property. |
-| information overload | downgrade; investigate separately | Broad information-systems/communication literature; no coherent professional software-developer overload corpus in inspected samples. |
+| information overload | exclude as primary F4-C term; retain as supplementary discovery/context term | P8's developer-qualified search remained extremely noisy and did not retrieve a direct professional software-development overload study in the inspected sample. |
 | documentation overhead | exclude as primary search term | Initial search was dominated by package-description papers and did not establish a stable term. |
 | documentation effort / documentation cost | test provisionally | More productive cost/effort wording, but not a homogeneous literature. |
-| documentation relevance / usefulness | retain as primary F4-D contextual terms | Forward and Lethbridge exposed a direct documentation-relevance tradition. |
+| documentation relevance / usefulness | retain as primary F4-D terms | P8 title-restricted retrieval was relatively clean and exposed documentation relevance, quality, usefulness, task navigation, and "how much is enough" terminology. |
 | documentation maintenance | retain as primary F4-D contextual term | Connects documentation with software maintenance and legacy-code work. |
 | costs and benefits of UML/documentation | investigate separately | Useful artifact-cost framing; not interchangeable with documentation burden. |
 
@@ -1905,3 +1905,257 @@ Pilot searching may end when all of the following are documented:
 - Further pilot iterations produce little meaningful terminology change.
 
 Pilot exit does not mean that the literature review is complete, that the final search strings are permanently fixed, or that any Work Item characteristic has been supported. The systematic search protocol and any later changes remain subject to the traceability and evolution rules in [`research/protocol.md`](./protocol.md).
+
+## Pilot Round 8 Family 4 Subfamily Validation
+
+Pilot Round 8 was conducted on 2026-08-20 using focused OpenAlex Works API searches and individual DOI retrieval checks. The round tested the P7 split rather than recreating broad Family 4 queries. No F6 or F7 searches were executed. OpenAlex counts remain database diagnostics, not estimates of prevalence, precision, recall, or evidence strength. Search results were used for boundary and terminology validation only; no Work Item characteristic, causal conclusion, hypothesis, or optimal information amount was derived.
+
+### P8-F4A-01
+
+- **Search ID:** `P8-F4A-01`
+- **Date:** `2026-08-20`
+- **Database / source:** OpenAlex Works API
+- **Query:** `title.search:"requirements ambiguity"`
+- **Fields searched:** OpenAlex title search with selected metadata, DOI, venue, and abstract fields
+- **Filters:** `per-page=10`
+- **Result count:** `19` reported by OpenAlex
+- **Results inspected:** First 10 title records and available abstracts/metadata
+- **Clearly relevant results:** `Addressing the challenges of requirements ambiguity: A review of empirical literature`, Muneera Bano, 2015, IEEE EmpiRE, DOI [10.1109/empire.2015.7431303](https://doi.org/10.1109/empire.2015.7431303), published; `Requirement Ambiguity Not as Important as Expected--Results of an Empirical Evaluation`, Erik Jan Philippo et al., 2013, LNCS, DOI [10.1007/978-3-642-37422-7_5](https://doi.org/10.1007/978-3-642-37422-7_5), published; and `Requirements Ambiguity Detection and Explanation with LLMs: An Industrial Study`, Sarmad Bashir et al., 2025, IEEE ICSME, DOI [10.1109/icsme64153.2025.00063](https://doi.org/10.1109/icsme64153.2025.00063), published.
+- **Noise:** Low in the inspected sample; most records concerned requirements ambiguity, detection, prevention, elicitation, or empirical evaluation.
+- **Terminology retained:** requirements ambiguity, ambiguity detection, ambiguity explanation, ambiguity avoidance, requirements elicitation, empirical ambiguity evaluation.
+- **Known-source checks:** Bano `Retrieved`; Berry and Kamsties, `Ambiguity in Requirements Specification`, `Missed`; Chantree et al., `Identifying Nocuous Ambiguities in Natural Language Requirements`, `Missed`; Kiyavitskaya et al., `Requirements for tools for ambiguity identification and measurement in natural language requirements specifications`, `Missed`; Kamsties, Berry, and Paech, `Detecting Ambiguities in Requirements Documents Using Inspections`, `Not verified` because the P7 candidate had no DOI and was not title-matched in this check.
+- **Query adjustment:** None. The focused title-restricted query was sufficient to classify the ambiguity branch.
+- **Rationale:** The P7 ambiguity neighborhood remains recognizable with low inspected noise, while missed known sources demonstrate that title restriction is not recall-complete.
+
+### P8-F4A-02
+
+- **Search ID:** `P8-F4A-02`
+- **Date:** `2026-08-20`
+- **Database / source:** OpenAlex Works API
+- **Query:** `title.search:"requirements completeness"`
+- **Fields searched:** OpenAlex title search with selected metadata, DOI, venue, and abstract fields
+- **Filters:** `per-page=10`
+- **Result count:** `20` reported by OpenAlex
+- **Results inspected:** First 10 title records and available abstracts/metadata
+- **Clearly relevant results:** `Are Your Requirements Complete?`, Donald Firesmith, 2005, *The Journal of Object Technology*, DOI [10.5381/jot.2005.4.1.c3](https://doi.org/10.5381/jot.2005.4.1.c3), published; `Generating Obstacle Conditions for Requirements Completeness`, Dalal Alrajeh et al., 2012, ICSE, DOI [10.1109/icse.2012.6227147](https://doi.org/10.1109/icse.2012.6227147), published; `Improving requirements completeness: automated assistance through large language models`, Dipeeka Luitel et al., 2024, *Requirements Engineering*, DOI [10.1007/s00766-024-00416-3](https://doi.org/10.1007/s00766-024-00416-3), published; and `Investigating Requirements Completeness Metrics...`, Tanu Singh and Manoj Kumar, 2021, DOI [10.1007/s13369-021-06269-0](https://doi.org/10.1007/s13369-021-06269-0), published.
+- **Noise:** Low in the inspected sample, with duplicate conference/preprint records and some systems-engineering material.
+- **Terminology retained:** requirements completeness, completeness metrics, obstacle conditions, scenarios, schemas, formal validation, empirical validation, automated completeness assistance.
+- **Known-source checks:** Rempel and Mader, `Preventing Defects: The Impact of Requirements Traceability Completeness on Software Quality`, `Missed`; Sommerville and Sawyer, `Requirements Engineering: A Good Practice Guide`, `Not verified` because the P7 record had no DOI and no stable title record was retrieved in this check.
+- **Query adjustment:** None. The focused title search was sufficient to classify completeness without a second query.
+- **Rationale:** Completeness remains distinct from ambiguity, traceability, coverage, and information sufficiency, but is searchable as part of the same information-quality branch.
+
+### P8-F4B-01
+
+- **Search ID:** `P8-F4B-01`
+- **Date:** `2026-08-20`
+- **Database / source:** OpenAlex Works API
+- **Query:** `title.search:"developer information needs"`
+- **Fields searched:** OpenAlex title search with selected metadata, DOI, venue, and abstract fields
+- **Filters:** `per-page=10`
+- **Result count:** `7` reported by OpenAlex
+- **Results inspected:** All 7 records and available abstracts/metadata
+- **Clearly relevant results:** `API-Related Developer Information Needs in Stack Overflow`, Mingwei Liu et al., 2021, *IEEE Transactions on Software Engineering*, DOI [10.1109/TSE.2021.3120203](https://doi.org/10.1109/TSE.2021.3120203), published; `Categorizing developer information needs in software ecosystems`, Nicole Haenni et al., 2013, ACM workshop, DOI [10.1145/2501585.2501586](https://doi.org/10.1145/2501585.2501586), published; `A Quantitative Analysis of Developer Information Needs in Software Ecosystems`, Nicole Haenni et al., 2014, ECSA workshop, DOI [10.1145/2642803.2642815](https://doi.org/10.1145/2642803.2642815), published; `Two Decades of Empirical Research on Developers' Information Needs`, Abir Bouraffa and Walid Maalej, 2020, ICSE workshop, DOI [10.1145/3387940.3391485](https://doi.org/10.1145/3387940.3391485), published; and `Software Developers' Information Needs: Towards the Development of Intelligent Recommender Systems`, Adam Grzywaczewski et al., 2011, Electronic Workshops in Computing, DOI [10.14236/ewic/iubicom2011.8](https://doi.org/10.14236/ewic/iubicom2011.8), published/open-access record.
+- **Noise:** Low to moderate; the exact title branch was cleaner than P7 full-text retrieval, but the records span ecosystem, API, team, and recommendation settings.
+- **Terminology retained:** developer information needs, software developers' information needs, software ecosystem information, API-related needs, information sources, recommender systems.
+- **Known-source checks:** Liu `Retrieved`; Haenni et al. 2013 `Retrieved`; Haenni et al. 2014 `Retrieved`; Bouraffa and Maalej `Retrieved`; Ko, DeLine, and Venolia, `Information Needs in Collocated Software Development Teams`, `Missed`.
+- **Query adjustment:** None.
+- **Rationale:** P8 confirms `developer information needs` as a stable software-engineering phrase, while its contexts remain heterogeneous.
+
+### P8-F4B-02
+
+- **Search ID:** `P8-F4B-02`
+- **Date:** `2026-08-20`
+- **Database / source:** OpenAlex Works API
+- **Query:** `title.search:"information seeking" AND from_publication_date:2000-01-01 AND fulltext.search:"software developers"`
+- **Fields searched:** OpenAlex title and full-text filters with selected metadata, DOI, venue, and abstract fields
+- **Filters:** Publication date from 2000; `per-page=10`
+- **Result count:** `99` reported by OpenAlex
+- **Results inspected:** First 10 records and available abstracts/metadata
+- **Clearly relevant results:** `An empirically-based characterization and quantification of information seeking through mailing lists during Open Source developers' software evolution`, Khaironi Yatim Sharif et al., 2014, *Information and Software Technology*, DOI [10.1016/j.infsof.2014.09.003](https://doi.org/10.1016/j.infsof.2014.09.003), published; `A Gaze-Based Exploratory Study on the Information Seeking Behavior of Developers on Stack Overflow`, Cole S. Peterson et al., 2019, CHI Extended Abstracts, DOI [10.1145/3290607.3312801](https://doi.org/10.1145/3290607.3312801), published; and `Collaboration, Information Seeking and Communication: An Observational Study of Software Developers' Work Practices`, Márcio Kuroki Gonçalves et al., 2020, DOI [10.3217/jucs-017-14-1913](https://doi.org/10.3217/jucs-017-14-1913), OpenAlex submitted/unpublished version.
+- **Noise:** Moderate to high, including generic information-seeking and health/social-media information behavior studies.
+- **Terminology retained:** information seeking, software evolution, mailing lists, Stack Overflow, gaze-based information seeking, collaboration, communication, observational developer behavior.
+- **Known-source checks:** Ko, Myers, Coblenz, and Aung, `An Exploratory Study of How Developers Seek, Relate, and Collect Relevant Information during Software Maintenance Tasks`, `Missed`; Goncalves et al. `Retrieved`; Robillard, Walker, and Zimmermann, `Recommendation Systems for Software Engineering`, `Missed`.
+- **Query adjustment:** None. This remains a sensitivity branch rather than a standalone sufficiency query.
+- **Rationale:** Information seeking is coherent as an adjacent tradition, but it studies behavior and sources rather than directly measuring information sufficiency.
+
+### P8-F4C-01
+
+- **Search ID:** `P8-F4C-01`
+- **Date:** `2026-08-20`
+- **Database / source:** OpenAlex Works API
+- **Query:** `mental workload programmers program comprehension`
+- **Fields searched:** OpenAlex broad full-text search with selected metadata, DOI, venue, and abstract fields
+- **Filters:** `per-page=10`
+- **Result count:** `1,229` reported by OpenAlex
+- **Results inspected:** First 10 records and available abstracts/metadata
+- **Clearly relevant results:** `Quantifying programmers' mental workload during program comprehension based on cerebral blood flow measurement`, Takao Nakagawa et al., 2014, ICSE Companion Proceedings, DOI [10.1145/2591062.2591098](https://doi.org/10.1145/2591062.2591098), published; `Towards an affordable brain computer interface for the assessment of programmers' mental workload`, Makrina Viola Kosti et al., 2018, *International Journal of Human-Computer Studies*, DOI [10.1016/j.ijhcs.2018.03.002](https://doi.org/10.1016/j.ijhcs.2018.03.002), published; `Can EEG Be Adopted as a Neuroscience Reference for Assessing Software Programmers' Cognitive Load?`, Júlio Medeiros et al., 2021, *Sensors*, DOI [10.3390/s21072338](https://doi.org/10.3390/s21072338), published; and `Quality Evaluation of Modern Code Reviews Through Intelligent Biometric Program Comprehension`, Haytham Hijazi et al., 2022, *IEEE Transactions on Software Engineering*, DOI [10.1109/TSE.2022.3158543](https://doi.org/10.1109/TSE.2022.3158543), published.
+- **Noise:** Very high despite qualifiers: programming education, AI, business-process comprehension, generic workload, and unrelated biometric studies remained.
+- **Terminology retained:** mental workload, cognitive workload, programmers' cognitive load, program comprehension, cerebral blood flow, EEG, fNIRS, BCI, biometric assessment.
+- **Known-source checks:** Nakagawa `Retrieved`; Young et al., `State of science: mental workload in ergonomics`, `Missed`; Cao et al., `NASA TLX: Software for assessing subjective mental workload`, `Missed`; Curtis, Krasner, and Iscoe, `A field study of the software design process for large systems`, `Missed`.
+- **Query adjustment:** None. The query classified the professional-programmer workload branch, but is not a final systematic string.
+- **Rationale:** Mental workload is retrievable through direct programmer/program-comprehension studies, but measurement and population screening are essential.
+
+### P8-F4C-02
+
+- **Search ID:** `P8-F4C-02`
+- **Date:** `2026-08-20`
+- **Database / source:** OpenAlex Works API
+- **Query:** `information overload software developers`
+- **Fields searched:** OpenAlex broad full-text search with selected metadata, DOI, venue, and abstract fields
+- **Filters:** `per-page=10`
+- **Result count:** `39,683` reported by OpenAlex
+- **Results inspected:** First 10 records and available abstracts/metadata
+- **Clearly relevant results:** `Awareness in the Wild: Why Communication Breakdowns Occur`, Daniela Damian et al., 2007, IEEE ICGSE, DOI [10.1109/ICGSE.2007.13](https://doi.org/10.1109/ICGSE.2007.13), published, was adjacent software-team communication evidence. `The productivity paradox of information technology`, Erik Brynjolfsson, 1993, *Communications of the ACM*, DOI [10.1145/163298.163309](https://doi.org/10.1145/163298.163309), published, was only indirectly related.
+- **Noise:** Extreme; generic full-text matches, software papers, systems surveys, productivity work, and unrelated information uses dominated.
+- **Terminology retained only as supplementary:** information overload, communication breakdowns, awareness, developer coordination, productivity paradox.
+- **Known-source checks:** `Structuring computer-mediated communication systems to avoid information overload`, `Missed`; Damian et al., `Awareness in the Wild: Why Communication Breakdowns Occur`, `Not verified` because the individual DOI request returned OpenAlex HTTP 429 during P8.
+- **Query adjustment:** None. The P7 developer-qualified overload query was reused as a boundary check and remained too noisy for further synonym expansion.
+- **Rationale:** Cognitive/mental workload and information overload do not share a sufficiently coherent professional software-engineering retrieval neighborhood in this pilot.
+
+### P8-F4D-01
+
+- **Search ID:** `P8-F4D-01`
+- **Date:** `2026-08-20`
+- **Database / source:** OpenAlex Works API
+- **Query:** `title.search:"software documentation"`
+- **Fields searched:** OpenAlex title search with selected metadata, DOI, venue, and abstract fields
+- **Filters:** `per-page=10`
+- **Result count:** `493` reported by OpenAlex
+- **Results inspected:** First 10 title records and available abstracts/metadata
+- **Clearly relevant results:** `The relevance of software documentation, tools and technologies`, Andrew Forward and Timothy C. Lethbridge, 2002, ACM Document Engineering, DOI [10.1145/585058.585065](https://doi.org/10.1145/585058.585065), published; `Software Documentation Issues Unveiled`, Emad Aghajani et al., 2019, ICSE, DOI [10.1109/icse.2019.00122](https://doi.org/10.1109/icse.2019.00122), published; `Software documentation: how much is enough?`, Lionel Briand, 2003, ECSA, DOI [10.1109/csmr.2003.1192406](https://doi.org/10.1109/csmr.2003.1192406), published; `Extracting Development Tasks to Navigate Software Documentation`, Christoph Treude et al., 2014, *IEEE Transactions on Software Engineering*, DOI [10.1109/TSE.2014.2387172](https://doi.org/10.1109/TSE.2014.2387172), published; and `The Value of Software Documentation Quality`, Reinhold Plösch et al., 2014, QSIC, DOI [10.1109/qsic.2014.22](https://doi.org/10.1109/qsic.2014.22), published.
+- **Noise:** Low in the inspected sample, with some adjacent documentation/NLP and document-engineering work.
+- **Terminology retained:** software documentation, documentation relevance, documentation quality, documentation formats, documentation maintenance, traceability, task navigation, documentation usefulness, how much is enough.
+- **Known-source checks:** Forward and Lethbridge `Retrieved`; Dzidek et al., `A Realistic Empirical Evaluation of the Costs and Benefits of UML in Software Maintenance`, `Not verified` because the individual DOI request returned OpenAlex HTTP 429; Lientz, Swanson, and Tompkins, `Characteristics of application software maintenance`, `Not verified` because the individual DOI request returned HTTP 429; Mens and Tourwe, `A survey of software refactoring`, `Retrieved` by individual DOI check but `Not applicable to this documentation-specific title branch` as a direct documentation seed.
+- **Query adjustment:** None. The title branch was sufficient to validate documentation as a searchable F4 domain.
+- **Rationale:** P8 improves the case for documentation as an F4 branch because the neighborhood includes relevance, quality, navigation, maintenance, and explicit information-volume wording rather than only package descriptions.
+
+### P8-F4D-02
+
+- **Search ID:** `P8-F4D-02`
+- **Date:** `2026-08-20`
+- **Database / source:** OpenAlex Works API
+- **Query:** `documentation relevance software maintenance`
+- **Fields searched:** OpenAlex broad full-text search with selected metadata, DOI, venue, and abstract fields
+- **Filters:** `per-page=10`
+- **Result count:** `66,105` reported by OpenAlex
+- **Results inspected:** First 10 records and available abstracts/metadata
+- **Clearly relevant results:** `The relevance of software documentation, tools and technologies`, Forward and Lethbridge, 2002, ACM Document Engineering, DOI [10.1145/585058.585065](https://doi.org/10.1145/585058.585065), published; `Quality analysis of source code comments`, Daniela Steidl et al., 2013, ICPC, DOI [10.1109/icpc.2013.6613836](https://doi.org/10.1109/icpc.2013.6613836), published.
+- **Noise:** Extreme; generic maintenance, scientific-computing, research-methods, and testing papers dominated broad full-text retrieval.
+- **Terminology retained:** documentation relevance, source-code comments, documentation quality analysis, traceability, documentation maintenance.
+- **Known-source checks:** Forward and Lethbridge `Retrieved`; Dzidek et al. `Not verified` because the individual DOI request returned HTTP 429; Lientz et al. `Not verified` because the individual DOI request returned HTTP 429; Mens and Tourwe `Retrieved` individually but `Not applicable to this documentation-relevance branch`.
+- **Query adjustment:** None. This was a deliberately noisy sensitivity check after the cleaner title search, not a candidate final search string.
+- **Rationale:** The contrast with P8-F4D-01 confirms that field restriction is material for documentation retrieval.
+
+## P8 Query Evolution Records
+
+- `P7 broad requirements ambiguity/full-text neighborhood → P8 title.search:"requirements ambiguity" → 19 records with low inspected noise and direct ambiguity studies → retain title-qualified ambiguity branch; do not treat title restriction as recall-complete` (`P8-F4A-01`; OpenAlex).
+- `P7 requirements completeness software/full-text query → P8 title.search:"requirements completeness" → 20 records with low inspected noise and completeness metrics/validation terminology → retain completeness as a separate F4-A quality branch while preserving F2 overlap` (`P8-F4A-02`; OpenAlex).
+- `P7 developer information needs/full-text query → P8 title.search:"developer information needs" → 7 records, mostly direct software-ecosystem/API/team information-needs studies → validate exact phrase as a primary F4-B term` (`P8-F4B-01`; OpenAlex).
+- `P7 information seeking software developers/full-text query → P8 title/full-text information-seeking query → 99 records with direct developer-seeking studies and moderate/high general information-seeking noise → retain as a sensitivity F4-B branch` (`P8-F4B-02`; OpenAlex).
+- `P7 mental workload programming plus qualifiers → P8 mental workload programmers program comprehension → 1,229 records with direct professional-programmer workload studies but high measurement/education noise → retain mental workload/program comprehension as primary and require population screening` (`P8-F4C-01`; OpenAlex).
+- `P7 information overload software developers → P8 same developer-qualified boundary check → 39,683 records with extreme noise and no direct overload study in the inspected sample → separate information overload from mental workload and retain only as supplementary/contextual terminology` (`P8-F4C-02`; OpenAlex).
+- `P7 documentation overhead/effort broad queries → P8 title.search:"software documentation" → 493 records with low inspected noise and relevance/quality/navigation/"how much is enough" terminology → validate documentation as a primary F4-D branch while excluding documentation overhead as a primary phrase` (`P8-F4D-01`; OpenAlex).
+- `P7 documentation effort/relevance broad query → P8 documentation relevance software maintenance → 66,105 noisy full-text matches → retain only as a sensitivity branch and require fielding in later systematic searching` (`P8-F4D-02`; OpenAlex).
+
+No P8 query was silently replaced. No systematic search string was frozen.
+
+## P8 Terminology Registry Recalibration
+
+The existing P7 registry rows were updated in place where P8 materially changed their status. No duplicate canonical rows were added.
+
+- `requirements ambiguity`: validated as a primary F4-A term by `P8-F4A-01`; title retrieval was low-noise but not recall-complete.
+- `requirements completeness`: validated as a primary F4-A quality branch by `P8-F4A-02`; retain separate from ambiguity, traceability, and coverage.
+- `developer information needs`: validated as a primary F4-B term by `P8-F4B-01`.
+- `information seeking`: retained as a supplementary/sensitivity F4-B term by `P8-F4B-02`.
+- `program comprehension`: retained as a bridge term across F4-B and F4-C; not equivalent to sufficiency or workload.
+- `cognitive load`: separated from information overload; retain only with population and construct screening through `P8-F4C-01`.
+- `mental workload` and `cognitive workload`: validated as primary F4-C1 terminology through `P8-F4C-01`.
+- `information overload`: downgraded to supplementary/contextual and excluded from the primary F4-C branch through `P8-F4C-02`.
+- `software documentation`: validated as a primary F4-D discovery term through `P8-F4D-01`.
+- `documentation relevance`, `documentation quality`, `documentation usefulness`, `documentation maintenance`, and `task navigation`: retained as primary F4-D contextual terms through `P8-F4D-01` and `P8-F4D-02`, with field restrictions required.
+- `documentation overhead`: remains excluded as a primary term; P8 did not restore it.
+- `information sufficiency`, `missing context`, and generic `clarity`: remain downgraded/provisional and were not restored by P8.
+
+## P8 Boundary Assessment
+
+### F4-A: Ambiguity, Completeness, And Information Quality
+
+- **Conceptual coherence:** High. P8 independently retrieved requirements ambiguity and requirements completeness studies, including reviews, empirical evaluation, detection, metrics, and automated assistance.
+- **Retrieval coherence:** High for exact title-qualified phrases in the inspected samples; broad full-text quality searches remain noisy. Title restriction is a precision aid, not a recall-complete strategy.
+- **Distinctness:** Meaningfully distinct from F2 artifact searches because the search object is ambiguity/completeness/quality measurement, while retaining legitimate F2 overlap.
+- **Overlap:** Strong with F2 requirements/specifications; some overlap with F1/F3 issue or task descriptions when information quality is measured.
+- **Population/transferability:** Requirements engineers, software engineers, and industrial-study participants; no coding-agent population was retrieved or inferred.
+- **Search status:** `Primary`
+
+### F4-B: Developer Information Needs And Context
+
+- **Conceptual coherence:** High after replacing information sufficiency with developer information needs, information seeking, and related comprehension/context terms.
+- **Retrieval coherence:** Moderate to high for exact developer-information-needs titles; moderate for information seeking because general information behavior remains.
+- **Distinctness:** Distinct from F4-A quality properties because the object is what developers seek, need, use, or comprehend. Distinct from F3 when task descriptions are only information sources.
+- **Overlap:** F1 issue/work-unit studies may provide information sources; F2 requirements/specifications may be sources; F3 descriptions and comprehension tasks overlap. F6 was not executed.
+- **Population/transferability:** Professional developers, maintainers, open-source developers, ecosystem/API users, and software teams; transfer to coding agents remains untested.
+- **Search status:** `Primary`
+
+### F4-C1: Mental Workload And Cognitive Burden In Software Development
+
+- **Conceptual coherence:** Moderate to high when restricted to mental workload/cognitive workload, programmer/developer populations, and program comprehension or code-review tasks.
+- **Retrieval coherence:** Moderate. Direct professional-programmer studies were found, but education, neuroscience, biometric, and generic workload noise requires screening.
+- **Distinctness:** Distinct from F4-B information behavior and from runtime/computational load or coding-agent context load.
+- **Overlap:** F3 task complexity and program comprehension can be contexts; F2 requirements/specifications may be experimental material; F1 work units may be task settings.
+- **Population/transferability:** Professional programmers/developers in direct studies plus separately labeled student/general human-factors populations.
+- **Search status:** `Primary`
+
+### F4-C2: Information Overload
+
+- **Conceptual coherence:** Low for a professional software-development branch. Adjacent communication, awareness, information-systems, and general overload traditions exist, but no direct developer-overload neighborhood was established.
+- **Retrieval coherence:** Low; the developer-qualified full-text search remained extremely noisy.
+- **Distinctness:** Conceptually distinct from mental workload, but insufficiently coherent for a primary systematic branch.
+- **Overlap:** Strong with F3 communication/task descriptions and possible F6 context/awareness topics; those families were not merged or searched in P8.
+- **Population/transferability:** General users/teams and occasional developer contexts; direct professional developer overload evidence was not established.
+- **Search status:** `Supplementary`
+
+### F4-D: Documentation Effort, Cost, Maintenance, And Usefulness
+
+- **Conceptual coherence:** Moderate to high after replacing documentation overhead with software documentation, relevance, quality/usefulness, maintenance, task navigation, and information-volume wording. Cost/effort remains a separate sub-branch.
+- **Retrieval coherence:** High for title-qualified `software documentation`; low for broad documentation relevance/maintenance full-text retrieval. P8 validates field restriction as methodologically important.
+- **Distinctness:** Distinct from F2 artifact presence because it concerns documentation usefulness, quality, navigation, maintenance, and cost/effort. It overlaps F2 where requirements/specifications are documentation artifacts.
+- **Overlap:** F1 and F3 may study documentation attached to issues, tasks, or work units; cross-screen rather than collapse the object and property.
+- **Population/transferability:** Developers, maintainers, software teams, document users, and scientific-software communities; context-specific transfer is required.
+- **Search status:** `Primary`
+
+## Calibrated F4 Structure For Later Systematic-Search Design
+
+| Branch | Purpose | Provisional terminology | Major exclusions/noise | Population/transferability | F1/F2/F3 relationship | Status |
+|---|---|---|---|---|---|---|
+| F4-A Information-quality properties | Ambiguity, completeness, quality, coverage, and measurement of software-development information/artifacts | requirements ambiguity; ambiguity detection; requirements completeness; completeness metrics; requirements quality; requirements coverage; traceability completeness | Generic linguistic ambiguity; regulatory/legal requirements; source-code/API ambiguity unless explicitly in scope; broad quality/package matches | Requirements engineers and software engineers; no coding-agent transfer assumed | Strong F2 overlap; cross-list F1/F3 text-quality studies | `Primary` |
+| F4-B Developer information needs and context | What developers seek, need, use, and comprehend during software work | developer information needs; information seeking; information foraging; program comprehension; relevant information; software evolution; task context | Generic information behavior; health/social-media studies; package papers; unqualified information sufficiency or missing context | Professional developers, maintainers, open-source developers, software teams; no coding-agent transfer assumed | Overlaps F1 sources, F2 artifacts, F3 descriptions; separate information behavior from representation | `Primary` |
+| F4-C1 Mental workload and cognitive burden | Human workload associated with programming, comprehension, code review, or software work | mental workload; cognitive workload; programmers' cognitive load; program comprehension; subjective workload; NASA-TLX; EEG/fNIRS/BCI | Educational-only studies; generic HCI/neuroscience; computational/runtime load; agent context load | Professional programmers plus separately labeled student/general populations | Context may involve F1/F2/F3 tasks or artifacts; no population generalization | `Primary` |
+| F4-C2 Information overload | Supplementary communication and information-system overload context | information overload; communication breakdowns; awareness; developer coordination | Broad information-systems, productivity, networking, package, and general psychology noise | General users/teams and occasional developer contexts; direct professional evidence not established | Possible F3/F6 overlap; do not merge with mental workload | `Supplementary` |
+| F4-D Documentation information and burden | Documentation usefulness, quality, relevance, navigation, maintenance, effort, cost, and information-volume questions | software documentation; documentation relevance; documentation quality; documentation usefulness; documentation maintenance; task navigation; documentation effort/cost; "how much is enough" | documentation overhead; package descriptions; scientific software when no developer-work information question; broad maintenance/testing noise | Developers, maintainers, teams, document users, scientific-software communities; context-specific transfer | Strong F2 overlap and meaningful F1/F3 overlap | `Primary` |
+
+## Decision On Cognitive Load Versus Information Overload
+
+P8 supports two distinct branches, not one combined F4-C systematic-search subfamily. Mental workload/cognitive workload is a measurable human-factors/software-development branch with direct programmer program-comprehension studies, although retrieval is noisy and population-sensitive. Information overload retrieved mostly general information-systems, communication, productivity, and unrelated software literature; it remains supplementary rather than a primary professional software-engineering branch. This is a search-design decision only and does not establish any effect of either construct.
+
+## Decision On Documentation As An F4 Branch
+
+Documentation is directly relevant enough to remain a primary F4-D branch, but only after narrowing its purpose. P8 title retrieval was relatively coherent and exposed documentation relevance, quality, navigation, maintenance, and explicit amount/usefulness terminology. Broad documentation relevance/maintenance searches were noisy, so later systematic searching must separate documentation quality/usefulness, maintenance, effort/cost, and task navigation rather than use `documentation overhead` as a single umbrella term. This does not imply documentation is beneficial, harmful, necessary, or optimal.
+
+## Remaining Uncertainty After P8
+
+- Title searches validate terminology and neighborhood boundaries but do not establish recall across databases or records using different titles.
+- Requirements-quality properties remain entangled with F2 artifacts; later screening must define the information-quality object without duplicating artifact-only searches.
+- Developer information-needs studies may measure seeking behavior, source selection, or ecosystem/API knowledge rather than whether information is sufficient for a bounded task.
+- Mental workload studies vary in task, instrumentation, expertise, and outcome; professional, student, general human-factors, and neuroscience populations require separate extraction.
+- The pilot did not establish a direct professional software-development information-overload corpus; later supplementary snowballing may still find one.
+- Documentation studies may concern production, maintenance, navigation, quality, or consumption, and these should not be collapsed into one burden construct.
+- Four P8 DOI checks returned OpenAlex HTTP 429 for Damian et al., Forward/Lethbridge, Dzidek et al., and Lientz et al.; their individual P8 statuses remain `Not verified`, despite earlier P7 metadata where applicable.
+- No coding-agent-specific F4 search was executed. Transfer from human software-engineering and human-factors studies to coding agents remains open.
+
+## F4 Exit Decision
+
+**F4 subfamily structure sufficiently calibrated for systematic-search design**
+
+The methodological reason is that P8 confirmed stable, distinguishable retrieval neighborhoods for F4-A information-quality properties, F4-B developer information needs/context, F4-C1 mental workload/cognitive burden, and F4-D documentation information/usefulness/maintenance. It also tested and separated F4-C2 information overload as a supplementary branch rather than forcing it into the mental-workload search. The branches have documented terminology, field behavior, noise boundaries, population limits, known-source statuses, and overlaps with F1/F2/F3. F4 pilot exploration can close; this does not freeze final systematic strings or derive any Work Item characteristic.
+
+No Work Item characteristics or research conclusions were derived. No claim was made that more, less, sufficient, or documented information is preferable. F6 and F7 were not executed. No commit was made.
