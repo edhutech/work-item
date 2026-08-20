@@ -2823,3 +2823,381 @@ The methodological reason is that P10 validated distinct retrieval neighborhoods
 **F6 pilot exploration can close.**
 
 No Work Item characteristics or research conclusions were derived. P10 did not determine an optimal context size, claim any effect direction, claim planning/decomposition/clarification/autonomy is beneficial or required, or generalize benchmark findings beyond studied settings. Family 7 was not executed. No final systematic search strings were frozen. No commit was made.
+
+## Pilot Round 11 Family 7 Calibration
+
+Pilot Round 11 was conducted on 2026-08-20 using focused arXiv API discovery searches, OpenAlex metadata discovery, and direct arXiv source-page retrieval. The round was limited to Family 7: verification, validation, review, acceptance, completion, rework, correction, and task-success evaluation. Counts are source-reported discovery diagnostics, not estimates of prevalence, precision, recall, or evidence strength. Source-page abstracts and metadata were inspected for terminology, outcome definitions, authority, publication status, and benchmark boundaries. No Work Item characteristic, lifecycle, acceptance rule, or substantive research conclusion was derived.
+
+### F7-A: Verification And Validation Of Software Changes
+
+#### P11-F7A-01
+
+- **Search ID:** `P11-F7A-01`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Traditional software-engineering scientific discovery
+- **Database / source:** arXiv API
+- **Query:** `all:"patch correctness" OR all:"software patch" AND all:validation`
+- **Fields searched:** arXiv `all` fields
+- **Filters:** None; first 10 sorted by relevance
+- **Result count:** `42` reported by arXiv after API Boolean normalization
+- **Results inspected:** First 10 records and abstracts; selected source pages for patch-correctness papers
+- **Clearly relevant results:** `Predicting Patch Correctness Based on the Similarity of Failing Test Cases`, `On Reliability of Patch Correctness Assessment`, `Evaluating Representation Learning of Code Changes for Predicting Patch Correctness in Program Repair`, `Is this Change the Answer to that Problem?`, and `Identifying Patch Correctness in Test-Based Program Repair`.
+- **Clearly irrelevant patterns:** Generic software-patch validation and unrelated validation uses occurred outside the patch-correctness cluster.
+- **Terminology discovered:** `patch correctness`, `plausible patch`, `patch overfitting`, `automated patch correctness assessment (APCA)`, `independent test suite`, `author annotation`, `gold correctness labels`, `behavioral discrepancy`, `semantic correlation`, `patch validation`.
+- **Candidate seed sources:** Le et al., `On Reliability of Patch Correctness Assessment`, 2018, arXiv record; the abstract describes automated test-suite labels, author labels, and a 35-professional-developer gold set. Tian et al., `Predicting Patch Correctness Based on the Similarity of Failing Test Cases`, 2022, arXiv record; source status requires later venue verification. Xiong et al., `Identifying Patch Correctness in Test-Based Program Repair`, 2018, ICSE record with DOI `10.1145/3180155.3180182`. Tian et al., `Is this Change the Answer to that Problem?`, 2022, DOI `10.1145/3551349.3556914`.
+- **Known-source checks:** SWE-bench `Not applicable to this traditional patch-correctness query`; SWE-agent `Not applicable`; Agentless `Not applicable`; AIDev `Not applicable`; Understanding Software Engineering Agents `Not applicable`.
+- **Query adjustment:** `all:"patch correctness" OR all:"software patch" AND all:validation` -> patch-correctness cluster was recognizable but Boolean scope and validation language remained mixed -> test exact `all:"patch correctness"`.
+- **Rationale:** The exact phrase isolates an established automated-program-repair terminology neighborhood and avoids treating generic verification or validation as one construct.
+- **Notes:** The inspected abstracts explicitly distinguish a patch that passes an available test oracle from a patch judged correct or generalizable. This is repository/change-level artifact evaluation, not a general measure of task completion. arXiv records identify some conference/journal status, but later screening must verify versions and venues.
+
+#### P11-F7A-02
+
+- **Search ID:** `P11-F7A-02`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Traditional software-engineering scientific discovery
+- **Database / source:** arXiv API
+- **Query:** `all:"patch correctness"`
+- **Fields searched:** arXiv `all` fields
+- **Filters:** None; first 10 sorted by relevance
+- **Result count:** `37` reported by arXiv
+- **Results inspected:** First 10 records and abstracts
+- **Clearly relevant results:** The first records consistently concerned automated patch correctness assessment, test-suite weakness, patch overfitting, learned correctness prediction, and human correctness annotation. `On Reliability of Patch Correctness Assessment` was especially useful for separating automated labels, author labels, and professional-developer labels.
+- **Clearly irrelevant patterns:** Recent APCA model papers may evaluate a classifier's accuracy rather than the correctness of the underlying software patch; these are outcome-prediction studies and require separate screening.
+- **Terminology discovered:** `plausible but incorrect`, `test oracle`, `generalizable patch`, `patch correctness prediction`, `automated annotation`, `author annotation`, `manual annotation`, `overfitting patch`.
+- **Candidate seed sources:** The same patch-correctness sources remain candidate seeds. `PatchZero: Zero-Shot Automatic Patch Correctness Assessment`, 2023/2024 arXiv record, was also inspected as an APCA terminology source.
+- **Known-source checks:** SWE-bench `Not applicable to this exact traditional query`; SWE-agent `Not applicable`; Agentless `Not applicable`; AIDev `Not applicable`; Understanding Software Engineering Agents `Not applicable`.
+- **Query adjustment:** None beyond the exact-phrase revision above.
+- **Rationale:** The revised query produced a coherent APCA neighborhood and confirmed that `patch correctness` is more precise than unqualified `software verification` for repository-level change evaluation.
+- **Notes:** The branch remains adjacent to program repair and testing, but it has a distinct construct: whether a generated or repaired patch is correct beyond merely passing the available oracle. It does not establish that patch correctness equals end-to-end task success.
+
+### F7-B: Review, Acceptance, And Completion
+
+#### P11-F7B-01
+
+- **Search ID:** `P11-F7B-01`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Traditional software-engineering scientific discovery
+- **Database / source:** arXiv API
+- **Query:** `all:"code review" AND all:"task completion" OR all:"software task completion"`
+- **Fields searched:** arXiv `all` fields
+- **Filters:** None; first 10 sorted by relevance
+- **Result count:** `3` reported by arXiv after API Boolean normalization
+- **Results inspected:** All three records and abstracts
+- **Clearly relevant results:** One study measured code-review burden and verification effort alongside perceived task completion; the remaining records were adjacent agent/education material. The direct phrase `task completion` did not yield a mature code-review acceptance neighborhood.
+- **Clearly irrelevant patterns:** Generic productivity, educational role-play, and agent workflow records used completion without studying acceptance of a software change.
+- **Terminology discovered:** `code review burden`, `output verification`, `pull request acceptance`, `merge decision`, `review iteration cycles`, `review comments`, `resolution time`, `review findings`, `modern code review`.
+- **Candidate seed sources:** Afroz et al., `The Fast and Spurious: Developer Productivity with GenAI`, 2025, arXiv preprint; useful only for the distinction between perceived task completion and review/verification burden. No direct code-review completion seed was promoted from this exact query.
+- **Known-source checks:** SWE-bench `Not applicable to this traditional code-review query`; SWE-agent `Not applicable`; Agentless `Not applicable`; AIDev `Not applicable`; Understanding Software Engineering Agents `Not applicable`.
+- **Query adjustment:** `code review AND task completion` -> only three mixed records and no focused acceptance neighborhood -> test `modern code review` / `pull request acceptance` terminology.
+- **Rationale:** The observed literature does not support treating `task completion` as the principal code-review term. Acceptance and merge outcomes are more operationally visible in repository mining.
+- **Notes:** Code-review literature commonly studies defect detection, review quality, collaboration, review effort, comments, and merge outcomes. These outcomes should not be normalized to completion without source-level extraction.
+
+#### P11-F7B-02
+
+- **Search ID:** `P11-F7B-02`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Traditional software-engineering scientific discovery, with a coding-agent boundary sample
+- **Database / source:** arXiv API
+- **Query:** `all:"pull request acceptance" OR all:"merge-ready"`
+- **Fields searched:** arXiv `all` fields
+- **Filters:** None; first 10 sorted by relevance
+- **Result count:** `13` reported by arXiv
+- **Results inspected:** First 10 records and abstracts; `Does Code Quality Affect Pull Request Acceptance?`, `Which Pull Requests Get Accepted and Why?`, `Replication Can Improve Prior Results`, and `MathlibPR` source pages/abstracts were inspected.
+- **Clearly relevant results:** Pull-request acceptance is a recognizable empirical outcome in GitHub mining. Studies operationalize it as accepted/merged versus rejected/ignored, often using maintainer decisions and repository history. `MathlibPR` explicitly separates merge-ready PRs from build-passing PRs that were revised or never merged.
+- **Clearly irrelevant patterns:** `merge-ready` also retrieved unrelated machine-learning model-merging papers; title-level screening is necessary.
+- **Terminology discovered:** `pull request acceptance`, `accepted and merged`, `merge decision`, `merge-ready`, `review iteration cycles`, `review resolution`, `maintainer decision`, `revised PR`, `rejected PR`.
+- **Candidate seed sources:** Lenarduzzi et al., `Does Code Quality Affect Pull Request Acceptance? An empirical study`, 2019, arXiv record; Dey and Mockus, `Which Pull Requests Get Accepted and Why?`, 2020, arXiv record; Chen, Stolee, and Menzies, `Replication Can Improve Prior Results`, 2019, CEUR/arXiv record; Xie et al., `MathlibPR: Pull Request Merge-Readiness Benchmark for Formal Mathematical Libraries`, 2026, arXiv preprint.
+- **Known-source checks:** SWE-bench `Not applicable to traditional pull-request acceptance, but relevant as a coding-agent benchmark boundary`; SWE-agent `Not applicable`; Agentless `Not applicable`; AIDev `Retrieved indirectly through the agent-authored-PR acceptance sample exposed by the revised query`; Understanding Software Engineering Agents `Not applicable`.
+- **Query adjustment:** None beyond the recorded revision.
+- **Rationale:** Acceptance/merge and merge-readiness are stronger search terms for repository decisions than generic `completion` or `definition of done`. They still represent maintainer/repository outcomes, not necessarily semantic correctness or production quality.
+- **Notes:** `MathlibPR` is coding-agent-relevant but not a general coding-agent success paper: it uses historical PR status to distinguish build passing from merge readiness and reports difficulty for agents/models in that classification task. Publication status is an arXiv preprint in this pilot.
+
+### F7-C: Rework, Failure, Retry, And Correction
+
+#### P11-F7C-01
+
+- **Search ID:** `P11-F7C-01`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Traditional software-engineering scientific discovery
+- **Database / source:** arXiv API and OpenAlex Works API
+- **Query:** arXiv `all:"software rework" OR all:"issue reopening" OR all:"pull request" AND all:revision`; OpenAlex full-text `"software rework"`
+- **Fields searched:** arXiv `all`; OpenAlex full-text search
+- **Filters:** arXiv first 10 sorted by relevance; OpenAlex `per-page=10`
+- **Result count:** `11` arXiv records; OpenAlex reported `83` full-text matches
+- **Results inspected:** arXiv first 10 records and abstracts; OpenAlex first-page metadata/abstracts and DOI/venue fields
+- **Clearly relevant results:** The arXiv sample included pull-request revisions and post-initial-commit refactoring. OpenAlex exposed established published terminology including Morozoff, `Using a Line of Code Metric to Understand Software Rework`, 2009, *IEEE Software*, DOI `10.1109/MS.2009.160`; Damm, Lundberg, and Wohlin, `A model for software rework reduction through a combination of anomaly metrics`, 2008, *Journal of Systems and Software*, DOI `10.1016/j.jss.2008.01.017`; and Gopal, Mukhopadhyay, and Krishnan, `The role of software processes and communication in offshore software development`, 2002, *Communications of the ACM*, DOI `10.1145/505248.506008`.
+- **Clearly irrelevant patterns:** `revision` retrieved generic document/code revision and unrelated pull-request applications. OpenAlex `software rework` matched older risk/process sources where rework was one project-performance or cost measure rather than a first-pass correction event.
+- **Terminology discovered:** `software rework`, `reworked code`, `corrective maintenance`, `revision history`, `post-initial-commit edits`, `review-induced refactoring`, `pull request revision`, `issue reopening`, `rejected change`, `failure recovery`.
+- **Candidate seed sources:** Morozoff, 2009, published *IEEE Software*; Damm et al., 2008, published *Journal of Systems and Software*; Coelho et al., `An Empirical Study on Refactoring-Inducing Pull Requests`, 2021, ESEM 2021 record; Khoshnoud et al., `Which bugs are missed in code reviews`, 2022, MSR 2022 record.
+- **Known-source checks:** SWE-bench `Not applicable to the traditional rework query`; SWE-agent `Not applicable`; Agentless `Not applicable`; AIDev `Not applicable to traditional rework, although agent-authored PR revision is an adjacent observable`; Understanding Software Engineering Agents `Not applicable`.
+- **Query adjustment:** `software rework / issue reopening / pull request revision` -> arXiv returned a small mixed revision neighborhood while OpenAlex returned established but broad project-rework literature -> test exact arXiv `all:"software rework"` and retain OpenAlex only for DOI/venue discovery.
+- **Rationale:** Exact arXiv `software rework` returned zero, while OpenAlex exposed a coherent but historically process-oriented rework tradition. Review-induced edits and corrective maintenance are more retrievable observable branches than `issue reopening` alone.
+- **Notes:** Rework is established as a software-process/cost/maintenance term, but its unit of analysis varies: code volume not retained in final builds, effort/cost, defect correction, review-induced edit, or later corrective maintenance. These must not be pooled as one failure measure.
+
+#### P11-F7C-02
+
+- **Search ID:** `P11-F7C-02`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Coding-agent-specific scientific discovery with repository-mining comparison
+- **Database / source:** arXiv API
+- **Query:** `all:"review rework" OR all:"pull request" AND all:"review comments"`
+- **Fields searched:** arXiv `all` fields
+- **Filters:** None; first 10 sorted by relevance
+- **Result count:** `16` reported by arXiv
+- **Results inspected:** First 10 records and abstracts
+- **Clearly relevant results:** `An Empirical Study on Refactoring-Inducing Pull Requests` operationalizes edits after initial commits as review-induced or spontaneous refactoring; `SWE-Review: Closing the Loop on Issue Resolution with Agentic Code Review` explicitly uses generate-review-revise and measures review correctness and downstream revision usefulness; `Does AI Code Review Lead to Code Changes?` measures whether review comments lead to code changes; agentic-review studies distinguish accepted, rejected, unresolved, and acted-on comments.
+- **Clearly irrelevant patterns:** Vulnerability communication, general review-comment classification, and review-style/quality models appeared beside revision and correction studies.
+- **Terminology discovered:** `generate-review-revise loop`, `review correctness`, `downstream revision usefulness`, `comment resolution`, `accepted review comment`, `rejected review comment`, `unresolved comment`, `code change after review`, `review-induced refactoring`, `corrective maintenance`.
+- **Candidate seed sources:** Wang et al., `SWE-Review: Closing the Loop on Issue Resolution with Agentic Code Review`, 2026, arXiv preprint; Coelho et al., 2021, ESEM record; Bouraffa et al., `How Do Developers Use Code Suggestions in Pull Request Reviews?`, 2025, CHASE record; Watanabe et al., `On the Use of Agentic Coding: An Empirical Study of Pull Requests on GitHub`, 2025, arXiv preprint; Xia and Miller, `Do These Violent Delights Have Violent Ends? Measuring the Post-Merge Fate of Agentic Code`, 2026, arXiv preprint.
+- **Known-source checks:** SWE-bench `Retrieved as the issue-resolution benchmark boundary in SWE-Review-related results, not as a rework study`; SWE-agent `Not applicable to this review-rework query`; Agentless `Not applicable`; AIDev `Retrieved indirectly through agent-authored PR/review studies`; Understanding Software Engineering Agents `Not applicable`.
+- **Query adjustment:** None beyond the recorded revision.
+- **Rationale:** Review-specific observable outcomes, especially comment resolution and post-review code change, provide more discriminating search vocabulary than generic retry or repair. They remain proxies for further work, not direct proof of unsuccessful first-pass completion.
+- **Notes:** The agentic-review records are recent arXiv preprints unless a venue is stated in the record. Human acceptance/rejection and agent-generated review outcomes are separate authorities and should be extracted separately.
+
+### F7-D: Coding-Agent Task Success And Benchmark Evaluation
+
+#### P11-F7D-01
+
+- **Search ID:** `P11-F7D-01`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Coding-agent-specific scientific discovery
+- **Database / source:** arXiv API
+- **Query:** `all:"SWE-bench" AND (all:evaluation OR all:correctness OR all:resolution)`
+- **Fields searched:** arXiv `all` fields
+- **Filters:** None; first 10 sorted by relevance
+- **Result count:** `362` reported by arXiv
+- **Results inspected:** First 10 records and abstracts; direct source pages for SWE-bench, SWE-agent, Agentless, AIDev, and Understanding Software Engineering Agents
+- **Clearly relevant results:** SWE-bench defines issue resolution as generating a patch for a real GitHub issue in a repository environment. SWE-agent reports `pass@1` on SWE-bench. Agentless reports `correct fixes` and a test-based benchmark score. UTBoost, SWE-Bench+, and `Are "Solved Issues" in SWE-bench Really Solved Correctly?` explicitly distinguish passed tests/resolution labels from insufficient tests, plausible-but-incorrect patches, or human/differential correctness checks.
+- **Clearly irrelevant patterns:** The large result set included benchmark variants, training methods, multimodal extensions, contamination studies, and general LLM evaluation. `SWE-bench` identifies a benchmark lineage, not a single outcome construct.
+- **Terminology discovered:** `issue resolution`, `resolved issue`, `pass@1`, `resolve rate`, `correct fix`, `plausible patch`, `test-passing patch`, `hidden tests`, `patch validation`, `differential patch testing`, `behavioral discrepancy`, `resolution rate`, `benchmark instance`.
+- **Candidate seed sources:** Jimenez et al., `SWE-bench: Can Language Models Resolve Real-World GitHub Issues?`, ICLR 2024, arXiv record and OpenReview link inspected; Yang et al., `SWE-agent`, 2024 arXiv record; Xia et al., `Agentless`, 2024 arXiv record; Yu et al., `UTBoost: Rigorous Evaluation of Coding Agents on SWE-Bench`, ACL 2025 record; Wang and Pradel, `Are "Solved Issues" in SWE-bench Really Solved Correctly?`, 2025 arXiv record with DOI `10.1145/3744916.3764576`; Aleithan et al., `SWE-Bench+`, 2024 arXiv record.
+- **Known-source checks:** SWE-bench `Retrieved`; SWE-agent `Retrieved`; Agentless `Retrieved`; AIDev `Not applicable to this exact SWE-bench evaluation query`; Understanding Software Engineering Agents `Retrieved indirectly as a trajectory-analysis source using issue-resolution agents, not as a benchmark-definition paper`.
+- **Query adjustment:** `SWE-bench AND evaluation/correctness/resolution` -> `362` broad benchmark-lineage records with direct correctness-audit and evaluation terminology -> test broader `coding agent AND evaluation` to capture non-SWE-bench outcome terminology.
+- **Rationale:** SWE-bench is high-yield for issue-resolution evaluation but benchmark-dependent. A broader coding-agent evaluation query is needed to avoid equating one benchmark's resolver with coding-agent success generally.
+- **Notes:** The SWE-bench source page states 2,294 GitHub issues and corresponding pull requests across 12 Python repositories and reports evaluation as issue resolution. It does not make benchmark resolution equivalent to production acceptance, semantic correctness, or long-term maintainability.
+
+#### P11-F7D-02
+
+- **Search ID:** `P11-F7D-02`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Coding-agent-specific scientific discovery
+- **Database / source:** arXiv API
+- **Query:** `all:"coding agent" AND all:evaluation`
+- **Fields searched:** arXiv `all` fields
+- **Filters:** None; first 10 sorted by relevance
+- **Result count:** `577` reported by arXiv
+- **Results inspected:** First 10 records and abstracts
+- **Clearly relevant results:** `AgentLens` separates formal verification from trajectory review; `LoopsBench` reports resolved tasks and visible regression events; `Change2Task` distinguishes verified task construction from later agent evaluation; `Failure as a Process` studies failure onset, evolution, and recovery rather than only final outcomes; `SWE-PolyBench` uses execution-based evaluation across languages and task types.
+- **Clearly irrelevant patterns:** Coding-agent evaluation also includes safety, general agent tasks, harness engineering, training, and non-software benchmarks. The broad phrase requires repository/task and outcome screening.
+- **Terminology discovered:** `task success`, `task completion`, `execution-based evaluation`, `formal verification`, `trajectory review`, `production-assessed evaluation`, `resolved task`, `regression event`, `verified task construction`, `failure recovery`, `process-level evaluation`, `pass@1`.
+- **Candidate seed sources:** Podivilov et al., `AgentLens: Production-Assessed Trajectory Reviews for Coding Agent Evaluation`, 2026, arXiv preprint; Li et al., `LoopsBench: From Harness Engineering to Loop Engineering in Coding Agent Evaluation`, 2026, arXiv preprint; Qi et al., `Change2Task`, 2026, arXiv preprint; Zhao et al., `Failure as a Process`, 2026, arXiv preprint; Rashid et al., `SWE-PolyBench`, 2025, arXiv preprint.
+- **Known-source checks:** SWE-bench `Retrieved as a benchmark lineage in the broader evaluation neighborhood`; SWE-agent `Not verified in the inspected first-page sample`; Agentless `Not verified in the inspected first-page sample`; AIDev `Not verified in the inspected first-page sample`; Understanding Software Engineering Agents `Not verified in the inspected first-page sample`.
+- **Query adjustment:** None beyond the recorded broadening from SWE-bench-specific evaluation.
+- **Rationale:** The broader query confirms that coding-agent evaluation includes outcome, process, environment, and human/LLM review measures. These are related evaluation traditions, not interchangeable success definitions.
+- **Notes:** The inspected sample is mostly recent preprints and benchmark/system papers. Human semantic review was visible in AgentLens-style trajectory review and in SWE-bench correctness audits, but it was not the default authority in the first-page benchmark sample.
+
+## P11 Query Evolution Records
+
+- **Date:** `2026-08-20`
+- **Search family:** F7-A verification and patch correctness
+- **Original query:** `all:"patch correctness" OR all:"software patch" AND all:validation`; observation: `42` mixed records but a strong patch-correctness cluster; revised query: `all:"patch correctness"`; rationale: isolate the established APCA/patch-overfitting vocabulary and avoid generic validation noise; database: arXiv; Search IDs: `P11-F7A-01`, `P11-F7A-02`.
+
+- **Date:** `2026-08-20`
+- **Search family:** F7-B review, acceptance, and completion
+- **Original query:** `all:"code review" AND all:"task completion" OR all:"software task completion"`; observation: `3` mixed records and no focused acceptance neighborhood; revised query: `all:"pull request acceptance" OR all:"merge-ready"`; rationale: test repository-mining terminology for maintainer decisions and distinguish merge readiness from generic completion; database: arXiv; Search IDs: `P11-F7B-01`, `P11-F7B-02`.
+
+- **Date:** `2026-08-20`
+- **Search family:** F7-C rework, failure, retry, and correction
+- **Original query:** `all:"software rework" OR all:"issue reopening" OR all:"pull request" AND all:revision`; observation: `11` arXiv records and `83` OpenAlex full-text matches, with mixed revision/rework meanings; revised query: `all:"review rework" OR all:"pull request" AND all:"review comments"`; rationale: test review-specific revision and comment-resolution vocabulary as observable correction pathways; database: arXiv; Search IDs: `P11-F7C-01`, `P11-F7C-02`.
+
+- **Date:** `2026-08-20`
+- **Search family:** F7-D coding-agent task success and benchmark evaluation
+- **Original query:** `all:"SWE-bench" AND (all:evaluation OR all:correctness OR all:resolution)`; observation: `362` records centered on a high-yield but benchmark-specific issue-resolution lineage; revised query: `all:"coding agent" AND all:evaluation`; rationale: test whether non-SWE-bench agent evaluation uses distinct outcome/process terminology; database: arXiv; Search IDs: `P11-F7D-01`, `P11-F7D-02`.
+
+No P11 query was silently replaced. No final systematic search string was frozen. The paired searches were sufficient for calibration, but the traditional-SE and coding-agent branches must remain separate during later systematic design.
+
+## P11 Terminology Registry Recalibration
+
+P11 adds only terms materially discovered in the inspected F7 sources. Existing canonical rows such as `SWE-bench`, `agent trajectory / tool-mediated trajectory`, `patch validation`, and coding-agent vocabulary remain single rows and are not duplicated.
+
+| Term | Related concept | Source / Search ID | Context | Action | Notes |
+|---|---|---|---|---|---|
+| patch correctness | software-change correctness | P11-F7A-01, P11-F7A-02 | Automated program repair | retain as primary F7-A term | Coherent repository/change-level terminology; distinguish from test-passing or plausible patches. |
+| plausible patch | software-change verification | P11-F7A-01, P11-F7A-02 | Automated program repair and benchmark evaluation | retain as outcome term | Candidate output that may pass an oracle without being semantically correct. |
+| patch overfitting | software-change correctness | P11-F7A-01, P11-F7A-02 | Automated program repair | test provisionally | Established failure/evaluation term for weak-test behavior; not equivalent to all incorrect patches. |
+| automated patch correctness assessment (APCA) | correctness evaluation | P11-F7A-01, P11-F7A-02 | Automated program repair | investigate separately | Method family for predicting or labeling patch correctness; classifier accuracy is not patch correctness itself. |
+| independent test suite | correctness authority | P11-F7A-01 | Automated program repair | retain as contextual term | An automated oracle used to label patches; may be incomplete. |
+| gold correctness labels | correctness authority | P11-F7A-01 | Human-annotated patch datasets | retain as contextual term | Human annotation/gold-set wording; preserve annotator population and agreement. |
+| pull request acceptance | review/acceptance outcome | P11-F7B-02 | GitHub mining | retain as primary F7-B term | Operationally visible maintainer/repository outcome; not a synonym for semantic correctness. |
+| merge-ready | acceptance/readiness outcome | P11-F7B-02 | Pull-request review and benchmark data | test provisionally | Explicitly separated from build-passing in MathlibPR; may be domain-specific. |
+| review iteration cycles | review/rework process | P11-F7B-02, P11-F7C-02 | Pull-request mining | retain as outcome/process term | Counts review rounds or cycles; not a direct completion measure. |
+| maintainer decision | acceptance authority | P11-F7B-02 | Open-source pull requests | retain as contextual term | Human/project authority behind accepted, rejected, or ignored PR labels. |
+| software rework | rework/correction process | P11-F7C-01 | Traditional software process | retain as primary F7-C term | Established but heterogeneous across cost, code volume, process, and corrective-maintenance studies. |
+| review-induced refactoring | review/rework process | P11-F7C-01, P11-F7C-02 | Modern code review | test provisionally | Observable post-initial-commit change associated with review; distinguish spontaneous edits. |
+| corrective maintenance | rework/correction outcome | P11-F7C-02 | Software evolution and agent post-merge studies | retain as contextual term | Later correction after integration; not identical to first-pass review rework. |
+| comment resolution | review/rework outcome | P11-F7C-02 | Human and agentic code review | retain as primary contextual term | Comment acted on, resolved, rejected, or unresolved; resolution authority varies. |
+| generate-review-revise loop | iterative correction | P11-F7C-02 | Coding-agent review | investigate separately | Recent agentic-review process term; benchmark/system specific until broader retrieval. |
+| issue resolution | coding-agent benchmark outcome | P11-F7D-01 | SWE-bench and repository-level agents | retain as primary F7-D term | Usually means generated patch passes the benchmark evaluator; extract exact harness definition. |
+| pass@1 | coding-agent benchmark outcome | P11-F7D-01 | SWE-agent and benchmark evaluation | retain as benchmark outcome term | Single-attempt score, not a general task-success synonym. |
+| resolve rate | coding-agent benchmark outcome | P11-F7D-01, P11-F7D-02 | Repository-level benchmarks | retain as outcome term | Benchmark-specific denominator and evaluator must be recorded. |
+| execution-based evaluation | coding-agent evaluation | P11-F7D-02 | Coding-agent benchmarks | retain as primary contextual term | Automated execution/test harness outcome; does not by itself establish semantic or production correctness. |
+| formal verification | verification authority | P11-F7D-02 | Coding-agent evaluation and formal software | retain as contextual term | Stronger/different authority when a formal property is checked; not interchangeable with tests. |
+| trajectory review | coding-agent process evaluation | P11-F7D-02 | Production-assessed agent evaluation | investigate separately | Human/LLM-readable review of the run in addition to end-state scoring. |
+| verified task construction | benchmark/data validation | P11-F7D-02 | Coding-agent benchmark construction | retain as contextual term | Validates task/environment construction, not agent task success. |
+| failure recovery | coding-agent rework/process | P11-F7D-02 | Agent trajectories | test provisionally | Process-level recovery terminology; distinguish retry, revision, and final success. |
+
+Terms downgraded or separated in P11:
+
+- `software verification`: downgrade as a primary unqualified F7 term. It spans formal verification, test/oracle checking, requirements verification, and generic quality assurance. Retain only with an object and authority qualifier.
+- `validation`: downgrade as an unqualified synonym. Use `patch validation`, `test validation`, `requirements validation`, or an explicitly named verification authority.
+- `task completion`: retain as a contextual/outcome phrase, not a stable umbrella for acceptance. The focused code-review query was sparse and mixed; coding-agent papers use it variably for execution, benchmark pass, or user-perceived completion.
+- `definition of done`: retain as practitioner/process terminology for a separate Agile/process search, not as a primary F7 academic synonym based on this round.
+- `issue reopening`: retain as a possible repository proxy to investigate separately; P11 did not establish a coherent direct retrieval neighborhood.
+- `retry`: exclude as a primary F7 term for now. It describes an agent/control action and can occur without an unsuccessful completed task.
+- `repair`: separate from rework. Automated program repair is a distinct technical tradition and should not be pooled with human review rework or agent retry.
+- `human acceptance`: separate from maintainer merge, reviewer comment acceptance, end-user acceptance, and production approval; P11 found no single common authority.
+- `benchmark success`: retain only as a benchmark-qualified outcome label, never as a synonym for semantic correctness or production completion.
+
+## P11 Candidate Seed Sources
+
+The following sources were retrieved or inspected sufficiently for terminology and boundary calibration. They are candidate seeds for later screening, not included evidence or synthesized findings.
+
+| Source | Year and status | DOI or stable URL | Search ID | F7 relevance |
+|---|---:|---|---|---|
+| Le et al., `On Reliability of Patch Correctness Assessment` | 2018, arXiv record; venue/status requires later verification | [arXiv:1805.05983](https://arxiv.org/abs/1805.05983) | `P11-F7A-01`, `P11-F7A-02` | Automated versus author versus professional-developer correctness labels. |
+| Xiong et al., `Identifying Patch Correctness in Test-Based Program Repair` | 2018, ICSE record | [DOI:10.1145/3180155.3180182](https://doi.org/10.1145/3180155.3180182) | `P11-F7A-01` | Test strengthening and patch-correctness assessment. |
+| Tian et al., `Is this Change the Answer to that Problem?` | 2022, published DOI record | [DOI:10.1145/3551349.3556914](https://doi.org/10.1145/3551349.3556914) | `P11-F7A-01`, `P11-F7A-02` | Semantic bug/patch correlation as correctness assessment. |
+| Morozoff, `Using a Line of Code Metric to Understand Software Rework` | 2009, published *IEEE Software* | [DOI:10.1109/MS.2009.160](https://doi.org/10.1109/MS.2009.160) | `P11-F7C-01` | Software rework as code-volume/process measure. |
+| Damm, Lundberg, and Wohlin, `A model for software rework reduction through a combination of anomaly metrics` | 2008, published *Journal of Systems and Software* | [DOI:10.1016/j.jss.2008.01.017](https://doi.org/10.1016/j.jss.2008.01.017) | `P11-F7C-01` | Rework reduction and anomaly/process metrics. |
+| Lenarduzzi et al., `Does Code Quality Affect Pull Request Acceptance?` | 2019, arXiv record; later publication requires verification | [arXiv:1908.09321](https://arxiv.org/abs/1908.09321) | `P11-F7B-02` | Maintainer acceptance as repository outcome; quality and acceptance are not assumed equivalent. |
+| Chen, Stolee, and Menzies, `Replication Can Improve Prior Results` | 2019, CEUR/arXiv record | [arXiv:1902.04060](https://arxiv.org/abs/1902.04060) | `P11-F7B-02` | Human opinions and merge prediction in pull-request acceptance. |
+| Coelho et al., `An Empirical Study on Refactoring-Inducing Pull Requests` | 2021, ESEM record | [arXiv:2108.10994](https://arxiv.org/abs/2108.10994) | `P11-F7C-01`, `P11-F7C-02` | Post-initial-commit review-induced edits and review rework. |
+| Jimenez et al., `SWE-bench: Can Language Models Resolve Real-World GitHub Issues?` | 2024, ICLR 2024 record | [arXiv:2310.06770](https://arxiv.org/abs/2310.06770) | `P11-F7D-01` | Benchmark issue-resolution definition and test harness lineage. |
+| Yang et al., `SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering` | 2024, arXiv record | [arXiv:2405.15793](https://arxiv.org/abs/2405.15793) | `P11-F7D-01` | Agent-generated patch, repository execution, test execution, and pass@1. |
+| Xia et al., `Agentless: Demystifying LLM-based Software Engineering Agents` | 2024, arXiv preprint | [arXiv:2407.01489](https://arxiv.org/abs/2407.01489) | `P11-F7D-01` | Localization/repair/patch-validation pipeline and benchmark boundary. |
+| Yu et al., `UTBoost: Rigorous Evaluation of Coding Agents on SWE-Bench` | 2025, ACL 2025 | [ACL record](https://aclanthology.org/2025.acl-long.189/) | `P11-F7D-01` | Test insufficiency and erroneous passed patches in benchmark scoring. |
+| Wang and Pradel, `Are "Solved Issues" in SWE-bench Really Solved Correctly?` | 2025, arXiv record with DOI | [arXiv:2503.15223](https://arxiv.org/abs/2503.15223) | `P11-F7D-01` | Differential testing, human inspection, and benchmark-resolution correctness gap. |
+| Li, Zhang, and Hassan, `AIDev: Studying AI Coding Agents on GitHub` | 2026, arXiv record with related DOI | [arXiv:2602.09185](https://arxiv.org/abs/2602.09185) | `P11-F7B-02`, `P11-F7C-02` | Agent-authored PRs, reviews, comments, and merge outcomes; not a direct benchmark-success study. |
+| Bouzenia and Pradel, `Understanding Software Engineering Agents` | 2025, arXiv record stating ASE 2025 acceptance | [arXiv:2506.18824](https://arxiv.org/abs/2506.18824) | `P11-F7D-01` | Successful/failed execution trajectories and process outcomes; not a completion-authority paper. |
+| Wang et al., `SWE-Review: Closing the Loop on Issue Resolution with Agentic Code Review` | 2026, arXiv preprint | [arXiv:2607.06065](https://arxiv.org/abs/2607.06065) | `P11-F7C-02`, `P11-F7D-02` | Review decision, revision usefulness, and post-review resolve rate. |
+| Podivilov et al., `AgentLens: Production-Assessed Trajectory Reviews for Coding Agent Evaluation` | 2026, arXiv preprint | [arXiv:2607.06624](https://arxiv.org/abs/2607.06624) | `P11-F7D-02` | Formal checks paired with trajectory reviews and production assessment. |
+| Xia and Miller, `Do These Violent Delights Have Violent Ends?` | 2026, arXiv preprint | [arXiv:2607.09902](https://arxiv.org/abs/2607.09902) | `P11-F7C-02` | Post-merge corrective maintenance and longer-term contribution outcomes. |
+
+## P11 Outcome Definitions And Evaluation Authorities
+
+The inspected sources used materially different outcome definitions:
+
+- **Agent-generated output:** A patch, pull request, code edit, or trajectory was produced. This is an output event, not evidence of correctness or acceptance.
+- **Automated test success:** The patch passes the repository or benchmark test suite, sometimes including hidden tests or an independent test suite. This is an automated oracle outcome and may be incomplete.
+- **Benchmark instance resolution:** SWE-bench-style studies generally count an instance as resolved when the generated patch satisfies the benchmark evaluator. The denominator, test harness, patch applicability, and execution environment are benchmark-specific.
+- **Patch correctness:** APR literature uses human labels, independent test suites, behavioral/differential testing, semantic correlation, or combinations. The sources explicitly distinguish plausible/test-passing patches from correct/generalizable patches.
+- **Review/acceptance:** A maintainer accepts, merges, rejects, ignores, or requests changes on a pull request; review comments may be accepted, rejected, resolved, or left unresolved. These are repository/social decisions, not automatically semantic correctness judgments.
+- **Rework/correction:** Additional code after an initial commit, review-induced refactoring, corrective maintenance, post-merge bug fixing, or measured reworked code. These are different temporal and causal operationalizations.
+- **Process success/failure:** Trajectory studies classify successful/failed execution, recovery, failure onset, feedback integration, or regression events. They assess process records in addition to or instead of final status.
+- **Production quality/completion:** The pilot retrieved post-merge maintenance and production-assessed trajectory studies, but this is not the default coding-agent benchmark outcome and has limited direct evidence in this sample.
+
+Evaluation authorities observed:
+
+- automated repository tests, hidden tests, independent test suites, build/compile checks, and formal verifiers;
+- benchmark harnesses that construct the environment, apply/extract the patch, and assign resolved/pass labels;
+- static or learned patch-correctness predictors, which predict an authority's label rather than becoming the authority themselves;
+- human professional developers or researchers annotating patch correctness and inter-rater agreement;
+- project maintainers deciding PR acceptance/merge/rejection;
+- users/developers resolving review comments or accepting suggested changes;
+- mixed authorities combining tests, differential behavior, human inspection, maintainer history, and trajectory review.
+
+No authority was treated as interchangeable with another. The pilot did not establish a universal hierarchy among them.
+
+## Traditional Software Versus Coding-Agent Distinctions
+
+- Traditional software-engineering literature is split across formal verification, software testing, automated program repair, requirements validation, modern code review, GitHub mining, software-process rework, and maintenance. Its units of analysis range from formal properties and test cases to patches, review comments, PR histories, effort, and post-release changes.
+- Coding-agent literature is newer and dominated by benchmark evaluations, agent-system papers, trajectory studies, and GitHub mining of agent-authored PRs. It often operationalizes success as a generated patch passing a benchmark evaluator or as a PR being accepted/merged, with less frequent human semantic review.
+- F5/F6 terminology such as `coding agent`, `software engineering agent`, `SWE-agent`, `agentless`, `agent trajectory`, `agent-environment interaction`, and `ACI` identifies populations, architectures, or execution records. It does not identify one success construct.
+- Traditional patch-correctness and review literature can provide terminology and measurement alternatives, but transfer to coding agents requires explicit comparison of executor, issue/task setting, available context, authority, and outcome definition.
+- `Task completion` in human productivity studies, `issue resolution` in benchmark studies, `PR acceptance` in repository mining, and `patch correctness` in APR should remain separate rows and search branches.
+
+## Benchmark Dependencies And Limitations
+
+- SWE-bench and related benchmarks depend on issue statements, repository snapshots, patch application/extraction, execution environments, repository tests, and often hidden tests. The benchmark result is conditional on that protocol.
+- The inspected audits report weak or insufficient tests, plausible-but-incorrect patches, solution leakage, contamination concerns, and differences between generated and developer patches. These are calibration observations from the retrieved sources, not a final benchmark-validity judgment.
+- Hidden tests and repository tests can detect behavior not covered by visible tests, but passing either remains an oracle result rather than a complete semantic or production-quality judgment.
+- Patch applicability, environment setup, dependency versions, flaky/brittle tests, and benchmark instance construction can affect measured resolution independently of the agent's underlying software-engineering capability.
+- Human review is meaningfully present in patch-correctness gold sets, correctness audits, PR acceptance histories, MathlibPR merge-readiness, and production-assessed trajectory studies. It is not the default authority in the ordinary first-page SWE-bench evaluation sample.
+- Standard issue-to-patch benchmarks generally do not provide a normal user-approval or clarification loop. Interactive and review benchmarks add different authorities and should not be pooled with standard scores.
+- Agent-authored PR acceptance and post-merge maintenance provide real-repository observables, but they measure social/project acceptance and later maintenance outcomes, not the same construct as benchmark resolution.
+
+## P11 Calibration Assessment
+
+### Conceptual coherence
+
+- **F7-A:** Moderate to high after separating formal verification, testing/oracle validation, patch correctness, and generic quality assurance. `Patch correctness` is a coherent repository-level/APR neighborhood, but it remains adjacent to testing and program repair.
+- **F7-B:** Moderate. Pull-request acceptance, merge readiness, review findings, review quality, collaboration, and task completion are connected but have different units of analysis and authorities. `Definition of done` was not validated as a primary academic term.
+- **F7-C:** Moderate. Software rework is established, but its measures span cost, code volume, review revisions, corrective maintenance, and post-merge changes. Review-induced edits and comment resolution are useful narrower branches; issue reopening was not established as a standalone neighborhood.
+- **F7-D:** High as a coding-agent evaluation family only after separating benchmark resolution, automated test success, patch correctness, human/maintainer acceptance, process/trajectory evaluation, and production/post-merge outcomes.
+
+### Retrieval coherence
+
+- **F7-A:** Exact `patch correctness` retrieval was recognizable and lower-noise than unqualified verification/validation. APR and patch-overfitting terms should be searched separately from formal verification and requirements validation.
+- **F7-B:** `task completion` was sparse and noisy with code review. `pull request acceptance`, `merge decision`, and `merge-ready` produced a clearer repository-mining neighborhood but still mixed social acceptance and quality questions.
+- **F7-C:** `software rework` was absent in the exact arXiv query but visible in OpenAlex historical metadata; review/revision terms retrieved a more actionable but heterogeneous modern-code-review neighborhood. Generic `retry` and `repair` are too broad or technically different.
+- **F7-D:** SWE-bench is high-yield but benchmark-specific. `coding agent AND evaluation` broadens coverage to process, formal verification, trajectory review, environment, regression, and failure-recovery terms, requiring strong screening.
+
+### Empirical maturity
+
+- F7-A includes established traditional APR and testing research with empirical datasets, human labeling, and learned assessment methods.
+- F7-B and F7-C include mature mining-software-repository and modern-code-review traditions, alongside recent agentic-review preprints.
+- F7-D is rapidly developing and benchmark-heavy. SWE-bench has an established benchmark lineage; newer process and human-review evaluations are recent and often preprint-based.
+
+### Relationship to previous families
+
+- **F1:** Issues, tickets, issue descriptions, pull requests, and repository changes are the objects whose resolution or acceptance is evaluated; F7 must not duplicate work-unit representation searches.
+- **F2:** Requirements, acceptance criteria, and requirements validation define or test expected behavior; F7 searches outcomes/authorities and should cross-screen without treating acceptance criteria as proof of completion.
+- **F3:** Task type, decomposition, plans, and subtask structure may moderate success and rework; F7 measures outcomes/processes rather than task representation or decomposition.
+- **F5:** Coding-agent population terms are required for F7-D and for recent F7-B/C agentic-review studies.
+- **F6:** Planning, context, repository exploration, tool use, trajectories, clarification, and feedback describe execution conditions/processes. F7 adds outcome and correction labels; trajectory success/failure is not equivalent to final correctness.
+
+## Answers To P11 Special Questions
+
+1. **Is `software verification` too broad to serve as a primary F7 term?** Yes, for primary unqualified retrieval. The inspected material spans formal properties, tests/oracles, requirements validation, patch validation, and quality assurance. Use object-qualified branches such as `patch correctness`, `formal verification`, `regression testing`, or `requirements validation`.
+2. **Is `patch correctness` a coherent repository-level research concept?** Yes, provisionally. APR studies repeatedly use it for whether generated patches are correct/generalizable beyond an available test oracle. It remains a patch/artifact construct, not a complete task-success construct.
+3. **Is `task completion` established software-engineering terminology?** It is used, including in software-task productivity and coding-agent papers, but P11 did not establish it as a stable cross-tradition term for acceptance or correctness. Its meaning must be extracted per study.
+4. **Does code review literature meaningfully represent acceptance/completion, or mainly defect detection and collaboration?** Both exist, but the focused query and inspected sources show substantial emphasis on defect detection, review comments, quality, collaboration, effort, and repository decisions. Acceptance/merge is a distinct mining outcome; review is not a synonym for completion.
+5. **Is `software rework` a coherent research branch?** It is coherent enough as a traditional software-process/rework branch, but not as one uniform operational measure. Cost, code volume, review edits, corrective maintenance, and post-merge changes require separate extraction or sub-branches.
+6. **Are issue reopening or pull-request revision useful observable proxies for rework?** Pull-request revision and post-initial-commit edits are useful observables for further work, with known attribution limits. Issue reopening was not sufficiently retrieved to validate as a primary proxy in this pilot.
+7. **How do coding-agent papers operationalize task success?** Most inspected benchmark papers use resolved instances, pass@1, resolve rate, correct fixes, or execution/test outcomes. Other studies use PR acceptance/merge, trajectory success/failure, formal checks, review correctness, downstream revision usefulness, or post-merge maintenance.
+8. **How dependent are coding-agent success definitions on automated tests?** Highly dependent in repository-level benchmark literature, especially SWE-bench-derived work. The retrieved audits explicitly show why test passing can diverge from semantic correctness. Human review and post-merge outcomes occur, but less often in ordinary benchmark scoring.
+9. **Does SWE-bench resolution represent correctness, benchmark completion, or both according to the literature?** The benchmark papers use resolution as benchmark completion under an evaluator, commonly test-based. The retrieved correctness audits show that this label can include plausible or behaviorally divergent patches, so it should not be treated automatically as semantic correctness or production completion.
+10. **Is human semantic review meaningfully represented in coding-agent evaluations?** Yes, but unevenly. It appears in correctness gold sets/audits, differential-patch inspection, maintainer PR history, MathlibPR merge-readiness, and production-assessed trajectory review. It is not the default authority across the inspected benchmark sample.
+11. **Does F7 need separate traditional-software and coding-agent success branches?** Yes. Traditional branches include APR patch correctness, testing/verification, code-review mining, acceptance, rework, and maintenance. Coding-agent branches add benchmark harnesses, agent trajectories, tool/environment conditions, agent-authored PRs, and recent mixed human/automated evaluation. Transfer is not automatic.
+12. **Does F7 require further subdivision before systematic-search design?** Yes. The four provisional labels are useful containers, but systematic design should separate at least F7-A patch correctness/testing/formal verification, F7-B review/merge acceptance from generic completion, F7-C process rework from review-induced revision and post-merge correction, and F7-D benchmark resolution from human acceptance, semantic correctness, process evaluation, and production/post-merge quality.
+
+## Recommended F7 Search Status
+
+| Branch | Status | Methodological reason |
+|---|---|---|
+| F7-A Verification and validation of software changes | `Requires further calibration` | Patch correctness is coherent, but formal verification, test/oracle validation, requirements validation, regression, and generic QA must be separated before systematic searching. |
+| F7-B Review, acceptance, and completion | `Requires further calibration` | Pull-request acceptance and merge readiness are searchable, while generic task completion, review quality, collaboration, and definition-of-done terminology are not one outcome neighborhood. |
+| F7-C Rework, failure, retry, and correction | `Requires further calibration` | Software rework is established but operationally heterogeneous; review revision, comment resolution, corrective maintenance, issue reopening, and retry need distinct treatment. |
+| F7-D Coding-agent task success and benchmark evaluation | `Requires further calibration` | Benchmark resolution is recognizable but heavily test- and environment-dependent; semantic correctness, human acceptance, trajectory/process success, and production quality require separate evaluation branches. |
+
+## F7 Remaining Uncertainty
+
+- The pilot used arXiv and OpenAlex discovery rather than the protocol's full systematic databases; venue coverage and publication completeness remain untested.
+- Several recent coding-agent records are preprints or future-dated relative to older rounds; later screening must verify publication status, versions, and duplicate records.
+- Abstract-level retrieval cannot establish the exact hidden-test design, patch applicability rules, test brittleness, environment configuration, or human-review procedure of every benchmark.
+- `Software verification`, `validation`, `acceptance`, `completion`, and `quality` may have stronger standards-based terminology that was not searched in this round.
+- The relation between review acceptance and semantic correctness remains context-dependent; maintainer decisions may reflect project, social, timing, or scope factors.
+- Rework proxies may be affected by repository conventions, issue-tracking completeness, review policy, contributor behavior, and post-merge observation windows.
+- Human semantic review in coding-agent evaluation is visible but not yet quantifiable from this pilot; the sample does not support a frequency claim.
+- Agent trajectories provide process records, but success/failure labels and trajectory quality may be framework-, model-, environment-, and benchmark-dependent.
+- No substantive conclusion was drawn about whether tests, review, acceptance criteria, verification, or any other mechanism is necessary or sufficient.
+
+## F7 Exit Decision
+
+**F7 should be split into distinct search subfamilies before systematic-search design**
+
+The methodological reason is that P11 retrieved distinct neighborhoods for patch correctness and oracle limitations, pull-request review and maintainer acceptance, software-process/review rework and correction, and coding-agent benchmark/process evaluation. Within those neighborhoods, automated test success, benchmark instance resolution, patch semantic correctness, human/maintainer acceptance, trajectory success, and production/post-merge quality are different outcomes with different evaluation authorities. A systematic search should therefore preserve traditional-software and coding-agent streams and subdivide each by object, authority, and outcome rather than use one F7 query.
+
+F7 pilot exploration cannot close; another focused pilot may be needed after the split is specified. All seven search families have not completed pilot calibration because F7 requires this methodological subdivision before systematic-search design. This is a search-method decision only and does not interpret the literature as defining Work Item requirements.
+
+No Work Item characteristics, acceptance criteria, lifecycle, hypotheses, or research conclusions were derived. Review was not concluded to be required, automated tests were not concluded to be sufficient, benchmark success was not equated with semantic correctness, and rework was not attributed to any Work Item property. No commit was made.
