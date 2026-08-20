@@ -2,7 +2,7 @@
 
 This document is the durable record of pilot searches and, later, systematic searches conducted under [`research/protocol.md`](./protocol.md). Pilot searches validate and refine terminology, query families, database coverage, precision, recall, and feasibility; they do not establish research findings or Work Item characteristics.
 
-Pilot Round 1 was conducted on 2026-08-20 using arXiv search/API endpoints and OpenAlex discovery. Pilot Round 2 calibration was conducted on 2026-08-20 using arXiv, OpenAlex, and Crossref APIs. Pilot Round 3 database-field calibration was conducted on 2026-08-20 using arXiv, OpenAlex, and Crossref APIs. No systematic literature review search has begun.
+Pilot Round 1 was conducted on 2026-08-20 using arXiv search/API endpoints and OpenAlex discovery. Pilot Round 2 calibration was conducted on 2026-08-20 using arXiv, OpenAlex, and Crossref APIs. Pilot Round 3 database-field calibration was conducted on 2026-08-20 using arXiv, OpenAlex, and Crossref APIs. Pilot Round 4 terminology calibration for Families 2 and 3 was conducted on 2026-08-20 using arXiv, OpenAlex, and DOI/publisher metadata. No systematic literature review search has begun.
 
 ## Purpose
 
@@ -599,6 +599,309 @@ This round compared title-only and title/abstract-style field behavior for the p
 
 No Round 3 query was frozen as a systematic search string. The title-only versus title/abstract arXiv comparison is a calibration signal only; the OpenAlex and Crossref counts require further sample-level validation.
 
+## Pilot Round 4 Family 2 Calibration
+
+This round tested phrase-focused requirements, specifications, user-story, acceptance-criteria, and task-description terminology. arXiv title-only and all-field counts are source-reported and not directly comparable. OpenAlex searches were used for discovery and metadata inspection; its full-text semantics and counts are not precision estimates. Candidate records were promoted only when their title, abstract, DOI metadata, or publisher record was inspected sufficiently to establish relevance to Family 2 terminology.
+
+### P4-F2-01
+
+- **Search ID:** `P4-F2-01`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Scientific discovery
+- **Database / source:** arXiv API
+- **Query:** `all:"software requirements" OR all:"requirements specification" OR all:"user story" OR all:"acceptance criteria" OR all:"task description"`
+- **Fields searched:** arXiv `all` fields
+- **Filters:** None; first 10 sorted by relevance
+- **Result count:** `1,782` reported by arXiv
+- **Results inspected:** First 10 records and abstracts
+- **Clearly relevant results:** The sample contained software requirements specification, requirements engineering, functional and non-functional requirements, SRS quality/stability, user stories, and acceptance testing material. `Using LLMs in Software Requirements Specifications: An Empirical Evaluation` was identifiable as an RE 2024 paper from the record and DOI.
+- **Clearly irrelevant patterns:** Generic project documents, AI/LLM requirement-generation papers, ethical user stories, and requirements in non-software or domain-specific contexts appeared together. `task description` was not a clean software-work representation term in this combined all-field sample.
+- **Terminology discovered:** software requirements specification (SRS), functional requirements, non-functional requirements, requirements engineering, acceptance testing criteria, ethical user stories, requirements validation, requirements classification
+- **Candidate seed sources:** Madhava Krishna, Bhagesh Gaur, Arsh Verma, and Pankaj Jalote, `Using LLMs in Software Requirements Specifications: An Empirical Evaluation`, 2024, IEEE International Requirements Engineering Conference (RE), DOI [10.1109/RE59067.2024.00056](https://doi.org/10.1109/RE59067.2024.00056); inspected arXiv record, abstract, journal reference, and DOI.
+- **Query adjustment:** `F2 provisional combined phrase query → 1,782 results with distinct SRS, user-story, acceptance-testing, and unrelated task-description contexts → retain exact phrases but test title-only and software-engineering intersections separately → avoid treating requirements, stories, criteria, and task descriptions as interchangeable`
+- **Rationale:** The initial discovery search exposed multiple established traditions, but the combined result set was heterogeneous and not suitable for a single relevance interpretation.
+- **Notes:** arXiv endpoint: [P4-F2-01](https://export.arxiv.org/api/query?search_query=all:%22software%20requirements%22%20OR%20all:%22requirements%20specification%22%20OR%20all:%22user%20story%22%20OR%20all:%22acceptance%20criteria%22%20OR%20all:%22task%20description%22&start=0&max_results=10&sortBy=relevance). Metadata/abstract inspection only; no Work Item characteristic was assessed.
+
+### P4-F2-02
+
+- **Search ID:** `P4-F2-02`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Scientific discovery
+- **Database / source:** arXiv API
+- **Query:** `ti:"software requirements" OR ti:"requirements specification" OR ti:"user story" OR ti:"acceptance criteria" OR ti:"task description"`
+- **Fields searched:** arXiv title fields
+- **Filters:** None; first 10 sorted by relevance
+- **Result count:** `133` reported by arXiv
+- **Results inspected:** First 10 records and abstracts
+- **Clearly relevant results:** Title-only retrieval retained software requirements specifications, requirements-specification stability/quality, and user-story-related records; it reduced some abstract-only cross-domain matches.
+- **Clearly irrelevant patterns:** Student/project specification documents, security specifications, and unrelated uses of `acceptance` remained. Title-only retrieval also risks missing papers that study an artifact without naming it in the title.
+- **Terminology discovered:** requirements specification document, software requirements specification document, natural-language requirements, requirements artifact
+- **Candidate seed sources:** J. del Sagrado and I. M. del Águila, `Stability prediction of the software requirements specification`, 2018 journal article (arXiv record 2024), *Software Quality Journal*, DOI [10.1007/s11219-017-9362-x](https://doi.org/10.1007/s11219-017-9362-x); inspected arXiv abstract and publication metadata. The record explicitly concerns requirements-specification documents and requirements metrics.
+- **Query adjustment:** `F2 all-field phrase query → 1,782 results → title-only phrase query → 133 results with a narrower but incomplete artifact signal → retain title-only as a precision-oriented variant and title/abstract/all-field variants for sensitivity`
+- **Rationale:** Round 3 established that title-only and title/abstract retrieval are different strategies; this family confirms the same tradeoff for requirements artifacts.
+- **Notes:** arXiv title syntax was explicit. The result count is a source diagnostic, not an estimate of relevant literature.
+
+### P4-F2-03
+
+- **Search ID:** `P4-F2-03`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Scientific discovery
+- **Database / source:** arXiv API
+- **Query:** `all:"acceptance criteria" AND all:"software engineering"`
+- **Fields searched:** arXiv `all` fields
+- **Filters:** None; first 10 sorted by relevance
+- **Result count:** `30` reported by arXiv
+- **Results inspected:** First 10 records and abstracts; the ICSE candidate record and DOI metadata were inspected
+- **Clearly relevant results:** The sample included acceptance criteria in requirements engineering, user stories, BDD/Gherkin, requirement coverage, and software-engineering-agent evaluation. `From Bugs to Benefits: Improving User Stories by Leveraging Crowd Knowledge with CrUISE-AC` directly connected user stories and generated acceptance criteria and identified an ICSE 2025 publication.
+- **Clearly irrelevant patterns:** General user-acceptance criteria, cost-model acceptance criteria, autonomous-driving testing, and unrelated AI evaluation remained despite the software-engineering term.
+- **Terminology discovered:** acceptance testing criteria, Gherkin acceptance criteria, Behavior-Driven Development (BDD), requirement coverage, requirement-aligned acceptance criteria, acceptance-criteria generation
+- **Candidate seed sources:** Stefan Schwedt and Thomas Ströder, `From Bugs to Benefits: Improving User Stories by Leveraging Crowd Knowledge with CrUISE-AC`, 2025, ICSE, pp. 1385–1395, DOI [10.1109/icse55347.2025.00217](https://doi.org/10.1109/icse55347.2025.00217); arXiv abstract and DOI/publisher metadata inspected. This is a candidate for later screening of the relationship between user stories, issue knowledge, and acceptance criteria.
+- **Query adjustment:** `all:"acceptance criteria" → broad mixed acceptance language → all:"acceptance criteria" AND all:"software engineering" → isolate a smaller software-engineering neighborhood while preserving BDD, requirements, and agent-evaluation noise`
+- **Rationale:** The conjunction materially improved manageability but did not make `acceptance criteria` a homogeneous requirements term.
+- **Notes:** The query is useful for separate acceptance-criteria calibration, not for collapsing acceptance criteria into general requirements.
+
+### P4-F2-04
+
+- **Search ID:** `P4-F2-04`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Scientific discovery
+- **Database / source:** arXiv API
+- **Query:** `all:"user story" AND all:"software engineering"`
+- **Fields searched:** arXiv `all` fields
+- **Filters:** None; first 10 sorted by relevance
+- **Result count:** `71` reported by arXiv
+- **Results inspected:** First 10 records and abstracts; selected publisher metadata was inspected through DOI records
+- **Clearly relevant results:** Records addressed agile requirements artifacts, user-story quality, user-story sets, NLP over user stories, and user-story generation. `User Story Tutor` explicitly described story readability and effort estimation; `Exploring LLMs Impact on Student-Created User Stories and Acceptance Testing in Software Development` linked user stories to acceptance testing and scope.
+- **Clearly irrelevant patterns:** Blockchain methods, ethical user stories, privacy requirements, and domain-specific user-story applications appeared alongside general agile requirements research.
+- **Terminology discovered:** agile requirements artifact, user-story set, user-story quality, INVEST, story readability, story points, user-story management, acceptance testing
+- **Candidate seed sources:** I. K. Raharjana, D. Siahaan, and C. Fatichah, `User Stories and Natural Language Processing: A Systematic Literature Review`, 2021, *IEEE Access* 9, 53811–53826, DOI [10.1109/access.2021.3070606](https://doi.org/10.1109/access.2021.3070606); publisher DOI metadata and OpenAlex record inspected. G. Neo et al., `User Story Tutor (UST) to Support Agile Software Developers`, 2024, CSEDU, DOI [10.5220/0012619200003693](https://doi.org/10.5220/0012619200003693); arXiv record, abstract, and DOI metadata inspected.
+- **Query adjustment:** `all:"user story" → broad user-story discovery → all:"user story" AND all:"software engineering" → retain agile/user-story terms while documenting domain-specific and ethical-story noise`
+- **Rationale:** User-story literature is a recognizable research tradition, but it includes quality, tooling, NLP, education, domain requirements, and planning/estimation subtraditions that require separate screening.
+- **Notes:** The systematic review seed is a discovery candidate, not yet extracted evidence. No claim was made about the suitability of user stories for coding agents.
+
+### P4-F2-05
+
+- **Search ID:** `P4-F2-05`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Scientific discovery
+- **Database / source:** OpenAlex Works API
+- **Query:** `"requirements quality" software`
+- **Fields searched:** OpenAlex full-text search
+- **Filters:** `per-page=10`; selected metadata fields
+- **Result count:** `3,193` reported by OpenAlex
+- **Results inspected:** Ten returned metadata records and titles; DOI metadata for the systematic-review and requirements-quality candidates was inspected
+- **Clearly relevant results:** `Challenges of Software Requirements Quality Assurance and Validation: A Systematic Literature Review`, `Requirements quality control: a unifying framework`, and papers on natural-language requirements quality were identifiable. The result set exposed a quality/assessment tradition separate from artifact-name searches.
+- **Clearly irrelevant patterns:** Generic quality models, project success, and coding-agent papers sharing the word `quality` appeared in the full-text set.
+- **Terminology discovered:** requirements quality assurance, requirements validation, requirements quality control, natural-language requirements quality, requirements quality assessment
+- **Candidate seed sources:** I. Atoum et al., `Challenges of Software Requirements Quality Assurance and Validation: A Systematic Literature Review`, 2021, *IEEE Access* 9, 137613–137634, DOI [10.1109/access.2021.3117989](https://doi.org/10.1109/access.2021.3117989); publisher DOI metadata and OpenAlex record inspected. P. W. T. Wong and J. L. H. H. K. Lau, `Requirements quality control: a unifying framework`, 2005, *Requirements Engineering*, DOI [10.1007/s00766-005-0018-1](https://doi.org/10.1007/s00766-005-0018-1); OpenAlex metadata inspected, publisher access was unavailable.
+- **Query adjustment:** `artifact phrases → recurring quality-related titles and terminology → "requirements quality" software → test quality/assessment as a separate F2 subfamily → do not fold quality terminology into requirements/specification synonyms`
+- **Rationale:** The search established a distinct quality-assurance/validation research tradition relevant to later calibration of artifact properties, without treating those properties as conclusions.
+- **Notes:** OpenAlex full-text count is not a relevance estimate. The Springer DOI request returned HTTP 429 during publisher retrieval; this access limitation was not interpreted as absence of the source.
+
+### P4-F2-06
+
+- **Search ID:** `P4-F2-06`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Scientific discovery
+- **Database / source:** OpenAlex Works API
+- **Query:** `"user story" software`
+- **Fields searched:** OpenAlex full-text search
+- **Filters:** `per-page=10`; selected metadata fields
+- **Result count:** `12,093` reported by OpenAlex
+- **Results inspected:** Ten returned metadata records and titles; DOI metadata for the systematic-review, quality-framework, and practice-study candidates was inspected
+- **Clearly relevant results:** The sample included `Improving agile requirements: the Quality User Story framework and tool`, `The Use and Effectiveness of User Stories in Practice`, `User Stories and Natural Language Processing: A Systematic Literature Review`, user-story management, and planning-poker studies.
+- **Clearly irrelevant patterns:** Books, general agile planning, education/tooling, and unrelated full-text matches inflated the result set.
+- **Terminology discovered:** Quality User Story, agile requirements, user-story management, user-story effectiveness, user-story practice
+- **Candidate seed sources:** Garm Lucassen, Fabiano Dalpiaz, Jan Martijn E. M. van der Werf, and Sjaak Brinkkemper, `Improving agile requirements: the Quality User Story framework and tool`, 2016, *Requirements Engineering*, DOI [10.1007/s00766-016-0250-x](https://doi.org/10.1007/s00766-016-0250-x); Crossref metadata, OpenAlex metadata, and DOI target were inspected, but the publisher returned HTTP 429. Garm Lucassen et al., `The Use and Effectiveness of User Stories in Practice`, 2016, Springer LNCS chapter, DOI [10.1007/978-3-319-30282-9_14](https://doi.org/10.1007/978-3-319-30282-9_14); OpenAlex metadata inspected, full text unavailable.
+- **Query adjustment:** `arXiv user-story/SE intersection → OpenAlex full-text user-story/software discovery → preserve Quality User Story and user-story effectiveness as separate candidate terms while recording broad OpenAlex noise`
+- **Rationale:** OpenAlex surfaced established titles and terminology not present in the small arXiv sample, but the count and full-text semantics prevent precision interpretation.
+- **Notes:** This search was discovery/metadata calibration only. No Work Item characteristic was derived.
+
+## Pilot Round 4 Family 3 Calibration
+
+This round tested decomposition and task-description phrases separately from Family 2 artifact terminology. The results show that `task decomposition` is common outside software engineering; software-specific intersections and source screening are necessary. `task granularity` also primarily retrieved parallel-computing/runtime scheduling material rather than decomposition of development work.
+
+### P4-F3-01
+
+- **Search ID:** `P4-F3-01`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Scientific discovery
+- **Database / source:** arXiv API
+- **Query:** `all:"task decomposition" OR all:"work decomposition" OR all:"task breakdown" OR all:"software development task" OR all:"task description"`
+- **Fields searched:** arXiv `all` fields
+- **Filters:** None; first 10 sorted by relevance
+- **Result count:** `1,011` reported by arXiv
+- **Results inspected:** First 10 records and abstracts
+- **Clearly relevant results:** The sample contained software-development-task literature and `Tasks Decomposition Approaches in Crowdsourcing Software Development`, which explicitly studies decomposition practices in a software-development setting. It also surfaced software-development workflow and task-evaluation terminology.
+- **Clearly irrelevant patterns:** General AI task decomposition, robotics/control, multi-agent reinforcement learning, NLP task descriptions, annotation decomposition, and LLM software-task evaluation dominated much of the sample.
+- **Terminology discovered:** task decomposition approaches, crowdsourcing software development, task preparation, manageable tasks, software-development task type, outer-loop software-development tasks
+- **Candidate seed sources:** Abdullah Khanfor, `Tasks Decomposition Approaches in Crowdsourcing Software Development`, 2023, arXiv preprint, DOI [10.48550/arxiv.2302.05099](https://doi.org/10.48550/arxiv.2302.05099); arXiv record and abstract inspected. The abstract explicitly describes breaking projects into manageable software tasks, preparing tasks, and reviewing submissions.
+- **Query adjustment:** `F3 provisional combined phrase query → 1,011 results with strong general-AI/planning noise → require a software-development intersection and inspect title/abstract context → distinguish software task decomposition from generic AI task decomposition`
+- **Rationale:** The initial discovery query was useful for finding aliases but was too heterogeneous for direct screening.
+- **Notes:** arXiv endpoint: [P4-F3-01](https://export.arxiv.org/api/query?search_query=all:%22task%20decomposition%22%20OR%20all:%22work%20decomposition%22%20OR%20all:%22task%20breakdown%22%20OR%20all:%22software%20development%20task%22%20OR%20all:%22task%20description%22&start=0&max_results=10&sortBy=relevance). No conclusion about decomposition effects was drawn.
+
+### P4-F3-02
+
+- **Search ID:** `P4-F3-02`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Scientific discovery
+- **Database / source:** arXiv API
+- **Query:** `ti:"task decomposition" OR ti:"work decomposition" OR ti:"task breakdown" OR ti:"software development task" OR ti:"task description"`
+- **Fields searched:** arXiv title fields
+- **Filters:** None; first 10 sorted by relevance
+- **Result count:** `92` reported by arXiv
+- **Results inspected:** First 10 records and abstracts
+- **Clearly relevant results:** Title-only retrieval retained software-development-task records, including the Jazz task-type study, but did not make `task decomposition` itself common in software-engineering titles.
+- **Clearly irrelevant patterns:** General task decomposition, software-task evaluation, energy/accuracy, and cognitive-load studies remained. A title match did not guarantee decomposition of development work.
+- **Terminology discovered:** task type, task completion performance, software development tasks, software task evaluation
+- **Candidate seed sources:** Sherlock A. Licorish and Stephen G. MacDonell, `Exploring the links between software development task type, team attitudes and task completion performance: Insights from the Jazz repository`, 2017/2018, *Information and Software Technology* 97, DOI [10.1016/j.infsof.2017.12.005](https://doi.org/10.1016/j.infsof.2017.12.005); arXiv record, abstract, and DOI metadata inspected. It is a seed for software-task classification/context, not a direct decomposition study.
+- **Query adjustment:** `F3 all-field phrase query → title-only phrase query → 92 results but persistent task-evaluation and general-AI noise → retain title-only for terminology sensitivity, not as a sufficient software-decomposition filter`
+- **Rationale:** Field restriction reduces breadth but cannot substitute for a software-development/decomposition relevance screen.
+- **Notes:** The source record identifies the journal publication and a dataset of approximately 30,000 software-development tasks; that observation is recorded only for seed relevance.
+
+### P4-F3-03
+
+- **Search ID:** `P4-F3-03`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Scientific discovery
+- **Database / source:** arXiv API
+- **Query:** `all:"task decomposition" AND all:"software development"`
+- **Fields searched:** arXiv `all` fields
+- **Filters:** None; first 10 sorted by relevance
+- **Result count:** `5` reported by arXiv
+- **Results inspected:** All five records and abstracts
+- **Clearly relevant results:** `Tasks Decomposition Approaches in Crowdsourcing Software Development` was directly relevant to F3. Other records concerned end-to-end software-development agents, multi-agent software development, and software-agent surveys where decomposition is an architectural/planning term.
+- **Clearly irrelevant patterns:** The intersection still included agent architecture and benchmark work rather than human/team task decomposition; one result was a general code-generation-agent survey.
+- **Terminology discovered:** task decomposition and collaboration, end-to-end software development, requirement-driven task decomposition, multi-agent software development
+- **Candidate seed sources:** Zhengran Zeng et al., `Benchmarking and Studying the LLM-based Agent System in End-to-End Software Development`, 2025, arXiv preprint, arXiv:2511.04064; record and abstract inspected. It is a coding-agent-specific contextual seed because the abstract names task-decomposition strategy as an agent-system variable, not because it establishes a general software task decomposition model. Khanfor's 2023 crowdsourcing paper remained the direct traditional-SE seed.
+- **Query adjustment:** `broad F3 phrase query → general-AI and robotics noise → all:"task decomposition" AND all:"software development" → five inspectable records with a smaller but mixed software-development neighborhood`
+- **Rationale:** The conjunction was the most useful revised arXiv search for separating generic task decomposition from software-development contexts.
+- **Notes:** This search bridges traditional software development and coding-agent-specific terminology; the evidence streams remain distinct during later screening.
+
+### P4-F3-04
+
+- **Search ID:** `P4-F3-04`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Scientific discovery
+- **Database / source:** arXiv API
+- **Query:** `all:"task granularity" AND all:"software"`
+- **Fields searched:** arXiv `all` fields
+- **Filters:** None; first 10 sorted by relevance
+- **Result count:** `5` reported by arXiv
+- **Results inspected:** All five records and abstracts
+- **Clearly relevant results:** The query showed that `task granularity` is an established software/computing phrase, but the inspected records focused on parallel-program execution, scheduling, profiling, and runtime granularity rather than decomposition of software-development work.
+- **Clearly irrelevant patterns:** HPC scheduling, parallel QR factorization, task-parallel runtime performance, and Android execution profiling dominated the sample.
+- **Terminology discovered:** task granularity, fine-grained tasks, minimum effective task granularity, task-based execution
+- **Candidate seed sources:** None promoted. The records were useful negative calibration evidence for the phrase's ambiguity, not candidate literature on development-work decomposition.
+- **Query adjustment:** `F3 decomposition phrases → recurring size/granularity language → all:"task granularity" AND all:"software" → inspect separately and keep out of broad work-decomposition searches unless paired with development/task-planning context`
+- **Rationale:** The phrase may be useful for later conceptual searching, but this pilot did not establish that it ordinarily denotes software-development task size.
+- **Notes:** No conclusion about an optimal or preferred granularity was made.
+
+### P4-F3-05
+
+- **Search ID:** `P4-F3-05`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Scientific discovery
+- **Database / source:** OpenAlex Works API
+- **Query:** `"task decomposition" software`
+- **Fields searched:** OpenAlex full-text search
+- **Filters:** `per-page=10`; selected metadata fields
+- **Result count:** `6,164` reported by OpenAlex
+- **Results inspected:** Ten returned metadata records and titles
+- **Clearly relevant results:** The sample included `Two's company, three's a crowd: a case study of crowdsourcing software development`, software-task decomposition/parallelism material, and software development task records.
+- **Clearly irrelevant patterns:** Artificial intelligence, dialogue management, robotics, compiler construction, HPC, and general task-based systems dominated the result set.
+- **Terminology discovered:** crowdsourcing software development, task allocation, software development task allocation, design rule hierarchies, parallelism in software development tasks
+- **Candidate seed sources:** Klaas-Jan Stol and Brian Fitzgerald, `Two's company, three's a crowd: a case study of crowdsourcing software development`, 2014, ICSE, pp. 187–198, DOI [10.1145/2568225.2568249](https://doi.org/10.1145/2568225.2568249); Crossref metadata, OpenAlex metadata, and DOI target were inspected, but the publisher request returned HTTP 429. C. Treude and M.-A. Storey, `Design Rule Hierarchies and Parallelism in Software Development Tasks`, 2009, ASE, DOI [10.1109/ase.2009.53](https://doi.org/10.1109/ase.2009.53); OpenAlex metadata and DOI target were inspected, but the publisher request returned HTTP 429.
+- **Query adjustment:** `arXiv software-development intersection → OpenAlex full-text task-decomposition/software discovery → retain task allocation, crowdsourcing, and parallelism as distinct contextual terms while treating the count as non-interpretable`
+- **Rationale:** OpenAlex found traditional software-engineering work not visible in the small arXiv sample, but its broad full-text semantics require title/abstract and source screening later.
+- **Notes:** Crossref was not queried for a broad count in Round 4 because prior rounds demonstrated that such counts are not interpretable and sample requests may be rate-limited. DOI/publisher HTTP 429 responses are recorded as access limitations.
+
+### P4-F3-06
+
+- **Search ID:** `P4-F3-06`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Scientific discovery
+- **Database / source:** OpenAlex Works API
+- **Query:** `"software task decomposition"`
+- **Fields searched:** OpenAlex full-text search
+- **Filters:** `per-page=10`; selected metadata fields
+- **Result count:** `5` reported by OpenAlex
+- **Results inspected:** All five returned metadata records and titles
+- **Clearly relevant results:** The exact phrase retrieved the Khanfor crowdsourcing paper and a small set of unrelated or adjacent software-development/agent records. This supports testing the exact phrase as a narrow discovery variant.
+- **Clearly irrelevant patterns:** Mission reliability, education, and general software/agent records remained even under the exact phrase because OpenAlex matches full text rather than requiring the phrase to define the title or study object.
+- **Terminology discovered:** software task decomposition, decomposition approaches, requirement-driven software engineering tasks
+- **Candidate seed sources:** Khanfor, `Tasks Decomposition Approaches in Crowdsourcing Software Development`, 2023, arXiv preprint, DOI [10.48550/arxiv.2302.05099](https://doi.org/10.48550/arxiv.2302.05099); OpenAlex record and arXiv source page/abstract inspected.
+- **Query adjustment:** `OpenAlex broad task-decomposition/software search → 6,164 mixed records → exact "software task decomposition" → 5 records and one direct seed → retain as a narrow discovery query, not a validated systematic string`
+- **Rationale:** Exact phrase searching materially improved manageability and surfaced a direct F3 seed, but the sample is too small and source semantics remain uncertain.
+- **Notes:** Counts are not comparable with arXiv. No Work Item characteristic or decomposition-effect conclusion was derived.
+
+No Round 4 query was frozen as a systematic search string. The evidence supports separate F2 artifact/quality subfamilies and a software-context-qualified F3 decomposition family, while leaving title-only versus title/abstract choices for later source-specific searching.
+
+### Round 4 Query Evolution Records
+
+- **Date:** `2026-08-20`
+- **Search family:** Family 2
+- **Original query:** `all:"software requirements" OR all:"requirements specification" OR all:"user story" OR all:"acceptance criteria" OR all:"task description"`
+- **Observation:** `1,782` results mixed SRS documents, requirements engineering, user stories, acceptance testing, domain-specific material, and generic task-description contexts.
+- **Revised query:** `ti:"software requirements" OR ti:"requirements specification" OR ti:"user story" OR ti:"acceptance criteria" OR ti:"task description"`
+- **Rationale:** Compare title-only precision signal with all-field sensitivity; do not treat the reduced count as a relevance estimate.
+- **Affected database(s):** arXiv
+- **Search IDs:** `P4-F2-01`, `P4-F2-02`
+
+- **Date:** `2026-08-20`
+- **Search family:** Family 2
+- **Original query:** `all:"acceptance criteria"`
+- **Observation:** Acceptance language was expected to include general user acceptance, cost estimation, and non-software domains.
+- **Revised query:** `all:"acceptance criteria" AND all:"software engineering"`
+- **Rationale:** Add a software-engineering context term while preserving the observed residual noise; use this as a separate acceptance-criteria calibration family.
+- **Affected database(s):** arXiv
+- **Search IDs:** `P4-F2-03`
+
+- **Date:** `2026-08-20`
+- **Search family:** Family 2
+- **Original query:** `all:"user story"`
+- **Observation:** User-story results include agile requirements, user-story quality, NLP, education, domain-specific stories, and planning/estimation.
+- **Revised query:** `all:"user story" AND all:"software engineering"`
+- **Rationale:** Retain the established agile requirements tradition while documenting that user stories are not one homogeneous artifact or research question.
+- **Affected database(s):** arXiv
+- **Search IDs:** `P4-F2-04`
+
+- **Date:** `2026-08-20`
+- **Search family:** Family 2
+- **Original query:** artifact-name phrases only
+- **Observation:** OpenAlex discovery repeatedly exposed a separate requirements quality, assurance, and validation literature that artifact-name searches could miss.
+- **Revised query:** `"requirements quality" software`
+- **Rationale:** Test quality/structure terminology separately rather than adding `quality` as an unqualified synonym for requirements or specifications.
+- **Affected database(s):** OpenAlex
+- **Search IDs:** `P4-F2-05`
+
+- **Date:** `2026-08-20`
+- **Search family:** Family 3
+- **Original query:** `all:"task decomposition" OR all:"work decomposition" OR all:"task breakdown" OR all:"software development task" OR all:"task description"`
+- **Observation:** `1,011` results were dominated by general AI, robotics, reinforcement learning, annotation, and task-evaluation literature.
+- **Revised query:** `all:"task decomposition" AND all:"software development"`
+- **Rationale:** Require a software-development context and screen agent-architecture results separately from traditional software-work decomposition.
+- **Affected database(s):** arXiv
+- **Search IDs:** `P4-F3-01`, `P4-F3-03`
+
+- **Date:** `2026-08-20`
+- **Search family:** Family 3
+- **Original query:** `task size/granularity terms treated as possible decomposition synonyms`
+- **Observation:** `all:"task granularity" AND all:"software"` returned five records centered on HPC, parallel execution, scheduling, and runtime profiling.
+- **Revised query:** retain `task granularity` only with explicit software-development planning/decomposition terms; exclude it from broad searches
+- **Rationale:** The phrase is ambiguous between development-work size and execution/runtime granularity; the pilot provided no direct evidence that it commonly denotes the former.
+- **Affected database(s):** arXiv
+- **Search IDs:** `P4-F3-04`
+
+- **Date:** `2026-08-20`
+- **Search family:** Family 3
+- **Original query:** `"task decomposition" software`
+- **Observation:** OpenAlex reported `6,164` full-text matches with major AI, robotics, compiler, and HPC noise.
+- **Revised query:** `"software task decomposition"`
+- **Rationale:** Exact phrase retrieval reduced the OpenAlex set to five records and retained the direct crowdsourcing software-development seed, but OpenAlex full-text semantics still prevent interpreting the count as precision.
+- **Affected database(s):** OpenAlex
+- **Search IDs:** `P4-F3-05`, `P4-F3-06`
+
 ## Search Log Template
 
 Copy this template for each pilot or systematic search. Use a stable Search ID and record unsuccessful, noisy, and abandoned searches as well as useful searches.
@@ -636,6 +939,21 @@ Record terminology discovered during pilot searches. The eight terms selected fr
 | issue-tracking system | issue/work representation | P1-F1-03, P2-F1-01, P3-F1-01, P3-F1-02 | Issue-tracking research | test provisionally across sources | Identifies the repository/tool context in which issues are studied; not validated as final terminology. |
 | task type | software work classification | P1-F1-03 | Traditional software engineering | add as synonym | Used with task completion performance and categories of development work. |
 | task completion performance | completion/outcome terminology | P1-F1-03 | Traditional software engineering | add as outcome term | Outcome phrase, not a Work Item characteristic. |
+| software requirements specification (SRS) | requirements/specification artifact | P4-F2-01, P4-F2-02 | Requirements engineering | test with field restrictions | Recurring artifact phrase; distinguish the document from individual requirements and from user stories. |
+| requirements specification document | requirements/specification artifact | P4-F2-02 | Requirements engineering | test provisionally | Title-only results used document wording; retain separately from generic `specification`. |
+| natural-language requirements | requirements representation | P4-F2-02, P4-F2-05 | Requirements engineering | test provisionally | Appeared in requirements quality and specification contexts; may retrieve linguistic-quality studies. |
+| requirements artifact | requirements representation | P4-F2-01, P4-F2-02 | Requirements engineering | retain as contextual term | Umbrella wording in studies comparing user stories, personas, and other representations; not a synonym for each artifact. |
+| acceptance testing criteria | acceptance criteria/testing | P4-F2-01, P4-F2-03 | Requirements engineering and testing | test provisionally | More specific than general `acceptance criteria`; test separately from user acceptance and domain acceptance language. |
+| Gherkin acceptance criteria | acceptance criteria/testing | P4-F2-03 | Behavior-Driven Development | test provisionally with BDD | Specific syntax/representation term; likely higher precision than unqualified acceptance criteria. |
+| Behavior-Driven Development (BDD) | requirements/testing representation | P4-F2-03 | Agile requirements and acceptance testing | investigate separately | Provides a distinct scenario-based tradition around executable or structured acceptance criteria. |
+| requirement coverage | requirements/acceptance evaluation | P4-F2-03 | Requirements validation and acceptance criteria | retain as contextual term | Evaluation term, not a synonym for acceptance criteria. |
+| user-story set | user-story representation | P4-F2-04 | Agile requirements | test provisionally | Distinguishes collections of stories from an individual user story. |
+| user-story quality | user-story quality assessment | P4-F2-04, P4-F2-06 | Agile requirements | test provisionally | Established-looking quality vocabulary; requires later source screening and should not be equated with requirements quality. |
+| Quality User Story | user-story quality framework | P4-F2-06 | Agile requirements | investigate separately | Named framework/term in Lucassen et al.; retain as a distinct phrase rather than expanding generic `quality`. |
+| INVEST | user-story quality heuristic | P4-F2-04 | Agile requirements | retain as contextual term | Appeared in inspected user-story work as a named heuristic; not treated as a universal quality model. |
+| requirements quality assurance | requirements quality/validation | P4-F2-05 | Requirements engineering | test provisionally with validation | Distinct literature tradition around assurance and validation, not a replacement for requirements/specification terms. |
+| requirements quality control | requirements quality/validation | P4-F2-05 | Requirements engineering | investigate separately | Framework-oriented phrase found in published metadata; likely useful for quality-assessment searches. |
+| natural-language requirements quality | requirements quality/validation | P4-F2-05 | Requirements engineering | test provisionally | More precise than generic requirements quality for linguistic properties of requirement statements. |
 | coding agent | coding-agent vocabulary | P1-F5-02, P2-F5-01, P3-F5-01, P3-F5-02 | Recent coding-agent research | test provisionally across sources | High-yield broad phrase with adjacent systems and infrastructure noise; not validated as final terminology. |
 | AI coding agent | coding-agent vocabulary | P1-F5-02, P2-F5-01, P3-F5-01, P3-F5-02 | Recent coding-agent research | test provisionally across sources | Appeared in recent records alongside coding-agent workloads, sessions, and agent-authored pull requests. |
 | software engineering agent | coding-agent vocabulary | P1-F5-03, P2-F5-01, P3-F5-01, P3-F5-02 | Recent software-engineering-agent research | test provisionally across sources | More focused than `coding agent` but still includes non-repository and infrastructure settings. |
@@ -650,6 +968,20 @@ Record terminology discovered during pilot searches. The eight terms selected fr
 | software delegation contract | coding-agent work framing | P2-F5-01, P3-F5-01 | Coding-agent task/review study | retain as contextual term | A source-specific term for a study's unit of analysis; not a Work Item characteristic or final vocabulary. |
 | agentless software engineering | coding-agent comparison vocabulary | P2-F5-03, P3-F5-03 | Agentless versus agent-based systems | retain as contextual term | Useful for separating autonomous-agent claims from non-agent workflow baselines. |
 | SWE-Gym | coding-agent training/evaluation | P2-F5-03, P3-F5-03 | Agent training/evaluation | retain as contextual term | Benchmark/framework name, not a general synonym for coding agents. |
+| task decomposition approaches | software work decomposition | P4-F3-01, P4-F3-03, P4-F3-06 | Crowdsourcing software development | test provisionally with software context | Direct phrase in a software-development decomposition paper; retain separately from generic AI task decomposition. |
+| crowdsourcing software development | software work decomposition and allocation | P4-F3-01, P4-F3-03, P4-F3-05 | Crowdsourcing/project decomposition | investigate separately | A distinct software-engineering tradition where projects are broken into tasks for external contributors. |
+| task preparation | task description/decomposition | P4-F3-01 | Crowdsourcing software development | test provisionally | Appeared with decomposing projects and preparing executable/manageable tasks. |
+| manageable software tasks | task scope/decomposition | P4-F3-01 | Crowdsourcing software development | test provisionally | Context-bound phrase; do not generalize it beyond the inspected crowdsourcing literature. |
+| task decomposition and collaboration | software development planning | P4-F3-03 | Coding-agent-specific software development | investigate separately | Agent-architecture phrase; keep distinct from human/team task decomposition. |
+| requirement-driven task decomposition | software development planning | P4-F3-03 | End-to-end software-development agents | investigate separately | Recent agent-specific wording; publication status and transferability require later screening. |
+| task allocation | software work division | P4-F3-05 | Software development and crowdsourcing | test provisionally with software context | Related to division among contributors, but not identical to decomposing a task into subtasks. |
+| software development task allocation | software work division | P4-F3-05 | Software project management | test provisionally with field restrictions | More specific phrase exposed by OpenAlex; distinguish allocation from decomposition. |
+| design rule hierarchies | software task structure/dependencies | P4-F3-05 | Software development tasks | investigate separately | Appeared in a study of hierarchy and parallelism; likely a dependency/structure term rather than a general decomposition synonym. |
+| parallelism in software development tasks | software task structure/dependencies | P4-F3-05 | Software development planning | retain as contextual term | Candidate terminology for dividing work by dependencies/parallelism; not equivalent to task decomposition. |
+| task granularity | task size/execution granularity | P4-F3-04 | Parallel computing and runtime systems | exclude from broad searches due to ambiguity | Retrieved mostly runtime/HPC execution granularity, not decomposition of software-development work. Test only with explicit development-planning context. |
+| fine-grained tasks | task size/execution granularity | P4-F3-04 | Parallel computing and runtime systems | exclude from broad searches due to ambiguity | Strongly associated with parallel execution in this sample; not yet calibrated for development work. |
+| software development task type | software work classification | P4-F3-01, P4-F3-02, P4-F3-03 | Traditional software engineering | test provisionally across sources | Useful for classifying development work, but not itself a decomposition term. |
+| outer-loop software-development tasks | software work classification | P4-F3-01 | Coding-agent and LLM evaluation | investigate separately | Recent phrase for bug fixing, review, and documentation activities; distinct from task decomposition. |
 
 ## Query Evolution
 
