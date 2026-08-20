@@ -3201,3 +3201,260 @@ The methodological reason is that P11 retrieved distinct neighborhoods for patch
 F7 pilot exploration cannot close; another focused pilot may be needed after the split is specified. All seven search families have not completed pilot calibration because F7 requires this methodological subdivision before systematic-search design. This is a search-method decision only and does not interpret the literature as defining Work Item requirements.
 
 No Work Item characteristics, acceptance criteria, lifecycle, hypotheses, or research conclusions were derived. Review was not concluded to be required, automated tests were not concluded to be sufficient, benchmark success was not equated with semantic correctness, and rework was not attributed to any Work Item property. No commit was made.
+
+## Pilot Round 12 Family 7 Subfamily Calibration
+
+Pilot Round 12 was conducted on 2026-08-20 to test whether the four P11 containers should be split into retrieval- and outcome-coherent subfamilies before systematic-search design. Searches used focused arXiv API discovery and an OpenAlex full-text discovery query. Counts are source-reported diagnostics, not estimates of prevalence, precision, recall, or evidence strength. The round remained a terminology and method calibration exercise; it did not derive Work Item characteristics or decide which evaluation authority is universally valid.
+
+### P12-F7A: Change Correctness And Validation
+
+#### P12-F7A-01
+
+- **Search ID:** `P12-F7A-01`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Traditional software-engineering scientific discovery
+- **Database / source:** arXiv API
+- **Query:** Focused combinations of `patch correctness`, `patch validation`, `regression`, `test suite`, and `correct patch` terms
+- **Fields searched:** arXiv `all` fields
+- **Filters:** None; relevance-ranked discovery sample
+- **Result count:** `11` reported by arXiv
+- **Results inspected:** Returned records and abstracts, including `On Reliability of Patch Correctness Assessment`
+- **Clearly relevant results:** The sample formed a recognizable patch-correctness and validation neighborhood. It included automated test-suite assessment, independent-test assessment, human/author labels, plausible-versus-correct patches, and regression-oriented validation.
+- **Clearly irrelevant patterns:** Generic testing, validation outside software changes, and classifier-performance papers appeared beside studies whose actual object was patch correctness.
+- **Terminology discovered:** `patch correctness`, `plausible patch`, `patch overfitting`, `independent test suite`, `behavioral discrepancy`, `semantic correctness`, `regression test`, `patch validation`.
+- **Candidate seed sources:** Le et al., `On Reliability of Patch Correctness Assessment`, 2018, arXiv record; the abstract distinguishes test-suite, author, and professional-developer labels. The P11 patch-correctness seeds remain applicable.
+- **Known-source checks:** SWE-bench `Not applicable to this traditional change-correctness query`; SWE-agent `Not applicable`; Agentless `Not applicable`; AIDev `Not applicable`; Understanding Software Engineering Agents `Not applicable`.
+- **Query adjustment:** Broad correctness/validation combinations -> focused patch-correctness and validation combinations -> retain object-qualified terms and avoid unqualified `verification` as a single branch.
+- **Rationale:** The search supports a coherent change-level outcome neighborhood, but automated test passing, semantic correctness, and evaluation-model accuracy are different outcomes and authorities.
+- **Notes:** This branch covers the correctness of a software change or patch. It does not establish end-to-end task completion, maintainer acceptance, or production quality.
+
+### P12-F7B: Review And Acceptance
+
+#### P12-F7B-01
+
+- **Search ID:** `P12-F7B-01`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Traditional software-engineering scientific discovery
+- **Database / source:** arXiv API
+- **Query:** Focused combinations of `code review`, `acceptance`, `merge`, `pull request`, `review findings`, and `maintainer decision`
+- **Fields searched:** arXiv `all` fields
+- **Filters:** None; relevance-ranked discovery sample
+- **Result count:** `80` reported by arXiv
+- **Results inspected:** Returned records and abstracts, including `Mining Code Review Data to Understand Waiting Times Between Acceptance and Merging`
+- **Clearly relevant results:** Review decisions, acceptance, merge timing, review findings, and maintainer/repository decisions formed a retrievable neighborhood distinct from generic task completion.
+- **Clearly irrelevant patterns:** Some records concerned review automation, review quality prediction, or collaboration without an acceptance/merge outcome; title and abstract screening remains necessary.
+- **Terminology discovered:** `code review acceptance`, `pull request acceptance`, `merge decision`, `accepted and merged`, `maintainer decision`, `review findings`, `review outcome`, `review iteration`.
+- **Candidate seed sources:** Existing P11 pull-request acceptance sources; `Mining Code Review Data to Understand Waiting Times Between Acceptance and Merging`, publication status and venue to be verified during later screening.
+- **Known-source checks:** SWE-bench `Not applicable as a traditional review-acceptance study`; SWE-agent `Not applicable`; Agentless `Not applicable`; AIDev `Not verified in this focused traditional sample`; Understanding Software Engineering Agents `Not applicable`.
+- **Query adjustment:** P11 `task completion` terminology -> acceptance/merge and maintainer-decision terminology -> retain review and acceptance as separate from semantic correctness and benchmark resolution.
+- **Rationale:** Repository acceptance is operationally observable, but it is a social/project outcome whose authority is a maintainer or repository history, not automatically a correctness oracle.
+- **Notes:** Acceptance, review-comment resolution, merge readiness, and semantic correctness must be extracted separately when co-occurring.
+
+### P12-F7C: Rework And Revision
+
+#### P12-F7C-01
+
+- **Search ID:** `P12-F7C-01`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Traditional software-engineering scientific discovery
+- **Database / source:** arXiv API
+- **Query:** Focused combinations of `pull request`, `revision`, `review iteration`, `rework`, and `issue reopening`
+- **Fields searched:** arXiv `all` fields
+- **Filters:** None; relevance-ranked discovery sample
+- **Result count:** `6` reported by arXiv
+- **Results inspected:** Returned records and abstracts
+- **Clearly relevant results:** Pull-request revision and review-iteration records provided an observable neighborhood for additional work after an initial change. Issue reopening was much less consistently represented.
+- **Clearly irrelevant patterns:** Generic document revision, unrelated pull-request applications, and broad software-maintenance uses of `rework` occurred in the sample.
+- **Terminology discovered:** `pull request revision`, `review iteration`, `post-initial-commit edit`, `issue reopening`, `review-induced change`, `corrective change`, `revision cycle`.
+- **Candidate seed sources:** Existing P11 sources on review-induced refactoring, review rework, and software rework remain candidates; no new source was promoted solely from this sparse sample.
+- **Known-source checks:** SWE-bench `Not applicable to traditional rework`; SWE-agent `Not applicable`; Agentless `Not applicable`; AIDev `Not verified in this focused traditional sample`; Understanding Software Engineering Agents `Not applicable`.
+- **Query adjustment:** P11 mixed rework/revision query -> narrower revision and iteration terms -> retain review-induced revision as an observable branch and treat issue reopening as an unvalidated proxy.
+- **Rationale:** Further work is observable, but the causal meaning varies: reviewer request, spontaneous refactoring, defect correction, maintenance, or process policy.
+- **Notes:** Rework is not a single failure label. The unit, trigger, timing, and authority must be recorded for each study.
+
+### P12-F7D: Coding-Agent Benchmark Success
+
+#### P12-F7D-01
+
+- **Search ID:** `P12-F7D-01`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Coding-agent-specific scientific discovery
+- **Database / source:** arXiv API
+- **Query:** Focused combinations of `coding agent`, `SWE-bench`, `resolved issue`, `correct fix`, `benchmark`, and `evaluation`
+- **Fields searched:** arXiv `all` fields
+- **Filters:** None; relevance-ranked discovery sample
+- **Result count:** `21` reported by arXiv
+- **Results inspected:** Returned records and abstracts, including `SWE-Bench+: Enhanced Coding Benchmark for LLMs`
+- **Clearly relevant results:** Coding-agent benchmark papers used `resolved issue`, `resolve rate`, `pass@1`, `correct fix`, test execution, and benchmark-specific evaluators. The sample also contained audits showing that test-passing or solved labels can diverge from semantic correctness.
+- **Clearly irrelevant patterns:** Benchmark construction, contamination, training, harness engineering, and non-software agent evaluation appeared beside task-success studies.
+- **Terminology discovered:** `resolved issue`, `resolve rate`, `pass@1`, `correct fix`, `benchmark instance`, `hidden tests`, `test-passing patch`, `differential testing`, `benchmark evaluator`.
+- **Candidate seed sources:** Jimenez et al., `SWE-bench`; Yang et al., `SWE-agent`; Agentless; Yu et al., `UTBoost`; Wang and Pradel, `Are "Solved Issues" in SWE-bench Really Solved Correctly?`; Aleithan et al., `SWE-Bench+`. Publication statuses remain as recorded in P11 and require later screening verification.
+- **Known-source checks:** SWE-bench `Retrieved`; SWE-agent `Retrieved`; Agentless `Retrieved`; AIDev `Not applicable to this benchmark-focused sample`; Understanding Software Engineering Agents `Not verified in this focused benchmark sample`.
+- **Query adjustment:** P11 broad coding-agent evaluation -> benchmark- and resolution-qualified terms -> preserve benchmark success as a coding-agent branch, but do not pool it with semantic correctness or repository acceptance.
+- **Rationale:** This is the highest-yield coding-agent outcome neighborhood, but its definition depends on issue construction, patch application, environment, tests, and benchmark scoring.
+- **Notes:** A benchmark result is conditional on its evaluator and denominator. It is not a universal task-success or production-quality measure.
+
+### P12-F7E: Human And Semantic Evaluation
+
+#### P12-F7E-01
+
+- **Search ID:** `P12-F7E-01`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Coding-agent-specific scientific discovery
+- **Database / source:** arXiv API
+- **Query:** Focused combinations of `human evaluation`, `coding agent`, `software engineering agent`, `semantic`, `correctness`, and `quality`
+- **Fields searched:** arXiv `all` fields
+- **Filters:** None; relevance-ranked discovery sample
+- **Result count:** `4` reported by arXiv
+- **Results inspected:** Returned records and abstracts, including `SEAlign: Alignment Training for Software Engineering Agent`
+- **Clearly relevant results:** Human evaluation was visible in application/task-performance and user-experience assessment, and in adjacent coding-agent evaluation records. It was sparse compared with automated benchmark evaluation and was not standardized across the sample.
+- **Clearly irrelevant patterns:** General human evaluation, preference optimization, and non-software user studies appeared beside coding-agent records.
+- **Terminology discovered:** `human evaluation`, `user experience`, `semantic correctness`, `production-assessed evaluation`, `trajectory review`, `professional-developer annotation`, `human inspection`.
+- **Candidate seed sources:** Zhang et al., `SEAlign: Alignment Training for Software Engineering Agent`, 2025, arXiv record; P11 correctness-audit, MathlibPR, and AgentLens sources remain relevant adjacent seeds.
+- **Known-source checks:** SWE-bench `Retrieved indirectly through human/differential correctness audits, not as a human-evaluation paper`; SWE-agent `Not verified in this focused human-evaluation sample`; Agentless `Not verified`; AIDev `Not verified`; Understanding Software Engineering Agents `Not verified`.
+- **Query adjustment:** Broad human/semantic evaluation query -> exact `"human evaluation" AND "software engineering agent"` revision -> one result, confirming retrievability but low yield.
+- **Rationale:** Human/semantic evaluation is methodologically distinct because the authority and rubric differ from tests and benchmark harnesses, but P12 does not support treating it as a mature standalone primary branch without broader databases and citation chasing.
+- **Notes:** Record this as a supplementary evaluation-authority branch for systematic design, with possible expansion if later database coverage produces a coherent corpus. Do not infer frequency from the four-result sample.
+
+## P12 Query Evolution Records
+
+- **Date:** `2026-08-20`; **Search family:** F7-A; **Search ID:** `P12-F7A-01`; **evolution:** P11 exact `patch correctness` -> patch correctness plus validation, regression, test-suite, and correctness qualifiers; **decision:** retain `patch correctness` and object-qualified validation terms, while separating test/oracle outcomes from semantic correctness.
+- **Date:** `2026-08-20`; **Search family:** F7-B; **Search ID:** `P12-F7B-01`; **evolution:** P11 acceptance/merge vocabulary -> review, acceptance, merge, findings, and maintainer-decision qualifiers; **decision:** retain review/acceptance as a distinct repository-outcome branch.
+- **Date:** `2026-08-20`; **Search family:** F7-C; **Search ID:** `P12-F7C-01`; **evolution:** P11 mixed rework/review query -> revision, review iteration, post-initial-commit, and issue-reopening qualifiers; **decision:** retain rework/revision, but do not promote issue reopening to a primary branch.
+- **Date:** `2026-08-20`; **Search family:** F7-D; **Search ID:** `P12-F7D-01`; **evolution:** P11 broad coding-agent evaluation -> benchmark, resolution, correct-fix, and evaluator qualifiers; **decision:** retain coding-agent benchmark success as a separate branch with explicit benchmark dependence.
+- **Date:** `2026-08-20`; **Search family:** F7-E; **Search ID:** `P12-F7E-01`; **evolution:** broad human/semantic evaluation -> exact `"human evaluation" AND "software engineering agent"`; **decision:** retain as a supplementary authority branch pending broader retrieval and screening.
+
+No P12 query was silently replaced. Each query was retained as a calibration record. No systematic search string was frozen.
+
+## P12 Calibrated F7 Structure
+
+P12 supports replacing the four P11 containers with the following provisional structure:
+
+| Provisional subfamily | Object / outcome | Typical authority | Retrieval status | Calibration status |
+|---|---|---|---|---|
+| **F7-A Change correctness and validation** | Patch/change correctness, test/oracle validation, regression behavior, formal or semantic checks | Tests, independent suites, formal verifiers, human annotators, differential behavior | Coherent when object-qualified | `Calibrated for systematic-search design` |
+| **F7-B Review and acceptance** | Review findings, comment outcomes, pull-request acceptance, merge readiness, maintainer decisions | Reviewers, maintainers, repository history | Coherent but socially heterogeneous | `Calibrated for systematic-search design` |
+| **F7-C Rework and revision** | Review-induced edits, revision cycles, corrective maintenance, post-initial-commit or post-merge change | Review process, repository history, maintenance records | Retrievable but operationally heterogeneous | `Calibrated with explicit sub-branches` |
+| **F7-D Coding-agent benchmark success** | Resolved benchmark instance, resolve rate, pass@1, correct-fix label | Benchmark harness, tests, hidden tests, evaluator protocol | High yield but benchmark-dependent | `Calibrated for systematic-search design` |
+| **F7-E Human and semantic evaluation** | Human correctness, semantic quality, user experience, production or trajectory assessment | Professional developers, maintainers, users, expert reviewers, mixed protocols | Sparse in focused arXiv discovery | `Supplementary; expand during systematic design if coverage supports it` |
+
+The structure is coherent at the level of outcome neighborhood and evaluation authority, not because the outcomes are equivalent. Automated test success remains a cross-cutting authority/context dimension in F7-A and F7-D; P12 did not establish it as a sixth independent outcome family. Review acceptance remains distinct from correctness. Rework/revision remains distinct from failure because additional work may be deliberate or beneficial. Human/semantic evaluation remains distinct from both automated outcomes and social acceptance, despite its sparse retrieval.
+
+## P12 Terminology Registry Recalibration
+
+| Term | Related concept | Source / Search ID | Context | Action | Notes |
+|---|---|---|---|---|---|
+| patch validation | change correctness | P12-F7A-01 | Program repair and software changes | retain with object qualifier | Do not merge with generic validation. |
+| semantic correctness | change/task correctness | P12-F7A-01, P12-F7E-01 | Patch audits and human evaluation | retain as outcome term | Extract rubric and authority; not equivalent to test passing. |
+| regression test | change validation | P12-F7A-01 | Software testing | retain as contextual term | A test artifact/outcome, not a universal correctness definition. |
+| maintainer decision | acceptance authority | P12-F7B-01 | Pull-request mining | retain as primary contextual term | Accepted, rejected, ignored, or revision-requested states must remain distinct. |
+| review finding | review outcome/process | P12-F7B-01 | Code review | retain as outcome/process term | A finding is not necessarily a defect or an unsuccessful task. |
+| review iteration | revision process | P12-F7C-01 | Pull-request review | retain as primary F7-C term | Count and causal interpretation vary by study. |
+| post-initial-commit edit | rework/revision | P12-F7C-01 | Repository history | test provisionally | Observable additional work with uncertain trigger. |
+| benchmark evaluator | coding-agent authority | P12-F7D-01 | Repository-level benchmarks | retain as contextual term | Record harness, tests, denominator, and patch applicability. |
+| correct fix | coding-agent outcome | P12-F7D-01 | Benchmark evaluation | retain with benchmark qualifier | Do not assume semantic or production correctness. |
+| human evaluation | human/semantic authority | P12-F7E-01 | Coding-agent and application evaluation | retain as supplementary branch term | Sparse focused retrieval; rubric and evaluator population are essential. |
+| user experience | human evaluation outcome | P12-F7E-01 | Agent-created applications | test provisionally | User experience is not identical to code correctness or acceptance. |
+
+Terms retained as separate or downgraded after P12:
+
+- `automated test success`: retain as an authority-qualified outcome, not a universal F7 branch.
+- `semantic correctness`: retain separately from `patch correctness` when the study's object or rubric differs.
+- `acceptance`: qualify as pull-request, review-comment, user, maintainer, or production acceptance.
+- `rework`: qualify by trigger and temporal unit, such as review-induced revision or post-merge corrective maintenance.
+- `human evaluation`: retain as a supplementary branch until broader retrieval establishes its corpus size and operational diversity.
+- `task completion`, `verification`, and `validation`: do not use unqualified as umbrella search terms.
+
+## P12 Outcome Definitions And Evaluation Authorities
+
+P12 did not collapse the following outcomes:
+
+- **Change correctness:** Whether a patch or code change satisfies intended behavior under the study's correctness protocol.
+- **Automated validation:** Whether tests, an independent suite, a build, or a formal checker accepts the change. This is an authority result and may be incomplete.
+- **Review/acceptance:** Whether reviewers or maintainers accept, merge, reject, ignore, or request changes. This is a repository/social outcome.
+- **Rework/revision:** Additional work after an initial change, with trigger and timing extracted separately.
+- **Benchmark success:** Whether a benchmark instance receives a passing/resolved/correct-fix label under its evaluator.
+- **Human/semantic evaluation:** Expert, maintainer, user, or production assessment under an explicit rubric or review process.
+
+Observed authorities were automated tests and hidden tests; independent test suites; formal verifiers; benchmark harnesses; human professional developers; reviewers and maintainers; users; repository history; and mixed differential/trajectory protocols. No authority was treated as universally superior or interchangeable with another.
+
+## Traditional Software Versus Coding-Agent Boundaries
+
+- Traditional-SE retrieval remains necessary for automated program repair, testing, formal verification, code review, pull-request mining, software rework, and maintenance. Its units of analysis include patches, tests, comments, PRs, repositories, effort, and post-release changes.
+- Coding-agent retrieval requires population and execution qualifiers such as `coding agent`, `software engineering agent`, benchmark, trajectory, repository environment, or agent-authored PR. It adds benchmark harnesses, tool-mediated trajectories, agent-environment interaction, and agent-authored repository outcomes.
+- Traditional patch correctness, review acceptance, and rework findings may inform coding-agent measurement, but executor, task setting, context, authority, and outcome definition must be compared explicitly.
+- Human evaluation in a traditional review or APR study must not be assumed equivalent to human evaluation of an autonomous coding-agent trajectory or generated application.
+
+## Benchmark Dependencies And Limitations
+
+- Coding-agent benchmark outcomes depend on issue construction, repository snapshot, patch application, environment, dependencies, visible/hidden tests, and scoring protocol.
+- A passed test or resolved label can differ from semantic correctness; correctness audits and independent evaluation are therefore relevant cross-checks rather than interchangeable labels.
+- Pull-request acceptance can reflect maintainer policy, project fit, timing, scope, or social factors in addition to technical quality.
+- Revision and rework can indicate correction, requested improvement, refactoring, or maintenance and cannot be interpreted without temporal and causal context.
+- The human/semantic branch is under-retrieved in this focused arXiv sample. The result supports a methodological distinction, not a prevalence or maturity claim.
+- arXiv/OpenAlex discovery does not establish complete venue coverage, publication status, or systematic-search recall. Later screening must verify versions, venues, duplicates, and full-text operational definitions.
+
+## Answers To P12 Special Questions
+
+1. **Does P11's patch-correctness branch remain coherent?** Yes, provisionally, when restricted to a software-change object and separated from generic test, formal-verification, and classifier-evaluation terms.
+2. **Should automated test success be its own primary F7 subfamily?** Not on P12 evidence. It is a cross-cutting authority/outcome dimension that requires explicit extraction in change-correctness and benchmark studies.
+3. **Is review/acceptance distinct from completion?** Yes. Review findings, maintainer decisions, merge readiness, and generic completion have different objects and authorities.
+4. **Is rework distinct from revision?** They overlap but should not be synonyms. Revision is an observable additional-change event; rework may additionally encode cost, code volume, maintenance, or corrective purpose.
+5. **Is issue reopening validated as a primary proxy?** No. It remains a possible repository proxy requiring separate validation and should not define F7-C.
+6. **Is coding-agent benchmark success a distinct branch?** Yes. It has high retrieval yield and a recognizable outcome vocabulary, but it is conditional on benchmark protocol.
+7. **Does `resolved issue` mean semantic correctness?** Not necessarily. It means resolution under the named benchmark evaluator; semantic correctness requires the study's separate audit or authority.
+8. **Should traditional-SE and coding-agent streams remain separate?** Yes. Their objects, executors, environments, and evaluation authorities differ, even where terminology overlaps.
+9. **Is human/semantic evaluation retrievable?** Yes, but sparsely in this focused arXiv pilot. The exact revision retrieved `SEAlign` with human application/task and user-experience evaluation.
+10. **Does sparse human retrieval justify dropping the branch?** No. It justifies treating it as supplementary and testing broader databases, citation chasing, and adjacent terms before making it primary.
+11. **What terminology should be excluded as an umbrella?** Unqualified `verification`, `validation`, `completion`, `acceptance`, `quality`, and `retry`; each requires an object, authority, or outcome qualifier.
+12. **Is F7 calibrated for systematic-search design?** Yes, with the five provisional subfamilies and explicit authority/outcome extraction. F7-E remains a supplementary branch subject to coverage validation.
+
+## P12 Calibration Assessment
+
+### Conceptual coherence
+
+- **F7-A:** High enough for systematic design after separating change correctness, automated validation, formal checks, and generic quality.
+- **F7-B:** Moderate to high for review and acceptance when maintainer/repository outcomes are kept separate from semantic correctness and completion.
+- **F7-C:** Moderate with explicit temporal and causal sub-branches for revision, rework, corrective maintenance, and issue reopening.
+- **F7-D:** High as a benchmark-qualified coding-agent outcome family, not as a universal task-success construct.
+- **F7-E:** Conceptually distinct and methodologically important, but empirically sparse in this focused pilot.
+
+### Retrieval coherence
+
+- P12-A and P12-B produced the clearest neighborhoods when the object and authority were named.
+- P12-C retrieved a small but useful revision neighborhood; broad rework terminology remains heterogeneous.
+- P12-D was productive but benchmark-dominated and requires strong screening for evaluator dependence.
+- P12-E confirmed a human-evaluation record but did not demonstrate a large or stable arXiv neighborhood.
+
+### Relationship to previous families
+
+- **F1/F2/F3:** Define work units, requirements, acceptance criteria, task descriptions, and decomposition. F7 evaluates outcomes or process events and must not duplicate those representation searches.
+- **F5/F6:** Define coding-agent populations and execution conditions. F7-D/E adds outcome and evaluation-authority terms; trajectory/process records are not automatically final correctness.
+- **Traditional-SE boundary:** F7-A/B/C can use traditional software-engineering evidence, while F7-D/E requires explicit coding-agent qualifiers when making agent-specific claims.
+
+## P12 Recommended Search Status
+
+| Branch | Status | Methodological reason |
+|---|---|---|
+| F7-A Change correctness and validation | `Calibrated for systematic-search design` | Object-qualified patch correctness and validation terms form a usable neighborhood, with authority extraction required. |
+| F7-B Review and acceptance | `Calibrated for systematic-search design` | Review and maintainer/repository acceptance are retrievable and distinct from completion. |
+| F7-C Rework and revision | `Calibrated with explicit sub-branches` | Revision is searchable, but rework measures and triggers remain heterogeneous. |
+| F7-D Coding-agent benchmark success | `Calibrated for systematic-search design` | Benchmark outcome vocabulary is high-yield but evaluator- and environment-dependent. |
+| F7-E Human and semantic evaluation | `Supplementary; coverage validation required` | Conceptually distinct but sparse in focused arXiv retrieval; broader database testing is required. |
+
+## P12 Remaining Uncertainty
+
+- The pilot still used discovery APIs rather than the protocol's full systematic databases; coverage, recall, and publication completeness remain untested.
+- Human/semantic evaluation may expand substantially in standards, HCI, practitioner, or venue-specific literature not visible in this arXiv sample.
+- The boundaries among patch correctness, semantic correctness, user experience, maintainer acceptance, and production quality remain context-dependent.
+- Rework and revision proxies remain sensitive to repository policy, observation window, contributor behavior, and review conventions.
+- Benchmark outcomes remain sensitive to test sufficiency, patch applicability, environment setup, hidden tests, leakage, and denominator choice.
+- No substantive conclusion was drawn about whether tests, review, human approval, acceptance criteria, or any other mechanism is necessary or sufficient for successful work.
+
+## P12 Exit Decision
+
+**F7 subfamily structure sufficiently calibrated for systematic-search design**
+
+P12 established a defensible provisional split by object, outcome, evaluation authority, and traditional-SE/coding-agent boundary: change correctness and validation; review and acceptance; rework and revision; coding-agent benchmark success; and human/semantic evaluation. The fifth branch remains supplementary because retrieval was sparse, not because the construct was treated as irrelevant. Systematic design may now specify separate strings and screening rules for these subfamilies, while preserving explicit extraction of authority, unit of analysis, temporal relation, benchmark dependence, publication status, and semantic-versus-social outcome distinctions.
+
+No Work Item characteristics, acceptance criteria, lifecycle, hypotheses, or research conclusions were derived. No systematic search has begun. No commit was made.
