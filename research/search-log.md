@@ -2,7 +2,7 @@
 
 This document is the durable record of pilot searches and, later, systematic searches conducted under [`research/protocol.md`](./protocol.md). Pilot searches validate and refine terminology, query families, database coverage, precision, recall, and feasibility; they do not establish research findings or Work Item characteristics.
 
-Pilot Round 1 was conducted on 2026-08-20 using arXiv search/API endpoints and OpenAlex discovery. Pilot Round 2 calibration was conducted on 2026-08-20 using arXiv, OpenAlex, and Crossref APIs. No systematic literature review search has begun.
+Pilot Round 1 was conducted on 2026-08-20 using arXiv search/API endpoints and OpenAlex discovery. Pilot Round 2 calibration was conducted on 2026-08-20 using arXiv, OpenAlex, and Crossref APIs. Pilot Round 3 database-field calibration was conducted on 2026-08-20 using arXiv, OpenAlex, and Crossref APIs. No systematic literature review search has begun.
 
 ## Purpose
 
@@ -233,6 +233,17 @@ The material changes observed in this round are preserved here in the required f
 - `P2 F5 phrase family → arXiv combined provisional terms returned 1,154 records and exposed agentic aliases → retain separate exact terms plus a combined discovery query → preserve distinctions between coding agents, SWE agents, and adjacent systems`
 - `P2 F5 phrase family → Crossref bibliographic count returned 627,049 records and sample retrieval received HTTP 429 → defer broad Crossref sampling and use DOI lookups/fielded queries → do not interpret the rate limit or count as evidence about terminology coverage`
 - `P2 F5 phrase family → OpenAlex full-text query returned 561 records including published and preprint candidates but cross-family noise → test title/abstract field behavior in a later iteration → keep OpenAlex discovery separate from systematic precision estimates`
+- `P2 F1 provisional vocabulary → arXiv all-field phrase query returned 272 records and known F1 seeds → retain phrase-level coverage without freezing the combined query`
+- `P2 F1 provisional vocabulary → Crossref unfielded bibliographic query returned 1,692,352 records with no sample → use fielded or separate phrase requests → treat Crossref as DOI discovery until field behavior is validated`
+- `P2 F5 provisional vocabulary → arXiv OR query returned 1,154 records and retrieved current agentic aliases → retain separate phrase queries plus a combined discovery query`
+- `P2 F5 provisional vocabulary → Crossref returned 627,049 count-only records and HTTP 429 on sample retrieval → use exact title queries or DOI lookups → do not infer recall from the broad count`
+- `P2 F5 provisional vocabulary → OpenAlex full-text query returned 561 records including published and preprint sources but cross-family noise → test title/abstract filters → keep OpenAlex as discovery support rather than a final precision measure`
+- `P3 F1 field calibration → arXiv title-only phrase query returned 23 records and title/abstract phrase query returned 136 → retain both variants for sensitivity/precision comparison → do not freeze one field selection without a relevance set`
+- `P3 F1 field calibration → OpenAlex title searches returned 2,001 software-task and 858 issue-description records → keep phrase searches separate → do not compare counts directly with arXiv`
+- `P3 F1 field calibration → Crossref title counts returned 3,032,498 for software development task and 731,632 for issue description, without usable samples → require narrower sample requests or DOI lookup`
+- `P3 F5 field calibration → arXiv title-only phrase query returned 431 records and title/abstract phrase query returned 1,003 → preserve the title/abstract tradeoff as provisional`
+- `P3 F5 field calibration → OpenAlex title searches returned 3,622 coding-agent and 866 software-engineering-agent records → keep labels separate and treat counts as discovery diagnostics`
+- `P3 F5 field calibration → Crossref coding-agent title query returned HTTP 429 while software-engineering-agent title count returned 1,048,935 → do not infer terminology coverage from either operational result`
 
 No query was removed because it returned contradictory or unexpected material. No query was frozen as a systematic search string.
 
@@ -354,6 +365,240 @@ This round tested the provisional vocabulary selected from Pilot Round 1 across 
 - **Rationale:** OpenAlex provides useful cross-source discovery, but its full-text matching should not be used as a final precision estimate.
 - **Notes:** OpenAlex query metadata reported all three phrases as required full-text terms. The source-level publication statuses were recorded only for inspected candidates; no evidence synthesis was performed.
 
+## Pilot Round 3 Database-Field Calibration
+
+This round compared title-only and title/abstract-style field behavior for the provisional Family 1 and Family 5 vocabulary. Counts are source-reported and not directly comparable. Crossref title-query counts were obtained with `rows=0`; sample requests were either truncated by the retrieval tool or rate-limited, so no precision estimate is made.
+
+### P3-F1-01
+
+- **Search ID:** `P3-F1-01`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Scientific discovery
+- **Database / source:** arXiv API
+- **Query:** `ti:"software development task" OR ti:"software task" OR ti:"issue description" OR ti:"issue-tracking system"`
+- **Fields searched:** arXiv title fields
+- **Filters:** None; first 10 sorted by relevance
+- **Result count:** `23` reported by arXiv
+- **Results inspected:** First 10 result records and abstracts
+- **Clearly relevant results:** The title-only set retained software-task and issue-description vocabulary; individual known-seed retrieval was not verified from the recorded sample.
+- **Clearly irrelevant patterns:** Some titles concerned repair, evaluation, or generic issue tracking rather than work definition.
+- **Terminology discovered:** No new term beyond the provisional F1 vocabulary.
+- **Candidate seed sources:** Licorish & MacDonell: `Not verified`; Ramírez-Mora et al.: `Not verified`.
+- **Query adjustment:** `all-field phrase query → explicit title-only phrase query → compare precision signal against title/abstract-inclusive syntax before any systematic adaptation`
+- **Rationale:** Title restriction reduced the result set substantially but may miss studies whose relevant terminology occurs only in abstracts.
+- **Notes:** This was a field-behavior calibration, not a final systematic query.
+
+### P3-F1-02
+
+- **Search ID:** `P3-F1-02`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Scientific discovery
+- **Database / source:** arXiv API
+- **Query:** `ti:"software development task" OR abs:"software development task" OR ti:"software task" OR abs:"software task" OR ti:"issue description" OR abs:"issue description" OR ti:"issue-tracking system" OR abs:"issue-tracking system"`
+- **Fields searched:** arXiv title and abstract fields
+- **Filters:** None; first 10 sorted by relevance
+- **Result count:** `136` reported by arXiv
+- **Results inspected:** First 10 result records and abstracts
+- **Clearly relevant results:** The expanded field set recovered additional software-task and issue-description records beyond title-only retrieval.
+- **Clearly irrelevant patterns:** Abstract matching reintroduced adjacent repair, evaluation, and general software-engineering noise.
+- **Terminology discovered:** No new term beyond the provisional F1 vocabulary.
+- **Candidate seed sources:** Licorish & MacDonell: `Not verified`; Ramírez-Mora et al.: `Not verified`. No new seed was promoted from the limited sample.
+- **Query adjustment:** `title-only phrase query → title OR abstract phrase query → retain both as sensitivity/precision calibration variants rather than selecting one prematurely`
+- **Rationale:** The count increase indicates a recall/precision tradeoff, but the pilot sample is insufficient to quantify either measure.
+- **Notes:** arXiv field syntax was tested explicitly; no Work Item characteristic was assessed.
+
+### P3-F1-03
+
+- **Search ID:** `P3-F1-03`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Scientific discovery
+- **Database / source:** OpenAlex Works API
+- **Query:** `title.search:"software task"`
+- **Fields searched:** OpenAlex title search
+- **Filters:** None; selected metadata fields
+- **Result count:** `2,001` reported by OpenAlex
+- **Results inspected:** Returned metadata sample was used for field-behavior inspection; no complete relevance assessment was attempted.
+- **Clearly relevant results:** Title-field matching retrieved a large software-task neighborhood.
+- **Clearly irrelevant patterns:** The count remains broad and includes task-evaluation and general software-development work.
+- **Terminology discovered:** No new term.
+- **Candidate seed sources:** None promoted from this count-focused field test.
+- **Query adjustment:** `OpenAlex full-text F1 query → title search for software task → test separate exact title phrases because title search remains broad`
+- **Rationale:** OpenAlex title search is operationally distinct from full-text search and should not inherit the earlier full-text interpretation.
+- **Notes:** Result count is a source diagnostic, not a precision or recall estimate.
+
+### P3-F1-04
+
+- **Search ID:** `P3-F1-04`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Scientific discovery
+- **Database / source:** OpenAlex Works API
+- **Query:** `title.search:"issue description"`
+- **Fields searched:** OpenAlex title search
+- **Filters:** None; selected metadata fields
+- **Result count:** `858` reported by OpenAlex
+- **Results inspected:** Returned metadata sample was used for field-behavior inspection; no complete relevance assessment was attempted.
+- **Clearly relevant results:** Title matching produced an issue-description literature neighborhood relevant to issue-based work representation.
+- **Clearly irrelevant patterns:** The phrase also covers repair, issue mining, and other uses outside task definition.
+- **Terminology discovered:** No new term.
+- **Candidate seed sources:** None promoted from this count-focused field test.
+- **Query adjustment:** `OpenAlex title software task → separate title issue-description query → retain separate F1 phrase tests for later screening`
+- **Rationale:** Separate phrase counts expose different coverage and avoid treating F1 vocabulary as interchangeable.
+- **Notes:** Result count is not comparable with the arXiv counts.
+
+### P3-F1-05
+
+- **Search ID:** `P3-F1-05`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Scientific discovery
+- **Database / source:** Crossref Works API
+- **Query:** `query.title=software development task`
+- **Fields searched:** Crossref title query
+- **Filters:** `rows=0` count-only request
+- **Result count:** `3,032,498` reported by Crossref
+- **Results inspected:** No records; the sample response was truncated by the retrieval tool.
+- **Clearly relevant results:** Not assessed.
+- **Clearly irrelevant patterns:** The very large title-query count requires verification of Crossref query semantics before interpretation.
+- **Terminology discovered:** No new term.
+- **Candidate seed sources:** None.
+- **Query adjustment:** `unfielded combined Crossref query → title query for software development task → use narrower exact-title requests or DOI lookup before drawing coverage conclusions`
+- **Rationale:** Fielding changed the query form but did not yet produce an interpretable candidate sample.
+- **Notes:** Count-only result; no precision or recall estimate.
+
+### P3-F1-06
+
+- **Search ID:** `P3-F1-06`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Scientific discovery
+- **Database / source:** Crossref Works API
+- **Query:** `query.title=issue description`
+- **Fields searched:** Crossref title query
+- **Filters:** `rows=0` count-only request
+- **Result count:** `731,632` reported by Crossref
+- **Results inspected:** No records; sample retrieval was not used as evidence.
+- **Clearly relevant results:** Not assessed.
+- **Clearly irrelevant patterns:** The count is too broad to establish title precision.
+- **Terminology discovered:** No new term.
+- **Candidate seed sources:** None.
+- **Query adjustment:** `Crossref title software development task → separate title issue-description query → retain separate phrase requests and verify samples under rate limits`
+- **Rationale:** Separate fielded queries are preferable to the unfielded combined query, but still require sample inspection.
+- **Notes:** Count-only result; no precision or recall estimate.
+
+### P3-F5-01
+
+- **Search ID:** `P3-F5-01`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Coding-agent-specific scientific discovery
+- **Database / source:** arXiv API
+- **Query:** `ti:"software engineering agent" OR ti:"SWE-agent" OR ti:"coding agent" OR ti:"AI coding agent"`
+- **Fields searched:** arXiv title fields
+- **Filters:** None; first 10 sorted by relevance
+- **Result count:** `431` reported by arXiv
+- **Results inspected:** First 10 result records and abstracts
+- **Clearly relevant results:** Title-only retrieval retained coding-agent and software-engineering-agent records, including SWE-agent lineage terminology.
+- **Clearly irrelevant patterns:** Some results were adjacent agent systems or broad AI evaluation rather than coding-agent work.
+- **Terminology discovered:** No new term beyond the provisional F5 vocabulary.
+- **Candidate seed sources:** SWE-agent: `Not verified`; SWE-bench: `Not verified`; Agentless: `Not verified`; AIDev: `Not verified`; Understanding Software Engineering Agents: `Not verified`. No new seed was promoted from the limited sample.
+- **Query adjustment:** `combined all-field F5 query → title-only phrase query → compare against abstract-inclusive syntax`
+- **Rationale:** Title restriction provides a narrower discovery signal while risking omission of papers using agent terminology only in abstracts.
+- **Notes:** No agent-category conclusion was drawn.
+
+### P3-F5-02
+
+- **Search ID:** `P3-F5-02`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Coding-agent-specific scientific discovery
+- **Database / source:** arXiv API
+- **Query:** `ti:"software engineering agent" OR abs:"software engineering agent" OR ti:"SWE-agent" OR abs:"SWE-agent" OR ti:"coding agent" OR abs:"coding agent" OR ti:"AI coding agent" OR abs:"AI coding agent"`
+- **Fields searched:** arXiv title and abstract fields
+- **Filters:** None; first 10 sorted by relevance
+- **Result count:** `1,003` reported by arXiv
+- **Results inspected:** First 10 result records and abstracts
+- **Clearly relevant results:** The expanded field set recovered a wider current coding-agent and SWE-agent literature neighborhood.
+- **Clearly irrelevant patterns:** Abstract matching increased systems, infrastructure, benchmark, and general-agent noise.
+- **Terminology discovered:** No new term beyond the provisional F5 vocabulary.
+- **Candidate seed sources:** SWE-agent: `Not verified`; SWE-bench: `Not verified`; Agentless: `Not verified`; AIDev: `Not verified`; Understanding Software Engineering Agents: `Not verified`. No new seed was promoted from the limited sample.
+- **Query adjustment:** `title-only F5 query → title OR abstract phrase query → retain both variants for calibration rather than freezing a final string`
+- **Rationale:** The larger result set indicates broader coverage but does not establish improved recall without a relevance set.
+- **Notes:** No Work Item characteristic was assessed.
+
+### P3-F5-03
+
+- **Search ID:** `P3-F5-03`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Coding-agent-specific scientific discovery
+- **Database / source:** OpenAlex Works API
+- **Query:** `title.search:"coding agent"`
+- **Fields searched:** OpenAlex title search
+- **Filters:** None; selected metadata fields
+- **Result count:** `3,622` reported by OpenAlex
+- **Results inspected:** Returned metadata sample was used for field-behavior inspection; no complete relevance assessment was attempted.
+- **Clearly relevant results:** Title matching retrieved a substantial coding-agent terminology neighborhood.
+- **Clearly irrelevant patterns:** The count includes broad agent, coding, and evaluation contexts and is not a clean coding-agent corpus.
+- **Terminology discovered:** No new term.
+- **Candidate seed sources:** None promoted from this count-focused test.
+- **Query adjustment:** `OpenAlex full-text F5 query → title search for coding agent → test software-engineering-agent title wording separately`
+- **Rationale:** A title field is more interpretable than the earlier all-term full-text behavior, but remains broad.
+- **Notes:** Result count is not comparable with arXiv.
+
+### P3-F5-04
+
+- **Search ID:** `P3-F5-04`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Coding-agent-specific scientific discovery
+- **Database / source:** OpenAlex Works API
+- **Query:** `title.search:"software engineering agent"`
+- **Fields searched:** OpenAlex title search
+- **Filters:** None; selected metadata fields
+- **Result count:** `866` reported by OpenAlex
+- **Results inspected:** Returned metadata sample was used for field-behavior inspection; no complete relevance assessment was attempted.
+- **Clearly relevant results:** The title field retained a narrower software-engineering-agent neighborhood than the coding-agent query.
+- **Clearly irrelevant patterns:** Agent infrastructure and evaluation papers remained present.
+- **Terminology discovered:** No new term.
+- **Candidate seed sources:** None promoted from this count-focused test.
+- **Query adjustment:** `OpenAlex title coding agent → separate title software engineering agent query → preserve both labels as non-equivalent provisional terms`
+- **Rationale:** The differing counts support separate terminology calibration, not a conclusion that one label has better recall.
+- **Notes:** Result count is not comparable with arXiv.
+
+### P3-F5-05
+
+- **Search ID:** `P3-F5-05`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Coding-agent-specific scientific discovery
+- **Database / source:** Crossref Works API
+- **Query:** `query.title=coding agent`
+- **Fields searched:** Crossref title query
+- **Filters:** `rows=0` count-only request
+- **Result count:** Not available; Crossref returned HTTP `429 Too Many Requests`
+- **Results inspected:** None
+- **Clearly relevant results:** Not assessed.
+- **Clearly irrelevant patterns:** Rate limiting prevented field-level evaluation.
+- **Terminology discovered:** No new term.
+- **Candidate seed sources:** None.
+- **Query adjustment:** `Crossref broad F5 query → title coding-agent query → pause repeated sampling and use DOI lookup or a later rate-limited request`
+- **Rationale:** The operational failure cannot be interpreted as terminology absence or low retrieval.
+- **Notes:** HTTP 429 was preserved as an access limitation.
+
+### P3-F5-06
+
+- **Search ID:** `P3-F5-06`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Coding-agent-specific scientific discovery
+- **Database / source:** Crossref Works API
+- **Query:** `query.title=software engineering agent`
+- **Fields searched:** Crossref title query
+- **Filters:** `rows=0` count-only request
+- **Result count:** `1,048,935` reported by Crossref
+- **Results inspected:** No records; sample output was truncated by the retrieval tool.
+- **Clearly relevant results:** Not assessed.
+- **Clearly irrelevant patterns:** The count is too broad to support title precision claims.
+- **Terminology discovered:** No new term.
+- **Candidate seed sources:** None.
+- **Query adjustment:** `Crossref title coding agent rate-limited → title software engineering agent count → require narrower requests and explicit sample inspection before using Crossref for screening`
+- **Rationale:** The successful count confirms endpoint availability but not useful field semantics.
+- **Notes:** Count-only result; no precision or recall estimate.
+
+No Round 3 query was frozen as a systematic search string. The title-only versus title/abstract arXiv comparison is a calibration signal only; the OpenAlex and Crossref counts require further sample-level validation.
+
 ## Search Log Template
 
 Copy this template for each pilot or systematic search. Use a stable Search ID and record unsuccessful, noisy, and abandoned searches as well as useful searches.
@@ -385,26 +630,26 @@ Record terminology discovered during pilot searches. The eight terms selected fr
 
 | Term | Related concept | Source / Search ID | Context | Action | Notes |
 |---|---|---|---|---|---|
-| software development task | software work definition | P1-F1-02, P1-F1-03, P2-F1-01 | Traditional software engineering | test provisionally across sources | Appeared in titles and abstracts for task-type, completion, repository, and evaluation studies; not validated as final terminology. |
-| software task | software work definition | P1-F1-03, P2-F1-01 | Traditional software engineering | test provisionally across sources | More precise than unqualified `task`, but still broad across evaluation and developer studies. |
-| issue description | issue/work representation | P1-F1-02, P1-F1-03, P2-F1-01 | Issue-tracking research | test provisionally across sources | Promising phrase for studies of textual work descriptions; retain separate from generic `issue`. |
-| issue-tracking system | issue/work representation | P1-F1-03, P2-F1-01 | Issue-tracking research | test provisionally across sources | Identifies the repository/tool context in which issues are studied; not validated as final terminology. |
+| software development task | software work definition | P1-F1-02, P1-F1-03, P2-F1-01, P3-F1-01, P3-F1-02 | Traditional software engineering | test provisionally across sources | Appeared in titles and abstracts for task-type, completion, repository, and evaluation studies; not validated as final terminology. |
+| software task | software work definition | P1-F1-03, P2-F1-01, P3-F1-01, P3-F1-02 | Traditional software engineering | test provisionally across sources | More precise than unqualified `task`, but still broad across evaluation and developer studies. |
+| issue description | issue/work representation | P1-F1-02, P1-F1-03, P2-F1-01, P3-F1-01, P3-F1-02 | Issue-tracking research | test provisionally across sources | Promising phrase for studies of textual work descriptions; retain separate from generic `issue`. |
+| issue-tracking system | issue/work representation | P1-F1-03, P2-F1-01, P3-F1-01, P3-F1-02 | Issue-tracking research | test provisionally across sources | Identifies the repository/tool context in which issues are studied; not validated as final terminology. |
 | task type | software work classification | P1-F1-03 | Traditional software engineering | add as synonym | Used with task completion performance and categories of development work. |
 | task completion performance | completion/outcome terminology | P1-F1-03 | Traditional software engineering | add as outcome term | Outcome phrase, not a Work Item characteristic. |
-| coding agent | coding-agent vocabulary | P1-F5-02, P2-F5-01 | Recent coding-agent research | test provisionally across sources | High-yield broad phrase with adjacent systems and infrastructure noise; not validated as final terminology. |
-| AI coding agent | coding-agent vocabulary | P1-F5-02, P2-F5-01 | Recent coding-agent research | test provisionally across sources | Appeared in recent records alongside coding-agent workloads, sessions, and agent-authored pull requests. |
-| software engineering agent | coding-agent vocabulary | P1-F5-03, P2-F5-01 | Recent software-engineering-agent research | test provisionally across sources | More focused than `coding agent` but still includes non-repository and infrastructure settings. |
-| SWE agent / SWE-agent | coding-agent vocabulary | P1-F5-03, P1-F5-04, P2-F5-01 | Benchmarks and agent systems | test provisionally across sources | Research-lineage term; test hyphenation and plural variants separately rather than treating it as final. |
+| coding agent | coding-agent vocabulary | P1-F5-02, P2-F5-01, P3-F5-01, P3-F5-02 | Recent coding-agent research | test provisionally across sources | High-yield broad phrase with adjacent systems and infrastructure noise; not validated as final terminology. |
+| AI coding agent | coding-agent vocabulary | P1-F5-02, P2-F5-01, P3-F5-01, P3-F5-02 | Recent coding-agent research | test provisionally across sources | Appeared in recent records alongside coding-agent workloads, sessions, and agent-authored pull requests. |
+| software engineering agent | coding-agent vocabulary | P1-F5-03, P2-F5-01, P3-F5-01, P3-F5-02 | Recent software-engineering-agent research | test provisionally across sources | More focused than `coding agent` but still includes non-repository and infrastructure settings. |
+| SWE agent / SWE-agent | coding-agent vocabulary | P1-F5-03, P1-F5-04, P2-F5-01, P3-F5-01, P3-F5-02 | Benchmarks and agent systems | test provisionally across sources | Research-lineage term; test hyphenation and plural variants separately rather than treating it as final. |
 | AI Software Engineer | coding-agent vocabulary | P1-F5-03 | Unified agent framing | investigate separately | Appears in a paper describing a unified agent across coding, testing, and patching. |
 | agent-computer interface (ACI) | agent execution environment | P1-F5-04 | SWE-agent system paper | add as contextual term | Specific interface terminology associated with repository navigation, editing, and execution. |
 | SWE-bench | coding-agent evaluation | P1-F5-04 | GitHub issue resolution benchmark | retain as contextual term | Benchmark name, not a general synonym for coding agents. |
 | agent trajectory / tool-mediated trajectory | agent execution trace | P1-F5-03, P1-F5-04 | Agent evaluation and analysis | add as contextual term | Used to describe multi-step agent/environment interaction. |
-| agentic coding | coding-agent vocabulary | P2-F5-01 | Recent coding-agent research | investigate separately | Appeared as a related term in AIDev; not yet tested as a standalone search phrase. |
-| agentic software engineering | coding-agent vocabulary | P2-F5-01 | Recent coding-agent research | investigate separately | Appeared as a related term in AIDev; may overlap with software-engineering-agent terminology. |
-| Agentic-PRs | coding-agent activity/data | P2-F5-01 | GitHub repository studies | investigate separately | Term used for agent-authored pull requests; source and population boundaries need later screening. |
-| software delegation contract | coding-agent work framing | P2-F5-01 | Coding-agent task/review study | retain as contextual term | A source-specific term for a study's unit of analysis; not a Work Item characteristic or final vocabulary. |
-| agentless software engineering | coding-agent comparison vocabulary | P2-F5-03 | Agentless versus agent-based systems | retain as contextual term | Useful for separating autonomous-agent claims from non-agent workflow baselines. |
-| SWE-Gym | coding-agent training/evaluation | P2-F5-03 | Agent training/evaluation | retain as contextual term | Benchmark/framework name, not a general synonym for coding agents. |
+| agentic coding | coding-agent vocabulary | P2-F5-01, P3-F5-01 | Recent coding-agent research | investigate separately | Appeared as a related term in AIDev and the Round 3 arXiv sample; not yet tested as a standalone search phrase. |
+| agentic software engineering | coding-agent vocabulary | P2-F5-01, P3-F5-01 | Recent coding-agent research | investigate separately | Appeared as a related term in AIDev and the Round 3 arXiv sample; may overlap with software-engineering-agent terminology. |
+| Agentic-PRs | coding-agent activity/data | P2-F5-01, P3-F5-01 | GitHub repository studies | investigate separately | Term used for agent-authored pull requests; source and population boundaries need later screening. |
+| software delegation contract | coding-agent work framing | P2-F5-01, P3-F5-01 | Coding-agent task/review study | retain as contextual term | A source-specific term for a study's unit of analysis; not a Work Item characteristic or final vocabulary. |
+| agentless software engineering | coding-agent comparison vocabulary | P2-F5-03, P3-F5-03 | Agentless versus agent-based systems | retain as contextual term | Useful for separating autonomous-agent claims from non-agent workflow baselines. |
+| SWE-Gym | coding-agent training/evaluation | P2-F5-03, P3-F5-03 | Agent training/evaluation | retain as contextual term | Benchmark/framework name, not a general synonym for coding agents. |
 
 ## Query Evolution
 
