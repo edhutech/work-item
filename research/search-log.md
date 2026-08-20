@@ -1834,14 +1834,14 @@ Record terminology discovered during pilot searches. The eight terms selected fr
 | software engineering agent | coding-agent vocabulary | P1-F5-03, P2-F5-01, P3-F5-01, P3-F5-02 | Recent software-engineering-agent research | test provisionally across sources | More focused than `coding agent` but still includes non-repository and infrastructure settings. |
 | SWE agent / SWE-agent | coding-agent vocabulary | P1-F5-03, P1-F5-04, P2-F5-01, P3-F5-01, P3-F5-02 | Benchmarks and agent systems | test provisionally across sources | Research-lineage term; test hyphenation and plural variants separately rather than treating it as final. |
 | AI Software Engineer | coding-agent vocabulary | P1-F5-03 | Unified agent framing | investigate separately | Appears in a paper describing a unified agent across coding, testing, and patching. |
-| agent-computer interface (ACI) | agent execution environment | P1-F5-04 | SWE-agent system paper | add as contextual term | Specific interface terminology associated with repository navigation, editing, and execution. |
-| SWE-bench | coding-agent evaluation | P1-F5-04 | GitHub issue resolution benchmark | retain as contextual term | Benchmark name, not a general synonym for coding agents. |
-| agent trajectory / tool-mediated trajectory | agent execution trace | P1-F5-03, P1-F5-04 | Agent evaluation and analysis | add as contextual term | Used to describe multi-step agent/environment interaction. |
+| agent-computer interface (ACI) | agent execution environment | P1-F5-04, P9-F6D-02 | SWE-agent system paper | retain as architecture-specific contextual term | Specific interface terminology associated with repository navigation, editing, and execution; P9 confirms it should not stand for autonomy generally. |
+| SWE-bench | coding-agent evaluation | P1-F5-04, P9-F6A-02, P9-F6C-01, P9-F6C-02, P9-F6D-01, P9-F6D-02 | GitHub issue resolution benchmark | retain as contextual term | Benchmark name, not a general synonym for coding agents; P9 records its use as a benchmark setting and interaction-boundary source. |
+| agent trajectory / tool-mediated trajectory | agent execution trace | P1-F5-03, P1-F5-04, P9-F6D-01 | Agent evaluation and analysis | retain as execution-record contextual term | Used to describe multi-step agent/environment interaction; P9 explicitly separates trajectory records from reasoning quality and autonomy level. |
 | agentic coding | coding-agent vocabulary | P2-F5-01, P3-F5-01 | Recent coding-agent research | investigate separately | Appeared as a related term in AIDev and the Round 3 arXiv sample; not yet tested as a standalone search phrase. |
 | agentic software engineering | coding-agent vocabulary | P2-F5-01, P3-F5-01 | Recent coding-agent research | investigate separately | Appeared as a related term in AIDev and the Round 3 arXiv sample; may overlap with software-engineering-agent terminology. |
 | Agentic-PRs | coding-agent activity/data | P2-F5-01, P3-F5-01 | GitHub repository studies | investigate separately | Term used for agent-authored pull requests; source and population boundaries need later screening. |
 | software delegation contract | coding-agent work framing | P2-F5-01, P3-F5-01 | Coding-agent task/review study | retain as contextual term | A source-specific term for a study's unit of analysis; not a Work Item characteristic or final vocabulary. |
-| agentless software engineering | coding-agent comparison vocabulary | P2-F5-03, P3-F5-03 | Agentless versus agent-based systems | retain as contextual term | Useful for separating autonomous-agent claims from non-agent workflow baselines. |
+| agentless software engineering | coding-agent comparison vocabulary | P2-F5-03, P3-F5-03, P9-F6B-01, P9-F6C-01, P9-F6C-02, P9-F6D-01 | Agentless versus agent-based systems | retain as contextual term | Useful for separating autonomous-agent claims from non-agent workflow baselines and for identifying non-interactive benchmark boundaries. |
 | SWE-Gym | coding-agent training/evaluation | P2-F5-03, P3-F5-03 | Agent training/evaluation | retain as contextual term | Benchmark/framework name, not a general synonym for coding agents. |
 | task decomposition approaches | software work decomposition | P4-F3-01, P4-F3-03, P4-F3-06, P5-F3-01, P6-F3A-01, P6-F3A-02 | Crowdsourcing software development | test provisionally with software context | Title-qualified search retrieved the direct Khanfor seed; retain separately from generic AI task decomposition. |
 | crowdsourcing software development | software work decomposition and allocation | P4-F3-01, P4-F3-03, P4-F3-05, P5-F3-10, P5-F3-14, P6-F3C-01, P6-F3C-02 | Crowdsourcing/project decomposition | retain as a domain-qualified supplementary subfamily | Produced a relatively coherent but heterogeneous corpus covering decomposition, parallel tasks, allocation, scheduling, lifecycle, and marketplace studies; retain for discovery and snowballing rather than assume primary F3 status. |
@@ -1849,11 +1849,11 @@ Record terminology discovered during pilot searches. The eight terms selected fr
 | manageable software tasks | task scope/decomposition | P4-F3-01 | Crowdsourcing software development | test provisionally | Context-bound phrase; do not generalize it beyond the inspected crowdsourcing literature. |
 | preparing tasks | task description/decomposition | P5-F3-01 | Crowdsourcing software development | investigate separately | Natural wording in the Khanfor abstract; not tested as an independent broad search phrase. |
 | software project decomposition | software work decomposition | P5-F3-01 | Crowdsourcing software development | test provisionally with domain qualifier | Phrase observed in the title/abstract context of the direct decomposition seed; keep separate from generic task decomposition. |
-| coding plans | software development planning | P5-F3-03 | Coding-agent-specific software development | investigate separately | Retrieved in agent workflow literature; distinct from traditional decomposition and from project planning. The Round 6 F3-A records did not explicitly test or discover this phrase, so their IDs are not attached here. |
+| coding plans | software development planning | P5-F3-03, P9-F6B-01 | Coding-agent-specific software development | investigate separately | Retrieved in agent workflow literature; distinct from traditional decomposition and from project planning. P9 separates explicit plans from implicit scaffold planning. |
 | issue descriptions and comments | task description/work representation | P5-F3-04, P6-F3B-01, P6-F3B-02 | Issue-tracking research | test component terms with software context | The exact plural phrase returned zero in the Round 6 arXiv check; retain `issue description` and `issue comments` as component terms rather than treating the full phrase as stable. |
 | textual descriptions of issues | task description/work representation | P5-F3-04 | Issue-tracking research | retain as contextual term | Representation phrase from a software-task study; not a decomposition synonym. |
 | task decomposition and collaboration | software development planning | P4-F3-03 | Coding-agent-specific software development | investigate separately | Agent-architecture phrase; keep distinct from human/team task decomposition. |
-| requirement-driven task decomposition | software development planning | P4-F3-03 | End-to-end software-development agents | investigate separately | Recent agent-specific wording; publication status and transferability require later screening. |
+| requirement-driven task decomposition | software development planning | P4-F3-03, P9-F6B-02 | End-to-end software-development agents | investigate separately | Recent agent-specific wording; publication status and transferability require later screening. P9 keeps it separate from F3 human/project decomposition and multi-agent delegation. |
 | task interdependence | software task relationships/work design | P5-F3-08, P5-F3-12 | Software development teams | retain as contextual term | More productive than `task dependency` for a direct software-team study, but primarily a work-design/team-organization construct. |
 | technical dependencies between components | software task relationships | P5-F3-08 | Software development teams | retain as contextual term | Appeared as one source's explanation of task interdependence; not equivalent to decomposition dependencies. |
 | task allocation | software work division | P4-F3-05, P5-F3-09, P5-F3-13 | Software development and crowdsourcing | test provisionally with software context | Retrieves global/distributed software-development allocation when qualified; distinct from forming subtasks. |
@@ -2159,3 +2159,363 @@ Documentation is directly relevant enough to remain a primary F4-D branch, but o
 The methodological reason is that P8 confirmed stable, distinguishable retrieval neighborhoods for F4-A information-quality properties, F4-B developer information needs/context, F4-C1 mental workload/cognitive burden, and F4-D documentation information/usefulness/maintenance. It also tested and separated F4-C2 information overload as a supplementary branch rather than forcing it into the mental-workload search. The branches have documented terminology, field behavior, noise boundaries, population limits, known-source statuses, and overlaps with F1/F2/F3. F4 pilot exploration can close; this does not freeze final systematic strings or derive any Work Item characteristic.
 
 No Work Item characteristics or research conclusions were derived. No claim was made that more, less, sufficient, or documented information is preferable. F6 and F7 were not executed. No commit was made.
+
+## Pilot Round 9 Family 6 Calibration
+
+Pilot Round 9 was conducted on 2026-08-20 using arXiv API discovery searches and metadata/abstract inspection. The round was limited to F6. arXiv counts are source-reported discovery diagnostics, not estimates of prevalence, precision, recall, or evidence strength. Recent preprints were retained for terminology calibration and labeled as preprints unless the record identified a venue or publication status. No systematic search string was frozen, no F7 search was executed, and no Work Item characteristic or causal conclusion was derived.
+
+### F6-A: Context And Repository Understanding
+
+#### P9-F6A-01
+
+- **Search ID:** `P9-F6A-01`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Coding-agent-specific scientific discovery
+- **Database / source:** arXiv API
+- **Query:** `all:"software engineering agent" AND all:context`
+- **Fields searched:** arXiv `all` fields
+- **Filters:** None; first 10 sorted by relevance
+- **Result count:** `18` reported by arXiv
+- **Results inspected:** First 10 titles, abstracts, authors, dates, and available venue/DOI metadata
+- **Clearly relevant results:** `On Problems of Implicit Context Compression for Software Engineering Agents` studies context-length limits and implicit context compression in multi-step coding tasks; `SWE-MeM` uses adaptive memory management in long-horizon SWE agents; `Training Long-Context, Multi-Turn Software Engineering Agents with Reinforcement Learning` treats the agent as interacting with a stateful environment; `Confucius Code Agent` describes context management, persistent notes, and tool use for large codebases. `TOM-SWE` adds user intent, interaction history, and persistent user memory.
+- **Clearly irrelevant patterns:** Broad context retrieval also found position/document-analysis work and system architecture papers where `context` referred to user intent, training data, or governance rather than repository information.
+- **Terminology discovered:** `context compression`, `implicit context compression`, `long-context software engineering agents`, `memory management`, `persistent memory`, `stateful environment`, `context management`, `interaction history`, `user mental modeling`.
+- **Candidate seed sources:** Kirill Gelvan et al., `On Problems of Implicit Context Compression for Software Engineering Agents`, 2026, arXiv preprint, [arXiv:2605.11051](https://arxiv.org/abs/2605.11051); Shuzheng Gao et al., `SWE-MeM: Learning Adaptive Memory Management for Long-Horizon Coding Agents`, 2026, arXiv preprint, [arXiv:2606.28434](https://arxiv.org/abs/2606.28434); Sherman Wong et al., `Confucius Code Agent: Scalable Agent Scaffolding for Real-World Codebases`, 2025/2026 version, arXiv preprint, [arXiv:2512.10398](https://arxiv.org/abs/2512.10398). These are context/memory architecture or evaluation seeds; publication status and full text require later verification.
+- **Known-source checks:** SWE-agent `Not applicable to this exact context query`; SWE-bench `Not applicable to this exact context query`; Agentless `Not applicable to this exact context query`; AIDev `Not applicable to this exact context query`; Understanding Software Engineering Agents `Not applicable to this exact context query`.
+- **Clearly relevant known lineage:** No prior F5 seed was directly retrieved in the inspected first-page sample; this is not a claim of absence.
+- **Query adjustment:** `"software engineering agent" AND context` → `18` records with context, memory, user-state, and architecture meanings → test repository/retrieval-qualified wording rather than treating `context` as one construct.
+- **Rationale:** The initial query showed that context is a recognizable but internally heterogeneous neighborhood.
+- **Notes:** The query was useful for discovery, not for deciding whether more or less context is preferable. `TOM-SWE` concerns a dual-agent architecture and stateful/user context, not only repository context.
+
+#### P9-F6A-02
+
+- **Search ID:** `P9-F6A-02`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Coding-agent-specific scientific discovery
+- **Database / source:** arXiv API
+- **Query:** `all:"software engineering agent" AND (all:"repository understanding" OR all:retrieval OR all:"repository context")`
+- **Fields searched:** arXiv `all` fields
+- **Filters:** None; first 10 sorted by relevance
+- **Result count:** `4` reported by arXiv
+- **Results inspected:** All 4 titles, abstracts, authors, dates, and available metadata
+- **Clearly relevant results:** `Structurally Aligned Subtask-Level Memory for Software Engineering Agents` uses memory storage/retrieval/update aligned to functional decomposition and evaluates on SWE-bench Verified; `OwlPath` uses structural code retrieval and repository knowledge maps for SWE-bench Pro; `GHIssuemarket` uses a retrieval-augmented interface in a controlled SWE-agent environment.
+- **Clearly irrelevant patterns:** The query still retrieved a broad intent-centric position paper; exact repository terminology was sparse compared with `context`, `memory`, and `retrieval` wording.
+- **Terminology discovered:** `repository-level understanding`, `repository exploration`, `structural code retrieval`, `knowledge compression`, `software knowledge map`, `repository dependency understanding`, `retrieval-augmented generation`, `repository navigation`, `functional decomposition`.
+- **Candidate seed sources:** Kangning Shen et al., `Structurally Aligned Subtask-Level Memory for Software Engineering Agents`, 2026, arXiv preprint, [arXiv:2602.21611](https://arxiv.org/abs/2602.21611); Bo Zhang et al., `OwlPath: Lossless Knowledge Compression for LLM Bug Repair`, 2026, arXiv preprint, [arXiv:2607.27249](https://arxiv.org/abs/2607.27249). Both are direct context/retrieval seeds; benchmark settings and status require later screening.
+- **Known-source checks:** SWE-agent `Missed`; SWE-bench `Not applicable as a benchmark source rather than a context study`; Agentless `Not applicable to this repository-retrieval query`; AIDev `Not applicable`; Understanding Software Engineering Agents `Not applicable`. `SWE-agent` was not retrieved by this revised phrase query despite being a known repository-navigation source.
+- **Query adjustment:** `"software engineering agent" AND context` → context query mixed memory, user state, and long-context training → `"software engineering agent" AND ("repository understanding" OR retrieval OR "repository context")` → four records and a narrower retrieval/navigation neighborhood.
+- **Rationale:** The revision separates repository/code retrieval from general context and exposes that `repository understanding` is less frequent than operational terms such as retrieval, exploration, navigation, memory, and structural code access.
+- **Notes:** `OwlPath` and `Structurally Aligned Subtask-Level Memory` are preprints in the inspected records. Their reported benchmark results are not generalized beyond their stated settings.
+
+### F6-B: Planning And Task Decomposition
+
+#### P9-F6B-01
+
+- **Search ID:** `P9-F6B-01`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Coding-agent-specific scientific discovery
+- **Database / source:** arXiv API
+- **Query:** `all:"software engineering agent" AND all:planning`
+- **Fields searched:** arXiv `all` fields
+- **Filters:** None; first 10 sorted by relevance
+- **Result count:** `10` reported by arXiv
+- **Results inspected:** All 10 titles, abstracts, authors, dates, and available venue metadata
+- **Clearly relevant results:** `HyperAgent` explicitly separates Planner, Navigator, Code Editor, and Executor roles across SWE tasks; `PatchPilot` distinguishes agent-based planning from rule-based planning in software patching; `DCAS` distinguishes explicit pre-execution plans from implicit scaffold planning and describes a plan-source intervention; `TOM-SWE` includes planning among agent capabilities; `Agentless` is a direct boundary source because it removes autonomous future-action selection while retaining a fixed three-phase workflow.
+- **Clearly irrelevant patterns:** Planning also referred to environment setup, training, or generic agent architecture. The result set did not make planning a uniform intervention or outcome variable.
+- **Terminology discovered:** `explicit planning`, `implicit planning`, `plan-source intervention`, `planning structure`, `agent-based planning`, `rule-based planning`, `planner`, `multi-stage workflow`, `task plans`, `dependency-aware task plans`.
+- **Candidate seed sources:** Kishanthan Thangarajah et al., `DCAS: Decoupling CLI Agent Scaffolding to Internalize Planning across Scaffolds`, 2026, arXiv preprint, [arXiv:2608.06113](https://arxiv.org/abs/2608.06113); Huy Nhat Phan et al., `HyperAgent: Generalist Software Engineering Agents to Solve Coding Tasks at Scale`, 2024/2025 version, arXiv preprint, [arXiv:2409.16299](https://arxiv.org/abs/2409.16299); Hongwei Li et al., `PatchPilot: A Cost-Efficient Software Engineering Agent with Early Attempts on Formal Verification`, 2025, arXiv preprint, [arXiv:2502.02747](https://arxiv.org/abs/2502.02747). These represent planning architecture and planning comparison traditions, not a settled planning-effect claim.
+- **Known-source checks:** SWE-agent `Not applicable to this planning query`; SWE-bench `Not applicable`; Agentless `Retrieved` as a planning boundary/comparison source; AIDev `Not applicable`; Understanding Software Engineering Agents `Not applicable`.
+- **Query adjustment:** None for this first focused query; the sample was sufficiently informative to justify a decomposition-qualified revision.
+- **Rationale:** `planning` is visibly used as both an architectural module and an empirically manipulated or analyzed process, so planning architecture and planning effectiveness must remain separate during later screening.
+- **Notes:** HyperAgent and PatchPilot are agent-system/benchmark studies; `Agentless` is not a coding-agent population equivalent to autonomous SWE agents and is retained as a comparator boundary.
+
+#### P9-F6B-02
+
+- **Search ID:** `P9-F6B-02`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Coding-agent-specific scientific discovery
+- **Database / source:** arXiv API
+- **Query:** `all:"software engineering agent" AND (all:decomposition OR all:"coding plan" OR all:"task planning")`
+- **Fields searched:** arXiv `all` fields
+- **Filters:** None; first 10 sorted by relevance
+- **Result count:** `3` reported by arXiv
+- **Results inspected:** All 3 titles, abstracts, authors, dates, and available metadata
+- **Clearly relevant results:** `Structurally Aligned Subtask-Level Memory` explicitly links retrieval/update to functional decomposition; `Effective Strategies for Asynchronous Software Engineering Agents` constructs dependency-aware task plans, delegates subtasks, and evaluates multi-agent coordination on PaperBench and Commit0; `Agent-Computer Observation Interfaces Enable Dynamic Computer Use` was adjacent interface/decomposition material rather than a direct software-task decomposition study.
+- **Clearly irrelevant patterns:** The small set mixed agent functional decomposition, multi-agent delegation, and computer-use interface decomposition. Traditional F3 decomposition terms were not dominant.
+- **Terminology discovered:** `functional decomposition`, `subtask-level`, `dependency-aware task plans`, `centralized task delegation`, `subtask execution`, `isolated workspaces`, `multi-agent coordination`, `branch-and-merge`.
+- **Candidate seed sources:** Jiayi Geng and Graham Neubig, `Effective Strategies for Asynchronous Software Engineering Agents`, 2026, arXiv preprint, [arXiv:2603.21489](https://arxiv.org/abs/2603.21489); Kangning Shen et al., `Structurally Aligned Subtask-Level Memory for Software Engineering Agents`, 2026, arXiv preprint, [arXiv:2602.21611](https://arxiv.org/abs/2602.21611). The first is a multi-agent task delegation/planning seed; the second is a functional-decomposition/context seed.
+- **Known-source checks:** SWE-agent `Missed`; SWE-bench `Not applicable`; Agentless `Not applicable`; AIDev `Not applicable`; Understanding Software Engineering Agents `Not applicable`.
+- **Query adjustment:** `"software engineering agent" AND planning` → planning results mixed modules, fixed workflows, and explicit/implicit plans → `"software engineering agent" AND (decomposition OR "coding plan" OR "task planning")` → three records focused on functional decomposition, subtask delegation, and planning-related interfaces.
+- **Rationale:** The revision shows that agent decomposition is retrievable, but it is not the same tradition as F3 human/project decomposition or issue decomposition. It should be screened as agent functional decomposition, delegation, or multi-agent coordination.
+- **Notes:** The result count is too small to establish branch maturity. No claim was made about whether decomposition or multi-agent planning improves outcomes.
+
+### F6-C: Clarification, Ambiguity Resolution, And Interactive Assistance
+
+#### P9-F6C-01
+
+- **Search ID:** `P9-F6C-01`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Coding-agent-specific scientific discovery
+- **Database / source:** arXiv API
+- **Query:** `all:"coding agent" AND all:clarification`
+- **Fields searched:** arXiv `all` fields
+- **Filters:** None; first 10 sorted by relevance
+- **Result count:** `8` reported by arXiv
+- **Results inspected:** All 8 titles, abstracts, authors, dates, and available venue metadata
+- **Clearly relevant results:** `Ask or Assume? Uncertainty-Aware Clarification-Seeking in Coding Agents` evaluates clarification seeking on underspecified SWE-bench Verified; `ClarEval` defines clarification metrics including Average Turns to Clarify and Key Question Coverage; `SWE-RPG` separates requirement clarification and implementation planning in repository-level trajectories; `ICAE-Bench` evaluates interactive project building from fuzzy product requirements. `UnderSpecBench` is a related safety/ambiguity boundary benchmark for DevOps coding agents.
+- **Clearly irrelevant patterns:** `ProCAD` concerns text-to-CAD rather than repository-level software engineering; other results used clarification in domain-specific synthesis or specification settings.
+- **Terminology discovered:** `clarification-seeking`, `uncertainty-aware clarification`, `requirement clarification`, `requirement elicitation`, `underspecified instructions`, `ambiguous instructions`, `interactive coding agents`, `dialogue-driven coding agents`, `user simulator`, `implicit requirement recovery`, `action-boundary violations`, `deferment`.
+- **Candidate seed sources:** Nicholas Edwards and Sebastian Schuster, `Ask or Assume? Uncertainty-Aware Clarification-Seeking in Coding Agents`, 2026, arXiv preprint, [arXiv:2603.26233](https://arxiv.org/abs/2603.26233); Jialin Li et al., `ClarEval: A Benchmark for Evaluating Clarification Skills of Code Agents under Ambiguous Instructions`, 2026, arXiv preprint, [arXiv:2603.00187](https://arxiv.org/abs/2603.00187); Xin Zhou et al., `A Unified Issue Resolution Benchmark for Requirement Clarification, Planning, and Code Generation for Coding Agents`, 2026, arXiv preprint, [arXiv:2608.09072](https://arxiv.org/abs/2608.09072); Brendan King and Jeffrey Flanigan, `Dialogue SWE-Bench: A Benchmark for Dialogue-Driven Coding Agents`, 2026, arXiv preprint, [arXiv:2606.13995](https://arxiv.org/abs/2606.13995).
+- **Known-source checks:** SWE-agent `Not applicable to this clarification query`; SWE-bench `Retrieved as the benchmark family underlying clarification variants, not as a clarification study`; Agentless `Retrieved as a non-interactive benchmark boundary source`; AIDev `Not applicable`; Understanding Software Engineering Agents `Not applicable`.
+- **Query adjustment:** None. The exact `clarification` query returned a compact and directly relevant coding-agent neighborhood.
+- **Rationale:** Clarification is now identifiable as a distinct, recent research branch, but its evidence base is benchmark-heavy and largely preprint-based in this pilot.
+- **Notes:** Clarification capability must be distinguished from the benchmark's interaction design. Standard SWE-bench-style tasks generally do not provide a user dialogue channel; the newer variants explicitly add ambiguity, user simulation, or intermediate reference annotations.
+
+#### P9-F6C-02
+
+- **Search ID:** `P9-F6C-02`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Coding-agent-specific scientific discovery
+- **Database / source:** arXiv API
+- **Query:** `all:"coding agent" AND (all:ambiguity OR all:"human-agent interaction" OR all:"interactive coding")`
+- **Fields searched:** arXiv `all` fields
+- **Filters:** None; first 10 sorted by relevance
+- **Result count:** `34` reported by arXiv
+- **Results inspected:** First 10 titles, abstracts, authors, dates, and available venue metadata
+- **Clearly relevant results:** `Dialogue SWE-Bench` treats dialogue as a separate coding-agent capability; `ClarEval` injects missing goals, premises, and ambiguous terminology; `Humans are Missing from AI Coding Agent Research` frames task alignment, steerability, adaptability, and verifiability as interaction dimensions; `Software Delegation Contracts` studies assigned work under bounded authority and reviewability; `ICAE-Bench` adds a user simulator for fuzzy requirements.
+- **Clearly irrelevant patterns:** The broader query included AppWorld's general interactive coding environment and specification/agentic-synthesis papers outside repository-level coding-agent clarification.
+- **Terminology discovered:** `task alignment`, `steerability`, `adaptability`, `human-agent task-solving loop`, `dialogue quality`, `interactive project building`, `user simulator`, `bounded authority`, `delegation contract`, `specification refinement`, `underspecification`.
+- **Candidate seed sources:** Zora Z. Wang et al., `Humans are Missing from AI Coding Agent Research`, 2026, arXiv position paper, [arXiv:2608.12355](https://arxiv.org/abs/2608.12355); Brendan King and Jeffrey Flanigan, `Dialogue SWE-Bench: A Benchmark for Dialogue-Driven Coding Agents`, 2026, arXiv preprint, [arXiv:2606.13995](https://arxiv.org/abs/2606.13995); Vincent Schmalbach, `Software Delegation Contracts: Measuring Reviewability in AI Coding-Agent Work`, 2026, arXiv empirical preprint, [arXiv:2606.17099](https://arxiv.org/abs/2606.17099). These extend clarification into interaction, authority, and reviewability; they should not be treated as equivalent constructs.
+- **Known-source checks:** SWE-agent `Missed`; SWE-bench `Retrieved as a benchmark lineage/boundary, not an interactive study`; Agentless `Retrieved as a non-interactive comparator`; AIDev `Not applicable`; Understanding Software Engineering Agents `Not applicable`.
+- **Query adjustment:** `"coding agent" AND clarification` → compact direct clarification neighborhood → add `ambiguity`, `human-agent interaction`, and `interactive coding` → 34 broader records exposing dialogue, alignment, steerability, authority, and substantial adjacent-domain noise.
+- **Rationale:** The revision shows that `clarification` does not cover the full interaction literature; however, the added terms must remain separate because interaction quality, task alignment, authority, and ambiguity resolution are not synonyms.
+- **Notes:** This branch is suitable for a dedicated systematic search only if benchmark interaction design and agent population are extracted explicitly.
+
+### F6-D: Autonomy, Tool Use, And Agent-Environment Interaction
+
+#### P9-F6D-01
+
+- **Search ID:** `P9-F6D-01`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Coding-agent-specific scientific discovery
+- **Database / source:** arXiv API
+- **Query:** `all:"software engineering agent" AND (all:autonomy OR all:"tool use" OR all:trajectory)`
+- **Fields searched:** arXiv `all` fields
+- **Filters:** None; first 10 sorted by relevance
+- **Result count:** `39` reported by arXiv
+- **Results inspected:** First 10 titles, abstracts, authors, dates, and available venue metadata
+- **Clearly relevant results:** `Understanding Software Engineering Agents` analyzes 120 thought-action-result trajectories from RepairAgent, AutoCodeRover, and OpenHands; `SeaView` studies visualization of SWE-agent trajectories and environment/model problems; `Enconda-bench` evaluates process-level environment-configuration trajectories; `SWE-World` models the agent-environment loop; `Same Signal, Different Semantics` compares trajectory behavior across 126 configurations and 43 frameworks.
+- **Clearly irrelevant patterns:** `autonomy` and `tool use` also retrieved training frameworks, generic agent infrastructure, and non-repository computer-use material. The same trajectory feature may not have the same interpretation across agent frameworks.
+- **Terminology discovered:** `thought-action-result trajectory`, `agent trajectory`, `agent-environment interaction`, `tool-mediated trajectory`, `process-level trajectory evaluation`, `environment configuration`, `action space`, `framework effects`, `autonomous software engineering`, `multi-turn environment`.
+- **Candidate seed sources:** Islem Bouzenia and Michael Pradel, `Understanding Software Engineering Agents: A Study of Thought-Action-Result Trajectories`, 2025, arXiv record stating ASE 2025 acceptance, [arXiv:2506.18824](https://arxiv.org/abs/2506.18824); Jiayi Kuang et al., `Process-Level Trajectory Evaluation for Environment Configuration in Software Engineering Agents`, 2025, arXiv preprint, [arXiv:2510.25694](https://arxiv.org/abs/2510.25694); Wei Ma et al., `Same Signal, Different Semantics: A Cross-Framework Behavioral Analysis of Software Engineering Agents`, 2026, arXiv preprint, [arXiv:2605.18332](https://arxiv.org/abs/2605.18332). These are trajectory/process-analysis seeds, not direct measures of a single autonomy construct.
+- **Known-source checks:** SWE-agent `Retrieved` through the software-engineering-agent trajectory neighborhood; SWE-bench `Retrieved as the main benchmark context for several trajectory studies`; Agentless `Retrieved as an autonomy/tool-use boundary source`; AIDev `Not applicable to this trajectory query`; Understanding Software Engineering Agents `Retrieved`.
+- **Query adjustment:** None. The combined autonomy/tool-use/trajectory query returned enough direct trajectory and environment terminology to assess the branch.
+- **Rationale:** The literature operationalizes autonomy indirectly through whether an agent selects future actions, invokes tools, observes feedback, and continues in an environment. Trajectory analysis is a useful execution-record concept, but not automatically a measure of reasoning quality or autonomy level.
+- **Notes:** `Same Signal, Different Semantics` is especially relevant to later construct validity because it reports framework-dependent behavior in the inspected abstract. This observation remains source-specific and is not generalized beyond that study.
+
+#### P9-F6D-02
+
+- **Search ID:** `P9-F6D-02`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Coding-agent-specific scientific discovery
+- **Database / source:** arXiv API
+- **Query:** `all:"agent-computer interface" AND all:software`
+- **Fields searched:** arXiv `all` fields
+- **Filters:** None; first 10 sorted by relevance
+- **Result count:** `3` reported by arXiv
+- **Results inspected:** All 3 titles, abstracts, authors, dates, and available metadata
+- **Clearly relevant results:** `SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering` directly describes an ACI for repository navigation, code editing, and test execution and evaluates on SWE-bench and HumanEvalFix.
+- **Clearly irrelevant patterns:** The query also retrieved a healthcare operating-system interface and a general autonomous training interface. `Agent-computer interface` is therefore a useful but architecture-specific term, not a general autonomy synonym.
+- **Terminology discovered:** `agent-computer interface (ACI)`, `repository navigation`, `code editing`, `test execution`, `interface design`, `tool-mediated execution`, `CLI scaffold`, `environment interface`.
+- **Candidate seed sources:** John Yang et al., `SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering`, 2024, arXiv preprint record, [arXiv:2405.15793](https://arxiv.org/abs/2405.15793); the record is a core ACI seed and identifies SWE-bench/HumanEvalFix settings. Peer-reviewed status should be verified in later screening.
+- **Known-source checks:** SWE-agent `Retrieved`; SWE-bench `Retrieved as the evaluation benchmark named by the seed`; Agentless `Not applicable to this ACI title query`; AIDev `Not applicable`; Understanding Software Engineering Agents `Not applicable to this ACI title query`.
+- **Query adjustment:** `"software engineering agent" AND (autonomy OR "tool use" OR trajectory)` → broad trajectory/process neighborhood → `"agent-computer interface" AND software` → three records and a narrow architecture/interface check.
+- **Rationale:** The revision isolates the established F5 interface term and demonstrates that it should be searched separately from autonomy and trajectory rather than used as a universal label.
+- **Notes:** The ACI query is a known-item and architecture calibration, not a population-complete autonomy search.
+
+## P9 Query Evolution Records
+
+- **Date:** `2026-08-20`
+- **Search family:** F6-A context and repository understanding
+- **Original query:** `all:"software engineering agent" AND all:context`
+- **Observation:** `18` records mixed context compression, memory, user state, long-context training, and repository/tool context.
+- **Revised query:** `all:"software engineering agent" AND (all:"repository understanding" OR all:retrieval OR all:"repository context")`
+- **Rationale:** Separate repository/code retrieval from general context and test whether `repository understanding` is an established author term.
+- **Affected database(s):** arXiv
+- **Search IDs:** `P9-F6A-01`, `P9-F6A-02`
+
+- **Date:** `2026-08-20`
+- **Search family:** F6-B planning and decomposition
+- **Original query:** `all:"software engineering agent" AND all:planning`
+- **Observation:** `10` records mixed planner modules, rule-based workflows, explicit plans, implicit scaffold behavior, and environment setup.
+- **Revised query:** `all:"software engineering agent" AND (all:decomposition OR all:"coding plan" OR all:"task planning")`
+- **Rationale:** Test agent functional decomposition and task delegation separately from generic planning architecture.
+- **Affected database(s):** arXiv
+- **Search IDs:** `P9-F6B-01`, `P9-F6B-02`
+
+- **Date:** `2026-08-20`
+- **Search family:** F6-C clarification and interactive assistance
+- **Original query:** `all:"coding agent" AND all:clarification`
+- **Observation:** `8` records formed a compact clarification/requirement-elicitation neighborhood, but did not cover dialogue, authority, or broader interaction terminology.
+- **Revised query:** `all:"coding agent" AND (all:ambiguity OR all:"human-agent interaction" OR all:"interactive coding")`
+- **Rationale:** Test adjacent author vocabulary while preserving clarification as a separate construct.
+- **Affected database(s):** arXiv
+- **Search IDs:** `P9-F6C-01`, `P9-F6C-02`
+
+- **Date:** `2026-08-20`
+- **Search family:** F6-D autonomy, tool use, and agent-environment interaction
+- **Original query:** `all:"software engineering agent" AND (all:autonomy OR all:"tool use" OR all:trajectory)`
+- **Observation:** `39` records exposed trajectory/process analysis, environment interaction, and framework-dependent behavior, but also broad agent infrastructure.
+- **Revised query:** `all:"agent-computer interface" AND all:software`
+- **Rationale:** Run a narrow known-lineage/interface check for ACI terminology rather than treating it as equivalent to autonomy or tool use.
+- **Affected database(s):** arXiv
+- **Search IDs:** `P9-F6D-01`, `P9-F6D-02`
+
+No P9 query was silently replaced. No final systematic search string was frozen.
+
+## P9 Terminology Registry Recalibration
+
+The existing F5/F4/F3 rows remain canonical. P9 materially recalibrated the following existing rows in place: `agent-computer interface (ACI)` is retained as an architecture-specific F6-D term; `agent trajectory / tool-mediated trajectory` is retained as an execution-record term and explicitly not a reasoning-quality synonym; `SWE-bench` remains a benchmark-context term; `coding plans` and `requirement-driven task decomposition` remain separate from human/project decomposition; `program comprehension` remains an F4 bridge and was not promoted to repository understanding. New canonical terms discovered in P9 are listed once below.
+
+| Term | Related concept | Source / Search ID | Context | Action | Notes |
+|---|---|---|---|---|---|
+| context compression | agent context maintenance | P9-F6A-01 | Software-engineering agents | test provisionally | Includes implicit context compression and long-horizon context bottlenecks; do not equate with context selection or amount. |
+| implicit context compression | agent context maintenance | P9-F6A-01 | Software-engineering agents | investigate separately | Specific wording from a recent preprint; retain as a failure/method term. |
+| memory management | agent context maintenance | P9-F6A-01, P9-F6A-02 | Long-horizon SWE agents | test provisionally | Covers storage, retrieval, update, and compression; distinct from repository retrieval. |
+| persistent memory | agent context/state | P9-F6A-01 | SWE agents and user modeling | retain as contextual term | May refer to user state, repository/task state, or cross-session memory. |
+| repository exploration | repository understanding | P9-F6A-02, P9-F6D-01 | Repository-level SWE tasks | retain as primary contextual term | Operational term more frequently visible than `repository understanding` in inspected records. |
+| structural code retrieval | repository context selection | P9-F6A-02 | Code intelligence and SWE-bench Pro | test provisionally | Keep separate from generic code retrieval and memory. |
+| knowledge compression | repository context representation | P9-F6A-02 | Repository retrieval | investigate separately | Source-specific/architecture term; includes structured repository maps. |
+| software knowledge map | repository context representation | P9-F6A-02 | Structural repository retrieval | investigate separately | Architecture-specific term from OwlPath. |
+| functional decomposition | agent task decomposition | P9-F6B-02 | SWE-agent memory/planning | test provisionally | Agent-side decomposition; not equivalent to F3 project decomposition. |
+| explicit planning | agent planning | P9-F6B-01 | SWE-agent scaffolds | test provisionally | Plan as a first-class pre-execution artifact. |
+| implicit planning | agent planning | P9-F6B-01 | SWE-agent scaffolds | test provisionally | Structural conventions in an agent loop; distinct from an explicit plan. |
+| plan-source intervention | planning evaluation | P9-F6B-01 | Cross-scaffold agent evaluation | investigate separately | Evaluation vocabulary, not a planning synonym. |
+| dependency-aware task plans | multi-agent planning | P9-F6B-02 | Multi-agent software development | test provisionally | Connects planning with delegation and integration; retain separate from decomposition. |
+| centralized task delegation | multi-agent software development | P9-F6B-02 | PaperBench/Commit0-style environments | investigate separately | Delegation/coordination term, not clarification or autonomy itself. |
+| clarification-seeking | agent interaction | P9-F6C-01 | Underspecified coding tasks | retain as primary F6-C term | More direct than generic `clarification`; preserve uncertainty-detection context. |
+| requirement elicitation | agent interaction/specification refinement | P9-F6C-01, P9-F6C-02 | Ambiguous coding tasks | test provisionally | Adjacent requirements tradition; do not collapse with user dialogue quality. |
+| underspecified instructions | ambiguity/interaction | P9-F6C-01, P9-F6C-02 | Coding-agent benchmarks | retain as primary contextual term | Benchmark/task condition, not a Work Item characteristic. |
+| dialogue-driven coding agents | interactive coding | P9-F6C-02 | Dialogue SWE-Bench | test provisionally | Population/evaluation label; distinct from autonomous benchmark agents. |
+| user simulator | interactive benchmark design | P9-F6C-01, P9-F6C-02 | Interactive coding benchmarks | retain as contextual term | Indicates that clarification is enabled by the evaluation design. |
+| task alignment | human-agent interaction | P9-F6C-02 | Coding-agent interaction | test provisionally | Separate from clarification, steerability, and verification. |
+| steerability | human-agent interaction | P9-F6C-02 | Human-centered coding agents | test provisionally | Interaction construct; not equivalent to autonomy. |
+| bounded authority | agent autonomy/control | P9-F6C-02 | Delegated coding work | retain as contextual term | Describes authority boundaries without defining a scalar autonomy level. |
+| action-boundary violation | underspecification safety | P9-F6C-01 | DevOps coding-agent benchmark | investigate separately | Safety outcome and benchmark-specific term. |
+| process-level trajectory evaluation | agent execution analysis | P9-F6D-01 | SWE-agent environments | retain as primary contextual term | Evaluates intermediate execution records in addition to end outcomes. |
+| agent-environment interaction | tool-mediated execution | P9-F6D-01 | SWE agents | retain as primary contextual term | Broader than tool use; includes observations, feedback, and stateful environments. |
+| framework effects | agent trajectory validity | P9-F6D-01 | Cross-framework SWE-agent analysis | retain as contextual term | Relevant to transferability of trajectory metrics across scaffolds. |
+| action space | agent interface/tool design | P9-F6D-01 | Agent-environment interaction | test provisionally | Keep separate from autonomy and ACI. |
+
+## P9 Candidate Seed Sources
+
+The following sources were inspected sufficiently for F6 terminology, population, setting, or benchmark relevance. They are candidate seeds for later screening, not included evidence or synthesized findings.
+
+| Source | Year and status | DOI or stable URL | Search ID | F6 relevance |
+|---|---:|---|---|---|
+| Gelvan et al., `On Problems of Implicit Context Compression for Software Engineering Agents` | 2026, arXiv preprint | [arXiv:2605.11051](https://arxiv.org/abs/2605.11051) | `P9-F6A-01` | Context compression and multi-step agent failure terminology. |
+| Gao et al., `SWE-MeM: Learning Adaptive Memory Management for Long-Horizon Coding Agents` | 2026, arXiv preprint | [arXiv:2606.28434](https://arxiv.org/abs/2606.28434) | `P9-F6A-01` | Adaptive memory management, trajectory state, SWE-bench Verified. |
+| Wong et al., `Confucius Code Agent: Scalable Agent Scaffolding for Real-World Codebases` | 2025/2026, arXiv preprint/version | [arXiv:2512.10398](https://arxiv.org/abs/2512.10398) | `P9-F6A-01` | Large-codebase context management, persistent notes, tools, SWE-Bench-Pro. |
+| Shen et al., `Structurally Aligned Subtask-Level Memory for Software Engineering Agents` | 2026, arXiv preprint | [arXiv:2602.21611](https://arxiv.org/abs/2602.21611) | `P9-F6A-02`, `P9-F6B-02` | Retrieval/memory granularity aligned to agent functional decomposition; SWE-bench Verified. |
+| Zhang et al., `OwlPath: Lossless Knowledge Compression for LLM Bug Repair` | 2026, arXiv preprint | [arXiv:2607.27249](https://arxiv.org/abs/2607.27249) | `P9-F6A-02` | Structural repository retrieval and knowledge maps; SWE-bench Pro. |
+| Thangarajah et al., `DCAS: Decoupling CLI Agent Scaffolding to Internalize Planning across Scaffolds` | 2026, arXiv preprint | [arXiv:2608.06113](https://arxiv.org/abs/2608.06113) | `P9-F6B-01` | Explicit versus implicit planning and cross-scaffold evaluation. |
+| Phan et al., `HyperAgent: Generalist Software Engineering Agents to Solve Coding Tasks at Scale` | 2024/2025, arXiv preprint/version | [arXiv:2409.16299](https://arxiv.org/abs/2409.16299) | `P9-F6B-01` | Planner/Navigator/Editor/Executor multi-agent architecture; SWE-bench, RepoExec, Defects4J. |
+| Li et al., `PatchPilot: A Cost-Efficient Software Engineering Agent with Early Attempts on Formal Verification` | 2025, arXiv preprint | [arXiv:2502.02747](https://arxiv.org/abs/2502.02747) | `P9-F6B-01` | Agent-based versus rule-based planning in patching; SWE-bench. |
+| Geng and Neubig, `Effective Strategies for Asynchronous Software Engineering Agents` | 2026, arXiv preprint | [arXiv:2603.21489](https://arxiv.org/abs/2603.21489) | `P9-F6B-02` | Dependency-aware task plans, delegation, isolated workspaces; PaperBench and Commit0. |
+| Edwards and Schuster, `Ask or Assume? Uncertainty-Aware Clarification-Seeking in Coding Agents` | 2026, arXiv preprint | [arXiv:2603.26233](https://arxiv.org/abs/2603.26233) | `P9-F6C-01` | Clarification-seeking on underspecified SWE-bench Verified variants. |
+| Li et al., `ClarEval: A Benchmark for Evaluating Clarification Skills of Code Agents under Ambiguous Instructions` | 2026, arXiv preprint | [arXiv:2603.00187](https://arxiv.org/abs/2603.00187) | `P9-F6C-01`, `P9-F6C-02` | Clarification benchmark and ATC/KQC metrics. |
+| Zhou et al., `A Unified Issue Resolution Benchmark for Requirement Clarification, Planning, and Code Generation for Coding Agents` | 2026, arXiv preprint | [arXiv:2608.09072](https://arxiv.org/abs/2608.09072) | `P9-F6C-01` | Intermediate clarification/planning references across repository-level tasks. |
+| King and Flanigan, `Dialogue SWE-Bench: A Benchmark for Dialogue-Driven Coding Agents` | 2026, arXiv preprint | [arXiv:2606.13995](https://arxiv.org/abs/2606.13995) | `P9-F6C-01`, `P9-F6C-02` | Dialogue-enabled evaluation and user simulation. |
+| Wang et al., `Humans are Missing from AI Coding Agent Research` | 2026, arXiv position paper | [arXiv:2608.12355](https://arxiv.org/abs/2608.12355) | `P9-F6C-02` | Human-agent interaction terminology: alignment, steerability, adaptability. |
+| Bouzenia and Pradel, `Understanding Software Engineering Agents: A Study of Thought-Action-Result Trajectories` | 2025, arXiv record states ASE 2025 acceptance | [arXiv:2506.18824](https://arxiv.org/abs/2506.18824) | `P9-F6D-01` | Empirical trajectory analysis of RepairAgent, AutoCodeRover, and OpenHands. |
+| Kuang et al., `Process-Level Trajectory Evaluation for Environment Configuration in Software Engineering Agents` | 2025, arXiv preprint | [arXiv:2510.25694](https://arxiv.org/abs/2510.25694) | `P9-F6D-01` | Process-level environment interaction and Enconda-bench. |
+| Ma et al., `Same Signal, Different Semantics: A Cross-Framework Behavioral Analysis of Software Engineering Agents` | 2026, arXiv preprint | [arXiv:2605.18332](https://arxiv.org/abs/2605.18332) | `P9-F6D-01` | Framework sensitivity of trajectory behavior across 43 frameworks. |
+| Yang et al., `SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering` | 2024, arXiv preprint record | [arXiv:2405.15793](https://arxiv.org/abs/2405.15793) | `P9-F6D-02` | ACI, repository navigation, editing, test execution; SWE-bench and HumanEvalFix. |
+
+## P9 Calibration Assessment
+
+### Conceptual coherence
+
+- **F6-A:** Moderate to high after separating general context, memory/state, repository exploration, retrieval, and context compression. `Context management` is not a single construct in the inspected literature.
+- **F6-B:** Moderate. Planning is recognizable, but explicit plans, implicit scaffold planning, functional decomposition, task delegation, and multi-agent coordination have different units of analysis.
+- **F6-C:** Moderate and rapidly developing. Clarification-seeking, requirement elicitation, dialogue, ambiguity handling, and interaction quality form a related neighborhood but are not interchangeable.
+- **F6-D:** High as an execution/interface neighborhood, but autonomy itself is not consistently operationalized as a common scalar or intervention. Tool use, ACI, environment interaction, and trajectory analysis should be distinct search concepts.
+
+### Retrieval coherence
+
+- **F6-A:** `context` retrieves a useful but heterogeneous neighborhood; repository-qualified revision was small and shifted toward retrieval, structural code access, and memory. `repository understanding` was less common than operational vocabulary.
+- **F6-B:** `planning` is retrievable and produces agent architectures, workflow comparisons, and trajectory/training studies. Decomposition-qualified searching is smaller and tends toward functional decomposition or multi-agent delegation.
+- **F6-C:** Exact clarification searching was the cleanest branch in this round. Broader interaction/ambiguity searching increases coverage but also retrieves adjacent CAD, general interactive agents, and specification work.
+- **F6-D:** Trajectory and ACI searches retrieve recognizable SWE-agent research, but autonomy/tool-use terms retain broad agent infrastructure noise. ACI is high precision for a lineage, not high recall for all tool/environment work.
+
+### Empirical maturity and evidence type
+
+- **F6-A:** Mainly recent system descriptions, benchmark evaluations, and preprints; some direct empirical ablations/evaluations of memory or retrieval are visible, but publication status and replication require later screening.
+- **F6-B:** Mainly architecture descriptions and benchmark comparisons, with newer cross-scaffold or planning-intervention work. Planning modules alone are not evidence of planning effectiveness.
+- **F6-C:** A small but identifiable benchmark/empirical branch, currently dominated by recent preprints and custom benchmarks that explicitly add interaction or ambiguity.
+- **F6-D:** More mature than F6-C in trajectory/interface terminology, including an ASE-accepted trajectory study record and cross-framework observational analysis, but construct validity remains framework- and environment-dependent.
+
+### Agent-population scope
+
+- Autocomplete and code-completion systems were not the dominant population in P9.
+- Conversational coding assistants appear mainly in F6-C interaction/benchmark material and are not equivalent to autonomous SWE agents.
+- Tool-using repository-level SWE agents, including SWE-agent, OpenHands, RepairAgent, AutoCodeRover, and related systems, dominate F6-A, F6-B, and F6-D.
+- Autonomous/semi-autonomous agents are usually defined operationally by future-action selection, tool invocation, environment feedback, and multi-step execution rather than by a shared autonomy scale.
+- Multi-agent software-development systems appear most clearly in F6-B through planner/delegator/subtask coordination; they should be labeled separately from single-agent scaffolds.
+
+### Benchmark dependence and setting
+
+- SWE-bench and SWE-bench Verified dominate repository-level bug-fixing and clarification variants in the inspected sample. SWE-bench Pro, SWE-Gym, HumanEvalFix, RepoExec, Defects4J, PaperBench, Commit0, and custom environments provide additional settings.
+- Standard SWE-bench-style execution is generally issue-to-patch evaluation with repository/tool access and no ordinary user clarification loop. The exact interaction affordances must be extracted per benchmark rather than inferred from the benchmark name.
+- Clarification studies use modified SWE-bench tasks, underspecified variants, user simulators, or new benchmarks such as ClarEval, SWE-RPG, Dialogue SWE-Bench, and ICAE-Bench. These settings cannot be silently pooled with non-interactive SWE-bench results.
+- Trajectory studies often evaluate logs after or during execution. A trajectory feature is an execution-record descriptor; it is not automatically a reasoning-quality or autonomy measure.
+
+### Relationship to prior families
+
+- **F3:** F6-B overlaps `coding plans`, task decomposition, dependency-aware planning, task delegation, and multi-agent coordination. F3 human/project decomposition, issue description, allocation, and crowdsourcing traditions must remain distinct from agent functional decomposition and planning.
+- **F4:** F6-A overlaps developer information needs, information seeking, program comprehension, documentation navigation, and context relevance. Human information-seeking evidence is an indirect bridge and not evidence about agent context behavior. F6-C overlaps ambiguity, requirements completeness, specification refinement, and missing information.
+- **F5:** F6 relies on `coding agent`, `software engineering agent`, `SWE-agent`, `agent-computer interface`, `agent trajectory`, and `agentless software engineering`. F5 population distinctions must be retained during screening; labels do not define one homogeneous population.
+
+## Answers To P9 Special Questions
+
+1. **What terminology is most useful for coding-agent context?** The most useful inspected terms are `context management`, `memory management`, `context compression`, `repository exploration`, `structural code retrieval`, `repository navigation`, `repository-level understanding`, and `agent-environment interaction`. `Context` alone is too broad; `repository understanding` is recognizable but less operationally frequent than retrieval/navigation/memory terms.
+2. **Does the literature distinguish context amount from context relevance/selection?** Yes, at least terminologically. Long-context/context-budget work addresses amount or retention constraints; retrieval, structural code retrieval, repository exploration, memory selection, and knowledge compression address selection, relevance, or representation. The pilot does not establish how these dimensions affect outcomes or whether one dominates.
+3. **Is agent planning a coherent empirical research branch or primarily an architectural feature?** Both appear. Many papers describe planner modules or workflows architecturally, while DCAS and related work explicitly distinguish and intervene on planning behavior. The branch therefore requires separate extraction of architecture, intervention, and effectiveness evaluation.
+4. **Is task decomposition studied directly for coding agents?** It is present under `functional decomposition`, `subtask-level`, `dependency-aware task plans`, `task delegation`, and multi-agent coordination. Direct coding-agent decomposition terminology is narrower than general `task decomposition`, and it should not be merged with F3 human/project decomposition.
+5. **Is clarification/question-asking a meaningful coding-agent research branch?** Yes, a small recent benchmark/empirical branch is identifiable under `clarification-seeking`, `requirement elicitation`, `underspecified instructions`, and dialogue-driven coding agents. Its maturity and generality remain limited relative to repository-level autonomous benchmark research.
+6. **Are current benchmarks structurally capable of evaluating clarification?** Standard issue-to-patch benchmarks generally do not provide a normal user dialogue channel. New variants and benchmarks explicitly add underspecification, user simulators, dialogue, or intermediate clarification references, so capability depends on benchmark design rather than benchmark name alone.
+7. **How is autonomy described or operationalized?** Usually through operational properties: selecting future actions, invoking tools, observing environment feedback, modifying repositories, executing tests, and continuing across multiple steps. The inspected literature did not reveal a stable general scalar autonomy measure.
+8. **Should tool/environment interaction remain with autonomy or become a separate branch?** It should be searched as a related but separate branch. Tool use and environment interaction are architectural/execution mechanisms that can occur without fully autonomous task authority; ACI, action space, environment interaction, and autonomy should be cross-linked rather than collapsed.
+9. **Is trajectory analysis useful as a primary search concept or only contextual terminology?** It is useful as a primary execution-analysis concept for studies of action sequences, feedback, failures, and process-level evaluation. It is only contextual terminology when used to infer reasoning quality or autonomy without a validated construct and appropriate comparison.
+10. **Does F6 need to be split differently before systematic-search design?** Yes. F6-A should distinguish context/memory management from repository retrieval/navigation; F6-B should distinguish planning architecture/effectiveness from functional decomposition/delegation; F6-C should distinguish clarification-seeking from broader dialogue/interaction; F6-D should distinguish autonomy from tool/environment interface and trajectory analysis.
+
+## Recommended F6 Search Status
+
+| Branch | Status | Methodological reason |
+|---|---|---|
+| F6-A Context and repository understanding | `Requires further calibration` | Recognizable but internally split between context/memory maintenance and repository retrieval/navigation; `context` is broad and repository terminology is operationally heterogeneous. |
+| F6-B Planning and task decomposition | `Requires further calibration` | Planning is both architecture and empirical process; agent functional decomposition/delegation is distinct from F3 decomposition and needs separate search branches. |
+| F6-C Clarification, ambiguity resolution, and interactive assistance | `Primary` | Compact direct clarification terminology and dedicated recent benchmarks were retrieved, with explicit interaction-design boundaries to record. |
+| F6-D Autonomy, tool use, and agent-environment interaction | `Requires further calibration` | Trajectory and ACI neighborhoods are clear, but autonomy, tool use, interface design, and process analysis are not one construct and need separation before systematic searching. |
+
+## F6 Remaining Uncertainty
+
+- Whether `context management`, memory management, retrieval, and repository navigation are studied as separable interventions or merely as parts of agent scaffolds requires full-text extraction.
+- Whether context quantity and context relevance are measured independently is unresolved in this pilot; the terminology distinction is clearer than the experimental separation.
+- The balance between planning architecture descriptions and planning-effectiveness studies is not established from abstracts alone.
+- Agent functional decomposition may be a memory/indexing mechanism, a planner representation, a delegation mechanism, or an evaluation label; these uses should not be pooled.
+- Clarification literature may be growing rapidly, but most inspected records were recent preprints and custom benchmarks rather than mature replicated studies.
+- Standard benchmark interaction constraints may explain why clarification is sparse in older coding-agent studies; absence of observed clarification is not evidence of inability or irrelevance.
+- Autonomy lacks a common operational scale in the inspected sample. Tool access, authority boundaries, user interaction, model behavior, scaffold behavior, and environment feedback may all contribute separately.
+- Trajectory features may be framework-dependent; transfer across models, scaffolds, tools, repositories, and benchmarks requires explicit validation.
+- Database coverage was limited to arXiv in P9. IEEE Xplore, ACM Digital Library, Scopus, Web of Science, ScienceDirect, SpringerLink, and Google Scholar were not searched in this round. arXiv discovery is useful for rapidly evolving preprints but cannot establish venue coverage or publication completeness.
+- Full texts were not retrieved for the candidate sources in this pilot. Publication status, duplicate versions, later peer-reviewed versions, methods, datasets, and limitations require later screening.
+- The search date is 2026-08-20 and recent records may change status or version; later searches must preserve version links and publication-status distinctions.
+
+## F6 Exit Decision
+
+**F6 should be split into distinct search subfamilies before systematic-search design**
+
+The methodological reason is that the pilot retrieved several related but non-equivalent neighborhoods: context/memory maintenance, repository retrieval/navigation, planning architecture, planning effectiveness, functional decomposition/delegation, clarification-seeking, dialogue/interaction, autonomy, tool/environment interfaces, and trajectory/process analysis. The required split preserves construct, agent population, benchmark interaction affordances, unit of analysis, and evidence maturity. F6-C is already sufficiently coherent to serve as a primary branch, but the overall family should not proceed as one combined search family.
+
+No Work Item characteristics or research conclusions were derived. P9 did not define optimal context, favor more or less context, claim that planning, clarification, or autonomy is beneficial, or generalize benchmark results beyond their studied conditions. F7 was not executed. No systematic search strings were frozen. No commit was made.
