@@ -2,7 +2,7 @@
 
 This document is the durable record of pilot searches and, later, systematic searches conducted under [`research/protocol.md`](./protocol.md). Pilot searches validate and refine terminology, query families, database coverage, precision, recall, and feasibility; they do not establish research findings or Work Item characteristics.
 
-Pilot Round 1 was conducted on 2026-08-20 using arXiv search/API endpoints and OpenAlex discovery. No systematic literature review search has begun.
+Pilot Round 1 was conducted on 2026-08-20 using arXiv search/API endpoints and OpenAlex discovery. Pilot Round 2 calibration was conducted on 2026-08-20 using arXiv, OpenAlex, and Crossref APIs. No systematic literature review search has begun.
 
 ## Purpose
 
@@ -228,8 +228,131 @@ The material changes observed in this round are preserved here in the required f
 - `arXiv broad Family 1 query with task/issue/ticket terms → 28,976 results dominated by generic software/project material → ("software task" OR "software development task" OR "issue description") AND (software OR programming) → retain relevant software-task and issue-description vocabulary while making initial screening feasible`
 - `("coding agent*" OR "code agent*" OR "software engineering agent*" OR "autonomous software engineering" OR "AI programming assistant*" OR "agentic software development") in OpenAlex full-text search → 0 results under the API's combined-term behavior → exact arXiv phrase searches for "coding agent", "software engineering agent", and "SWE-agent" → preserve separate database-adapted families rather than inferring absence from zero retrieval`
 - `all:"coding agent" → 1,001 results with useful recent records and adjacent systems noise → all:"software engineering agent" and all:"SWE-agent" → distinguish broad coding-agent language from SWE-agent/software-engineering-agent research lineage`
+- `P2 F1 phrase family → arXiv retrieval confirmed 272 results across the four provisional terms, with mixed task, issue, and evaluation contexts → retain phrase-level tests and compare database behavior → test consistency without freezing a combined systematic query`
+- `P2 F1 phrase family → Crossref bibliographic count returned 1,692,352 records with no sample inspection → use fielded or separate Crossref phrase queries later → treat the count as an API-noise diagnostic only`
+- `P2 F5 phrase family → arXiv combined provisional terms returned 1,154 records and exposed agentic aliases → retain separate exact terms plus a combined discovery query → preserve distinctions between coding agents, SWE agents, and adjacent systems`
+- `P2 F5 phrase family → Crossref bibliographic count returned 627,049 records and sample retrieval received HTTP 429 → defer broad Crossref sampling and use DOI lookups/fielded queries → do not interpret the rate limit or count as evidence about terminology coverage`
+- `P2 F5 phrase family → OpenAlex full-text query returned 561 records including published and preprint candidates but cross-family noise → test title/abstract field behavior in a later iteration → keep OpenAlex discovery separate from systematic precision estimates`
 
 No query was removed because it returned contradictory or unexpected material. No query was frozen as a systematic search string.
+
+## Pilot Round 2 Calibration
+
+This round tested the provisional vocabulary selected from Pilot Round 1 across arXiv, OpenAlex, and Crossref. Counts are source-reported and not directly comparable because the APIs search different fields and apply different relevance/indexing behavior. The terms remain provisional and are not validated or frozen systematic terminology.
+
+### P2-F1-01
+
+- **Search ID:** `P2-F1-01`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Scientific discovery
+- **Database / source:** arXiv API
+- **Query:** `all:"software development task" OR all:"software task" OR all:"issue description" OR all:"issue-tracking system"`
+- **Fields searched:** arXiv `all` fields
+- **Filters:** None; first 10 sorted by relevance
+- **Result count:** `272` reported by arXiv
+- **Results inspected:** First 10 result records and abstracts; selected source pages inspected in the round
+- **Clearly relevant results:** The result set consistently returned software-development-task, issue-description, and issue-tracking studies, including the previously identified Jazz task study and newer issue-description/repair work.
+- **Clearly irrelevant patterns:** LLM evaluation, energy/accuracy, cognitive-load, and generic issue-tracking studies appeared alongside work-definition material. The terms retrieve a useful neighborhood, not a single homogeneous topic.
+- **Terminology discovered:** outer-loop software-development tasks, issue description response, issue tracking systems, issue-resolution, software-development task evaluation
+- **Candidate seed sources:** Previously identified [Licorish and MacDonell](https://arxiv.org/abs/2104.12131) and [Ramírez-Mora et al.](https://arxiv.org/abs/2006.01358) remained retrievable. [SIADAFIX: issue description response for adaptive program repair](https://arxiv.org/abs/2510.16059) was discovered as a newer issue-description term; its source page was not fully inspected in this round.
+- **Query adjustment:** `P1 phrase-focused F1 family → 272 results across the four provisional terms with recurring but mixed software-task contexts → retain the four terms as separate phrase tests across databases → avoid treating the combined retrieval set as one evidence domain`
+- **Rationale:** The terms consistently retrieve relevant vocabulary, but the sample still requires task-scope screening.
+- **Notes:** arXiv search endpoint: [P2-F1-01](https://export.arxiv.org/api/query?search_query=all:%28%22software%20development%20task%22%20OR%20%22software%20task%22%20OR%20%22issue%20description%22%20OR%20%22issue-tracking%20system%22%29&start=0&max_results=10&sortBy=relevance). No Work Item characteristic was assessed.
+
+### P2-F1-02
+
+- **Search ID:** `P2-F1-02`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Scientific discovery
+- **Database / source:** Crossref Works API
+- **Query:** `software development task software task issue description issue-tracking system`
+- **Fields searched:** Crossref bibliographic query fields
+- **Filters:** `rows=0` count-only request
+- **Result count:** `1,692,352` reported by Crossref
+- **Results inspected:** No records; count-only request
+- **Clearly relevant results:** Not assessed in this count-only calibration.
+- **Clearly irrelevant patterns:** The volume indicates that Crossref's bibliographic query semantics are too broad for precision assessment with this unfielded combined query.
+- **Terminology discovered:** No new term from the count-only request
+- **Candidate seed sources:** None from this request
+- **Query adjustment:** `combined provisional F1 terms → 1,692,352 Crossref records under bibliographic query behavior → use fielded/title/abstract syntax or separate phrase queries in later Crossref calibration → avoid using this count as a precision or recall estimate`
+- **Rationale:** Crossref is useful for DOI discovery, but this query form is not yet suitable for an interpretable combined search.
+- **Notes:** Crossref returned a count but no records because `rows=0` was used. A later request for sample records should use narrower or fielded queries; no result count was estimated from the count-only response.
+
+### P2-F1-03
+
+- **Search ID:** `P2-F1-03`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Scientific discovery
+- **Database / source:** OpenAlex Works API
+- **Query:** `"software development task" "issue description"`
+- **Fields searched:** OpenAlex full-text search
+- **Filters:** `per-page=5`; selected metadata fields
+- **Result count:** `44` reported by OpenAlex
+- **Results inspected:** Five returned metadata records and titles; [Agentless](https://arxiv.org/abs/2407.01489) was opened and its abstract inspected as an off-target but useful terminology source.
+- **Clearly relevant results:** The query surfaced `Demystifying LLM-Based Software Engineering Agents`, `Agentless`, `MarsCode Agent`, and `Human-In-the-Loop Software Development Agents`; these are relevant to agent/task terminology but not a clean F1-only sample.
+- **Clearly irrelevant patterns:** OpenAlex full-text matching connected the F1 phrases to coding-agent papers through shared discussion of software-development tasks and issue descriptions. This demonstrates cross-family leakage rather than F1 precision.
+- **Terminology discovered:** autonomous LLM agents, agentless approach, localization, repair, patch validation, insufficient/misleading issue descriptions
+- **Candidate seed sources:** [Demystifying LLM-Based Software Engineering Agents](https://doi.org/10.1145/3715754), Chunqiu Steven Xia et al., 2025, published Proceedings of the ACM on Software Engineering; metadata and abstract were inspected through Crossref. [Agentless](https://arxiv.org/abs/2407.01489), Xia et al., 2024 arXiv preprint, source page and abstract inspected.
+- **Query adjustment:** `OpenAlex F1 phrase search → 44 results but top records crossed into coding-agent literature through shared task/issue language → keep F1 and F5 retrieval separate and record cross-family leakage → do not assume a term belongs to only one research stream`
+- **Rationale:** The result demonstrates why source context and evidence stream must be recorded during screening.
+- **Notes:** OpenAlex reported `44` for the full-text query. The returned `Demystifying...` article is a useful cross-family seed, not an F1 work-unit result.
+
+### P2-F5-01
+
+- **Search ID:** `P2-F5-01`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Coding-agent-specific scientific discovery
+- **Database / source:** arXiv API
+- **Query:** `all:"software engineering agent" OR all:"SWE-agent" OR all:"coding agent" OR all:"AI coding agent"`
+- **Fields searched:** arXiv `all` fields
+- **Filters:** None; first 10 sorted by relevance
+- **Result count:** `1,154` reported by arXiv
+- **Results inspected:** First 10 result records and abstracts; [AIDev](https://arxiv.org/abs/2602.09185) was opened and its source page/abstract inspected.
+- **Clearly relevant results:** The sample included AI coding agents, software-engineering agents, agent-authored pull requests, coding-agent workloads, and software-delegation contracts. `AIDev` explicitly lists `AI Coding Agent`, `Agentic Coding`, `Agentic Software Engineering`, and `Agentic Engineering` as related terms.
+- **Clearly irrelevant patterns:** The combined family includes human-centered position papers, systems/infrastructure, compiler work, repository studies, and general agent evaluation. The four terms retrieve a broad research neighborhood.
+- **Terminology discovered:** agentic coding, agentic software engineering, agentic engineering, Agentic-PRs, AI agent, coding-agent workloads, software delegation contract
+- **Candidate seed sources:** [AIDev: Studying AI Coding Agents on GitHub](https://arxiv.org/abs/2602.09185), Hao Li, Haoxiang Zhang, and Ahmed E. Hassan, 2026 arXiv record with DOI [10.1145/3793302.3797249](https://doi.org/10.1145/3793302.3797249), inspected; [Software Delegation Contracts: Measuring Reviewability in AI Coding-Agent Work](https://arxiv.org/abs/2606.17099), Vincent Schmalbach, 2026 arXiv record and abstract inspected.
+- **Query adjustment:** `P1 separate F5 phrase searches → 1,154 results when the four provisional terms are combined → retain separate phrase queries plus a combined discovery query → preserve distinctions between coding assistants, coding agents, and software-engineering agents during screening`
+- **Rationale:** The combined query improves discovery of current aliases but is too heterogeneous to serve as a final systematic string.
+- **Notes:** arXiv search endpoint: [P2-F5-01](https://export.arxiv.org/api/query?search_query=all:%28%22software%20engineering%20agent%22%20OR%20%22SWE-agent%22%20OR%20%22coding%20agent%22%20OR%20%22AI%20coding%20agent%22%29&start=0&max_results=10&sortBy=relevance). The listed terms remain provisional.
+
+### P2-F5-02
+
+- **Search ID:** `P2-F5-02`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Coding-agent-specific scientific discovery
+- **Database / source:** Crossref Works API
+- **Query:** `software engineering agent SWE-agent coding agent AI coding agent`
+- **Fields searched:** Crossref bibliographic query fields
+- **Filters:** `rows=0` count-only request
+- **Result count:** `627,049` reported by Crossref
+- **Results inspected:** No records; count-only request. A sample-record request for the same broad query returned HTTP 429 and was not retried as evidence.
+- **Clearly relevant results:** Not assessed from this request.
+- **Clearly irrelevant patterns:** The very large count and rate limit show that this unfielded Crossref query is unsuitable for precision measurement.
+- **Terminology discovered:** No new term from the count-only request
+- **Candidate seed sources:** None from this request; known candidates were retrieved through OpenAlex/arXiv and Crossref DOI lookups.
+- **Query adjustment:** `combined provisional F5 terms → 627,049 Crossref records and a 429 on sample retrieval → use exact phrase/title/abstract queries separately in later Crossref work → do not treat Crossref's broad count as comparable to arXiv/OpenAlex`
+- **Rationale:** The source is useful for DOI metadata after candidate discovery, but this query form is not calibrated for sample inspection.
+- **Notes:** The HTTP 429 is preserved as an operational limitation, not interpreted as absence of literature.
+
+### P2-F5-03
+
+- **Search ID:** `P2-F5-03`
+- **Date:** `2026-08-20`
+- **Evidence stream:** Coding-agent-specific scientific discovery
+- **Database / source:** OpenAlex Works API, with source-page and DOI inspection
+- **Query:** `"software engineering agent" "SWE-agent" "coding agent"`
+- **Fields searched:** OpenAlex full-text search
+- **Filters:** `per-page=5`; selected metadata fields
+- **Result count:** `561` reported by OpenAlex
+- **Results inspected:** Five returned metadata records; [Agentless](https://arxiv.org/abs/2407.01489), [UTBoost](https://aclanthology.org/2025.acl-long.189/), and [Demystifying LLM-Based Software Engineering Agents](https://doi.org/10.1145/3715754) were inspected through source pages or DOI metadata.
+- **Clearly relevant results:** The sample included a published ACM software-engineering article, SWE-agent and Agentless preprints, SWE-Gym, and a published ACL coding-agent evaluation paper. This suggests the provisional terms retrieve both preprint and peer-reviewed/published material.
+- **Clearly irrelevant patterns:** The full-text query still mixes agent systems, training/evaluation frameworks, issue-resolution benchmarks, and repository-level studies; exact terminology does not define a single experimental population.
+- **Terminology discovered:** LLM-based software engineering agents, software-engineering AI agents, SWE-Gym, coding-agent evaluation, agentless software engineering
+- **Candidate seed sources:** [Demystifying LLM-Based Software Engineering Agents](https://doi.org/10.1145/3715754), Chunqiu Steven Xia, Yinlin Deng, Soren Dunn, and Lingming Zhang, published 2025 in *Proceedings of the ACM on Software Engineering*, DOI inspected; [UTBoost: Rigorous Evaluation of Coding Agents on SWE-Bench](https://aclanthology.org/2025.acl-long.189/), Boxi Yu, Yuxuan Zhu, Pinjia He, and Daniel Kang, ACL 2025 conference paper, DOI [10.18653/v1/2025.acl-long.189](https://doi.org/10.18653/v1/2025.acl-long.189), source page inspected; [Agentless](https://arxiv.org/abs/2407.01489), preprint source page inspected.
+- **Query adjustment:** `OpenAlex combined phrase search → 561 full-text matches with relevant published and preprint records plus cross-family noise → test title/abstract fields and exact phrases separately in the next database-specific iteration → preserve the current query as discovery-only`
+- **Rationale:** OpenAlex provides useful cross-source discovery, but its full-text matching should not be used as a final precision estimate.
+- **Notes:** OpenAlex query metadata reported all three phrases as required full-text terms. The source-level publication statuses were recorded only for inspected candidates; no evidence synthesis was performed.
 
 ## Search Log Template
 
@@ -258,24 +381,30 @@ Record database-specific syntax, access limitations, publication-status observat
 
 ## Terminology Registry
 
-Record terminology discovered during pilot searches. Do not treat a term as a Work Item characteristic merely because it appears frequently in search results.
+Record terminology discovered during pilot searches. The eight terms selected from Pilot Round 1 below are provisional vocabulary for calibration, not validated or final terminology. Do not treat a term as a Work Item characteristic merely because it appears frequently in search results.
 
 | Term | Related concept | Source / Search ID | Context | Action | Notes |
 |---|---|---|---|---|---|
-| software development task | software work definition | P1-F1-02, P1-F1-03 | Traditional software engineering | add as synonym | Appeared in titles and abstracts for task-type, completion, and repository studies. |
-| software task | software work definition | P1-F1-03 | Traditional software engineering | add as synonym | More precise than unqualified `task`, but still broad across evaluation and developer studies. |
-| issue description | issue/work representation | P1-F1-02, P1-F1-03 | Issue-tracking research | add as synonym | Promising phrase for studies of textual work descriptions; retain separate from generic `issue`. |
-| issue-tracking system | issue/work representation | P1-F1-03 | Traditional software engineering | retain as contextual term | Identifies the repository/tool context in which issues are studied. |
+| software development task | software work definition | P1-F1-02, P1-F1-03, P2-F1-01 | Traditional software engineering | test provisionally across sources | Appeared in titles and abstracts for task-type, completion, repository, and evaluation studies; not validated as final terminology. |
+| software task | software work definition | P1-F1-03, P2-F1-01 | Traditional software engineering | test provisionally across sources | More precise than unqualified `task`, but still broad across evaluation and developer studies. |
+| issue description | issue/work representation | P1-F1-02, P1-F1-03, P2-F1-01 | Issue-tracking research | test provisionally across sources | Promising phrase for studies of textual work descriptions; retain separate from generic `issue`. |
+| issue-tracking system | issue/work representation | P1-F1-03, P2-F1-01 | Issue-tracking research | test provisionally across sources | Identifies the repository/tool context in which issues are studied; not validated as final terminology. |
 | task type | software work classification | P1-F1-03 | Traditional software engineering | add as synonym | Used with task completion performance and categories of development work. |
 | task completion performance | completion/outcome terminology | P1-F1-03 | Traditional software engineering | add as outcome term | Outcome phrase, not a Work Item characteristic. |
-| coding agent | coding-agent vocabulary | P1-F5-02 | Recent coding-agent research | retain and test separately | High-yield broad phrase with adjacent systems and infrastructure noise. |
-| AI coding agent | coding-agent vocabulary | P1-F5-02 | Recent coding-agent research | add as synonym | Appeared in recent arXiv records alongside coding-agent workloads and sessions. |
-| software engineering agent | coding-agent vocabulary | P1-F5-03 | Recent software-engineering-agent research | add as synonym | More focused than `coding agent` but still includes non-repository and infrastructure settings. |
-| SWE agent / SWE-agent | coding-agent vocabulary | P1-F5-03, P1-F5-04 | Benchmarks and agent systems | add as synonym | Established research-lineage term; test hyphenation and plural variants separately. |
+| coding agent | coding-agent vocabulary | P1-F5-02, P2-F5-01 | Recent coding-agent research | test provisionally across sources | High-yield broad phrase with adjacent systems and infrastructure noise; not validated as final terminology. |
+| AI coding agent | coding-agent vocabulary | P1-F5-02, P2-F5-01 | Recent coding-agent research | test provisionally across sources | Appeared in recent records alongside coding-agent workloads, sessions, and agent-authored pull requests. |
+| software engineering agent | coding-agent vocabulary | P1-F5-03, P2-F5-01 | Recent software-engineering-agent research | test provisionally across sources | More focused than `coding agent` but still includes non-repository and infrastructure settings. |
+| SWE agent / SWE-agent | coding-agent vocabulary | P1-F5-03, P1-F5-04, P2-F5-01 | Benchmarks and agent systems | test provisionally across sources | Research-lineage term; test hyphenation and plural variants separately rather than treating it as final. |
 | AI Software Engineer | coding-agent vocabulary | P1-F5-03 | Unified agent framing | investigate separately | Appears in a paper describing a unified agent across coding, testing, and patching. |
 | agent-computer interface (ACI) | agent execution environment | P1-F5-04 | SWE-agent system paper | add as contextual term | Specific interface terminology associated with repository navigation, editing, and execution. |
 | SWE-bench | coding-agent evaluation | P1-F5-04 | GitHub issue resolution benchmark | retain as contextual term | Benchmark name, not a general synonym for coding agents. |
 | agent trajectory / tool-mediated trajectory | agent execution trace | P1-F5-03, P1-F5-04 | Agent evaluation and analysis | add as contextual term | Used to describe multi-step agent/environment interaction. |
+| agentic coding | coding-agent vocabulary | P2-F5-01 | Recent coding-agent research | investigate separately | Appeared as a related term in AIDev; not yet tested as a standalone search phrase. |
+| agentic software engineering | coding-agent vocabulary | P2-F5-01 | Recent coding-agent research | investigate separately | Appeared as a related term in AIDev; may overlap with software-engineering-agent terminology. |
+| Agentic-PRs | coding-agent activity/data | P2-F5-01 | GitHub repository studies | investigate separately | Term used for agent-authored pull requests; source and population boundaries need later screening. |
+| software delegation contract | coding-agent work framing | P2-F5-01 | Coding-agent task/review study | retain as contextual term | A source-specific term for a study's unit of analysis; not a Work Item characteristic or final vocabulary. |
+| agentless software engineering | coding-agent comparison vocabulary | P2-F5-03 | Agentless versus agent-based systems | retain as contextual term | Useful for separating autonomous-agent claims from non-agent workflow baselines. |
+| SWE-Gym | coding-agent training/evaluation | P2-F5-03 | Agent training/evaluation | retain as contextual term | Benchmark/framework name, not a general synonym for coding agents. |
 
 ## Query Evolution
 
