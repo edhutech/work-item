@@ -2,7 +2,7 @@
 
 This document is the durable record of pilot searches and, later, systematic searches conducted under [`research/protocol.md`](./protocol.md). Pilot searches validate and refine terminology, query families, database coverage, precision, recall, and feasibility; they do not establish research findings or Work Item characteristics.
 
-Pilot Round 1 was conducted on 2026-08-20 using arXiv search/API endpoints and OpenAlex discovery. Pilot Round 2 calibration was conducted on 2026-08-20 using arXiv, OpenAlex, and Crossref APIs. Pilot Round 3 database-field calibration was conducted on 2026-08-20 using arXiv, OpenAlex, and Crossref APIs. Pilot Round 4 terminology calibration for Families 2 and 3 was conducted on 2026-08-20 using arXiv, OpenAlex, and DOI/publisher metadata. Pilot Round 5 focused calibration for Family 3 was conducted on 2026-08-20 using subgroup-specific arXiv and OpenAlex searches plus Crossref metadata verification. No systematic literature review search has begun.
+Pilot Round 1 was conducted on 2026-08-20 using arXiv search/API endpoints and OpenAlex discovery. Pilot Round 2 calibration was conducted on 2026-08-20 using arXiv, OpenAlex, and Crossref APIs. Pilot Round 3 database-field calibration was conducted on 2026-08-20 using arXiv, OpenAlex, and Crossref APIs. Pilot Round 4 terminology calibration for Families 2 and 3 was conducted on 2026-08-20 using arXiv, OpenAlex, and DOI/publisher metadata. Pilot Round 5 focused calibration for Family 3 was conducted on 2026-08-20 using subgroup-specific arXiv and OpenAlex searches plus Crossref metadata verification. Pilot Round 6 tested the proposed F3-A/F3-B/F3-C split on 2026-08-20 using focused arXiv and OpenAlex searches. No systematic literature review search has begun.
 
 ## Purpose
 
@@ -1203,6 +1203,169 @@ Round 5 did not freeze a systematic search string. It supports splitting F3 into
 - **Final methodological status:** `F3 should be split into distinct search subfamilies before systematic-search design`
 - **Reason:** Decomposition, task descriptions/issues, planning/coding-agent workflows, allocation/interdependence, and crowdsourcing work form distinguishable retrieval neighborhoods. Granularity and exact task-preparation wording are not currently reliable primary terms, while generic decomposition/allocation searches retain major cross-domain noise.
 
+## Pilot Round 6 Family 3 Subfamily Calibration
+
+Round 6 tested three provisional F3 subfamilies: F3-A, software-project decomposition and planning; F3-B, software-development task descriptions and issue representations; and F3-C, allocation, interdependence, and crowdsourced software work. The purpose was to test whether the split improves interpretability, not to freeze systematic strings or infer Work Item characteristics. Counts are source-reported diagnostics, not relevance estimates. Seed status is recorded per subfamily and per inspected sample.
+
+### F3-A: Decomposition And Planning
+
+#### Search Entry
+
+- **Search ID:** `P6-F3A-01`
+- **Date:** `2026-08-20`
+- **Evidence stream:** `traditional software engineering and coding-agent terminology`
+- **Database / source:** `arXiv`
+- **Query:** `all:"task decomposition" AND all:"software development"`
+- **Fields searched:** `all`
+- **Filters:** `none`
+- **Result count:** `5`
+- **Results inspected:** `5` titles and metadata/abstract records
+- **Clearly relevant results:** Khanfor's `Tasks Decomposition Approaches in Crowdsourcing Software Development`; adjacent coding-agent and software-agent records using decomposition as an architectural or planning term.
+- **Clearly irrelevant patterns:** General agent architecture/surveys and non-traditional software-task uses of decomposition.
+- **Terminology discovered:** `task decomposition approaches`, `software project decomposition`, `task decomposition and collaboration`, and `requirement-driven task decomposition` remain distinct traditional-SE versus coding-agent contexts.
+- **Candidate seed sources:** Khanfor `Retrieved`; Zeng et al. `Retrieved` as a coding-agent contextual seed; Stol and Fitzgerald `Missed`; Treude and Storey `Missed`.
+- **Query adjustment:** Retain as the sensitivity-oriented F3-A variant; do not treat the mixed sample as one homogeneous decomposition literature.
+- **Rationale:** The query recovers a direct traditional-SE seed but also exposes a separate agent-planning neighborhood, supporting a shared subfamily with explicit context branches.
+- **Notes:** The count is not a precision estimate. Decomposition in coding-agent papers may describe system architecture rather than human or project work decomposition.
+
+#### Search Entry
+
+- **Search ID:** `P6-F3A-02`
+- **Date:** `2026-08-20`
+- **Evidence stream:** `known-item/title precision check`
+- **Database / source:** `arXiv`
+- **Query:** `ti:"task decomposition" AND ti:"software development"`
+- **Fields searched:** `title`
+- **Filters:** `none`
+- **Result count:** `1`
+- **Results inspected:** `1` title and abstract record
+- **Clearly relevant results:** Khanfor's crowdsourcing software-development decomposition paper.
+- **Clearly irrelevant patterns:** None in the one-record sample.
+- **Terminology discovered:** No new term; title restriction confirms the narrow phrase `task decomposition approaches in crowdsourcing software development`.
+- **Candidate seed sources:** Khanfor `Retrieved`; Zeng et al. `Missed` under this title-restricted variant; Stol and Fitzgerald `Missed`; Treude and Storey `Missed`.
+- **Query adjustment:** Keep as a narrow title/known-item diagnostic, not as the systematic F3-A query.
+- **Rationale:** Title restriction improves precision for the direct seed but would miss coding-agent planning literature and other relevant records whose titles use different decomposition terminology.
+- **Notes:** The result count is not a recall estimate.
+
+### F3-B: Task Descriptions And Issue Representations
+
+#### Search Entry
+
+- **Search ID:** `P6-F3B-01`
+- **Date:** `2026-08-20`
+- **Evidence stream:** `issue-tracking and software-work representation`
+- **Database / source:** `arXiv`
+- **Query:** `all:"issue description" AND all:"software project"`
+- **Fields searched:** `all`
+- **Filters:** `none`
+- **Result count:** `7`
+- **Results inspected:** `7` titles and metadata/abstract records
+- **Clearly relevant results:** Issue-description, issue-assignment, and software-project records; the sample supports a textual representation/management neighborhood distinct from decomposition.
+- **Clearly irrelevant patterns:** Some generic project-management and issue-classification material without a work-description focus.
+- **Terminology discovered:** `issue description`, `issue descriptions`, `issue comments`, `issue success`, and `software project`.
+- **Candidate seed sources:** Ramírez-Mora et al. `Not verified` in the inspected seven-record sample; Khanfor `Not applicable to this subfamily`; Stol and Fitzgerald `Not applicable to this subfamily`; Treude and Storey `Not applicable to this subfamily`.
+- **Query adjustment:** Retain singular/plural issue-description variants with software-project or issue-tracking context; do not import decomposition terms into F3-B.
+- **Rationale:** The query is more specific to the representation of software work than generic `task description`, while still requiring screening for issue-management outcomes versus description content.
+- **Notes:** Exact bibliographic known-item verification was not established from this seven-record sample; prior metadata inspection confirms Ramírez-Mora et al. as the principal F3-B seed.
+
+#### Search Entry
+
+- **Search ID:** `P6-F3B-02`
+- **Date:** `2026-08-20`
+- **Evidence stream:** `exact-phrase failure check`
+- **Database / source:** `arXiv`
+- **Query:** `all:"issue descriptions and comments"`
+- **Fields searched:** `all`
+- **Filters:** `none`
+- **Result count:** `0`
+- **Results inspected:** `0`
+- **Clearly relevant results:** None.
+- **Clearly irrelevant patterns:** None.
+- **Terminology discovered:** The exact plural phrase is not reliable arXiv-indexed terminology even though it occurs in the Ramírez-Mora et al. title.
+- **Candidate seed sources:** Ramírez-Mora et al. `Missed`; Khanfor `Not applicable to this subfamily`; Stol and Fitzgerald `Not applicable to this subfamily`; Treude and Storey `Not applicable to this subfamily`.
+- **Query adjustment:** Use component terms such as `issue description`, `issue comments`, and software-project/issue-tracking context rather than this exact phrase.
+- **Rationale:** The zero-result check documents a database/indexing limitation and prevents the title phrase from being treated as a stable systematic synonym.
+- **Notes:** A zero result does not establish absence of the literature.
+
+### F3-C: Allocation, Interdependence, And Crowdsourced Work
+
+#### Search Entry
+
+- **Search ID:** `P6-F3C-01`
+- **Date:** `2026-08-20`
+- **Evidence stream:** `crowdsourced software work and coordination`
+- **Database / source:** `arXiv`
+- **Query:** `all:"crowdsourcing software development" AND all:task`
+- **Fields searched:** `all`
+- **Filters:** `none`
+- **Result count:** `7`
+- **Results inspected:** `7` titles and metadata/abstract records
+- **Clearly relevant results:** Crowdsourced decomposition, task scheduling, task failure, task life cycle, parallel-task upload, and task-allocation records.
+- **Clearly irrelevant patterns:** Little obvious domain noise in the sample, but the records vary between decomposition, marketplace operations, scheduling, and external-worker coordination.
+- **Terminology discovered:** `task allocation`, `task scheduling`, `task life cycle`, `task cycle pattern`, `parallel tasks`, and `project description length`.
+- **Candidate seed sources:** Khanfor `Retrieved`; Saremi et al. `Retrieved`; Saremi and Yang `Retrieved`; Stol and Fitzgerald `Missed` in the arXiv sample; Treude and Storey `Missed`; Lamersdorf et al. `Not applicable to this subfamily's crowdsourcing branch`.
+- **Query adjustment:** Retain crowdsourcing as a domain-qualified supplementary branch and screen decomposition, allocation, scheduling, and marketplace studies separately.
+- **Rationale:** This is the most coherent traditional-SE F3 neighborhood tested, but its work-unit concepts are tightly coupled to external-worker and marketplace conditions.
+- **Notes:** Coherence does not justify transferring findings or terminology to coding-agent work.
+
+#### Search Entry
+
+- **Search ID:** `P6-F3C-02`
+- **Date:** `2026-08-20`
+- **Evidence stream:** `domain-qualified title discovery`
+- **Database / source:** `OpenAlex`
+- **Query:** `title.search:"crowdsourcing software development"`
+- **Fields searched:** `title`
+- **Filters:** `none`
+- **Result count:** `27`
+- **Results inspected:** First-page title/metadata records, including known crowdsourcing, parallel-task, and project-description sources
+- **Clearly relevant results:** Stol and Fitzgerald's crowdsourcing case study; Saremi and Yang's parallel-task study; project-description and task-success studies.
+- **Clearly irrelevant patterns:** The corpus remains heterogeneous across marketplace, scheduling, worker selection, project success, and decomposition.
+- **Terminology discovered:** No new primary term; title-qualified crowdsourcing is a useful discovery boundary, not a decomposition synonym.
+- **Candidate seed sources:** Stol and Fitzgerald `Retrieved`; Saremi and Yang `Retrieved`; Khanfor `Not verified` from the inspected first-page sample; Treude and Storey `Missed`; Lamersdorf et al. `Not applicable to this crowdsourcing branch`.
+- **Query adjustment:** Keep as a supplementary discovery corpus for backward/forward snowballing, with explicit subtopic screening.
+- **Rationale:** The manageable corpus confirms coverage of the crowdsourcing tradition but does not resolve whether allocation and decomposition belong in one systematic F3 branch.
+- **Notes:** OpenAlex title counts are not relevance or recall estimates; publisher access for some records remained limited by HTTP 429.
+
+### Round 6 Query Evolution Records
+
+- **Date:** `2026-08-20`
+- **Search family:** `F3-A decomposition and planning`
+- **Original query:** `all:"task decomposition" AND all:"software development"`
+- **Observation:** The five-record sample combined a direct crowdsourcing decomposition source with coding-agent architecture/planning sources.
+- **Revised query:** `ti:"task decomposition" AND ti:"software development"`
+- **Rationale:** Use title restriction only as a narrow known-item precision check; preserve the broader query and separate traditional-SE and coding-agent contexts during screening.
+- **Affected database(s):** `arXiv`
+- **Search IDs:** `P6-F3A-01`, `P6-F3A-02`
+
+- **Date:** `2026-08-20`
+- **Search family:** `F3-B task descriptions and issue representations`
+- **Original query:** `all:"issue description" AND all:"software project"`
+- **Observation:** The seven-record sample supported issue-description/project literature, while the exact known title phrase was not established as an indexed phrase.
+- **Revised query:** `all:"issue descriptions and comments"`
+- **Rationale:** Test the title phrase directly, then retain component terms after the zero-result failure rather than treating the phrase as a systematic synonym.
+- **Affected database(s):** `arXiv`
+- **Search IDs:** `P6-F3B-01`, `P6-F3B-02`
+
+- **Date:** `2026-08-20`
+- **Search family:** `F3-C crowdsourced software work`
+- **Original query:** `all:"crowdsourcing software development" AND all:task`
+- **Observation:** The seven-record sample was coherent but heterogeneous across decomposition, allocation, scheduling, lifecycle, and marketplace operations.
+- **Revised query:** `title.search:"crowdsourcing software development"`
+- **Rationale:** Bound a manageable discovery corpus for screening and snowballing, while classifying allocation and decomposition separately and retaining the branch as supplementary.
+- **Affected database(s):** `arXiv` and `OpenAlex`
+- **Search IDs:** `P6-F3C-01`, `P6-F3C-02`
+
+### Round 6 Calibration Assessment
+
+- **F3-A status:** `Primary`. The split preserves a direct traditional-SE decomposition branch and a distinct coding-agent planning branch without conflating their units of analysis.
+- **F3-B status:** `Primary`. Issue descriptions/comments form a separate work-representation branch, although the exact title phrase is not a reliable indexed query.
+- **F3-C status:** `Supplementary`. The crowdsourcing corpus is coherent enough for discovery and snowballing, but allocation, scheduling, marketplace, and external-worker conditions are not interchangeable with decomposition or coding-agent work.
+- **Overlap assessment:** F3-A and F3-C overlap where crowdsourcing papers discuss decomposition and parallel tasks; F3-B overlaps Family 1 and Family 2 through issue/work labels and requirements-like text. These are screening overlaps, not grounds for one combined F3 query.
+- **Terminology update:** Promote no new unqualified synonym. Retain `task decomposition`, `software project decomposition`, `coding plans`, `issue description`, `issue comments`, and domain-qualified `crowdsourcing software development` as provisional branches; keep `task preparation` and `task granularity` downgraded or excluded as previously recorded.
+- **Final methodological status:** `F3 subfamily structure sufficiently calibrated for systematic-search design`
+- **Reason:** The six checks produced interpretable, non-identical retrieval neighborhoods and documented their overlaps, seed limitations, and source-specific terminology. This permits systematic-search design without freezing final strings or asserting Work Item support.
+
 ### Round 4 Query Evolution Records
 
 - **Date:** `2026-08-20`
@@ -1334,14 +1497,14 @@ Record terminology discovered during pilot searches. The eight terms selected fr
 | software delegation contract | coding-agent work framing | P2-F5-01, P3-F5-01 | Coding-agent task/review study | retain as contextual term | A source-specific term for a study's unit of analysis; not a Work Item characteristic or final vocabulary. |
 | agentless software engineering | coding-agent comparison vocabulary | P2-F5-03, P3-F5-03 | Agentless versus agent-based systems | retain as contextual term | Useful for separating autonomous-agent claims from non-agent workflow baselines. |
 | SWE-Gym | coding-agent training/evaluation | P2-F5-03, P3-F5-03 | Agent training/evaluation | retain as contextual term | Benchmark/framework name, not a general synonym for coding agents. |
-| task decomposition approaches | software work decomposition | P4-F3-01, P4-F3-03, P4-F3-06, P5-F3-01 | Crowdsourcing software development | test provisionally with software context | Title-qualified search retrieved the direct Khanfor seed; retain separately from generic AI task decomposition. |
-| crowdsourcing software development | software work decomposition and allocation | P4-F3-01, P4-F3-03, P4-F3-05, P5-F3-10, P5-F3-14 | Crowdsourcing/project decomposition | retain as a domain-qualified subfamily | Produced a relatively coherent but heterogeneous corpus covering decomposition, parallel tasks, allocation, scheduling, lifecycle, and marketplace studies. |
+| task decomposition approaches | software work decomposition | P4-F3-01, P4-F3-03, P4-F3-06, P5-F3-01, P6-F3A-01, P6-F3A-02 | Crowdsourcing software development | test provisionally with software context | Title-qualified search retrieved the direct Khanfor seed; retain separately from generic AI task decomposition. |
+| crowdsourcing software development | software work decomposition and allocation | P4-F3-01, P4-F3-03, P4-F3-05, P5-F3-10, P5-F3-14, P6-F3C-01, P6-F3C-02 | Crowdsourcing/project decomposition | retain as a domain-qualified supplementary subfamily | Produced a relatively coherent but heterogeneous corpus covering decomposition, parallel tasks, allocation, scheduling, lifecycle, and marketplace studies; retain for discovery and snowballing rather than assume primary F3 status. |
 | task preparation | task description/decomposition | P4-F3-01, P5-F3-02, P5-F3-15 | Crowdsourcing software development | downgrade to source-specific wording | Exact phrase retrieved non-software task automation/neuroscience; Khanfor used `preparing tasks`, not the exact phrase. |
 | manageable software tasks | task scope/decomposition | P4-F3-01 | Crowdsourcing software development | test provisionally | Context-bound phrase; do not generalize it beyond the inspected crowdsourcing literature. |
 | preparing tasks | task description/decomposition | P5-F3-01 | Crowdsourcing software development | investigate separately | Natural wording in the Khanfor abstract; not tested as an independent broad search phrase. |
 | software project decomposition | software work decomposition | P5-F3-01 | Crowdsourcing software development | test provisionally with domain qualifier | Phrase observed in the title/abstract context of the direct decomposition seed; keep separate from generic task decomposition. |
-| coding plans | software development planning | P5-F3-03 | Coding-agent-specific software development | investigate separately | Retrieved in agent workflow literature; distinct from traditional decomposition and from project planning. |
-| issue descriptions and comments | task description/work representation | P5-F3-04 | Issue-tracking research | test provisionally with software context | More specific and higher-yield than generic `task description` in the inspected sample. |
+| coding plans | software development planning | P5-F3-03 | Coding-agent-specific software development | investigate separately | Retrieved in agent workflow literature; distinct from traditional decomposition and from project planning. The Round 6 F3-A records did not explicitly test or discover this phrase, so their IDs are not attached here. |
+| issue descriptions and comments | task description/work representation | P5-F3-04, P6-F3B-01, P6-F3B-02 | Issue-tracking research | test component terms with software context | The exact plural phrase returned zero in the Round 6 arXiv check; retain `issue description` and `issue comments` as component terms rather than treating the full phrase as stable. |
 | textual descriptions of issues | task description/work representation | P5-F3-04 | Issue-tracking research | retain as contextual term | Representation phrase from a software-task study; not a decomposition synonym. |
 | task decomposition and collaboration | software development planning | P4-F3-03 | Coding-agent-specific software development | investigate separately | Agent-architecture phrase; keep distinct from human/team task decomposition. |
 | requirement-driven task decomposition | software development planning | P4-F3-03 | End-to-end software-development agents | investigate separately | Recent agent-specific wording; publication status and transferability require later screening. |
