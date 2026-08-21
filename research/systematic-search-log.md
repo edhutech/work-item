@@ -110,3 +110,35 @@ This log records real systematic-search execution provenance. It is separate fro
 - **Research conclusions:** `None`
 
 The two F1 query-piece raw outputs are retained as independent provenance and form the F1 raw union. They were not combined or deduplicated during execution. Any unique F1 record count belongs to the later deduplication phase. F2A and F2B remain unexecuted, and `S1-BATCH-001` remains incomplete.
+
+## Scopus Systematic Retrieval
+
+### S1-F1-SCOPUS-01-v1
+
+- **Query ID:** `S1-F1-SCOPUS-01-v1`
+- **Branch ID:** `F1`
+- **Branch:** Software work units and work definition
+- **Branch status:** `Primary`
+- **Database:** Scopus
+- **Execution mechanism:** Scopus Search API
+- **Query version:** `v1`
+- **Execution date:** `2026-08-21`
+- **Exact frozen query:** `TITLE-ABS-KEY(("software development" OR "software engineering" OR programming) AND ("software task" OR "software development task" OR "work unit" OR "work item" OR "issue description" OR ticket OR "user story" OR "change request"))`
+- **Fields:** Title, abstract, and author keywords through Scopus `TITLE-ABS-KEY(...)`
+- **Filters:** None; no date, publication-type, language, subject, or additional result filter
+- **Time coverage:** No restriction
+- **Database-reported API result count:** `2596`
+- **API result status:** `Completed`; all `104` requested pages returned parseable responses without an HTTP failure
+- **Raw captured records:** `2596`
+- **Pagination:** `104` API calls/pages, `count=25`, starts `0` through `2575` in increments of `25`; final page contained `21` records
+- **Raw artifacts:** `research/raw/systematic-search/S1-F1-SCOPUS-01-v1__run-20260821T231713Z__api-start-000000.json` through `research/raw/systematic-search/S1-F1-SCOPUS-01-v1__run-20260821T231713Z__api-start-002575.json`, with one immutable metadata sidecar per response
+- **Reconciliation:** `2596` API-reported results / `2596` raw captured records
+- **Reconciliation status:** `Complete`
+- **Missing pagination ranges:** `No`; starts were contiguous and complete
+- **Duplicate pagination ranges:** `No`
+- **Execution-time deduplication:** `None`
+- **Screening:** `Not started`
+- **Evidence extraction:** `None`
+- **Synthesis:** `None`
+- **Unique corpus count:** Not derived beyond this single-query raw retrieval
+- **Operational notes:** Exact frozen query was submitted unchanged. Raw API JSON responses were preserved before transformation with Query ID, Scopus source, page, start position, count, totalResults, run timestamp, and exact query in non-secret metadata sidecars. The API key was not written to responses, sidecars, filenames, or logs.

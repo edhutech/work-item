@@ -107,6 +107,7 @@ def retrieve(
     *, query_id: str, query: str, api_key: str, raw_dir: Path,
     count: int = DEFAULT_COUNT, call_limit: int = DEFAULT_CALL_LIMIT,
     pace_seconds: float = DEFAULT_PACE_SECONDS, retries: int = 3,
+    expected_total_results: int | None = None,
     run_timestamp: str | None = None, opener: Callable[..., Any] = urlopen,
     sleeper: Callable[[float], None] = time.sleep,
 ) -> RetrievalSummary:
@@ -119,6 +120,8 @@ def retrieve(
         raise RetrievalError(f"{API_KEY_ENV} is not set")
     if count < 1 or count > 200 or call_limit < 1 or retries < 0 or pace_seconds < 0:
         raise RetrievalError("invalid pagination, pacing, retry, or call-limit configuration")
+    if expected_total_results is not None and expected_total_results < 0:
+        raise RetrievalError("expected totalResults cannot be negative")
 
     raw_dir.mkdir(parents=True, exist_ok=True)
     timestamp = run_timestamp or datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
@@ -179,7 +182,9 @@ def retrieve(
             raise RetrievalError("raw captured record count exceeds totalResults")
         response_path = artifact_path(raw_dir, query_id, timestamp, start)
         metadata = {
-            "query_id": query_id, "endpoint": ENDPOINT, "start": start,
+            "query_id": query_id, "database": "Scopus",
+            "source": "Scopus Search API", "endpoint": ENDPOINT, "start": start,
+            "page": len(artifacts) + 1,
             "count": count, "returned": returned, "totalResults": total,
             "run_timestamp": timestamp, "exact_query": query,
             "raw_response": response_path.name,
@@ -187,6 +192,10 @@ def retrieve(
         _write_immutable(response_path, payload_bytes)
         _write_immutable(_metadata_path(response_path), (json.dumps(metadata, sort_keys=True) + "\n").encode())
         artifacts.append(response_path)
+        if expected_total_results is not None and page_total != expected_total_results:
+            raise RetrievalError(
+                f"API totalResults drift: expected {expected_total_results}, received {page_total}"
+            )
         captured += returned
         if captured < total and (returned == 0 or returned < count):
             raise RetrievalError("incomplete retrieval: Scopus returned an unexpected short page")
@@ -236,6 +245,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--query")
     parser.add_argument("--query-reference")
     parser.add_argument("--count", type=int, default=DEFAULT_COUNT)
+    parser.add_argument("--expected-total-results", type=int)
     parser.add_argument("--raw-dir", type=Path, default=Path("research/raw/systematic-search"))
     parser.add_argument("--dry-run", action="store_true")
     return parser
@@ -249,7 +259,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             return 0
         if not args.query:
             raise ValueError("--query is required unless --dry-run is used")
-        summary = retrieve(query_id=args.query_id, query=args.query, api_key=os.environ.get(API_KEY_ENV, ""), raw_dir=args.raw_dir, count=args.count)
+        summary = retrieve(query_id=args.query_id, query=args.query, api_key=os.environ.get(API_KEY_ENV, ""), raw_dir=args.raw_dir, count=args.count, expected_total_results=args.expected_total_results)
         print(json.dumps({"totalResults": summary.total_results, "raw_captured_records": summary.raw_captured_records, "api_calls": summary.api_calls, "reconciliation": "Complete", "raw_artifacts": [str(path) for path in summary.artifacts]}, indent=2))
         return 0
     except (ValueError, RetrievalError) as error:
