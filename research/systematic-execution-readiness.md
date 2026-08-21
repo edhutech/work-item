@@ -28,7 +28,7 @@ The repository contains historical pre-freeze wording such as `Requires further 
 | Execution logging | Ready with documented limitation | `search-log.md` is the designated systematic execution log; raw artifact references must be added with each execution record. |
 | Raw storage and naming | Ready with documented limitation | The convention below must be used when raw artifacts are first created. No raw artifact is created by this audit. |
 | Methodological consistency | Ready | Historical wording is identified and does not override current frozen decisions. |
-| Scopus API support | Prepared, not approved | Technical connectivity is verified; exact frozen-query web-vs-API equivalence validation remains required before API replacement. |
+| Scopus API support | Validated for frozen-query retrieval | Query `S1-F1-SCOPUS-01-v1` matched the Web count and a 10-record EID+DOI sample; exact frozen-query and raw-provenance controls remain mandatory. |
 | Unresolved blocker | None | No issue makes the frozen search technically impossible, methodologically ambiguous, or untraceable. |
 
 ## Branch And Query Audit
@@ -150,6 +150,6 @@ All readiness areas are `Ready` or `Ready with documented limitation`. The histo
 
 No systematic query was executed. No systematic result count was collected. No corpus, Source ID, deduplication, screening, evidence extraction, synthesis, Work Item characteristic, or research conclusion was produced.
 
-Scopus Search API tooling is prepared but not methodologically approved as a replacement for manual Scopus export. The required web-vs-API equivalence gate compares the same frozen Query ID, exact query expression, Scopus web count, API `totalResults`, and a deterministic stable-identifier sample. No Scopus API systematic query was executed during setup.
+Scopus Search API retrieval is validated for the frozen Scopus query representation based on Query ID `S1-F1-SCOPUS-01-v1`, identical frozen query representation, matching Web/API counts of `2596`, and exact EID+DOI agreement for `10/10` sampled records. Identical ordering is not required; the observed difference was attributable to publication-date ties. This validation is Scopus-specific and does not generalize to other databases. The API may now be used for frozen Scopus systematic queries with exact-query and immutable raw-provenance controls. No full retrieval or corpus creation occurred during validation.
 
 **Systematic execution ready; begin controlled search execution**
