@@ -47,9 +47,9 @@ This log records real systematic-search execution provenance. It is separate fro
 
 ## Approved Batch 1 Resumption Handoff
 
-- **Preparation state:** Controlled resumption prepared; no database query has been executed.
+- **Preparation state:** Controlled resumption underway; one approved F1 v1.1 piece completed and the second remains unexecuted.
 - **Correction status:** The approved IEEE Xplore v1.1 correction supersedes the pending successor note in the historical v1 record without altering that record.
-- **F1 rerun scope:** Both approved v1.1 pieces are required to represent the complete corrected F1 retrieval.
+- **F1 rerun scope:** Both approved v1.1 pieces are required to represent the complete corrected F1 retrieval; `S1-F1-IEEE-02-v1.1` remains pending.
 - **Execution-unit rule:** `S1-F1-IEEE-01-v1.1` and `S1-F1-IEEE-02-v1.1` are independent execution units. Each must retain its own IEEE-reported result count, raw export, execution status, and provenance.
 - **Combination rule:** After both raw outputs are preserved, their records are combined as a raw union for F1. No deduplication occurs during execution or export.
 - **Count rule:** The two Query ID counts must not be summed or interpreted as a unique F1 count. A unique branch-level count is a later post-capture and post-deduplication value.
@@ -61,11 +61,27 @@ This log records real systematic-search execution provenance. It is separate fro
 
 - **Query ID:** `S1-F1-IEEE-01-v1.1`
 - **Branch:** Software work units and work definition (`F1`)
-- **Status:** Approved for later execution; Not executed
+- **Status:** `Completed`
 - **Database:** IEEE Xplore
 - **Interface:** IEEE Xplore Command Search
 - **Exact executable expression:** `(("Document Title":"software development" OR "Abstract":"software development" OR "Author Keywords":"software development") OR ("Document Title":"software engineering" OR "Abstract":"software engineering" OR "Author Keywords":"software engineering") OR ("Document Title":programming OR "Abstract":programming OR "Author Keywords":programming)) AND (("Document Title":"software task" OR "Abstract":"software task" OR "Author Keywords":"software task") OR ("Document Title":"software development task" OR "Abstract":"software development task" OR "Author Keywords":"software development task") OR ("Document Title":ticket OR "Abstract":ticket OR "Author Keywords":ticket) OR ("Document Title":"work unit" OR "Abstract":"work unit" OR "Author Keywords":"work unit"))`
 - **Query version:** `v1.1`
+- **Execution date:** `2026-08-21`
+- **Filters:** None; no date, publication-type, or language filter
+- **Database-reported result count:** `228`
+- **Export format:** IEEE Xplore Citation export; Plain Text; Citation and Abstract
+- **Raw artifacts:**
+  - `research/raw/systematic-search/S1-F1-IEEE-01-v1.1__run-20260821T134155__page-001.txt` — 100 raw records
+  - `research/raw/systematic-search/S1-F1-IEEE-01-v1.1__run-20260821T134155__page-002.txt` — 100 raw records
+  - `research/raw/systematic-search/S1-F1-IEEE-01-v1.1__run-20260821T134155__page-003.txt` — 28 raw records
+- **Total raw captured records:** `228`
+- **Reconciliation:** `228` database-reported results / `228` raw captured records
+- **Reconciliation status:** `Complete`
+- **Execution-time deduplication:** `None`
+- **Screening:** `Not started`
+- **Evidence extraction:** `None`
+- **Synthesis:** `None`
+- **Research conclusions:** `None`
 
 #### S1-F1-IEEE-02-v1.1
 
@@ -77,4 +93,4 @@ This log records real systematic-search execution provenance. It is separate fro
 - **Exact executable expression:** `(("Document Title":"software development" OR "Abstract":"software development" OR "Author Keywords":"software development") OR ("Document Title":"software engineering" OR "Abstract":"software engineering" OR "Author Keywords":"software engineering") OR ("Document Title":programming OR "Abstract":programming OR "Author Keywords":programming)) AND (("Document Title":"work item" OR "Abstract":"work item" OR "Author Keywords":"work item") OR ("Document Title":"issue description" OR "Abstract":"issue description" OR "Author Keywords":"issue description") OR ("Document Title":"user story" OR "Abstract":"user story" OR "Author Keywords":"user story") OR ("Document Title":"change request" OR "Abstract":"change request" OR "Author Keywords":"change request"))`
 - **Query version:** `v1.1`
 
-These handoff entries introduce no date, publication-type, language, or additional field filters. They do not collect counts, exports, or records.
+The remaining F1 handoff entry introduces no date, publication-type, language, or additional field filters and remains pending execution. The F1 branch and `S1-BATCH-001` remain incomplete until `S1-F1-IEEE-02-v1.1`, F2A, and F2B are handled under their approved execution units.
