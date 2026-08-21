@@ -44,3 +44,37 @@ This log records real systematic-search execution provenance. It is separate fro
 - No screening occurred.
 - No evidence extraction or synthesis occurred.
 - No Work Item characteristic or research conclusion was derived.
+
+## Approved Batch 1 Resumption Handoff
+
+- **Preparation state:** Controlled resumption prepared; no database query has been executed.
+- **Correction status:** The approved IEEE Xplore v1.1 correction supersedes the pending successor note in the historical v1 record without altering that record.
+- **F1 rerun scope:** Both approved v1.1 pieces are required to represent the complete corrected F1 retrieval.
+- **Execution-unit rule:** `S1-F1-IEEE-01-v1.1` and `S1-F1-IEEE-02-v1.1` are independent execution units. Each must retain its own IEEE-reported result count, raw export, execution status, and provenance.
+- **Combination rule:** After both raw outputs are preserved, their records are combined as a raw union for F1. No deduplication occurs during execution or export.
+- **Count rule:** The two Query ID counts must not be summed or interpreted as a unique F1 count. A unique branch-level count is a later post-capture and post-deduplication value.
+- **F2A/F2B status:** `S1-F2A-IEEE-01-v1` and `S1-F2B-IEEE-01-v1` remain unexecuted; neither is marked Failed.
+
+### Human Execution Handoff: F1
+
+#### S1-F1-IEEE-01-v1.1
+
+- **Query ID:** `S1-F1-IEEE-01-v1.1`
+- **Branch:** Software work units and work definition (`F1`)
+- **Status:** Approved for later execution; Not executed
+- **Database:** IEEE Xplore
+- **Interface:** IEEE Xplore Command Search
+- **Exact executable expression:** `(("Document Title":"software development" OR "Abstract":"software development" OR "Author Keywords":"software development") OR ("Document Title":"software engineering" OR "Abstract":"software engineering" OR "Author Keywords":"software engineering") OR ("Document Title":programming OR "Abstract":programming OR "Author Keywords":programming)) AND (("Document Title":"software task" OR "Abstract":"software task" OR "Author Keywords":"software task") OR ("Document Title":"software development task" OR "Abstract":"software development task" OR "Author Keywords":"software development task") OR ("Document Title":ticket OR "Abstract":ticket OR "Author Keywords":ticket) OR ("Document Title":"work unit" OR "Abstract":"work unit" OR "Author Keywords":"work unit"))`
+- **Query version:** `v1.1`
+
+#### S1-F1-IEEE-02-v1.1
+
+- **Query ID:** `S1-F1-IEEE-02-v1.1`
+- **Branch:** Software work units and work definition (`F1`)
+- **Status:** Approved for later execution; Not executed
+- **Database:** IEEE Xplore
+- **Interface:** IEEE Xplore Command Search
+- **Exact executable expression:** `(("Document Title":"software development" OR "Abstract":"software development" OR "Author Keywords":"software development") OR ("Document Title":"software engineering" OR "Abstract":"software engineering" OR "Author Keywords":"software engineering") OR ("Document Title":programming OR "Abstract":programming OR "Author Keywords":programming)) AND (("Document Title":"work item" OR "Abstract":"work item" OR "Author Keywords":"work item") OR ("Document Title":"issue description" OR "Abstract":"issue description" OR "Author Keywords":"issue description") OR ("Document Title":"user story" OR "Abstract":"user story" OR "Author Keywords":"user story") OR ("Document Title":"change request" OR "Abstract":"change request" OR "Author Keywords":"change request"))`
+- **Query version:** `v1.1`
+
+These handoff entries introduce no date, publication-type, language, or additional field filters. They do not collect counts, exports, or records.
