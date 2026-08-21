@@ -19,10 +19,10 @@ from urllib.request import Request, urlopen
 
 ENDPOINT = "https://api.elsevier.com/content/search/scopus"
 API_KEY_ENV = "ELSEVIER_API_KEY"
-DEFAULT_COUNT = 25
+DEFAULT_COUNT = 200
 DEFAULT_CALL_LIMIT = 200
 DEFAULT_PACE_SECONDS = 1.0
-DEFAULT_VIEW = "COMPLETE"
+DEFAULT_VIEW = "STANDARD"
 MAX_OFFSET_RESULTS = 5000
 VIEW_LIMITS = {"STANDARD": 200, "COMPLETE": 25}
 TRANSIENT_STATUS_CODES = frozenset({408, 425, 429, 500, 502, 503, 504})
@@ -128,7 +128,7 @@ def retrieve(
     count: int = DEFAULT_COUNT, call_limit: int = DEFAULT_CALL_LIMIT,
     pace_seconds: float = DEFAULT_PACE_SECONDS, retries: int = 3,
     expected_total_results: int | None = None,
-    view: str = DEFAULT_VIEW, pagination: str = "auto",
+    view: str | None = None, pagination: str = "auto",
     run_timestamp: str | None = None, opener: Callable[..., Any] = urlopen,
     sleeper: Callable[[float], None] = time.sleep,
 ) -> RetrievalSummary:
@@ -144,9 +144,10 @@ def retrieve(
         raise RetrievalError("the exact frozen Scopus query is required")
     if not api_key:
         raise RetrievalError(f"{API_KEY_ENV} is not set")
-    view = view.upper()
-    if view not in VIEW_LIMITS or count < 1 or count > VIEW_LIMITS[view]:
-        raise RetrievalError(f"count must be between 1 and {VIEW_LIMITS.get(view, 0)} for {view} view")
+    requested_view = view.upper() if view else None
+    effective_view = requested_view or DEFAULT_VIEW
+    if requested_view not in {None, *VIEW_LIMITS} or count < 1 or count > VIEW_LIMITS[effective_view]:
+        raise RetrievalError(f"count must be between 1 and {VIEW_LIMITS.get(effective_view, 0)} for {effective_view} view")
     if pagination not in {"auto", "offset", "cursor"} or call_limit < 1 or retries < 0 or pace_seconds < 0:
         raise RetrievalError("invalid pagination, pacing, retry, or call-limit configuration")
     if expected_total_results is not None and expected_total_results < 0:
@@ -175,7 +176,9 @@ def retrieve(
             delay = pace_seconds - (time.monotonic() - last_call_at)
             if delay > 0:
                 sleeper(delay)
-        params = {"query": query, "count": count, "view": view}
+        params = {"query": query, "count": count}
+        if requested_view is not None:
+            params["view"] = requested_view
         if cursor is not None:
             params["cursor"] = cursor
         else:
@@ -230,7 +233,7 @@ def retrieve(
         metadata = {
             "query_id": query_id, "database": "Scopus",
             "source": "Scopus Search API", "endpoint": ENDPOINT, "start": start,
-            "page": page, "count": count, "view": view,
+            "page": page, "count": count, "view": effective_view,
             "pagination": mode, "cursor": cursor,
             "cursor_next": _cursor_next(payload),
             "returned": returned, "totalResults": total,
@@ -284,17 +287,19 @@ def equivalence_report(*, query_id: str, web_query_id: str, web_query: str,
 
 
 def dry_run(*, query_id: str, query_reference: str, count: int, raw_dir: Path,
-            view: str = DEFAULT_VIEW, pagination: str = "auto") -> str:
-    view = view.upper()
-    if (not QUERY_ID_PATTERN.fullmatch(query_id) or view not in VIEW_LIMITS
-            or count < 1 or count > VIEW_LIMITS[view]
+            view: str | None = None, pagination: str = "auto") -> str:
+    requested_view = view.upper() if view else None
+    effective_view = requested_view or DEFAULT_VIEW
+    if (not QUERY_ID_PATTERN.fullmatch(query_id) or requested_view not in {None, *VIEW_LIMITS}
+            or count < 1 or count > VIEW_LIMITS[effective_view]
             or pagination not in {"auto", "offset", "cursor"}):
         raise ValueError("invalid Query ID or count")
+    view_line = "View: STANDARD default route" if requested_view is None else f"View: {effective_view}"
     return "\n".join([
         "Scopus Search API dry-run",
         f"Query ID: {query_id}", f"Endpoint: {ENDPOINT}",
         f"Exact frozen query/reference: {query_reference}",
-        f"View: {view}; pagination: {pagination}; count={count}",
+        f"{view_line}; pagination: {pagination}; count={count}",
         f"Raw-output directory: {raw_dir}",
         "Authentication: X-ELS-APIKey header (network not accessed)",
         "API execution: no (dry-run)",
@@ -307,7 +312,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--query")
     parser.add_argument("--query-reference")
     parser.add_argument("--count", type=int, default=DEFAULT_COUNT)
-    parser.add_argument("--view", choices=tuple(VIEW_LIMITS), default=DEFAULT_VIEW)
+    parser.add_argument("--view", choices=tuple(VIEW_LIMITS))
     parser.add_argument("--pagination", choices=("auto", "offset", "cursor"), default="auto")
     parser.add_argument("--expected-total-results", type=int)
     parser.add_argument("--raw-dir", type=Path, default=Path("research/raw/systematic-search"))

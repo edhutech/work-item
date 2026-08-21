@@ -142,3 +142,29 @@ The two F1 query-piece raw outputs are retained as independent provenance and fo
 - **Synthesis:** `None`
 - **Unique corpus count:** Not derived beyond this single-query raw retrieval
 - **Operational notes:** Exact frozen query was submitted unchanged. Raw API JSON responses were preserved before transformation with Query ID, Scopus source, page, start position, count, totalResults, run timestamp, and exact query in non-secret metadata sidecars. The API key was not written to responses, sidecars, filenames, or logs.
+
+### S1-F2A-SCOPUS-01-v1
+
+- **Query ID:** `S1-F2A-SCOPUS-01-v1`
+- **Branch ID:** `F2A`
+- **Branch:** Requirements and specifications
+- **Branch status:** `Primary`
+- **Database:** Scopus
+- **Execution mechanism:** Scopus Search API
+- **Query version:** `v1`
+- **Execution date:** `2026-08-21`
+- **Exact frozen query:** `TITLE-ABS-KEY((software OR "software engineering") AND ("software requirements" OR "requirements engineering" OR "requirements specification" OR "software requirements specification" OR "functional requirements" OR "non-functional requirements"))`
+- **Fields:** Title, abstract, and author keywords through Scopus `TITLE-ABS-KEY(...)`
+- **Filters:** None; no date, publication-type, language, subject, or additional result filter
+- **View and pagination:** `COMPLETE`; automatic cursor pagination policy
+- **Execution status:** `Failed`
+- **API result status:** HTTP `401 Unauthorized`
+- **API-reported result count:** `Not available`
+- **Raw captured records:** `0`
+- **Raw artifacts:** `None`; the request failed before the first page was captured
+- **Reconciliation:** `Not attempted`
+- **Pagination integrity:** `Not applicable; no page was returned`
+- **Execution-time deduplication:** `None`
+- **Screening:** `Not started`
+- **Evidence extraction:** `None`
+- **Operational notes:** The exact frozen query was submitted unchanged. Retrieval stopped on the authentication response; no alternate view, pagination mode, or query representation was attempted. No corpus artifact was created.
