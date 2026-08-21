@@ -68,6 +68,14 @@ The IEEE web Command Search execution remains authoritative. The API is a separa
 
 The web field strategy is `Document Title`, `Abstract`, and `Author Keywords`. API field behavior is not assumed equivalent: `index_terms` may include more than Author Keywords. Unless exact Author Keywords-only semantics are demonstrated, API replacement remains unresolved and unapproved. API retrieval, if later approved, preserves untouched JSON responses under `research/raw/systematic-search/`, reports `totalfound`, reconciles raw counts, and does not retrieve full text, screen, deduplicate, extract evidence, or synthesize findings.
 
+### Scopus Search API support boundary
+
+Local setup-only support is prepared in [`tools/scopus_search.py`](./tools/scopus_search.py). Scopus API connectivity has been technically verified separately with HTTP 200; no systematic Scopus query was executed during this setup, no API key was requested, printed, logged, or stored, and no corpus record was created. The utility reads `ELSEVIER_API_KEY` only for the `X-ELS-APIKey` request header.
+
+The frozen Scopus web query expressions in [`systematic-queries.md`](./systematic-queries.md) remain authoritative. The utility accepts the exact frozen `TITLE-ABS-KEY(...)` expression and does not translate, simplify, or regenerate it. API replacement of manual Scopus export is not methodologically approved. Before any replacement, the same frozen Query ID, exact web/API expression, Scopus web count, API `totalResults`, and a deterministic sample of stable EIDs and/or DOIs must be compared; matching counts alone are insufficient.
+
+Raw API response bytes are preserved unchanged under `research/raw/systematic-search/` with immutable pagination metadata sidecars. Retrieval reconciles captured entries to API `totalResults`, fails on incomplete pagination, performs no execution-time deduplication, screening, or evidence extraction, and uses conservative pacing. No systematic API execution occurred in this setup.
+
 ### ACM Digital Library
 
 - **Access:** Public - Basic Edition. No Premium institutional access was used during verification.
