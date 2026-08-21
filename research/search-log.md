@@ -2387,12 +2387,12 @@ The existing F5/F4/F3 rows remain canonical. P9 materially recalibrated the foll
 | structural code retrieval | repository context selection | P9-F6A-02, P10-F6A2-01 | Code intelligence and SWE-bench Pro | test provisionally | Keep separate from generic code retrieval and memory. |
 | knowledge compression | repository context representation | P9-F6A-02 | Repository retrieval | investigate separately | Source-specific/architecture term; includes structured repository maps. |
 | software knowledge map | repository context representation | P9-F6A-02 | Structural repository retrieval | investigate separately | Architecture-specific term from OwlPath. |
-| functional decomposition | agent task decomposition | P9-F6B-02, P10-F6B2-01 | SWE-agent memory/planning | test provisionally | Agent-side decomposition; not equivalent to F3 project decomposition or explicit planning. |
-| explicit planning | agent planning | P9-F6B-01, P10-F6B1-01 | SWE-agent scaffolds | test provisionally | Plan as a first-class pre-execution artifact. |
-| implicit planning | agent planning | P9-F6B-01, P10-F6B1-01 | SWE-agent scaffolds | test provisionally | Structural conventions in an agent loop; distinct from an explicit plan. |
-| plan-source intervention | planning evaluation | P9-F6B-01 | Cross-scaffold agent evaluation | investigate separately | Evaluation vocabulary, not a planning synonym. |
-| dependency-aware task plans | multi-agent planning | P9-F6B-02, P10-F6B2-01 | Multi-agent software development | test provisionally | Connects planning with delegation and integration; retain separate from decomposition. |
-| centralized task delegation | multi-agent software development | P9-F6B-02 | PaperBench/Commit0-style environments | investigate separately | Delegation/coordination term, not clarification or autonomy itself. |
+| functional decomposition | agent task decomposition | P9-F6B-02, P10-F6B2-01, PEC-F6B2-01 | SWE-agent memory/planning | retain as focused supplementary term | Agent-side decomposition; not equivalent to F3 project decomposition or explicit planning. The focused check confirms a narrow term with distinct memory/indexing and delegation uses. |
+| explicit planning | agent planning | P9-F6B-01, P10-F6B1-01, PEC-F6B1-01 | SWE-agent scaffolds | retain as focused supplementary term | Plan as a first-class pre-execution artifact. The focused check found one direct plan-source intervention, but exact wording remains sparse. |
+| implicit planning | agent planning | P9-F6B-01, P10-F6B1-01, PEC-F6B1-01 | SWE-agent scaffolds | retain as focused supplementary term | Structural conventions in an agent loop; distinct from an explicit plan. |
+| plan-source intervention | planning evaluation | P9-F6B-01, PEC-F6B1-01 | Cross-scaffold agent evaluation | retain as focused supplementary term | Evaluation vocabulary, not a planning synonym; directly observed in the focused DCAS record. |
+| dependency-aware task plans | multi-agent planning | P9-F6B-02, P10-F6B2-01, PEC-F6B2-01 | Multi-agent software development | retain as focused supplementary term | Connects planning with delegation and integration; retain separate from functional decomposition and generic planning. |
+| centralized task delegation | multi-agent software development | P9-F6B-02, PEC-F6B2-01 | PaperBench/Commit0-style environments | retain as focused supplementary term | Delegation/coordination term, not clarification or autonomy itself; keep separate from single-agent subtask memory. |
 | clarification-seeking | agent interaction | P9-F6C-01, P10-F6C1-01 | Underspecified coding tasks | retain as primary F6-C term | More direct than generic `clarification`; preserve uncertainty-detection context. |
 | requirement elicitation | agent interaction/specification refinement | P9-F6C-01, P9-F6C-02 | Ambiguous coding tasks | test provisionally | Adjacent requirements tradition; do not collapse with user dialogue quality. |
 | underspecified instructions | ambiguity/interaction | P9-F6C-01, P9-F6C-02 | Coding-agent benchmarks | retain as primary contextual term | Benchmark/task condition, not a Work Item characteristic. |
@@ -3458,3 +3458,136 @@ Observed authorities were automated tests and hidden tests; independent test sui
 P12 established a defensible provisional split by object, outcome, evaluation authority, and traditional-SE/coding-agent boundary: change correctness and validation; review and acceptance; rework and revision; coding-agent benchmark success; and human/semantic evaluation. The fifth branch remains supplementary because retrieval was sparse, not because the construct was treated as irrelevant. Systematic design may now specify separate strings and screening rules for these subfamilies, while preserving explicit extraction of authority, unit of analysis, temporal relation, benchmark dependence, publication status, and semantic-versus-social outcome distinctions.
 
 No Work Item characteristics, acceptance criteria, lifecycle, hypotheses, or research conclusions were derived. No systematic search has begun. No commit was made.
+
+## Focused Pre-Execution Calibration - F6B1/F6B2
+
+This focused pre-execution calibration was conducted on 2026-08-21 after the Pilot Search phase had closed. It is not a new Pilot Round and does not reopen P1-P12. It is limited to the two unresolved branches in the current systematic-search design: F6B1, `Planning process and architecture`, and F6B2, `Functional decomposition, subtasks, and delegation`.
+
+The purpose was search-method calibration only. The searches were bounded coding-agent-specific discovery checks, not systematic searches. Counts are source-reported diagnostics and are not prevalence, precision, recall, evidence-strength, or corpus counts. No complete result set was retained.
+
+### Recovered unresolved issues from P9/P10
+
+- **F6B1:** P9/P10 established that planning is recognizable but heterogeneous. The literature mixes planner modules and workflow architecture with explicit/implicit planning distinctions, plan-source interventions, trajectory collection, and rule-based versus agent-based workflows. Planning-module presence cannot be treated as evidence that planning was studied as an intervention or outcome. The exact planning vocabulary is sparse, and generic planning terminology risks contamination.
+- **F6B2:** P9/P10 established a smaller but recognizable neighborhood that mixes at least two objects: functional decomposition used to organize subtask-level memory/indexing, and multi-agent delegation using dependency-aware plans, isolated workspaces, and integration. These are not interchangeable, and neither is equivalent to F3 human/project decomposition. The branch was unresolved because direct terminology was sparse and the relationship to planning and orchestration was not yet stable.
+
+### PEC-F6B1-01
+
+- **Search ID:** `PEC-F6B1-01`
+- **Date:** `2026-08-21`
+- **Evidence stream:** Coding-agent-specific scientific discovery
+- **Database / source:** arXiv API
+- **Query:** `all:"software engineering agent" AND (all:"explicit planning" OR all:"implicit planning" OR all:"plan-source intervention" OR all:"planning-aware trajectories")`
+- **Fields searched:** arXiv `all` fields
+- **Filters:** None; first 10 sorted by relevance
+- **Result count:** `1` reported by arXiv
+- **Results inspected:** The complete bounded response: title, abstract, authors, date, category, and available metadata for the single record
+- **Inspected source:** `DCAS: Decoupling CLI Agent Scaffolding to Internalize Planning across Scaffolds` (arXiv:2608.06113)
+- **Observed retrieval behavior:** The query was highly precise but exact terminology was sparse. The record explicitly separated a first-class pre-execution plan from implicit scaffold planning and described a controlled plan-source intervention and planning-aware trajectory collection.
+- **Conceptual observation:** F6B1 has a recognizable coding-agent object when planning is defined as an explicit or implicit process/structure in repository-level agent execution. Architecture descriptions, planning interventions, and trajectory collection must be separate extraction categories.
+- **Directness and maturity:** The inspected record is directly about coding-agent scaffolds and includes an intervention/comparison design. P9/P10 also established that the wider neighborhood is mainly architecture descriptions, benchmark comparisons, and recent preprint work, with only limited direct intervention evidence.
+- **Known-source checks:** DCAS `Retrieved`; HyperAgent `Retrieved` by individual arXiv record check and applicable as planner-architecture evidence; PatchPilot `Retrieved` by individual arXiv record check and applicable as a planning-workflow comparison; Agentless `Retrieved` by individual arXiv record check and applicable as a non-planning/agentless boundary source; SWE-agent `Not applicable` to this planning-specific branch; SWE-bench `Not applicable` as a benchmark rather than a planning study.
+- **Query adjustment:** None. The query was intentionally a terminology and boundary test, not a recall-maximizing query.
+- **Rationale:** One focused revision was not needed: the result directly answered whether the P10 terms identify a coding-agent planning neighborhood, while its low count documents a remaining maturity/recall limitation.
+- **Notes:** The result does not establish that planning improves coding-agent outcomes. It validates a search object and an intervention/architecture distinction only.
+
+### PEC-F6B2-01
+
+- **Search ID:** `PEC-F6B2-01`
+- **Date:** `2026-08-21`
+- **Evidence stream:** Coding-agent-specific scientific discovery
+- **Database / source:** arXiv API
+- **Query:** `all:"software engineering agent" AND (all:"functional decomposition" OR all:"subtask-level" OR all:"task delegation" OR all:"dependency-aware task plans")`
+- **Fields searched:** arXiv `all` fields
+- **Filters:** None; first 10 sorted by relevance
+- **Result count:** `2` reported by arXiv
+- **Results inspected:** The complete bounded response: titles, abstracts, authors, dates, categories, and available metadata for both records
+- **Inspected sources:** `Structurally Aligned Subtask-Level Memory for Software Engineering Agents` (arXiv:2602.21611); `Effective Strategies for Asynchronous Software Engineering Agents` (arXiv:2603.21489)
+- **Observed retrieval behavior:** The query produced a small, coherent agent-side neighborhood, but the two records represented different objects. The first used functional decomposition to align subtask-level memory storage, retrieval, and updating. The second used dependency-aware task plans, centralized delegation, concurrent subtasks, isolated workspaces, and integration in a multi-agent setting.
+- **Conceptual observation:** F6B2 has a recognizable coding-agent object when restricted to agent-side formation, representation, execution, or delegation of software subtasks. Single-agent functional decomposition/memory indexing and multi-agent delegation/coordination must remain separate sub-branches or extraction categories.
+- **Directness and maturity:** Both inspected records are directly about software-engineering agents and software tasks, but the neighborhood is very small and recent. It is primarily architecture/method descriptions plus benchmark or task-environment evaluations. The evidence is sufficient for a supplementary retrieval role, not a claim of a mature unified construct.
+- **Known-source checks:** Structurally Aligned Subtask-Level Memory `Retrieved`; Effective Strategies for Asynchronous Software Engineering Agents `Retrieved`; HyperAgent `Not applicable` to the decomposition/delegation query because its checked abstract identifies a Planner/Navigator/Code Editor/Executor architecture but not an inspected subtask-decomposition or delegation object; DCAS `Not applicable` to this branch because its checked abstract concerns planning structure and plan-source intervention; SWE-agent `Not applicable` to this decomposition-specific branch; SWE-bench `Not applicable` as a benchmark rather than a decomposition study.
+- **Query adjustment:** None. The focused query already separated the branch from generic task decomposition and returned a bounded sample suitable for the decision.
+- **Rationale:** A revision was not needed: the result exposed the concrete boundary that matters, namely functional subtask representation versus multi-agent delegation, without requiring broader synonym expansion.
+- **Notes:** The result does not establish that decomposition, delegation, or multi-agent coordination improves outcomes. It validates the search object and the need to preserve the two settings.
+
+### Focused terminology decision
+
+No new canonical term was required. The existing terminology registry rows were updated in place with `PEC-F6B1-01` or `PEC-F6B2-01` provenance where this run materially validated or narrowed their role. No duplicate canonical rows were created.
+
+#### F6B1 retained terminology
+
+- **Primary branch terms:** `explicit planning`, `implicit planning`, and `plan-source intervention`.
+- **Contextual terms:** `planning structure`, `planning-aware trajectories`, `planner`, `multi-stage workflow`, and `task plans`.
+- **Boundary terms:** `agent-based planning` and `rule-based planning` are useful comparison labels when the source explicitly contrasts workflows; they are not synonyms for one planning construct.
+- **Noise/exclusions:** Unqualified `planning`, generic AI planning, robotics/project planning, and planner presence without an explicit planning object, comparison, intervention, or process-analysis purpose. `reasoning plan` is not authorized as a primary term unless a source explicitly connects it to coding-agent software execution and an observable plan object.
+
+#### F6B2 retained terminology
+
+- **Primary branch terms:** `functional decomposition`, `subtask-level`, `task delegation`, and `dependency-aware task plans`.
+- **Contextual terms:** `centralized task delegation`, `subtask execution`, `isolated workspaces`, `multi-agent coordination`, and `branch-and-merge`.
+- **Required separation:** Functional decomposition/subtask representation and multi-agent delegation/coordination must be labeled separately during execution and screening.
+- **Noise/exclusions:** Unqualified `task decomposition`, `work decomposition`, generic project decomposition, crowdsourcing allocation, generic multi-agent task allocation, and planning without an identifiable software subtask object. Human/team/project decomposition remains F3 evidence, not F6B2 evidence.
+
+### Independent branch assessment
+
+#### F6B1 Planning process and architecture
+
+- **Conceptual coherence:** Moderate. A recognizable object exists when planning means an explicit plan artifact, implicit scaffold planning structure, or a directly analyzed planning intervention in a coding-agent workflow. Planner architecture alone is not enough.
+- **Retrieval coherence:** Moderate to high for the narrow validated terms, but exact terminology is sparse. The broader `planning` query retrieves a mixed neighborhood of architecture, workflow, environment, and training material. Software-engineering-agent qualification materially improves coherence but does not remove the need for screening.
+- **Directness:** Direct coding-agent studies are present, including the DCAS planning intervention and the HyperAgent/PatchPilot planning-workflow records. Agentless is useful as a boundary comparator, not as ordinary planning evidence.
+- **Empirical maturity:** Mostly architecture descriptions and benchmark comparisons, with a smaller set of cross-scaffold or intervention-oriented studies. P9/P10 and PEC-F6B1-01 do not establish a mature or homogeneous evidence base.
+- **Distinctness:** Distinct from F6B2 when planning is the process/structure or intervention and decomposition is the formation/organization of subtasks. Dependency-aware plans can connect both branches, so the unit of analysis must be recorded.
+- **Relationship to other families:** It overlaps F3 coding plans and decomposition, but F3 remains human/project work decomposition. It overlaps F5 population/scaffold terms, which qualify the agent population rather than define planning. It overlaps F6D2 when plans are analyzed through trajectories, but a trajectory is an execution record, not automatically planning evidence.
+- **Status decision:** `Supplementary`. The branch is coherent and directly relevant, but the evidence is sparse, architecture-heavy, terminology-sensitive, and not mature enough for `Primary`.
+
+#### F6B2 Functional decomposition, subtasks, and delegation
+
+- **Conceptual coherence:** Moderate. The branch is coherent only when the source identifies agent-side software subtasks, their decomposition/representation, or delegation and integration of those subtasks. The two observed traditions must remain separate.
+- **Retrieval coherence:** Moderate for the validated exact terms, with a very small result set. Generic task decomposition and delegation are too contaminated by F3, crowdsourcing, robotics, and general multi-agent literature. The software-engineering-agent qualifier is necessary but not sufficient.
+- **Directness:** Direct coding-agent studies are present in both retrieved records. The functional-decomposition record concerns subtask-aligned memory, while the delegation record concerns multi-agent software work and integration. These are direct but different settings.
+- **Empirical maturity:** Primarily recent architecture/method descriptions and benchmark or custom-environment evaluations. There is insufficient evidence here to treat the branch as a single mature construct.
+- **Distinctness:** Distinct from F6B1 when subtask formation, subtask representation, delegation, or integration is the object. Planning can produce dependency-aware task plans, so planning-only papers remain F6B1 unless a subtask/delegation object is studied.
+- **Relationship to other families:** It overlaps F3 decomposition, allocation, and interdependence, but F6B2 requires an agent-side software-work object. It overlaps F6B1 through dependency-aware plans, but the branch should not be reduced to planning. It overlaps F6D1 through tool/environment mechanisms such as isolated workspaces and branch-and-merge, but those are execution mechanisms rather than decomposition evidence.
+- **Status decision:** `Supplementary`. The branch provides a meaningful gap-covering search contribution, but its direct literature is sparse and split between single-agent subtask representation and multi-agent delegation.
+
+### Planning-versus-decomposition decision
+
+Planning and decomposition are distinct enough to retain as separate branches. The separation is methodological, not a claim that the processes are independent in every system:
+
+- F6B1 asks whether an agent planning process or planning structure is present, represented, compared, or intervened on.
+- F6B2 asks whether software work is formed, represented, assigned, executed, or integrated as agent-side subtasks or delegated units.
+- `dependency-aware task plans` can be retrieved by both branches, but the source must be classified by its actual object of study rather than by the term alone.
+- Planner presence, multi-agent architecture, or a task list is not sufficient evidence for either branch without an identifiable object of study.
+
+Generic AI planning is a major F6B1 exclusion boundary. Generic multi-agent delegation/allocation is a major F6B2 exclusion boundary. Both should be excluded unless the source explicitly connects the mechanism to coding-agent software work and provides an assessable planning, subtask, or delegation object.
+
+### Execution implications
+
+- Both branches can proceed to systematic-query freeze as supplementary branches; this calibration does not perform that freeze.
+- F6B1 should use separate query variants for explicit/implicit planning and plan-source or planning-process evaluation. Architecture-only planner terms should be retained as contextual/sensitivity terms and screened separately.
+- F6B2 should use separate variants for functional decomposition/subtask representation and multi-agent delegation/coordination. `dependency-aware task plans` should not be used as an undifferentiated synonym across those variants.
+- Database-specific query splitting may be required for both branches because field, Boolean, term-count, and export constraints differ by database. This is an execution adaptation, not a conceptual branch change. No new database validation was performed here.
+- No broader F6, F-family, or database-set change is authorized by this calibration.
+
+## Focused Calibration Decisions
+
+1. **F6B1 status:** `Supplementary`.
+2. **F6B2 status:** `Supplementary`.
+3. **Separate branches:** Yes. Planning and decomposition are distinct enough to retain separately, with explicit handling of their overlap.
+4. **F6B1 primary terminology:** `explicit planning`, `implicit planning`, and `plan-source intervention`.
+5. **F6B2 primary terminology:** `functional decomposition`, `subtask-level`, `task delegation`, and `dependency-aware task plans`.
+6. **Contextual/excluded terms:** F6B1 keeps planner/workflow/trajectory terms contextual and excludes generic AI/project planning; F6B2 keeps coordination/workspace/integration terms contextual and excludes generic project decomposition, crowdsourcing, and generic multi-agent allocation.
+7. **Generic AI planning boundary:** Yes, major exclusion boundary for F6B1.
+8. **Generic multi-agent delegation/allocation boundary:** Yes, major exclusion boundary for F6B2.
+9. **Database-specific splitting:** Yes, execution may require database-specific query splitting for both branches; F6B2 also requires conceptual sub-branch splitting between functional decomposition and delegation.
+10. **Systematic-query freeze:** Both branches can now proceed to systematic-query freeze as `Supplementary` branches. The freeze itself is not performed in this run.
+
+### Remaining uncertainty
+
+The remaining uncertainty concerns how often database-indexed literature uses these exact terms, whether additional venue literature uses different labels, and how the two F6B2 traditions should be distributed across the systematic databases. Publication status, full-text methods, population details, benchmark conditions, and study quality remain later screening/extraction matters. These uncertainties do not prevent supplementary search-method calibration, but they require explicit extraction and boundary screening during systematic execution.
+
+## Focused Calibration Exit Decision
+
+**F6B1 and F6B2 sufficiently calibrated for systematic-query freeze**
+
+This was not a new Pilot Round. No systematic search was executed, no complete systematic result set or corpus was collected, no screening or evidence extraction was performed, and no Work Item characteristics or research conclusions were derived. No other F-family status, database set, protocol, or search-design artifact was changed. No commit was made.
