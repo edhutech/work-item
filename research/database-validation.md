@@ -60,6 +60,14 @@ The diagnostic records are not part of the systematic corpus.
 
 The diagnostic records are not part of the systematic corpus.
 
+### IEEE Metadata API support boundary
+
+Local support for the IEEE Xplore Metadata API is prepared in [`tools/ieee_metadata.py`](./tools/ieee_metadata.py). The utility is setup-only in this change: no API request was made, no systematic query was executed, and no API result or corpus record was created. The local credential is read only from `IEEE_API_KEY`; it is not stored, printed, logged, placed in URLs saved to disk, or preserved in raw artifacts.
+
+The IEEE web Command Search execution remains authoritative. The API is a separate executable representation and is not approved as a substitute for web systematic retrieval. The candidate validation case is `S1-F2A-IEEE-01-v1.1`, with an observed web result-count target of `4798`; count equality alone is insufficient. The prepared validation gate also requires the web field strategy, the candidate API representation, and a deterministic sample comparison using stable article numbers and/or DOIs.
+
+The web field strategy is `Document Title`, `Abstract`, and `Author Keywords`. API field behavior is not assumed equivalent: `index_terms` may include more than Author Keywords. Unless exact Author Keywords-only semantics are demonstrated, API replacement remains unresolved and unapproved. API retrieval, if later approved, preserves untouched JSON responses under `research/raw/systematic-search/`, reports `totalfound`, reconciles raw counts, and does not retrieve full text, screen, deduplicate, extract evidence, or synthesize findings.
+
 ### ACM Digital Library
 
 - **Access:** Public - Basic Edition. No Premium institutional access was used during verification.
