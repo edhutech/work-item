@@ -81,6 +81,31 @@ class ScopusSearchTests(unittest.TestCase):
         self.assertNotIn("secret", requests[0].full_url)
         self.assertEqual(requests[0].get_header("X-els-apikey"), "secret")
 
+    def test_default_request_uses_standard_route_without_complete_view(self):
+        requests = []
+
+        def opener(request, timeout):
+            requests.append(request)
+            return FakeResponse(response([], total=0))
+
+        with tempfile.TemporaryDirectory() as directory:
+            retrieve(query_id="S1-F1-SCOPUS-01-v1", query="exact", api_key="secret", raw_dir=Path(directory), pace_seconds=0, opener=opener, sleeper=lambda _seconds: None)
+        self.assertNotIn("view=", requests[0].full_url)
+        self.assertIn("count=200", requests[0].full_url)
+        self.assertEqual(requests[0].get_header("X-els-apikey"), "secret")
+
+    def test_complete_view_is_explicit_opt_in(self):
+        requests = []
+
+        def opener(request, timeout):
+            requests.append(request)
+            return FakeResponse(response([], total=0))
+
+        with tempfile.TemporaryDirectory() as directory:
+            retrieve(query_id="S1-F1-SCOPUS-01-v1", query="exact", api_key="secret", raw_dir=Path(directory), view="COMPLETE", count=25, pace_seconds=0, opener=opener, sleeper=lambda _seconds: None)
+        self.assertIn("view=COMPLETE", requests[0].full_url)
+        self.assertIn("count=25", requests[0].full_url)
+
     def test_large_result_set_uses_cursor_and_reconciles(self):
         total = 5001
         requests = []
@@ -101,6 +126,8 @@ class ScopusSearchTests(unittest.TestCase):
             self.assertEqual(summary.api_calls, 26)
             self.assertEqual(len(summary.artifacts), 26)
             self.assertIn("cursor=", requests[1].full_url)
+            self.assertTrue(all(request.get_header("X-els-apikey") == "secret" for request in requests))
+            self.assertTrue(all(request.get_header("Accept") == "application/json" for request in requests))
             metadata = json.loads(summary.artifacts[0].with_suffix(".metadata.json").read_text())
             self.assertEqual(metadata["cursor"], "*")
             self.assertEqual(metadata["cursor_next"], "1")
