@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Setup-only Scopus Search API support; it does not alter frozen queries."""
+"""Scopus Search API retrieval support; it does not alter frozen queries."""
 
 from __future__ import annotations
 
@@ -22,6 +22,9 @@ API_KEY_ENV = "ELSEVIER_API_KEY"
 DEFAULT_COUNT = 25
 DEFAULT_CALL_LIMIT = 200
 DEFAULT_PACE_SECONDS = 1.0
+DEFAULT_VIEW = "COMPLETE"
+MAX_OFFSET_RESULTS = 5000
+VIEW_LIMITS = {"STANDARD": 200, "COMPLETE": 25}
 TRANSIENT_STATUS_CODES = frozenset({408, 425, 429, 500, 502, 503, 504})
 QUERY_ID_PATTERN = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]*$")
 
@@ -41,6 +44,14 @@ def artifact_path(raw_dir: Path, query_id: str, run_timestamp: str, start: int) 
     if start < 0:
         raise ValueError("start must not be negative")
     return raw_dir / f"{query_id}__run-{run_timestamp}__api-start-{start:06d}.json"
+
+
+def cursor_artifact_path(raw_dir: Path, query_id: str, run_timestamp: str, page: int) -> Path:
+    if not QUERY_ID_PATTERN.fullmatch(query_id):
+        raise ValueError("Query ID contains unsupported filename characters")
+    if page < 1:
+        raise ValueError("page must be at least 1")
+    return raw_dir / f"{query_id}__run-{run_timestamp}__api-page-{page:06d}.json"
 
 
 def _metadata_path(response_path: Path) -> Path:
@@ -68,6 +79,15 @@ def _entries(payload: Mapping[str, Any]) -> list[Any]:
     if not isinstance(entries, list):
         raise RetrievalError("Scopus response entry is not a list")
     return entries
+
+
+def _cursor_next(payload: Mapping[str, Any]) -> str | None:
+    search_results = payload.get("search-results")
+    cursor = search_results.get("cursor") if isinstance(search_results, Mapping) else None
+    if not isinstance(cursor, Mapping):
+        return None
+    value = cursor.get("@next", cursor.get("next"))
+    return str(value) if value not in (None, "") else None
 
 
 def _write_immutable(path: Path, data: bytes) -> None:
@@ -108,24 +128,36 @@ def retrieve(
     count: int = DEFAULT_COUNT, call_limit: int = DEFAULT_CALL_LIMIT,
     pace_seconds: float = DEFAULT_PACE_SECONDS, retries: int = 3,
     expected_total_results: int | None = None,
+    view: str = DEFAULT_VIEW, pagination: str = "auto",
     run_timestamp: str | None = None, opener: Callable[..., Any] = urlopen,
     sleeper: Callable[[float], None] = time.sleep,
 ) -> RetrievalSummary:
-    """Retrieve untouched Scopus pages. No deduplication or screening occurs."""
+    """Retrieve untouched Scopus pages without deduplication or screening.
+
+    ``auto`` uses cursor pagination from the first request so a result set can
+    safely cross the Scopus offset boundary. ``offset`` remains available for
+    explicitly bounded result sets.
+    """
     if not query_id or not QUERY_ID_PATTERN.fullmatch(query_id):
         raise RetrievalError("invalid Query ID")
     if not query:
         raise RetrievalError("the exact frozen Scopus query is required")
     if not api_key:
         raise RetrievalError(f"{API_KEY_ENV} is not set")
-    if count < 1 or count > 200 or call_limit < 1 or retries < 0 or pace_seconds < 0:
+    view = view.upper()
+    if view not in VIEW_LIMITS or count < 1 or count > VIEW_LIMITS[view]:
+        raise RetrievalError(f"count must be between 1 and {VIEW_LIMITS.get(view, 0)} for {view} view")
+    if pagination not in {"auto", "offset", "cursor"} or call_limit < 1 or retries < 0 or pace_seconds < 0:
         raise RetrievalError("invalid pagination, pacing, retry, or call-limit configuration")
     if expected_total_results is not None and expected_total_results < 0:
         raise RetrievalError("expected totalResults cannot be negative")
 
     raw_dir.mkdir(parents=True, exist_ok=True)
     timestamp = run_timestamp or datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    mode = "cursor" if pagination == "auto" else pagination
     start = 0
+    cursor = "*" if mode == "cursor" else None
+    seen_cursors: set[str] = set()
     total: int | None = None
     captured = 0
     calls = 0
@@ -135,12 +167,21 @@ def retrieve(
     while total is None or captured < total:
         if calls >= call_limit:
             raise RetrievalError("daily API call limit would be exceeded")
+        if cursor is not None:
+            if cursor in seen_cursors:
+                raise RetrievalError(f"repeated Scopus cursor detected: {cursor}")
+            seen_cursors.add(cursor)
         if last_call_at is not None:
             delay = pace_seconds - (time.monotonic() - last_call_at)
             if delay > 0:
                 sleeper(delay)
+        params = {"query": query, "count": count, "view": view}
+        if cursor is not None:
+            params["cursor"] = cursor
+        else:
+            params["start"] = start
         request = Request(
-            f"{ENDPOINT}?{urlencode({'query': query, 'start': start, 'count': count})}",
+            f"{ENDPOINT}?{urlencode(params)}",
             headers={"Accept": "application/json", "X-ELS-APIKey": api_key},
         )
         payload_bytes: bytes | None = None
@@ -180,12 +221,19 @@ def retrieve(
         returned = len(page_entries)
         if captured + returned > total:
             raise RetrievalError("raw captured record count exceeds totalResults")
-        response_path = artifact_path(raw_dir, query_id, timestamp, start)
+        page = len(artifacts) + 1
+        response_path = (
+            cursor_artifact_path(raw_dir, query_id, timestamp, page)
+            if cursor is not None
+            else artifact_path(raw_dir, query_id, timestamp, start)
+        )
         metadata = {
             "query_id": query_id, "database": "Scopus",
             "source": "Scopus Search API", "endpoint": ENDPOINT, "start": start,
-            "page": len(artifacts) + 1,
-            "count": count, "returned": returned, "totalResults": total,
+            "page": page, "count": count, "view": view,
+            "pagination": mode, "cursor": cursor,
+            "cursor_next": _cursor_next(payload),
+            "returned": returned, "totalResults": total,
             "run_timestamp": timestamp, "exact_query": query,
             "raw_response": response_path.name,
         }
@@ -196,10 +244,20 @@ def retrieve(
             raise RetrievalError(
                 f"API totalResults drift: expected {expected_total_results}, received {page_total}"
             )
+        if mode == "offset" and total > MAX_OFFSET_RESULTS:
+            raise RetrievalError(
+                f"Scopus totalResults {total} exceeds the {MAX_OFFSET_RESULTS}-record offset boundary; use cursor pagination"
+            )
         captured += returned
         if captured < total and (returned == 0 or returned < count):
-            raise RetrievalError("incomplete retrieval: Scopus returned an unexpected short page")
-        start += returned
+            raise RetrievalError("incomplete retrieval: Scopus returned an unexpected short page or empty page")
+        next_cursor = _cursor_next(payload) if cursor is not None else None
+        if cursor is not None:
+            if captured < total and not next_cursor:
+                raise RetrievalError("incomplete retrieval: Scopus returned no next cursor before totalResults")
+            cursor = next_cursor
+        else:
+            start += returned
         if returned == 0 and captured < total:
             raise RetrievalError("incomplete retrieval: pagination made no progress")
 
@@ -225,14 +283,18 @@ def equivalence_report(*, query_id: str, web_query_id: str, web_query: str,
             "status": "pending validation"}
 
 
-def dry_run(*, query_id: str, query_reference: str, count: int, raw_dir: Path) -> str:
-    if not QUERY_ID_PATTERN.fullmatch(query_id) or count < 1 or count > 200:
+def dry_run(*, query_id: str, query_reference: str, count: int, raw_dir: Path,
+            view: str = DEFAULT_VIEW, pagination: str = "auto") -> str:
+    view = view.upper()
+    if (not QUERY_ID_PATTERN.fullmatch(query_id) or view not in VIEW_LIMITS
+            or count < 1 or count > VIEW_LIMITS[view]
+            or pagination not in {"auto", "offset", "cursor"}):
         raise ValueError("invalid Query ID or count")
     return "\n".join([
         "Scopus Search API dry-run",
         f"Query ID: {query_id}", f"Endpoint: {ENDPOINT}",
         f"Exact frozen query/reference: {query_reference}",
-        f"Pagination: start=0, then advance by returned entry count; count={count}",
+        f"View: {view}; pagination: {pagination}; count={count}",
         f"Raw-output directory: {raw_dir}",
         "Authentication: X-ELS-APIKey header (network not accessed)",
         "API execution: no (dry-run)",
@@ -245,6 +307,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--query")
     parser.add_argument("--query-reference")
     parser.add_argument("--count", type=int, default=DEFAULT_COUNT)
+    parser.add_argument("--view", choices=tuple(VIEW_LIMITS), default=DEFAULT_VIEW)
+    parser.add_argument("--pagination", choices=("auto", "offset", "cursor"), default="auto")
     parser.add_argument("--expected-total-results", type=int)
     parser.add_argument("--raw-dir", type=Path, default=Path("research/raw/systematic-search"))
     parser.add_argument("--dry-run", action="store_true")
@@ -255,11 +319,11 @@ def main(argv: Sequence[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     try:
         if args.dry_run:
-            print(dry_run(query_id=args.query_id, query_reference=args.query_reference or args.query or "not supplied", count=args.count, raw_dir=args.raw_dir))
+            print(dry_run(query_id=args.query_id, query_reference=args.query_reference or args.query or "not supplied", count=args.count, raw_dir=args.raw_dir, view=args.view, pagination=args.pagination))
             return 0
         if not args.query:
             raise ValueError("--query is required unless --dry-run is used")
-        summary = retrieve(query_id=args.query_id, query=args.query, api_key=os.environ.get(API_KEY_ENV, ""), raw_dir=args.raw_dir, count=args.count, expected_total_results=args.expected_total_results)
+        summary = retrieve(query_id=args.query_id, query=args.query, api_key=os.environ.get(API_KEY_ENV, ""), raw_dir=args.raw_dir, count=args.count, expected_total_results=args.expected_total_results, view=args.view, pagination=args.pagination)
         print(json.dumps({"totalResults": summary.total_results, "raw_captured_records": summary.raw_captured_records, "api_calls": summary.api_calls, "reconciliation": "Complete", "raw_artifacts": [str(path) for path in summary.artifacts]}, indent=2))
         return 0
     except (ValueError, RetrievalError) as error:

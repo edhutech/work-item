@@ -29,6 +29,7 @@ The repository contains historical pre-freeze wording such as `Requires further 
 | Raw storage and naming | Ready with documented limitation | The convention below must be used when raw artifacts are first created. No raw artifact is created by this audit. |
 | Methodological consistency | Ready | Historical wording is identified and does not override current frozen decisions. |
 | Scopus API support | Validated for frozen-query retrieval | Query `S1-F1-SCOPUS-01-v1` matched the Web count and a 10-record EID+DOI sample; exact frozen-query and raw-provenance controls remain mandatory. |
+| Scopus large-result pagination | Ready with documented view constraint | `COMPLETE` preserves the conservative metadata contract at 25 records/request; cursor pagination is required for result sets beyond the 5,000-record offset boundary. |
 | Unresolved blocker | None | No issue makes the frozen search technically impossible, methodologically ambiguous, or untraceable. |
 
 ## Branch And Query Audit
@@ -151,5 +152,7 @@ All readiness areas are `Ready` or `Ready with documented limitation`. The histo
 No systematic query was executed. No systematic result count was collected. No corpus, Source ID, deduplication, screening, evidence extraction, synthesis, Work Item characteristic, or research conclusion was produced.
 
 Scopus Search API retrieval is validated for the frozen Scopus query representation based on Query ID `S1-F1-SCOPUS-01-v1`, identical frozen query representation, matching Web/API counts of `2596`, and exact EID+DOI agreement for `10/10` sampled records. Identical ordering is not required; the observed difference was attributable to publication-date ties. This validation is Scopus-specific and does not generalize to other databases. The API may now be used for frozen Scopus systematic queries with exact-query and immutable raw-provenance controls. No full retrieval or corpus creation occurred during validation.
+
+For future Scopus retrievals, `COMPLETE` view with 25 records/request is the default metadata-preserving policy. `pagination=auto` uses cursor pagination to avoid the 5,000-record offset boundary; offset pagination remains supported only for bounded sets. Cursor tokens, page provenance, raw responses, and reconciliation status must be retained, and repeated or incomplete cursor progression is a blocking failure.
 
 **Systematic execution ready; begin controlled search execution**
