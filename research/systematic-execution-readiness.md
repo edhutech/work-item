@@ -28,6 +28,7 @@ The repository contains historical pre-freeze wording such as `Requires further 
 | Execution logging | Ready with documented limitation | `search-log.md` is the designated systematic execution log; raw artifact references must be added with each execution record. |
 | Raw storage and naming | Ready with documented limitation | The convention below must be used when raw artifacts are first created. No raw artifact is created by this audit. |
 | Methodological consistency | Ready | Historical wording is identified and does not override current frozen decisions. |
+| Scopus API support | Prepared, not approved | Technical connectivity is verified; exact frozen-query web-vs-API equivalence validation remains required before API replacement. |
 | Unresolved blocker | None | No issue makes the frozen search technically impossible, methodologically ambiguous, or untraceable. |
 
 ## Branch And Query Audit
@@ -148,5 +149,7 @@ Future logs and raw filenames must use only database names, frozen Query IDs, ge
 All readiness areas are `Ready` or `Ready with documented limitation`. The historical status wording and freeze-time ACM blocker are not current instructions and do not create an execution ambiguity. No methodological inconsistency, frozen-query defect, provenance failure, or unresolved database blocker was found. The planned raw storage/naming and execution-state conventions above close the remaining correctable operational documentation gaps without changing the protocol or frozen queries.
 
 No systematic query was executed. No systematic result count was collected. No corpus, Source ID, deduplication, screening, evidence extraction, synthesis, Work Item characteristic, or research conclusion was produced.
+
+Scopus Search API tooling is prepared but not methodologically approved as a replacement for manual Scopus export. The required web-vs-API equivalence gate compares the same frozen Query ID, exact query expression, Scopus web count, API `totalResults`, and a deterministic stable-identifier sample. No Scopus API systematic query was executed during setup.
 
 **Systematic execution ready; begin controlled search execution**
