@@ -4,6 +4,7 @@ import unittest
 from pathlib import Path
 
 from research.tools.scopus_search import (
+    DEFAULT_COUNT,
     RetrievalError,
     artifact_path,
     cursor_artifact_path,
@@ -91,8 +92,23 @@ class ScopusSearchTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             retrieve(query_id="S1-F1-SCOPUS-01-v1", query="exact", api_key="secret", raw_dir=Path(directory), pace_seconds=0, opener=opener, sleeper=lambda _seconds: None)
         self.assertNotIn("view=", requests[0].full_url)
-        self.assertIn("count=200", requests[0].full_url)
+        self.assertIn(f"count={DEFAULT_COUNT}", requests[0].full_url)
         self.assertEqual(requests[0].get_header("X-els-apikey"), "secret")
+
+    def test_default_pagination_is_offset_and_cursor_is_unavailable(self):
+        requests = []
+
+        def opener(request, timeout):
+            requests.append(request)
+            return FakeResponse(response([], total=0))
+
+        with tempfile.TemporaryDirectory() as directory:
+            with self.assertRaisesRegex(RetrievalError, "cursor pagination is unavailable"):
+                retrieve(query_id="S1-F1-SCOPUS-01-v1", query="exact", api_key="secret", raw_dir=Path(directory), pagination="cursor", pace_seconds=0, opener=opener, sleeper=lambda _seconds: None)
+        self.assertEqual(requests, [])
+
+    def test_default_page_size_is_empirically_safe_value(self):
+        self.assertEqual(DEFAULT_COUNT, 25)
 
     def test_complete_view_is_explicit_opt_in(self):
         requests = []
@@ -120,7 +136,7 @@ class ScopusSearchTests(unittest.TestCase):
             return FakeResponse(response([{"eid": str(index)} for index in range(start, start + returned)], total, next_cursor))
 
         with tempfile.TemporaryDirectory() as directory:
-            summary = retrieve(query_id="S1-F1-SCOPUS-01-v1", query="candidate", api_key="secret", raw_dir=Path(directory), view="STANDARD", count=200, pace_seconds=0, opener=opener, sleeper=lambda _seconds: None)
+            summary = retrieve(query_id="S1-F1-SCOPUS-01-v1", query="candidate", api_key="secret", raw_dir=Path(directory), view="STANDARD", count=200, pagination="cursor", cursor_available=True, pace_seconds=0, opener=opener, sleeper=lambda _seconds: None)
             self.assertEqual(summary.raw_captured_records, total)
             self.assertTrue(summary.reconciled)
             self.assertEqual(summary.api_calls, 26)
@@ -143,7 +159,7 @@ class ScopusSearchTests(unittest.TestCase):
 
         with tempfile.TemporaryDirectory() as directory:
             with self.assertRaisesRegex(RetrievalError, "repeated Scopus cursor"):
-                retrieve(query_id="S1-F1-SCOPUS-01-v1", query="candidate", api_key="secret", raw_dir=Path(directory), count=2, pace_seconds=0, opener=opener, sleeper=lambda _seconds: None)
+                retrieve(query_id="S1-F1-SCOPUS-01-v1", query="candidate", api_key="secret", raw_dir=Path(directory), count=2, pagination="cursor", cursor_available=True, pace_seconds=0, opener=opener, sleeper=lambda _seconds: None)
 
     def test_premature_empty_cursor_page_fails(self):
         calls = []
@@ -156,7 +172,7 @@ class ScopusSearchTests(unittest.TestCase):
 
         with tempfile.TemporaryDirectory() as directory:
             with self.assertRaisesRegex(RetrievalError, "short page or empty page"):
-                retrieve(query_id="S1-F1-SCOPUS-01-v1", query="candidate", api_key="secret", raw_dir=Path(directory), count=2, pace_seconds=0, opener=opener, sleeper=lambda _seconds: None)
+                retrieve(query_id="S1-F1-SCOPUS-01-v1", query="candidate", api_key="secret", raw_dir=Path(directory), count=2, pagination="cursor", cursor_available=True, pace_seconds=0, opener=opener, sleeper=lambda _seconds: None)
 
     def test_cursor_without_next_token_fails_reconciliation(self):
         def opener(_request, timeout):
@@ -164,7 +180,7 @@ class ScopusSearchTests(unittest.TestCase):
 
         with tempfile.TemporaryDirectory() as directory:
             with self.assertRaisesRegex(RetrievalError, "no next cursor"):
-                retrieve(query_id="S1-F1-SCOPUS-01-v1", query="candidate", api_key="secret", raw_dir=Path(directory), count=2, pace_seconds=0, opener=opener, sleeper=lambda _seconds: None)
+                retrieve(query_id="S1-F1-SCOPUS-01-v1", query="candidate", api_key="secret", raw_dir=Path(directory), count=2, pagination="cursor", cursor_available=True, pace_seconds=0, opener=opener, sleeper=lambda _seconds: None)
 
     def test_offset_rejects_result_sets_over_boundary(self):
         def opener(_request, timeout):

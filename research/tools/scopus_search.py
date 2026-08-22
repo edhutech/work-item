@@ -19,10 +19,12 @@ from urllib.request import Request, urlopen
 
 ENDPOINT = "https://api.elsevier.com/content/search/scopus"
 API_KEY_ENV = "ELSEVIER_API_KEY"
-DEFAULT_COUNT = 200
+DEFAULT_COUNT = 25
 DEFAULT_CALL_LIMIT = 200
 DEFAULT_PACE_SECONDS = 1.0
 DEFAULT_VIEW = "STANDARD"
+DEFAULT_PAGINATION = "offset"
+CURSOR_PAGINATION_AVAILABLE = False
 MAX_OFFSET_RESULTS = 5000
 VIEW_LIMITS = {"STANDARD": 200, "COMPLETE": 25}
 TRANSIENT_STATUS_CODES = frozenset({408, 425, 429, 500, 502, 503, 504})
@@ -128,16 +130,16 @@ def retrieve(
     count: int = DEFAULT_COUNT, call_limit: int = DEFAULT_CALL_LIMIT,
     pace_seconds: float = DEFAULT_PACE_SECONDS, retries: int = 3,
     expected_total_results: int | None = None,
-    view: str | None = None, pagination: str = "auto",
+    view: str | None = None, pagination: str = DEFAULT_PAGINATION,
+    cursor_available: bool = CURSOR_PAGINATION_AVAILABLE,
     run_timestamp: str | None = None, opener: Callable[..., Any] = urlopen,
     sleeper: Callable[[float], None] = time.sleep,
 ) -> RetrievalSummary:
     """Retrieve untouched Scopus pages without deduplication or screening.
 
-    ``auto`` uses cursor pagination from the first request when the Scopus
-    service entitlement permits it. ``offset`` remains available for
-    explicitly bounded result sets; large sets must use the validated Web
-    workflow when cursor access is restricted.
+    Cursor pagination remains implemented for a future entitlement, but is
+    disabled by the current service-level policy. Offset pagination is the
+    operational default and is limited to complete sets at or below 5,000.
     """
     if not query_id or not QUERY_ID_PATTERN.fullmatch(query_id):
         raise RetrievalError("invalid Query ID")
@@ -151,6 +153,8 @@ def retrieve(
         raise RetrievalError(f"count must be between 1 and {VIEW_LIMITS.get(effective_view, 0)} for {effective_view} view")
     if pagination not in {"auto", "offset", "cursor"} or call_limit < 1 or retries < 0 or pace_seconds < 0:
         raise RetrievalError("invalid pagination, pacing, retry, or call-limit configuration")
+    if pagination in {"auto", "cursor"} and not cursor_available:
+        raise RetrievalError("cursor pagination is unavailable under the current Scopus service-level policy")
     if expected_total_results is not None and expected_total_results < 0:
         raise RetrievalError("expected totalResults cannot be negative")
 
@@ -250,7 +254,7 @@ def retrieve(
             )
         if mode == "offset" and total > MAX_OFFSET_RESULTS:
             raise RetrievalError(
-                f"Scopus totalResults {total} exceeds the {MAX_OFFSET_RESULTS}-record offset boundary; use cursor pagination"
+                f"Scopus totalResults {total} exceeds the {MAX_OFFSET_RESULTS}-record offset boundary; use Scopus Web"
             )
         captured += returned
         if captured < total and (returned == 0 or returned < count):
@@ -288,7 +292,7 @@ def equivalence_report(*, query_id: str, web_query_id: str, web_query: str,
 
 
 def dry_run(*, query_id: str, query_reference: str, count: int, raw_dir: Path,
-            view: str | None = None, pagination: str = "auto") -> str:
+            view: str | None = None, pagination: str = DEFAULT_PAGINATION) -> str:
     requested_view = view.upper() if view else None
     effective_view = requested_view or DEFAULT_VIEW
     if (not QUERY_ID_PATTERN.fullmatch(query_id) or requested_view not in {None, *VIEW_LIMITS}
@@ -314,7 +318,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--query-reference")
     parser.add_argument("--count", type=int, default=DEFAULT_COUNT)
     parser.add_argument("--view", choices=tuple(VIEW_LIMITS))
-    parser.add_argument("--pagination", choices=("auto", "offset", "cursor"), default="auto")
+    parser.add_argument("--pagination", choices=("auto", "offset", "cursor"), default=DEFAULT_PAGINATION)
     parser.add_argument("--expected-total-results", type=int)
     parser.add_argument("--raw-dir", type=Path, default=Path("research/raw/systematic-search"))
     parser.add_argument("--dry-run", action="store_true")
