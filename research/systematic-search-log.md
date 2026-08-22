@@ -266,6 +266,38 @@ The two F1 query-piece raw outputs are retained as independent provenance and fo
 - **Unique corpus count:** Not derived beyond this single-query raw retrieval
 - **Operational notes:** The exact frozen query was submitted unchanged. The bounded count established that the complete set fit the available non-cursor offset boundary. Raw API JSON responses were preserved before transformation with Query ID, Scopus source, page, start position, count, totalResults, run timestamp, and exact query in non-secret metadata sidecars. The API key was not written to responses, sidecars, filenames, or logs. No deduplication, screening, or evidence extraction occurred.
 
+### S1-F3B-SCOPUS-01-v1
+
+- **Query ID:** `S1-F3B-SCOPUS-01-v1`
+- **Branch ID:** `F3B`
+- **Branch:** Task descriptions and issue representations
+- **Branch status:** `Primary`
+- **Database:** Scopus
+- **Execution mechanism:** Scopus Search API
+- **Query version:** `v1`
+- **Execution date:** `2026-08-22`
+- **Exact frozen query:** `TITLE-ABS-KEY(("software project" OR "issue-tracking system" OR "software development") AND ("issue description" OR "issue comments" OR "textual descriptions of issues" OR "software task description"))`
+- **Fields:** Title, abstract, and author keywords through Scopus `TITLE-ABS-KEY(...)`
+- **Filters:** None; no date, publication-type, language, subject, or additional result filter
+- **Request route:** STANDARD/default; no explicit `view` parameter
+- **Bounded API request:** HTTP `200`; `count=1`, offset pagination, `totalResults=50`; raw response preserved as `research/raw/systematic-search/S1-F3B-SCOPUS-01-v1__run-bounded-20260822T233910Z__api-start-000000.json` with metadata sidecar
+- **Complete retrieval request:** HTTP `200`; offset pagination, `count=25`; cursor pagination was not attempted
+- **Execution status:** `Completed`
+- **Database-reported API result count:** `50`
+- **Raw captured records:** `50`
+- **Pagination:** `2` API calls/pages, starts `0` and `25` in increments of `25`; final page contained `25` records
+- **Raw artifacts:** `research/raw/systematic-search/S1-F3B-SCOPUS-01-v1__run-20260822T234430Z__api-start-000000.json` and `research/raw/systematic-search/S1-F3B-SCOPUS-01-v1__run-20260822T234430Z__api-start-000025.json`, with one immutable metadata sidecar per response
+- **Reconciliation:** `50` API-reported results / `50` raw captured records
+- **Reconciliation status:** `Complete`
+- **Missing pagination ranges:** `No`; starts were contiguous and complete
+- **Duplicate pagination ranges:** `No`
+- **Execution-time deduplication:** `None`
+- **Screening:** `Not started`
+- **Evidence extraction:** `None`
+- **Synthesis:** `None`
+- **Unique corpus count:** Not derived beyond this single-query raw retrieval
+- **Operational notes:** The exact frozen query was submitted unchanged. The bounded count established that the complete set fit the available non-cursor offset boundary. Raw API JSON responses were preserved before transformation with Query ID, Scopus source, page, start position, count, totalResults, run timestamp, and exact query in non-secret metadata sidecars. The API key was not written to responses, sidecars, filenames, or logs. No deduplication, screening, or evidence extraction occurred.
+
 ### S1-F3A-SCOPUS-01-v1
 
 - **Query ID:** `S1-F3A-SCOPUS-01-v1`
