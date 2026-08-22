@@ -197,3 +197,38 @@ The two F1 query-piece raw outputs are retained as independent provenance and fo
 - **Screening:** `Not started`
 - **Evidence extraction:** `None`
 - **Operational notes:** The exact frozen query was submitted unchanged. Retrieval stopped on the first cursor request; no alternate query, view, page size, or pagination mode was attempted. The earlier HTTP 401 attempt remains preserved as a separate historical record. No corpus artifact was created.
+
+### S1-F2A-SCOPUS-01-v1 Web retrieval
+
+- **Query ID:** `S1-F2A-SCOPUS-01-v1`
+- **Branch ID:** `F2A`
+- **Branch:** Requirements and specifications
+- **Branch status:** `Primary`
+- **Database:** Scopus
+- **Retrieval mechanism:** Scopus Web
+- **Query version:** `v1`
+- **Execution date:** `2026-08-22`
+- **Exact frozen query:** `TITLE-ABS-KEY((software OR "software engineering") AND ("software requirements" OR "requirements engineering" OR "requirements specification" OR "software requirements specification" OR "functional requirements" OR "non-functional requirements"))`
+- **Fields:** Title, abstract, and author keywords through Scopus `TITLE-ABS-KEY(...)`
+- **Filters:** None; no date, publication-type, language, subject, or additional result filter
+- **Execution status:** `Completed`
+- **Previous bounded API count:** `23439`
+- **Initial Scopus Web count:** `23443`
+- **Final Scopus Web verification count:** `23444`
+- **Database/result-set drift observed:** `Yes`; the observed counts changed during the retrieval window from the previous bounded API count to the initial Web count and then to the final Web verification count. The earlier inferred `17215` value was not an observed database count and is not used as the final partition count.
+- **Export limit encountered:** `20,000` records per Scopus Web CSV export
+- **Partition strategy:** Publication year, used only to satisfy the Scopus Web CSV export limit
+- **Partition 1:** `1964-2019`; `17216` raw records
+- **Partition 2:** `2020-2027`; `6228` raw records
+- **Combined raw records:** `23444`
+- **Combined distinct EIDs:** `23444`
+- **Cross-partition overlap:** None by Scopus EID or non-empty DOI
+- **Raw artifacts:**
+  - `research/raw/systematic-search/S1-F2A-SCOPUS-01-v1__run-20260822T012337__scopus-web__years-1964-2019.csv`
+  - `research/raw/systematic-search/S1-F2A-SCOPUS-01-v1__run-20260822T012337__scopus-web__years-2020-2027.csv`
+- **Reconciliation:** `Complete`; `17216 + 6228 = 23444`, matching the final observed Scopus Web full-query count
+- **Execution-time deduplication:** `None`; the raw artifacts remain unchanged and no record was removed
+- **Screening:** `Not started`
+- **Evidence extraction:** `None`
+- **Synthesis:** `None`
+- **Operational notes:** The frozen search expression was not modified. Year partitioning changed only the export batching mechanism. The final retrieval snapshot is the `23444`-record captured set. CSV diagnostics found no malformed rows, unexpected publication years, duplicate EIDs, or cross-partition EID/DOI overlap. A later `2019-2027` diagnostic view returned `7201` records, but it overlaps the `1964-2019` partition and is not part of this retrieval. The raw artifacts remain unchanged. The earlier failed API attempts remain preserved as historical provenance.
