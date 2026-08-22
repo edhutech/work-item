@@ -168,3 +168,32 @@ The two F1 query-piece raw outputs are retained as independent provenance and fo
 - **Screening:** `Not started`
 - **Evidence extraction:** `None`
 - **Operational notes:** The exact frozen query was submitted unchanged. Retrieval stopped on the authentication response; no alternate view, pagination mode, or query representation was attempted. No corpus artifact was created.
+
+### S1-F2A-SCOPUS-01-v1 retry
+
+- **Query ID:** `S1-F2A-SCOPUS-01-v1`
+- **Branch ID:** `F2A`
+- **Branch:** Requirements and specifications
+- **Branch status:** `Primary`
+- **Database:** Scopus
+- **Execution mechanism:** Scopus Search API
+- **Query version:** `v1`
+- **Execution date:** `2026-08-21`
+- **Exact frozen query:** `TITLE-ABS-KEY((software OR "software engineering") AND ("software requirements" OR "requirements engineering" OR "requirements specification" OR "software requirements specification" OR "functional requirements" OR "non-functional requirements"))`
+- **Fields:** Scopus default `STANDARD` search-result route; Title, abstract, and author-keyword query semantics remain in the frozen `TITLE-ABS-KEY(...)` expression
+- **Filters:** None; no date, publication-type, language, subject, or additional result filter
+- **Request route:** STANDARD/default; no explicit `view` parameter
+- **Pagination:** Cursor; `count=200`
+- **Execution status:** `Failed`
+- **API result status:** HTTP `400 Bad Request`
+- **Previously observed bounded API count:** `23439`
+- **Execution-time API-reported result count:** `Not available`
+- **Count drift:** `Not assessable`
+- **Raw captured records:** `0`
+- **Raw artifacts:** `None`; failure occurred before the first cursor page was captured
+- **Reconciliation:** `Not attempted`
+- **Pagination integrity:** `Not assessable; no page was returned`
+- **Execution-time deduplication:** `None`
+- **Screening:** `Not started`
+- **Evidence extraction:** `None`
+- **Operational notes:** The exact frozen query was submitted unchanged. Retrieval stopped on the first cursor request; no alternate query, view, page size, or pagination mode was attempted. The earlier HTTP 401 attempt remains preserved as a separate historical record. No corpus artifact was created.

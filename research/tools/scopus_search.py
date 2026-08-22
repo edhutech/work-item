@@ -134,9 +134,10 @@ def retrieve(
 ) -> RetrievalSummary:
     """Retrieve untouched Scopus pages without deduplication or screening.
 
-    ``auto`` uses cursor pagination from the first request so a result set can
-    safely cross the Scopus offset boundary. ``offset`` remains available for
-    explicitly bounded result sets.
+    ``auto`` uses cursor pagination from the first request when the Scopus
+    service entitlement permits it. ``offset`` remains available for
+    explicitly bounded result sets; large sets must use the validated Web
+    workflow when cursor access is restricted.
     """
     if not query_id or not QUERY_ID_PATTERN.fullmatch(query_id):
         raise RetrievalError("invalid Query ID")

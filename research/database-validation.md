@@ -74,7 +74,7 @@ Support is available in [`tools/scopus_search.py`](./tools/scopus_search.py). Sc
 
 The frozen Scopus web query expressions in [`systematic-queries.md`](./systematic-queries.md) remain authoritative. The utility accepts the exact frozen `TITLE-ABS-KEY(...)` expression and does not translate, simplify, or regenerate it. Query `S1-F1-SCOPUS-01-v1` completed the validation gate: the frozen query representation was identical, the Scopus Web count and API `totalResults` were both `2596`, and the 10-record validation samples matched exactly by EID, DOI, and EID+DOI pair (`10/10`). Web/API sample order differed because records were tied on publication date; identical ordering is not required for equivalence and this difference was not treated as a retrieval-equivalence failure.
 
-On this basis, Scopus Search API retrieval is validated for the frozen Scopus `TITLE-ABS-KEY` query representation and may now be used as the retrieval mechanism for frozen Scopus systematic queries. Each retrieval must preserve its exact frozen query, Query ID, API-reported total, request pagination, and immutable raw API provenance. This validation is specific to Scopus and does not generalize to IEEE Xplore or other databases. The validation was bounded: no full retrieval, systematic corpus artifact, screening, or deduplication occurred.
+On this basis, Scopus Search API retrieval is validated when the complete result set can be retrieved under the available service-level limits. Each retrieval must preserve its exact frozen query, Query ID, API-reported total, request pagination, and immutable raw API provenance. This validation is specific to Scopus and does not generalize to IEEE Xplore or other databases. The validation was bounded: no full retrieval, systematic corpus artifact, screening, or deduplication occurred.
 
 Raw API response bytes are preserved unchanged under `research/raw/systematic-search/` with immutable pagination metadata sidecars. Retrieval reconciles captured entries to API `totalResults`, fails on incomplete pagination, performs no execution-time deduplication, screening, or evidence extraction, and uses conservative pacing. No systematic API execution occurred in this setup.
 
@@ -84,7 +84,23 @@ The completed F1 run sent no explicit Scopus `view` or field-selection parameter
 
 The utility now uses the validated Scopus default route: it omits `view`, allowing Scopus to select `STANDARD`, and defaults to `count=200`. Explicit `view=STANDARD` is also supported at up to 200 records/request. `view=COMPLETE` is an opt-in mode limited to 25 records/request and is not required for systematic identification; it may be entitlement-restricted. STANDARD and COMPLETE response fields are not claimed to be equivalent. If richer metadata such as abstracts is needed later, that is a separate enrichment concern rather than a reason to force COMPLETE during search retrieval.
 
-Pagination policy is deterministic: `pagination=auto` uses cursor pagination from the first request, while explicit `pagination=offset` remains available for result sets at or below the 5,000-record offset boundary. Cursor mode preserves cursor provenance, detects repeated cursors, rejects premature short/empty pages, and reconciles captured entries against API `totalResults`. It fails rather than silently truncating a result set beyond the offset boundary. No deduplication or screening is performed during either mode.
+Pagination policy is deterministic in the utility, but cursor access is restricted by the currently available Scopus API entitlement. `pagination=auto` retains cursor support for an entitlement that permits it; `pagination=offset` remains available for result sets at or below the 5,000-record offset boundary. Do not state or assume that result sets above 5,000 are currently retrievable through this API service level. A large result set that cannot be completely retrieved through the available API service level must use the validated Scopus Web interface with the exact same frozen query. Do not split or rewrite the frozen query to bypass API limits, and do not combine partial API and partial Web results when a complete Web retrieval is available. No deduplication or screening is performed during retrieval.
+
+### F2A Scopus Web retrieval handoff
+
+- **Query ID:** `S1-F2A-SCOPUS-01-v1`
+- **Branch:** `F2A`, Requirements and specifications; `Primary`
+- **Exact frozen Scopus query:** `TITLE-ABS-KEY((software OR "software engineering") AND ("software requirements" OR "requirements engineering" OR "requirements specification" OR "software requirements specification" OR "functional requirements" OR "non-functional requirements"))`
+- **Query version:** `v1`
+- **Database:** Scopus
+- **Retrieval mechanism:** Scopus Web, complete result retrieval
+- **Known current result count:** `23439`
+- **Export format:** CSV, using the validated Scopus Web bulk-export workflow
+- **Maximum validated export batch size:** `20,000` documents per CSV export
+- **Batch/range plan:** Export records `1-20,000` in the first CSV and records `20,001-23,439` in the second CSV. The ranges are contiguous, non-overlapping, and together contain exactly `23,439` records.
+- **Raw artifact naming:** Stage both untouched CSV exports under `research/raw/systematic-search/` using the existing `<frozen-query-id>__run-<UTC-timestamp>.<format>` convention, with an explicit range suffix such as `S1-F2A-SCOPUS-01-v1__run-<UTC-timestamp>__web-range-000001-020000.csv` and `S1-F2A-SCOPUS-01-v1__run-<UTC-timestamp>__web-range-020001-023439.csv`.
+- **Reconciliation:** Preserve the Web-reported total and reconcile the two raw export counts to `20,000 + 3,439 = 23,439`; verify the recorded range endpoints and that no record is missing or duplicated across the two ranges. Preserve each export unchanged.
+- **Retrieval boundary:** Use the exact frozen query and do not add filters, split the query, or combine partial API output with the Web exports. No deduplication or screening occurs during retrieval.
 
 ### ACM Digital Library
 
