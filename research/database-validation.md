@@ -37,6 +37,53 @@ ACM Digital Library uses a separate feasibility gate. Basic Edition manual page-
 
 Feasibility validation is not a systematic corpus execution, and its records are not screened, deduplicated, extracted, or synthesized.
 
+## Protocol v1.1 Operational Feasibility Event: ScienceDirect
+
+**Validation date:** 2026-08-23
+
+**Event type:** Operational feasibility validation only; no systematic corpus retrieval.
+
+**Representative case:** F2A, using the frozen ScienceDirect adaptation for the combined `Title, abstract or author-specified keywords` field:
+
+`(software OR "software engineering") AND ("software requirements" OR "requirements engineering" OR "requirements specification" OR "software requirements specification" OR "functional requirements" OR "non-functional requirements")`
+
+**Historical Web baseline:** None was found in the repository's execution or validation records. No Web count was manufactured. Web/API equivalence therefore remains untested independently of the API entitlement result.
+
+### Official route inspection
+
+The inspected official documentation was Elsevier's [API specification](https://dev.elsevier.com/api_docs.html), [ScienceDirect Search API V2 specification](https://dev.elsevier.com/documentation/ScienceDirectSearchAPI.wadl), [ScienceDirect Search V2 views](https://dev.elsevier.com/sd_search_views.html), [Article Metadata API specification](https://dev.elsevier.com/documentation/ArticleMetadataAPI.wadl), [Article Metadata views](https://dev.elsevier.com/sd_article_meta_views.html), and [API-key settings and limits](https://dev.elsevier.com/api_key_settings.html).
+
+| Candidate | Officially documented capability | Bounded request | Finding |
+|---|---|---|---|
+| ScienceDirect Search API V2 | Boolean `query`; `STANDARD` view; metadata identifiers including DOI, PII, and article links; GET `count` values 10, 25, 50, or 100; `start` offset documented as 0-6000; relevance or cover-date sort. | GET `/content/search/sciencedirect`, exact F2A query, `start=0`, `count=10`, `view=STANDARD`, relevance sort. | HTTP `401`; `AUTHORIZATION_ERROR` stated that the requester was not authorized for the requested view or fields. The official description says the query searches the ScienceDirect cluster of serial/nonserial full-text articles, not exactly the frozen metadata-field scope. No result total or identifier sample was returned. |
+| Article Metadata API | Field-restricted Boolean query; `STANDARD` or `COMPLETE` view; identifiers including DOI, EID, PII, and article links; `dc:description` and `authkeywords` are available in `COMPLETE`; default 25 results. | GET `/content/metadata/article`, exact F2A query, `start=0`, `count=10`, `view=STANDARD`. | HTTP `401`; the same `AUTHORIZATION_ERROR` was returned. The documentation describes a field-restricted search against the article repository/full-text-article index, but does not establish a searchable combined Title + Abstract + Author Keywords field or independently document the required three-field representation. No result total or identifier sample was returned. |
+
+The query syntax submitted was the frozen Boolean expression above. It was not translated into undocumented field operators, split into alternatives, or broadened to make either route pass. Response views and metadata fields were kept conceptually separate from search-field semantics.
+
+### Quota, entitlement, and completeness findings
+
+- `ELSEVIER_API_KEY` was available to the bounded validator without exposing or persisting its value. Availability does not imply ScienceDirect entitlement.
+- Both routes returned HTTP `401` with `X-ELS-Status: AUTHORIZATION_ERROR`. This is an actual entitlement/authorization result, not a timeout or quota response.
+- Both responses exposed `X-RateLimit-Limit: 20000`, `X-RateLimit-Remaining: 20000`, and a reset timestamp. The observed response does not establish that the quota is usable for either ScienceDirect route because authorization failed first.
+- Search API V2 documentation states a maximum of 200 results per request and a 6,000-item total-result limit; `start` is documented as 0-6000, subject to the system default minus requested count.
+- Article Metadata API documentation states a 6,000-item total-result limit and a 25-result response limit in the official API-key settings. Its WADL does not provide a more permissive complete-retrieval model.
+- Consequently, complete auditable retrieval is not established under the current key. Even if authorization were later granted, either route would require a documented complete alternative for any query exceeding the 6,000-addressable-result ceiling.
+- No licensed record-level ScienceDirect response was captured. No raw API artifact, record-level public artifact, systematic-search manifest, or corpus file was created.
+
+### Gate decision
+
+**Preferred official route:** None approved.
+
+**Exact Web-field equivalence:** Pending Web comparison, and not established by the API documentation or bounded requests.
+
+**Stable-identifier sample comparison:** Not possible; both routes returned no records and no total.
+
+**Gate classification:** `C — Unsuitable as a systematic API route`.
+
+The classification is based on the current entitlement denial, the material Search API V2 full-text scope difference, the unestablished Article Metadata field representation, and the documented 6,000-result addressability ceiling. ScienceDirect cannot enter Protocol v1.1 seven-branch calibration through either tested API route on this evidence. A future re-evaluation would require Elsevier authorization for the relevant route, a documented field representation aligned with the frozen Web field, a human Web count, deterministic identifier comparison, and a complete-retrieval plan for result sets above the API limit.
+
+This event did not change frozen queries, retrieve a systematic corpus, screen records, deduplicate records, extract evidence, derive Work Item characteristics, or create a systematic-search manifest.
+
 ## Verified Database Records
 
 ### Scopus

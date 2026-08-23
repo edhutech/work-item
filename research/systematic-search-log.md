@@ -12,6 +12,25 @@ This log records real systematic-search execution provenance. It is separate fro
 - **Historical execution source of truth:** This log is authoritative for completed, failed, superseded, and reused historical executions. Other documents define reuse rules and must not duplicate the complete execution inventory.
 - **Current amendment status:** No new database/API request, screening, deduplication, evidence extraction, or synthesis was performed while recording this boundary.
 
+## Protocol v1.1 Operational Feasibility Event: ScienceDirect
+
+- **Event date:** `2026-08-23`
+- **Event type:** Operational feasibility validation only; not systematic-search execution.
+- **Database:** ScienceDirect
+- **Representative branch:** `F2A`
+- **Frozen field intent:** Combined `Title, abstract or author-specified keywords`
+- **Historical Web baseline:** Not available in repository records
+- **Official routes tested:** ScienceDirect Search API V2 and Article Metadata API
+- **Bounded request:** Exact frozen F2A Boolean adaptation; first page only; maximum 10 metadata results requested; no full text requested
+- **Search API V2 status:** HTTP `401`, Elsevier `AUTHORIZATION_ERROR`; no total or identifier sample
+- **Article Metadata API status:** HTTP `401`, Elsevier `AUTHORIZATION_ERROR`; no total or identifier sample
+- **Field finding:** Search API V2 is documented as searching the ScienceDirect full-text cluster. Article Metadata API is documented as field-restricted but its required Title + Abstract + Author Keywords representation was not established.
+- **Completeness finding:** Official documentation states a 6,000-item total-result limit for both routes; complete retrieval is not established under the current entitlement.
+- **Stable-identifier comparison:** Not possible; no records were returned.
+- **Gate classification:** `C — Unsuitable as a systematic API route`
+- **Systematic execution status:** No corpus retrieval, screening, deduplication, evidence extraction, or manifest creation occurred.
+- **Detailed record:** [`database-validation.md`](./database-validation.md#protocol-v11-operational-feasibility-event-sciencedirect)
+
 ## Batch S1-BATCH-001
 
 - **Batch ID:** `S1-BATCH-001`
