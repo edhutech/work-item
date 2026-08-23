@@ -31,6 +31,32 @@ This log records real systematic-search execution provenance. It is separate fro
 - **Systematic execution status:** No corpus retrieval, screening, deduplication, evidence extraction, or manifest creation occurred.
 - **Detailed record:** [`database-validation.md`](./database-validation.md#protocol-v11-operational-feasibility-event-sciencedirect)
 
+## Protocol v1.1 Operational Feasibility Event: Springer Nature Link
+
+- **Event date:** `2026-08-23`
+- **Event type:** Operational feasibility validation only; not systematic-search execution.
+- **Database:** Springer Nature Link
+- **Representative branch:** `F2A`
+- **Query ID:** `S1-F2A-SPRINGER-01-v1`
+- **Frozen Web field intent:** `Keywords`, documented as title + abstract + body text
+- **Historical Web baseline:** Not available in repository records
+- **Official route tested:** Springer Nature Meta API v2 JSON, `/meta/v2/json`
+- **Bounded request:** Exact frozen F2A expression as `q`; `p=10`, `s=1`; no full-text request
+- **API status:** HTTP `200`; API active under Basic access
+- **API total:** `71453`
+- **Pagination:** `p` page size and `s` start offset; `s=71451&p=25` returned 3 records
+- **Basic page-size limit:** `p=25` accepted; `p=50` returned HTTP `403` premium-only
+- **Quota:** 100 requests/minute and 500 requests/day under Basic account documentation
+- **Field finding:** Generic Meta API query scope was not shown to reproduce the body-inclusive Web `Keywords` field; response metadata fields were not treated as search fields
+- **Stable-identifier comparison:** API DOI/URL sample available; Web/API comparison not performed and deferred for possible future Web/manual activation
+- **Complete retrieval:** Not established as complete/auditable under the six-day minimum quota window and undocumented stable ordering
+- **Gate classification:** `C — Unsuitable as a systematic API route`
+- **API feasibility gate:** Complete; human Web validation is not required to close this API gate
+- **Human Web validation:** Deferred; required only if Springer is later activated through a Web/manual route for calibration, targeted retrieval, or gap filling
+- **Licensed-data policy:** Separate Springer review required before any calibration retrieval
+- **Systematic execution status:** No corpus retrieval, screening, deduplication, evidence extraction, synthesis, or manifest creation occurred
+- **Detailed record:** [`database-validation.md`](./database-validation.md#protocol-v11-operational-feasibility-event-springer-nature-link)
+
 ## Batch S1-BATCH-001
 
 - **Batch ID:** `S1-BATCH-001`

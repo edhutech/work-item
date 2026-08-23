@@ -84,6 +84,75 @@ The classification is based on the current entitlement denial, the material Sear
 
 This event did not change frozen queries, retrieve a systematic corpus, screen records, deduplicate records, extract evidence, derive Work Item characteristics, or create a systematic-search manifest.
 
+## Protocol v1.1 Operational Feasibility Event: Springer Nature Link
+
+**Validation date:** 2026-08-23
+
+**Event type:** Operational feasibility validation only; no systematic corpus retrieval.
+
+**Representative case:** `F2A`, Query ID `S1-F2A-SPRINGER-01-v1`, using the frozen Springer Nature Link Web `Keywords` field:
+
+`(software OR "software engineering") AND ("software requirements" OR "requirements engineering" OR "requirements specification" OR "software requirements specification" OR "functional requirements" OR "non-functional requirements")`
+
+**Historical Web baseline:** None was found in the repository's execution or validation records. No Web count was manufactured.
+
+### Official route and bounded validation
+
+The official route evaluated was the Springer Nature Meta API v2 JSON endpoint, `https://api.springernature.com/meta/v2/json`. The official Springer Nature Developer Portal identifies Meta API as providing metadata and abstracts; the API response identifies itself as Springer Nature JSON. The exact frozen Boolean expression was submitted as the `q` parameter without adding field operators, changing terms, or changing Boolean grouping.
+
+| Item | Observed finding |
+|---|---|
+| API access status | Active; HTTP `200` for the bounded F2A request under the local Basic key. |
+| API total | `71,453`, returned in the `result.total` field. |
+| Query representation | Exact frozen F2A expression in `q`; `p` is page size and `s` is the one-based start position. `p=10&s=1` returned 10 records. |
+| Stable identifiers and links | DOI identifiers were returned in `identifier`/`doi`; publication URLs were returned, including Springer Link and DOI URLs. |
+| Response metadata | Titles, creators, publication information, DOI, URLs, content type, and abstracts were present in the bounded metadata response. These response fields do not prove that the same fields were searched. |
+| Pagination | Offset pagination through `s`; `s=10001` returned HTTP `200`, and `s=71451&p=25` returned `3` records against total `71453`. |
+| Basic page-size behavior | `p=25` returned 25 records. `p=50` and `p=100` returned HTTP `403` with `premium feature`; `p=101` also returned HTTP `403`. A Basic maximum of 25 records/request is therefore operationally established by bounded tests, while larger page sizes are entitlement-restricted. |
+| Quota | Official account documentation states Basic Meta API limits of 100 requests/minute and 500 requests/day. No quota headers were exposed by the successful responses. |
+| Raw preservation | The bounded record-level JSON responses were retained only in local private temporary storage outside the repository. No Springer raw artifact or manifest was created. |
+
+### Search-field semantics
+
+The Meta API accepts the frozen Boolean and phrase representation as a generic `q` query, but the bounded response and official portal material do not establish a field-restricted representation for title, abstract, author keyword, or body text. The official portal describes the Meta API as metadata-and-abstract access, whereas the frozen Springer Web `Keywords` control is documented in this repository as searching title, abstract, and body text. Therefore:
+
+- Boolean acceptance is established syntactically, not as Web-equivalent field behavior.
+- Returning `title`, `abstract`, or keyword-like metadata is response metadata, not evidence that those fields were searched.
+- The API's searchable scope cannot be shown to include the Web `Keywords` field's body-text coverage.
+- Exact Web/API equivalence is not established; a materially narrower or otherwise different API index remains possible.
+
+No historical Web count or deterministic Web/API identifier comparison is available. This does not block closure of the API feasibility gate: the documented API incompatibility and Basic retrieval limits support Gate C independently. Human Web validation is deferred and is required only if Springer is later activated through a Web/manual route for calibration, targeted retrieval, or gap filling.
+
+### Complete-retrieval feasibility
+
+The observed total would require at least `ceil(71453 / 25) = 2,859` requests at the Basic page-size maximum. The 500-request/day quota implies a minimum of six quota days for this representative query, before retries or other API use. The endpoint accepted an offset beyond 10,000 and the final observed offset `s=71451`, so no result-addressability ceiling below the observed F2A total was demonstrated. Nevertheless, no stable sort/order control was exposed in the bounded request or response, and the multi-day capture window creates index-drift and page-stability risk. Complete auditable retrieval is therefore not established by this gate; any future attempt would require explicit page-level raw preservation, total reconciliation, duplicate/missing-page checks, and a documented stability decision.
+
+### Gate decision
+
+**Preferred official route:** Springer Nature Meta API v2 JSON, not approved as the systematic route.
+
+**Exact Web/API equivalence:** No; the Web baseline is also pending.
+
+**Stable-identifier sample comparison:** API DOI/URL sample available; Web/API comparison not possible without a human Web baseline.
+
+**Complete pagination feasible:** Not established for complete auditable retrieval under Basic quota and undocumented ordering stability.
+
+**Result-addressability limitation:** No ceiling below `71,453` was observed; the API accepted `s=71451`, but no complete-range guarantee was established.
+
+**Gate classification:** `C — Unsuitable as a systematic API route`.
+
+**API feasibility gate:** Complete.
+
+**Human Web validation to close the API gate:** No. Deferred for possible future Web/manual activation only.
+
+The classification is based on the unestablished mapping from the generic Meta API query scope to the body-inclusive Web `Keywords` field, the absence of demonstrated stable ordering across a six-day Basic-quota capture, and the resulting inability to establish complete auditable retrieval. The API is technically reachable, but reachability and returned metadata do not establish systematic-route suitability.
+
+### Licensed-data boundary
+
+Springer Nature's [API terms](https://dev.springernature.com/terms-conditions/) state that abstracts are copyrighted and restrict reuse, and that institutional-license TDM materials must remain on an internal server under the applicable license. A separate Springer licensed-data/publication policy review is required before any calibration retrieval; no such review was performed here. Bounded record-level responses remain private and are not published.
+
+This event did not change frozen queries, retrieve a systematic corpus, create a corpus manifest, screen records, deduplicate records, extract evidence, synthesize findings, or derive Work Item characteristics.
+
 ## Verified Database Records
 
 ### Scopus
