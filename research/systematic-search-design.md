@@ -4,7 +4,7 @@
 
 Pilot Rounds P1-P12 completed calibration of terminology, field behavior, major noise, known-item candidates, and branch boundaries. Families F1-F7 are ready for systematic-search design, although several families require multiple subfamilies. The pilot used discovery-oriented sources, principally arXiv, OpenAlex, and Crossref; systematic coverage of the protocol databases has not been executed or validated. No Work Item characteristics, research findings, or conclusions were derived during the pilot.
 
-The durable empirical record is [`research/search-log.md`](./search-log.md). This document specifies retrieval only. It does not perform screening, quality assessment, extraction, synthesis, or hypothesis formation.
+The durable execution record is [`systematic-search-log.md`](./systematic-search-log.md). The historical pilot record remains [`search-log.md`](./search-log.md). This document specifies retrieval only. It does not perform research-record deduplication, screening, quality assessment, extraction, synthesis, or hypothesis formation.
 
 ## 2. Research-Question Map
 
@@ -138,22 +138,56 @@ F3C and F4C2 are supplementary targeted searches. F4D is primary, but its effort
 
 F5 branches identify populations and should be used both as standalone population searches and as population blocks for F6/F7. F6C2 and F7E remain supplementary. F7C requires distinct variants for review-induced revision, software-process rework, corrective maintenance, and post-merge change. F7A must not use unqualified `verification` or `validation` as the phenomenon block.
 
-## 6. Primary Databases and Roles
+## 6. Tiered Execution Architecture
 
-The protocol databases remain the primary systematic sources:
+Protocol v1.1 uses the following prospective architecture:
 
-| Database | Intended role |
+1. Scopus systematic core: all 22 Primary branches remain planned for Scopus.
+2. Additional-database API/capture feasibility validation.
+3. Seven-branch cross-database calibration: `F2A`, `F4B`, `F5A`, `F6A1`, `F6C1`, `F7A`, and `F7D`.
+4. Calibration-corpus deduplication.
+5. Calibration title/abstract screening.
+6. Marginal-contribution and research-question coverage analysis.
+7. Freeze an empirical stopping/expansion rule.
+8. Conditional branch/database expansion.
+9. Complete systematic screening after retrieval expansion closes.
+
+Feasibility validation is operational validation and is not a systematic corpus execution. Additional databases enter the seven-branch calibration only after a feasible, complete, and auditable route is demonstrated. Existing valid historical executions may satisfy calibration cells; the execution log remains the source of truth for their status and provenance.
+
+Calibration screening is limited to methodological coverage analysis. It must not become evidence extraction, evidence synthesis, Work Item-characteristic derivation, or hypothesis formation.
+
+The six Supplementary branches (`F3C`, `F4C2`, `F6B1`, `F6B2`, `F6C2`, and `F7E`) are conditionally activated by documented evidence gaps, unresolved research-question coverage, contradiction or boundary evidence, contextual comparison needs, snowballing, or database-specific unique contribution. They are not automatically required in any database.
+
+## 7. Branch-Sensitive Database Roles
+
+The six-database source set remains unchanged, but roles are earned by branch family or evidence domain rather than assigned universally:
+
+| Database | Protocol v1.1 role policy |
 |---|---|
-| IEEE Xplore | IEEE and related engineering journals, conferences, standards-adjacent research, and software-engineering literature. |
-| ACM Digital Library | ACM journals, conferences, workshops, HCI, requirements, software engineering, and coding-agent research. |
-| Scopus | Broad multidisciplinary citation/index coverage and conference/journal discovery. |
-| Web of Science | Citation-indexed multidisciplinary coverage and complementary conference/journal discovery. |
-| ScienceDirect | Elsevier journals and conference content, especially software engineering, requirements, maintenance, and empirical work. |
-| SpringerLink | Springer journals, LNCS, Requirements Engineering, software engineering, and related conference literature. |
+| Scopus | Systematic core for all 22 Primary branches, using the validated API where complete retrieval fits its service limits and the validated Web route otherwise. |
+| IEEE Xplore | Candidate domain, validation, or targeted source by branch family after feasibility and calibration. |
+| ACM Digital Library | Separate feasibility-gated domain, validation, or targeted source; Basic capture must satisfy its reconciliation controls. |
+| Web of Science | Cross-database validation or targeted source by branch family after feasibility and calibration. |
+| ScienceDirect | Publisher-specific validation or targeted source by branch family after feasibility and calibration. |
+| SpringerLink | Publisher-specific validation or targeted source by branch family after feasibility and calibration. |
 
-Google Scholar is for discovery, citation tracing, and backward/forward snowballing, not the sole systematic database. arXiv, OpenAlex, and Crossref remain pilot/discovery or metadata-support sources; they do not replace protocol databases. Access feasibility, authentication, quotas, export limits, and indexing coverage must be verified at execution time. Any unavailable protocol database must be recorded as an operational limitation, not silently replaced.
+Google Scholar is for discovery, citation tracing, and backward/forward snowballing, not the sole systematic database. arXiv, OpenAlex, and Crossref remain pilot/discovery or metadata-support sources; they do not replace protocol databases. Access feasibility, authentication, quotas, export limits, and indexing coverage must be verified before an additional database enters calibration. Any unavailable database must be recorded as an operational limitation, not silently replaced.
 
-## 7. Database-Specific Adaptation
+### Feasibility Gate
+
+For IEEE Xplore, ScienceDirect, Springer Nature Link, and Web of Science, the feasibility gate uses one or more representative frozen queries and records Web/API counts where available, stable-identifier comparison, field semantics, complete pagination, export/capture reconciliation, raw provenance, and entitlement limitations. The allowed outcomes are `equivalent enough for systematic retrieval`, `usable with documented differences`, and `unsuitable as a systematic API route`.
+
+ACM Digital Library is assessed separately. Its route must first demonstrate complete capture using the approved manual Basic workflow or an independently authorized Premium export. Undocumented APIs, scraping, browser automation intended to bypass restrictions, and access circumvention are prohibited.
+
+The gate is not a systematic corpus execution. A database that passes the gate enters the seven-branch calibration; it does not thereby receive all 22 Primary branches. Expansion remains branch- and evidence-domain-sensitive.
+
+### Calibration And Expansion
+
+The seven calibration branches are `F2A`, `F4B`, `F5A`, `F6A1`, `F6C1`, `F7A`, and `F7D`. After calibration retrievals are complete, records are deduplicated and titles/abstracts are screened under the unchanged protocol. The analysis measures unique contribution after deduplication and screening, research-question coverage, contradictory/boundary coverage, coding-agent-specific contribution, and branch-sensitive database contribution.
+
+Only after those observations exist may the stopping/expansion rule be frozen. No universal numerical threshold is defined in v1.1. Conditional expansion may execute any active frozen query, including queries not selected for automatic execution, and must record its trigger before execution.
+
+## 8. Database-Specific Adaptation
 
 The conceptual queries above are database-independent. The following adaptation rules apply to every branch. Exact syntax not verified in the repository is explicitly left for execution-time validation.
 
@@ -181,7 +215,7 @@ For each branch, execution should create at least one default title+abstract+key
 
 No branch defaults to unrestricted full text. A broader field variant is justified only when title+abstract+keyword retrieval misses a validated known item or when the branch is demonstrably sparse; the reason and expected recall/noise effect must be logged.
 
-## 8. Time Coverage and Publication Types
+## 9. Time Coverage and Publication Types
 
 Time restrictions follow [`research/protocol.md`](./protocol.md), not result-set convenience.
 
@@ -194,7 +228,7 @@ Time restrictions follow [`research/protocol.md`](./protocol.md), not result-set
 
 Retrieval should include peer-reviewed journal papers, conference papers, systematic reviews, systematic mapping studies, relevant preprints, and technically assessable reports. Relevant technical reports may be included in retrieval when methods and provenance are assessable. Preprints must be identifiable as preprints and must not be treated as equivalent to peer-reviewed work. Recent coding-agent work must not be excluded solely for lack of peer review. Publication type, peer-review status, later version, and evidence stream are recorded before screening; they are not screening decisions by themselves.
 
-## 9. Known-Item Retrieval Validation
+## 10. Known-Item Retrieval Validation
 
 Known items are calibration seeds, not included evidence. Before freezing a database-specific query variant, execution must test representative items for that branch and record one of `Retrieved`, `Missed`, `Not indexed`, `Not applicable`, or `Not verified`. A miss triggers analysis of terminology, indexing, field restriction, database coverage, and publication/version differences. Queries must not be changed solely to force every seed to appear.
 
@@ -229,7 +263,7 @@ Known items are calibration seeds, not included evidence. Before freezing a data
 | F7D | *SWE-bench*; *SWE-agent*; *UTBoost*. |
 | F7E | *SEAlign*; *AgentLens*; Wang and Pradel, *Are Solved Issues in SWE-bench Really Solved Correctly?*. |
 
-## 10. Search Execution Unit and Logging
+## 11. Search Execution Unit and Logging
 
 One systematic search execution is one branch, database, query version, field configuration, filter configuration, and execution date. The stable ID scheme is:
 
@@ -237,7 +271,7 @@ One systematic search execution is one branch, database, query version, field co
 
 `S1` identifies the systematic-search execution phase, `F6A2` identifies the branch, `SCOPUS` identifies the database, and `01` identifies the query iteration/version. Pilot IDs beginning with `P` must not be reused.
 
-Systematic records must be appended to [`research/search-log.md`](./search-log.md) in a clearly marked section after the untouched pilot records. Each record must contain:
+Systematic records must be appended to [`systematic-search-log.md`](./systematic-search-log.md) in a clearly marked section after the historical records. The log is the source of truth for completed, failed, superseded, and reused historical executions. Each record must contain:
 
 | Required field | Recording rule |
 |---|---|
@@ -257,7 +291,7 @@ Systematic records must be appended to [`research/search-log.md`](./search-log.m
 
 Query changes cannot be silent. `v1` is the initial systematic query. `v2` or later requires a log entry recording the reason, affected databases, expected effect on recall/precision, whether earlier executions need rerunning, and whether comparability is affected. The reason must be classified as syntax correction, database adaptation, terminology update, or methodological scope change. A methodological scope change may require protocol evolution and must not be hidden as a query edit.
 
-## 11. Record Collection and Deduplication
+## 12. Record Collection and Deduplication
 
 Before screening, collect at least:
 
@@ -284,7 +318,7 @@ Deduplicate in descending reliability:
 
 Preserve a relationship record between preprint, conference paper, journal extension, technical report, accepted manuscript, and duplicate database records. Do not simply discard an earlier version if it contains a materially different method, dataset, evaluation, or limitation. Screening will later select a preferred version for a claim while retaining linked versions and their differences. The preferred version should normally be the most complete and assessable peer-reviewed or published version, but a preprint may remain the relevant version for a recent coding-agent result or for material absent from the later version. Publication status must remain explicit.
 
-## 12. Screening Handoff
+## 13. Screening Handoff
 
 After collection and deduplication, hand off a candidate corpus with provisional Source IDs and preserved database/Search ID provenance to the protocol sequence:
 
@@ -296,7 +330,7 @@ After collection and deduplication, hand off a candidate corpus with provisional
 
 This design performs none of those screening steps. Exclusion reasons must use the protocol vocabulary, including `out of scope`, `duplicate`, `insufficient method`, `insufficient source information`, `not evidence for the claimed use`, or another documented reason. A useful contextual source that is not eligible evidence may be retained as contextual material without supporting a conclusion.
 
-## 13. Snowballing Design
+## 14. Snowballing Design
 
 Backward and forward snowballing supplements, and does not replace, the six protocol database searches.
 
@@ -309,7 +343,7 @@ Backward and forward snowballing supplements, and does not replace, the six prot
 
 Google Scholar may support discovery and citation tracing, but its result ranking and coverage must not replace systematic database retrieval.
 
-## 14. Freeze Condition and Risks
+## 15. Freeze Condition and Risks
 
 A branch is sufficiently designed to execute only when all of the following are present:
 
@@ -337,10 +371,10 @@ Unresolved issues before execution are:
 - Transferability of traditional software-engineering evidence to coding-agent populations.
 - Whether sparse terms such as repository understanding, planning intervention, and human evaluation require documented terminology updates after database validation.
 
-## 15. Execution-Readiness Decision
+## 16. Execution-Readiness Decision
 
-**Systematic search design ready for database-specific validation**
+**Systematic search design ready for Protocol v1.1 feasibility validation and tiered execution**
 
 The conceptual branch structure, research-question mapping, field strategy, source roles, time rules, publication distinctions, known-item checks, logging, deduplication, screening handoff, snowballing, change control, and freeze condition are documented. Exact live database syntax and access have not been validated, so the systematic search is not declared ready to run.
 
-No systematic search was executed in this phase. No evidence artifact was populated. No Work Item characteristics, research findings, hypotheses, or research conclusions were derived.
+No new database/API request, screening, evidence extraction, synthesis, Work Item-characteristic derivation, hypothesis formation, or research conclusion was performed while recording this amendment. Historical execution status remains in [`systematic-search-log.md`](./systematic-search-log.md).

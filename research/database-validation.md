@@ -6,6 +6,8 @@
 **Search-design authority:** [`systematic-search-design.md`](./systematic-search-design.md)
 **Pilot calibration authority:** [`search-log.md`](./search-log.md)
 
+**Protocol v1.1 boundary:** This validation record preserves historical observations. Any feasibility validation performed after the commit that records Protocol v1.1 is governed by the v1.1 feasibility gate below and remains operational validation rather than systematic corpus retrieval.
+
 ## Scope And Boundary
 
 This artifact records human verification of access, search capability, field behavior, metadata visibility, and export capability for the six protocol databases. It records operational database capability only. It does not execute the systematic search, freeze systematic queries, collect a research corpus, screen records, extract evidence, or synthesize findings.
@@ -17,6 +19,23 @@ Access provenance is recorded only with generic labels. No institution, account,
 All searches performed during human verification were **Database-validation diagnostic searches**. They were not systematic-search executions, corpus records, screened records, included sources, or evidence. Their result counts must not be reused as systematic-search result counts.
 
 Files exported during these diagnostic tests are verification artifacts only. They were not incorporated into the research corpus.
+
+## Protocol v1.1 Feasibility Gate
+
+Before an additional database enters the seven-branch calibration, validate its official API or documented systematic capture route using one or more representative frozen queries, preferably F2A and F5A or F7D. The gate records:
+
+- Web and API result counts where both routes exist, with timestamps and filters;
+- stable-identifier sample comparison;
+- field-semantic comparison;
+- complete pagination and export/capture reconciliation;
+- raw provenance and immutable artifact references;
+- authentication, quota, export, and entitlement limitations.
+
+The route is classified as `equivalent enough for systematic retrieval`, `usable with documented differences`, or `unsuitable as a systematic API route`. A passing gate does not require all 22 Primary branches in that database; it permits the seven-branch coverage calibration and later branch-sensitive expansion.
+
+ACM Digital Library uses a separate feasibility gate. Basic Edition manual page-by-page capture or independently authorized Premium export must demonstrate complete, reconciled capture before ACM enters calibration. Undocumented APIs, scraping, browser automation intended to bypass restrictions, and access circumvention are not permitted.
+
+Feasibility validation is not a systematic corpus execution, and its records are not screened, deduplicated, extracted, or synthesized.
 
 ## Verified Database Records
 

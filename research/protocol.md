@@ -1,6 +1,16 @@
-# Research Protocol v1
+# Research Protocol v1.1
 
-This protocol defines the theoretical research phase described in [`research-plan.md`](../research-plan.md). It is intended to make evidence collection and synthesis systematic, reproducible, transparent, and resistant to confirmation bias; no evidence has been collected under this protocol yet.
+This protocol defines the theoretical research phase described in [`research-plan.md`](../research-plan.md). It is intended to make evidence collection and synthesis systematic, reproducible, transparent, and resistant to confirmation bias.
+
+## Protocol Version And Amendment Boundary
+
+Protocol v1 originally specified a six-database, 28-branch execution design. Operational validation identified database-route, field-semantic, export, and capture differences before that design was completed. Protocol v1.1 is a prospective amendment to execution policy; it does not change the research questions, provisional Work Item definition, evidence streams, eligibility criteria, contradictory-evidence policy, branch inventory, frozen conceptual queries, historical execution records, or research conclusions.
+
+- **Protocol version:** `Research Protocol v1.1`.
+- **Amendment approval status:** Approved for implementation.
+- **Effective boundary:** The Git commit that formally records this Protocol v1.1 amendment.
+- **Historical provenance rule:** Everything before that commit remains Protocol v1 execution or validation provenance. Existing valid retrievals may be reused under the calibration rule without being relabeled as v1.1 executions.
+- **Post-boundary rule:** Feasibility validation events and systematic retrievals after that commit are governed by v1.1. Feasibility events remain operational validation, not systematic corpus retrieval.
 
 ## Research Objective
 
@@ -75,7 +85,7 @@ Evidence from traditional software engineering may inform concepts, mechanisms, 
 
 ## Search Sources
 
-The initial academic sources are IEEE Xplore, ACM Digital Library, Scopus, Web of Science, ScienceDirect, and SpringerLink. Their coverage, indexing behavior, access constraints, and search dates will be recorded when searches begin.
+The academic source set is IEEE Xplore, ACM Digital Library, Scopus, Web of Science, ScienceDirect, and SpringerLink. Protocol v1.1 assigns Scopus the systematic core role. IEEE Xplore, ACM Digital Library, Web of Science, ScienceDirect, and SpringerLink must first pass their applicable operational feasibility gate before entering representative coverage calibration. Their eventual roles may differ by branch family or evidence domain and are not assumed to be universal.
 
 Google Scholar is primarily a discovery, citation-tracing, and snowballing tool. It must not be the sole systematic database for claims about the literature.
 
@@ -114,6 +124,40 @@ For included and high-relevance seed sources, perform backward snowballing throu
 ### Evolving Terminology
 
 Coding-agent terminology changes rapidly. Search logs must record aliases, older terms, product-neutral terms, and newly discovered terminology. A later terminology update may add a search iteration, but it must identify the date, rationale, affected stream, and whether earlier searches need to be rerun.
+
+### Tiered Systematic-Search Execution
+
+Protocol v1.1 replaces the previous implicit full-factorial execution expectation with this prospective sequence:
+
+1. Execute the Scopus systematic core for all 22 Primary branches.
+2. Validate the official API or documented systematic capture route for each additional database before its coverage calibration.
+3. Run the seven-branch calibration set (`F2A`, `F4B`, `F5A`, `F6A1`, `F6C1`, `F7A`, and `F7D`) only in additional databases that pass feasibility.
+4. Deduplicate the calibration corpus and screen titles/abstracts using the unchanged protocol criteria.
+5. Analyze marginal contribution, research-question coverage, contradictory and boundary coverage, coding-agent-specific contribution, and branch-sensitive database contribution.
+6. Freeze an empirical stopping and expansion rule from those observations.
+7. Execute conditional branch/database expansions under the frozen rule.
+8. Complete systematic screening only after retrieval expansion closes.
+
+Calibration deduplication and title/abstract screening are methodological calibration activities. They are not final evidence synthesis, evidence extraction, Work Item-characteristic derivation, or hypothesis formation. The six Supplementary branches remain conditional and are not automatically executed in Scopus or another database.
+
+Existing valid historical executions may satisfy calibration cells when their branch, database, query version, fields, filters, raw provenance, and completion status meet the calibration requirements. They retain their original Protocol v1 provenance and are not rerun solely because v1.1 exists. [`systematic-search-log.md`](./systematic-search-log.md) is the source of truth for completed, failed, superseded, and reused executions; this protocol does not duplicate that inventory.
+
+The feasibility gate for IEEE Xplore, ScienceDirect, Springer Nature Link, and Web of Science compares representative frozen queries through the available official API or Web route where available. It records counts, stable identifiers, field semantics, complete pagination, export/capture reconciliation, raw provenance, and entitlement limitations. Outcomes are `equivalent enough for systematic retrieval`, `usable with documented differences`, or `unsuitable as a systematic API route`. ACM Digital Library uses a separate capture-feasibility gate; undocumented APIs, scraping, browser automation intended to bypass restrictions, and access circumvention are prohibited.
+
+No universal numerical stopping threshold is defined in v1.1. The later stopping/expansion rule must be derived from calibration observations and must support branch-sensitive database roles.
+
+### Workload Accounting
+
+The current query inventory distinguishes:
+
+- 28 branches: 22 Primary and 6 Supplementary;
+- 6 databases;
+- 168 conceptual branch/database combinations;
+- 213 active executable Query IDs;
+- 33 historical/superseded IEEE v1 Query IDs;
+- 246 total defined Query IDs.
+
+The conceptual core/calibration envelope before conditional expansion is up to `22 + (7 × 5) = 57` branch/database executions: the 22 Primary Scopus core executions plus up to seven calibration branches in each of the five additional databases. This is not an unconditional minimum. Feasibility events are not systematic corpus executions, and no final likely execution count is estimated before calibration.
 
 ## Time Coverage
 
@@ -294,7 +338,7 @@ If access to a source is incomplete, record the limitation and do not represent 
 
 ## Protocol Evolution
 
-This is Protocol v1 and may be revised when a genuine methodological gap, reproducibility problem, terminology change, database limitation, or scope clarification is discovered. Changes must be made in a separate Git change with a dated rationale, affected sections, expected effect on coverage or comparability, and whether previously screened or extracted sources must be revisited.
+This is Protocol v1.1. It preserves Protocol v1 for historical comparison and may be revised when a genuine methodological gap, reproducibility problem, terminology change, database limitation, or scope clarification is discovered. Changes must be made in a separate Git change with a dated rationale, affected sections, expected effect on coverage or comparability, and whether previously screened or extracted sources must be revisited.
 
 After evidence collection begins, changes require explicit justification and must preserve the original protocol for comparison. A correction that restores the stated intent of the protocol must be distinguished from a change made because observed results are inconvenient or because it improves the apparent support for an interpretation. If both occur, record them separately.
 

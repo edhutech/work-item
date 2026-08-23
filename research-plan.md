@@ -75,7 +75,7 @@ Estas fuentes no se utilizarán para demostrar que el Work Item es correcto, sin
 
 Antes de comenzar la revisión se debe definir un protocolo reproducible.
 
-### Bases de datos principales
+### Fuentes de búsqueda sistemática
 
 - IEEE Xplore
 - ACM Digital Library
@@ -85,6 +85,8 @@ Antes de comenzar la revisión se debe definir un protocolo reproducible.
 - SpringerLink
 
 Google Scholar se utilizará principalmente para discovery, búsqueda de citas y snowballing.
+
+La revisión utilizará una estrategia escalonada. Scopus será la fuente sistemática central para las 22 ramas Primary. IEEE Xplore, ACM Digital Library, Web of Science, ScienceDirect y SpringerLink deberán superar primero una validación de factibilidad de API o captura sistemática antes de participar en la calibración representativa de siete ramas. Sus roles posteriores podrán variar según la rama o el dominio de evidencia; no se asumirá que una fuente deba ejecutarse en todas las ramas. Las seis ramas Supplementary permanecerán condicionales.
 
 ### El protocolo debe definir
 

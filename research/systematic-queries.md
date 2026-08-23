@@ -1,19 +1,19 @@
-# Systematic Queries v1
+# Systematic Queries v1.1
 
 ## Query-freeze manifest
 
 | Item | Frozen value |
 |---|---|
 | Freeze date | 2026-08-20 |
-| Protocol | Research Protocol v1 |
+| Protocol | Research Protocol v1.1 |
 | Branches | 28 |
 | Primary branches | 22 |
 | Supplementary branches | 6 |
 | Databases | Scopus; Web of Science Core Collection; IEEE Xplore; ACM Digital Library; ScienceDirect; Springer Nature Link |
 | Query version | v1 |
-| Execution status | Not executed |
+| Execution status | Tiered execution policy; historical executions preserved |
 
-**Systematic query freeze does not constitute systematic-search execution.** No query in this artifact has been submitted to a database.
+**Systematic query freeze does not constitute systematic-search execution.** Query definitions and versioned corrections are preserved independently of whether a Query ID is selected by the Protocol v1.1 tiered execution policy.
 
 The protocol is the methodological authority. The search log supplies calibrated terminology and status; the systematic-search design supplies the conceptual branch structure; database-validation supplies the operational capabilities and limitations. Query terminology is retrieval terminology only. It is not a finding, Work Item characteristic, hypothesis, or conclusion.
 
@@ -34,7 +34,7 @@ Database adaptations preserve each canonical branch. Differences in fields, synt
 
 ## Branch inventory and status
 
-All 28 branches are present exactly once. `Primary` means planned core systematic retrieval. `Supplementary` means targeted, contextual, gap-covering, or bounded-neighborhood retrieval; freezing its query does not make it methodologically equivalent to a Primary branch.
+All 28 branches are present exactly once. `Primary` means planned core retrieval in Scopus and possible conditional retrieval elsewhere. `Supplementary` means targeted, contextual, gap-covering, or bounded-neighborhood retrieval; freezing its query does not make it methodologically equivalent to a Primary branch. Protocol v1.1 does not automatically execute every branch/database combination.
 
 | Branch | Name | Status | RQ mapping |
 |---|---|---|---|
@@ -126,7 +126,7 @@ These are deliberate conceptual sub-branch splits required by the focused calibr
 
 ## Query IDs
 
-Each branch/database pair has one executable frozen ID, except F6B1 and F6B2, which have two, and F7C, which has four explicitly labeled v1 variants per database. No Pilot (`P`) or PEC ID is reused.
+The historical generated register assigns one executable frozen ID to each branch/database pair, except F6B1 and F6B2, which have two, and F7C, which has four explicitly labeled v1 variants per database. The current active inventory also preserves the versioned IEEE correction pieces. No Pilot (`P`) or PEC ID is reused.
 
 | Database code | ID pattern | Count |
 |---|---|---:|
@@ -136,7 +136,18 @@ Each branch/database pair has one executable frozen ID, except F6B1 and F6B2, wh
 | ACM | `S1-{BRANCH}-ACM-01-v1`; F6B1/F6B2 `01`-`02`; F7C `01`-`04` | 33 |
 | SD | `S1-{BRANCH}-SD-01-v1`; F6B1/F6B2 `01`-`02`; F7C `01`-`04` | 33 |
 | SPRINGER | `S1-{BRANCH}-SPRINGER-01-v1`; F6B1/F6B2 `01`-`02`; F7C `01`-`04` | 33 |
-| **Total** |  | **198** |
+| **Historical generated-register total** |  | **198** |
+
+The current Protocol v1.1 accounting is separate from the historical generated-register table above:
+
+- 28 branches: 22 Primary and 6 Supplementary;
+- 6 databases;
+- 168 conceptual branch/database combinations;
+- 213 active executable Query IDs;
+- 33 historical/superseded IEEE v1 Query IDs;
+- 246 total defined Query IDs.
+
+The 213 active IDs remain available frozen executable queries. Their presence does not require automatic execution. The 33 historical/superseded IDs remain auditable and are not deleted.
 
 There are no syntax- or field-driven database splits beyond the deliberate calibrated sub-branch splits. F6B1 and F6B2 use sequence `01` through `02`, and F7C uses `01` through `04` within each database; no `v1a` or `v1b` suffix is needed.
 
@@ -278,9 +289,9 @@ Every frozen query has: branch status; RQ mapping; canonical expression; provena
 
 This affects systematic-result collection, not query definition.
 
-## Search execution boundary
+## Protocol v1.1 Search Execution Boundary
 
-This run did not and must not submit frozen queries, record systematic result counts, export result sets, assign Source IDs, deduplicate records, screen titles, inspect abstracts as evidence, or extract findings. Earlier database-validation searches remain diagnostic searches and do not count as execution of a frozen equivalent.
+The Protocol v1.1 amendment did not submit a new frozen query, record a new systematic result count, export a result set, assign Source IDs, deduplicate records, screen titles, inspect abstracts as evidence, or extract findings. Historical systematic executions remain governed by their original provenance in [`systematic-search-log.md`](./systematic-search-log.md). Earlier database-validation searches remain diagnostic searches and do not count as execution of a frozen equivalent.
 
 ## Freeze audit
 
@@ -292,8 +303,8 @@ This run did not and must not submit frozen queries, record systematic result co
 - Every branch has six database adaptations, provenance, an ID pattern, and a known-item plan.
 - No proximity syntax was invented or used. IEEE clause term limits are respected by the displayed clauses.
 - No institution, institutional domain, proxy URL, personal/institutional email, username, account identifier, or authentication detail is recorded.
-- No systematic query was executed and no systematic corpus was collected.
-- No result counts were collected for frozen queries; diagnostic counts from validation remain excluded.
+- No query was executed while recording the Protocol v1.1 amendment and no new corpus was collected.
+- Historical systematic result counts remain in the execution log; diagnostic counts from validation remain excluded.
 - No screening, evidence extraction, synthesis, Work Item characteristic, or research conclusion was performed or derived.
 
 ### Existing-artifact inconsistency
@@ -313,7 +324,7 @@ Audit scope: structural, methodological, terminology, equivalence, syntax, field
 ### Audit findings and disposition
 
 - **Structural audit:** Passed after correction. The 28 canonical branch entries appear exactly once; all have one current status, RQ mapping, provenance, six database adaptations or an explicit F6 variant register, and a known-item plan. The six Supplementary branches are exactly F3C, F4C2, F6B1, F6B2, F6C2, and F7E. No branch is marked `Requires further calibration` in this candidate artifact.
-- **Query-ID audit:** Passed after correction. The revised register contains 198 unique IDs: 33 per database. F6B1 and F6B2 have sequences `01`-`02`; F7C has `01`-`04`; all other branches have `01`. Every registered ID maps to one displayed executable string or UI-compatible query variant, and no split ID is orphaned.
+- **Historical Query-ID audit:** The original generated register contains 198 IDs: 33 per database. The current v1.1 inventory additionally accounts for the versioned IEEE corrections and records 213 active executable IDs, 33 historical/superseded IEEE v1 IDs, and 246 total defined IDs. F6B1 and F6B2 have sequences `01`-`02`; F7C has `01`-`04`; all other branches have their defined active variants. Every registered ID remains available for conditional execution and no historical ID is deleted.
 - **Terminology provenance:** Passed. Terms were checked against the design inventory and search-log registry/evolution records. F6B1 uses the PEC primary terms plus the validated contextual `planning structure`; F6B2 uses the PEC primary terms. No generic `task granularity`, generic AI planning, or generic multi-agent allocation was restored.
 - **Noise and exclusion audit:** Passed with screening boundaries retained. Unqualified `verification`, `validation`, `completion`, `quality`, `retry`, and `autonomy` are not used as umbrella terms. `information overload`, benchmark resolution, semantic correctness, repository retrieval, and context quantity remain qualified and separate.
 - **Branch-overlap audit:** Passed. F3A remains traditional/project decomposition; F6B2 requires an agent-side software-subtask/delegation object. F6B1 planning is separate from F6B2 subtasks and F6D2 trajectories. F6A1 context quantity/memory is separate from F6A2 repository retrieval. F7A correctness, F7B acceptance, F7C revision, F7D benchmark success, and F7E human/semantic evaluation retain distinct authorities.
@@ -329,7 +340,7 @@ Audit scope: structural, methodological, terminology, equivalence, syntax, field
 - **Time, publication, and language audit:** Passed. No query-level date restriction, publication-type filter, or language filter is consistent with the protocol/design rules. Recent technology-sensitive literature is preserved by screening/context classification rather than an invented cutoff; conference, journal, review, report, and permitted preprint records are not filtered out at retrieval.
 - **Known-item audit:** Passed. Seeds trace to pilot/PEC records, execution is deferred, expected indexing is not fabricated, and the five allowed result labels remain unchanged. Known-item retrieval does not determine inclusion. F7C seeds will be mapped to the applicable variant during execution rather than assumed to match all four variants.
 - **Revision-control audit:** Passed. Syntax corrections use `v1.1`; retrieval-method changes use `v2`; both require reason, affected branch/database, expected effect, rerun decision, and comparability impact. Silent mutation after execution begins is prohibited.
-- **Database readiness:** Search definition is operationally ready for all six databases. Web of Science export batching and Springer metadata limitations affect collection planning; ACM bulk export affects collection readiness only. No issue blocks this query audit for the other databases.
+- **Database readiness:** Query definitions exist for all six databases. Protocol v1.1 requires feasibility validation before any additional database enters calibration; Web of Science export batching, ScienceDirect and Springer field semantics, IEEE route equivalence, and ACM capture feasibility remain execution-stage gates.
 
 ### Existing inconsistency classification
 
@@ -342,7 +353,7 @@ Neither inconsistency affects query execution syntax, current branch status in t
 
 ## Exit decision
 
-**Pre-execution audit passed; systematic queries v1 are safe to commit**
+**Historical pre-execution audit passed; query definitions remain frozen and available under Protocol v1.1**
 
 ## IEEE Executable-Representation Correction
 
@@ -382,7 +393,7 @@ The repository's database validation independently records the same current fiel
 - `S1-F1-IEEE-01-v1` remains the permanently recorded failed execution unit in [`systematic-search-log.md`](./systematic-search-log.md).
 - The 32 other IEEE v1 IDs were never executed and are marked below as `Superseded before execution`; they are not marked `Failed`.
 - Each original IEEE v1 ID has one active v1.1 successor with the same branch, status, RQ mapping, terms, fields, filters, and conceptual scope.
-- No database-specific split has been authorized in this audit. The candidate active executable count remains 198: 165 unchanged non-IEEE v1 IDs plus 33 IEEE v1.1 successors. The candidate historical/defined Query ID count is 231 because the 33 original IEEE v1 IDs remain auditable.
+- The v1.1 active inventory accounts for 213 executable Query IDs, including the versioned IEEE corrections and splits. The 33 original IEEE v1 IDs remain historical/superseded, giving 246 total defined IDs. This accounting does not require automatic execution of every active ID.
 - The largest literal Boolean block contains 24 field-scoped operands, in the second block of F1, and the largest phrase contains three words. Those are not sufficient measures of IEEE's documented search-term limit because IEEE states that words within phrases count separately. Counting phrase words after field expansion gives a maximum of 48 occurrences in the F1 second block; counting before field expansion gives 16 canonical phrase-word terms for that block. The official material does not state whether the 25-term clause limit is applied before or after field expansion. This is a blocking execution uncertainty, not evidence that the candidate is compliant.
 
 ### Prior v1.1 successor register and corrected representations
@@ -642,15 +653,15 @@ Piece counts must not be summed as a unique branch count. Overlap is expected; a
 - Active executable Query IDs across all six databases: 213.
 - Historical/superseded original IEEE v1 Query IDs: 33.
 - Total defined Query IDs: 246, comprising 213 active IDs and 33 historical/superseded v1 IDs.
-- The additional IDs are `v1.1` pieces in the still-unapproved correction generation. No `v1.2` is created because the repository permits correction of an unexecuted candidate v1.1 before approval; the revision remains syntax/executable-representation correction, not retrieval-method revision.
+- The additional IDs are versioned IEEE executable corrections and splits retained under the approved Protocol v1.1 inventory. No `v1.2` is created; the revisions remain syntax/executable-representation corrections, not retrieval-method revisions.
 - F1 active successors are `S1-F1-IEEE-01-v1.1` and `S1-F1-IEEE-02-v1.1`. Its failed `S1-F1-IEEE-01-v1` execution remains untouched and historical.
 - F2A active successors are `S1-F2A-IEEE-01-v1.1` and `S1-F2A-IEEE-02-v1.1`; F2B remains `S1-F2B-IEEE-01-v1.1` without a split. Both remain unexecuted.
 - Terminology, branch status, RQ mappings, field strategy, filters, provenance, and canonical Boolean meaning are unchanged.
 - No non-IEEE query changed.
-- No query was executed, no result count was collected, and no corpus record was created.
+- No query was executed while recording this inventory, and no new result count or corpus record was created; historical executions remain in the execution log.
 - No screening, extraction, synthesis, Work Item characteristic, hypothesis, or research conclusion occurred.
 - Privacy and neutrality requirements remain satisfied.
 
 ## IEEE Correction Exit State
 
-**IEEE v1.1 term-limit correction complete; ready for final re-audit**
+**IEEE v1.1 term-limit correction preserved; execution remains governed by Protocol v1.1 selection and feasibility rules**

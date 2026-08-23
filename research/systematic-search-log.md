@@ -2,6 +2,16 @@
 
 This log records real systematic-search execution provenance. It is separate from the historical pilot and database-validation record in [`search-log.md`](./search-log.md).
 
+## Protocol v1.1 Amendment Boundary
+
+- **Protocol version:** `Research Protocol v1.1`
+- **Amendment approval status:** Approved for implementation
+- **Effective boundary:** The Git commit that formally records the Protocol v1.1 amendment
+- **Historical provenance rule:** All entries before that commit remain Protocol v1 execution or validation provenance. They are not relabeled as v1.1 executions and are not deleted or rewritten.
+- **Post-boundary rule:** Feasibility validation events and systematic retrievals after that commit follow the v1.1 tiered policy. Feasibility validation remains operational validation and is not a systematic corpus retrieval.
+- **Historical execution source of truth:** This log is authoritative for completed, failed, superseded, and reused historical executions. Other documents define reuse rules and must not duplicate the complete execution inventory.
+- **Current amendment status:** No new database/API request, screening, deduplication, evidence extraction, or synthesis was performed while recording this boundary.
+
 ## Batch S1-BATCH-001
 
 - **Batch ID:** `S1-BATCH-001`
