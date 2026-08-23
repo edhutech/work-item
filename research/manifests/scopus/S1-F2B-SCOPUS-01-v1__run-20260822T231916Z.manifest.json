@@ -1,0 +1,740 @@
+{
+  "api_calls": 30,
+  "branch": "F2B",
+  "database": "Scopus",
+  "execution_datetime": "2026-08-22T23:19:16Z",
+  "manifest_version": 1,
+  "pages": [
+    {
+      "metadata": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000000.metadata.json",
+      "page": 1,
+      "range": [
+        0,
+        24
+      ],
+      "response": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000000.json",
+      "returned": 25,
+      "start": 0,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000025.metadata.json",
+      "page": 2,
+      "range": [
+        25,
+        49
+      ],
+      "response": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000025.json",
+      "returned": 25,
+      "start": 25,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000050.metadata.json",
+      "page": 3,
+      "range": [
+        50,
+        74
+      ],
+      "response": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000050.json",
+      "returned": 25,
+      "start": 50,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000075.metadata.json",
+      "page": 4,
+      "range": [
+        75,
+        99
+      ],
+      "response": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000075.json",
+      "returned": 25,
+      "start": 75,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000100.metadata.json",
+      "page": 5,
+      "range": [
+        100,
+        124
+      ],
+      "response": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000100.json",
+      "returned": 25,
+      "start": 100,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000125.metadata.json",
+      "page": 6,
+      "range": [
+        125,
+        149
+      ],
+      "response": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000125.json",
+      "returned": 25,
+      "start": 125,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000150.metadata.json",
+      "page": 7,
+      "range": [
+        150,
+        174
+      ],
+      "response": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000150.json",
+      "returned": 25,
+      "start": 150,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000175.metadata.json",
+      "page": 8,
+      "range": [
+        175,
+        199
+      ],
+      "response": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000175.json",
+      "returned": 25,
+      "start": 175,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000200.metadata.json",
+      "page": 9,
+      "range": [
+        200,
+        224
+      ],
+      "response": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000200.json",
+      "returned": 25,
+      "start": 200,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000225.metadata.json",
+      "page": 10,
+      "range": [
+        225,
+        249
+      ],
+      "response": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000225.json",
+      "returned": 25,
+      "start": 225,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000250.metadata.json",
+      "page": 11,
+      "range": [
+        250,
+        274
+      ],
+      "response": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000250.json",
+      "returned": 25,
+      "start": 250,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000275.metadata.json",
+      "page": 12,
+      "range": [
+        275,
+        299
+      ],
+      "response": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000275.json",
+      "returned": 25,
+      "start": 275,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000300.metadata.json",
+      "page": 13,
+      "range": [
+        300,
+        324
+      ],
+      "response": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000300.json",
+      "returned": 25,
+      "start": 300,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000325.metadata.json",
+      "page": 14,
+      "range": [
+        325,
+        349
+      ],
+      "response": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000325.json",
+      "returned": 25,
+      "start": 325,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000350.metadata.json",
+      "page": 15,
+      "range": [
+        350,
+        374
+      ],
+      "response": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000350.json",
+      "returned": 25,
+      "start": 350,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000375.metadata.json",
+      "page": 16,
+      "range": [
+        375,
+        399
+      ],
+      "response": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000375.json",
+      "returned": 25,
+      "start": 375,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000400.metadata.json",
+      "page": 17,
+      "range": [
+        400,
+        424
+      ],
+      "response": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000400.json",
+      "returned": 25,
+      "start": 400,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000425.metadata.json",
+      "page": 18,
+      "range": [
+        425,
+        449
+      ],
+      "response": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000425.json",
+      "returned": 25,
+      "start": 425,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000450.metadata.json",
+      "page": 19,
+      "range": [
+        450,
+        474
+      ],
+      "response": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000450.json",
+      "returned": 25,
+      "start": 450,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000475.metadata.json",
+      "page": 20,
+      "range": [
+        475,
+        499
+      ],
+      "response": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000475.json",
+      "returned": 25,
+      "start": 475,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000500.metadata.json",
+      "page": 21,
+      "range": [
+        500,
+        524
+      ],
+      "response": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000500.json",
+      "returned": 25,
+      "start": 500,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000525.metadata.json",
+      "page": 22,
+      "range": [
+        525,
+        549
+      ],
+      "response": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000525.json",
+      "returned": 25,
+      "start": 525,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000550.metadata.json",
+      "page": 23,
+      "range": [
+        550,
+        574
+      ],
+      "response": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000550.json",
+      "returned": 25,
+      "start": 550,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000575.metadata.json",
+      "page": 24,
+      "range": [
+        575,
+        599
+      ],
+      "response": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000575.json",
+      "returned": 25,
+      "start": 575,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000600.metadata.json",
+      "page": 25,
+      "range": [
+        600,
+        624
+      ],
+      "response": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000600.json",
+      "returned": 25,
+      "start": 600,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000625.metadata.json",
+      "page": 26,
+      "range": [
+        625,
+        649
+      ],
+      "response": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000625.json",
+      "returned": 25,
+      "start": 625,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000650.metadata.json",
+      "page": 27,
+      "range": [
+        650,
+        674
+      ],
+      "response": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000650.json",
+      "returned": 25,
+      "start": 650,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000675.metadata.json",
+      "page": 28,
+      "range": [
+        675,
+        699
+      ],
+      "response": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000675.json",
+      "returned": 25,
+      "start": 675,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000700.metadata.json",
+      "page": 29,
+      "range": [
+        700,
+        724
+      ],
+      "response": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000700.json",
+      "returned": 25,
+      "start": 700,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000725.metadata.json",
+      "page": 30,
+      "range": [
+        725,
+        742
+      ],
+      "response": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000725.json",
+      "returned": 18,
+      "start": 725,
+      "status": "complete"
+    }
+  ],
+  "query_id": "S1-F2B-SCOPUS-01-v1",
+  "query_version": "v1",
+  "raw_artifacts": [
+    {
+      "bytes": 42712,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000000.json",
+      "role": "response",
+      "sha256": "d535eabed59c70f03763f938bccb18c97aeb6c33805195e9351dadaf9011725f"
+    },
+    {
+      "bytes": 614,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000000.metadata.json",
+      "role": "metadata",
+      "sha256": "031cbf8e6a251fc242d2b94a2687965c33683671a1dcda4db3c1c0524af3f5d3"
+    },
+    {
+      "bytes": 39933,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000025.json",
+      "role": "response",
+      "sha256": "7d24baba1ec4ccb3e6a3dccbd95fbb317d40354a8cb45bc5a12a12bc0a914b0f"
+    },
+    {
+      "bytes": 615,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000025.metadata.json",
+      "role": "metadata",
+      "sha256": "47782a6b0d03f27b06ae3afe04dfab445d470ed58765ec8f68a220ff074fc02b"
+    },
+    {
+      "bytes": 40546,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000050.json",
+      "role": "response",
+      "sha256": "627b2caa1c7044f3d059c8852800016759caffa2852eb0aa39e189e344c9599d"
+    },
+    {
+      "bytes": 615,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000050.metadata.json",
+      "role": "metadata",
+      "sha256": "96a4141794aae419d7600ee2104dc8827c5ff0742e593f84a14764c4aa456356"
+    },
+    {
+      "bytes": 41382,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000075.json",
+      "role": "response",
+      "sha256": "c9efb0f370ce369c3c3180a17f22bf4d3d1135f426c4ed54b4033db354219fae"
+    },
+    {
+      "bytes": 615,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000075.metadata.json",
+      "role": "metadata",
+      "sha256": "5aa8b4b1ebe501cf66ff19d1eab73638029d54df8efaf7bc202ddf939928dd27"
+    },
+    {
+      "bytes": 41327,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000100.json",
+      "role": "response",
+      "sha256": "b3169202829041a0cdc858492e291e1bf5c3a22e51ba521eb6cf9f325d4f8f92"
+    },
+    {
+      "bytes": 616,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000100.metadata.json",
+      "role": "metadata",
+      "sha256": "d3d345d5ba914527a63ffc108dd2df82563d3c1dd2ee6b8c8a200bd12fc0b972"
+    },
+    {
+      "bytes": 41067,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000125.json",
+      "role": "response",
+      "sha256": "2ba54ee1f4eba679d7f52d176ae856f7eaee0f726cc59a2315ca5bbc5d7f951d"
+    },
+    {
+      "bytes": 616,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000125.metadata.json",
+      "role": "metadata",
+      "sha256": "61e771fa8aa52da4c8500352cd081eba68c616ac5f7288b0ad3921ee54922d80"
+    },
+    {
+      "bytes": 40570,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000150.json",
+      "role": "response",
+      "sha256": "114c68c731c3d0e55a82c32125ad64614104eb4b9d3b34df53f1d39d484e47f5"
+    },
+    {
+      "bytes": 616,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000150.metadata.json",
+      "role": "metadata",
+      "sha256": "4c62520d02d0ae976852667644af6ec9c7c6dbb3caa675a5cc0a0a85e90e116c"
+    },
+    {
+      "bytes": 39157,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000175.json",
+      "role": "response",
+      "sha256": "8119807849c30966d9900a6a41c437ab29c2211e419870cf55aaf70d213c5328"
+    },
+    {
+      "bytes": 616,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000175.metadata.json",
+      "role": "metadata",
+      "sha256": "f99179329da2c67a53b5a4d8605d6adc3bd86c0bca8bad44a910a7a275b5f3a6"
+    },
+    {
+      "bytes": 41078,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000200.json",
+      "role": "response",
+      "sha256": "772e76be728d839819c82d42c4197f7cacb28fefd40f0bbc0def39cfc3ccdfc5"
+    },
+    {
+      "bytes": 616,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000200.metadata.json",
+      "role": "metadata",
+      "sha256": "918e8c4415f2548249556e2e0eec4b1fac895570539183cf524824c4157b7f8c"
+    },
+    {
+      "bytes": 40028,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000225.json",
+      "role": "response",
+      "sha256": "52367b5c6946d8aa09c0b3d76955f5697a0e03d97b2c5645e5a2afef61768a2d"
+    },
+    {
+      "bytes": 617,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000225.metadata.json",
+      "role": "metadata",
+      "sha256": "8dc3813c83e2a97359a19cae81394da7ab9af07fe6a3e096c3ce675839b4f34a"
+    },
+    {
+      "bytes": 39683,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000250.json",
+      "role": "response",
+      "sha256": "3807f9111ebb02b74a0647a2817897db0063e55d53f5f80b70890c96d29bf470"
+    },
+    {
+      "bytes": 617,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000250.metadata.json",
+      "role": "metadata",
+      "sha256": "eac049d6abe3871b6c053d0e640c954d350fd25834bd3d31c35fa4137214b41d"
+    },
+    {
+      "bytes": 39471,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000275.json",
+      "role": "response",
+      "sha256": "267d0219b7ed98380fac6a4e842d5592c98a97cc2ee30272a605c63dcb82a9a4"
+    },
+    {
+      "bytes": 617,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000275.metadata.json",
+      "role": "metadata",
+      "sha256": "7411353132107c08b16f644fad2c7d2bbb1c1b39d348788a922ab53775815b2b"
+    },
+    {
+      "bytes": 41010,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000300.json",
+      "role": "response",
+      "sha256": "5d14c66ea640db3b7325c255f9f55adf36eb4831724b890cddc3544f14278ab4"
+    },
+    {
+      "bytes": 617,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000300.metadata.json",
+      "role": "metadata",
+      "sha256": "3ff03f9eb2825da904797385e293de304169502d936232dfbb41d1a9fd5f0e08"
+    },
+    {
+      "bytes": 40040,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000325.json",
+      "role": "response",
+      "sha256": "1099b2df1a85590ba76488b867281732e320381ece939871c9fad75d443a82a8"
+    },
+    {
+      "bytes": 617,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000325.metadata.json",
+      "role": "metadata",
+      "sha256": "401adc0eb4bbfdbfddacbef4489d51802b5ddf33a5a012026c9134da196ff004"
+    },
+    {
+      "bytes": 40972,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000350.json",
+      "role": "response",
+      "sha256": "cd241f09dd71a4f2c2f988dd701b0a9bf052fd4525ce0d907bc52dbc5d420895"
+    },
+    {
+      "bytes": 617,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000350.metadata.json",
+      "role": "metadata",
+      "sha256": "1cbec81eea75c4bc1cf6d564b1db8ddb38fab0ad328a9082c70549f3ecffacee"
+    },
+    {
+      "bytes": 40317,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000375.json",
+      "role": "response",
+      "sha256": "0e147faf10d974fe7445187abd50fc8a044a474639bd41a83185140dfb26a17c"
+    },
+    {
+      "bytes": 617,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000375.metadata.json",
+      "role": "metadata",
+      "sha256": "3c157ab6ad22b3e9b601b673b2661c008029b6f297501da1c27c64eb4fff1a06"
+    },
+    {
+      "bytes": 40865,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000400.json",
+      "role": "response",
+      "sha256": "b9e8f2014ac83b89c396a059d0f72235ffb38775036fae40eee730fb3e5bd828"
+    },
+    {
+      "bytes": 617,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000400.metadata.json",
+      "role": "metadata",
+      "sha256": "3c6f235a61f836ad1f8a83d4310f938beaf1daa6fa4ce5b228e1c0b40aa5d1bb"
+    },
+    {
+      "bytes": 40773,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000425.json",
+      "role": "response",
+      "sha256": "325d51f05c887cb0dbeb1b9717bc43bab2fa993e8c231e435af987dd3acca4a9"
+    },
+    {
+      "bytes": 617,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000425.metadata.json",
+      "role": "metadata",
+      "sha256": "fe9636dfd1b9b10e279bca74b782fc332044aff79bcb0322bd5214fe91a5229c"
+    },
+    {
+      "bytes": 39447,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000450.json",
+      "role": "response",
+      "sha256": "c08d48da6b1bfe9187f9edc86e062e9173535bfbbb0bd57f3a0ff476396821c7"
+    },
+    {
+      "bytes": 617,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000450.metadata.json",
+      "role": "metadata",
+      "sha256": "a28b822f574bbfcdf292162aeb5e0b95ce879839a055325c3335662edea5110e"
+    },
+    {
+      "bytes": 40101,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000475.json",
+      "role": "response",
+      "sha256": "be12c21407e7fa6cbd3c6917e7d8daa12596a228d9bcb41cd1033eaa62a01e3f"
+    },
+    {
+      "bytes": 617,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000475.metadata.json",
+      "role": "metadata",
+      "sha256": "6997323d4a618fb4b71edc61a8f05c7e345b3c4adffa1dcb5fa734c9c2dcea99"
+    },
+    {
+      "bytes": 39832,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000500.json",
+      "role": "response",
+      "sha256": "d6fd4a7c9346b14b7b35ac6ed18afcd3469da5c88eb7fac7999a5951ab2c5d00"
+    },
+    {
+      "bytes": 617,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000500.metadata.json",
+      "role": "metadata",
+      "sha256": "44b751dfa3ecbba49f91a44f5fd753855338fa2b427f8e854baace3d50cd6442"
+    },
+    {
+      "bytes": 39705,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000525.json",
+      "role": "response",
+      "sha256": "7ed8f06d4a4591650ac05da2f1318318bb518408df3f1711a9d56ded2c4d6cf3"
+    },
+    {
+      "bytes": 617,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000525.metadata.json",
+      "role": "metadata",
+      "sha256": "36d8bfe6f499324e3e87bed019ce45c6ff3c0f72447cd2dd39d212d76f3e2696"
+    },
+    {
+      "bytes": 40000,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000550.json",
+      "role": "response",
+      "sha256": "a1136edf2e367848fb29aacd8ce56441e59a9350845d3cd3972f7232d193648b"
+    },
+    {
+      "bytes": 617,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000550.metadata.json",
+      "role": "metadata",
+      "sha256": "f11b36a6ce220be7a8ca17391f7c8724eeb840a555f9d7ea52e04aca464f2ad8"
+    },
+    {
+      "bytes": 39354,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000575.json",
+      "role": "response",
+      "sha256": "06c9127930454e083a0d9ea81cbacc57bcd77d0f880ddfd6e27f174cf267fa44"
+    },
+    {
+      "bytes": 617,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000575.metadata.json",
+      "role": "metadata",
+      "sha256": "82987d499d37051699312012e3a42ad4880444ed10baf0de15a8f0c47608ba10"
+    },
+    {
+      "bytes": 37984,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000600.json",
+      "role": "response",
+      "sha256": "2e14fae59ce331e00608bc9286b09a3c5e810f431c42bff471cd62fe9461cec2"
+    },
+    {
+      "bytes": 617,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000600.metadata.json",
+      "role": "metadata",
+      "sha256": "8d5608121eb68c9202ac7c0c114aa14779cb7b2f8fd972500337eb0789c38c4d"
+    },
+    {
+      "bytes": 39252,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000625.json",
+      "role": "response",
+      "sha256": "7cadc89276bcd6e4227172f02d9ec0da6faae8e67fa2ab4232d2bed9b17f052d"
+    },
+    {
+      "bytes": 617,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000625.metadata.json",
+      "role": "metadata",
+      "sha256": "54f1ae49664eb08d07bbc3bddf4f33f39a89f4fbe0193f38a5dfae692df3b13d"
+    },
+    {
+      "bytes": 38660,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000650.json",
+      "role": "response",
+      "sha256": "281434ac4b5f7442c8e440716f0a9313ce0a15d42c265327c56c44c20364e220"
+    },
+    {
+      "bytes": 617,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000650.metadata.json",
+      "role": "metadata",
+      "sha256": "67d370bb053d08866f30db0078d30677b1116c3175f3842b267d137950985764"
+    },
+    {
+      "bytes": 37900,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000675.json",
+      "role": "response",
+      "sha256": "c04caf6471672f27cd9b97b3f87d124c5898a97ae29fab5394dc09991b7d458d"
+    },
+    {
+      "bytes": 617,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000675.metadata.json",
+      "role": "metadata",
+      "sha256": "9c7f4ca6c69a3cebdeabeb26ce7eed38d22bdb99b87bbc50722d281957222830"
+    },
+    {
+      "bytes": 36828,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000700.json",
+      "role": "response",
+      "sha256": "d379da91dd8de9d0c52776bfe5462c7e6f0749a1f2795090bb6d5307a339fc55"
+    },
+    {
+      "bytes": 617,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000700.metadata.json",
+      "role": "metadata",
+      "sha256": "086af070d4f70acd9af903d5ce48b618411b5de738e9af465cb56607ac30a718"
+    },
+    {
+      "bytes": 27612,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000725.json",
+      "role": "response",
+      "sha256": "0a7c513b945149b89a1f5f3eaf6b513490574f0c43a1599c8a3e85666ad00791"
+    },
+    {
+      "bytes": 617,
+      "filename": "S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000725.metadata.json",
+      "role": "metadata",
+      "sha256": "e96627e7b642c52a2b72dd38044d6bbaa7eb87fbeef494d7f635d430fb30fae6"
+    }
+  ],
+  "raw_captured_records": 743,
+  "raw_storage": "local-private",
+  "reconciliation": "Complete",
+  "retrieval_mechanism": "Scopus Search API offset pagination",
+  "run_identifier": "20260822T231916Z",
+  "status": "complete",
+  "totalResults": 743
+}

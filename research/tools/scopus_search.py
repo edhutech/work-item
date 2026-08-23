@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import re
@@ -24,6 +25,8 @@ DEFAULT_CALL_LIMIT = 200
 DEFAULT_PACE_SECONDS = 1.0
 DEFAULT_VIEW = "STANDARD"
 DEFAULT_PAGINATION = "offset"
+DEFAULT_RAW_DIR = Path("research/raw-local/scopus")
+DEFAULT_MANIFEST_DIR = Path("research/manifests/scopus")
 CURSOR_PAGINATION_AVAILABLE = False
 MAX_OFFSET_RESULTS = 5000
 VIEW_LIMITS = {"STANDARD": 200, "COMPLETE": 25}
@@ -119,14 +122,100 @@ class RetrievalSummary:
     raw_captured_records: int
     api_calls: int
     artifacts: tuple[Path, ...]
+    manifest: Path | None = None
 
     @property
     def reconciled(self) -> bool:
         return self.total_results == self.raw_captured_records
 
 
+def _sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def _manifest_path(manifest_dir: Path, query_id: str, run_timestamp: str) -> Path:
+    if not QUERY_ID_PATTERN.fullmatch(query_id):
+        raise ValueError("Query ID contains unsupported filename characters")
+    return manifest_dir / f"{query_id}__run-{run_timestamp}.manifest.json"
+
+
+def _repository_root() -> Path:
+    return Path(__file__).resolve().parents[2]
+
+
+def _validate_raw_dir(raw_dir: Path) -> None:
+    """Reject repository paths that are not the ignored private raw area."""
+    resolved = raw_dir.resolve()
+    private_root = (_repository_root() / DEFAULT_RAW_DIR).resolve()
+    if resolved == private_root or private_root in resolved.parents:
+        return
+    if _repository_root() in resolved.parents:
+        raise RetrievalError(
+            f"Scopus raw data must be stored under {DEFAULT_RAW_DIR}; "
+            "use an external private directory for temporary tests"
+        )
+
+
+def _write_manifest(
+    *, manifest_dir: Path, query_id: str, branch: str | None,
+    query_version: str | None, run_timestamp: str,
+    artifacts: Sequence[Path], page_provenance: Sequence[Mapping[str, Any]],
+    total_results: int, raw_captured_records: int, api_calls: int,
+) -> Path:
+    manifest_dir.mkdir(parents=True, exist_ok=True)
+    manifest_path = _manifest_path(manifest_dir, query_id, run_timestamp)
+    if manifest_path.exists():
+        raise RetrievalError(f"refusing to overwrite existing manifest: {manifest_path}")
+    files = []
+    for response_path in artifacts:
+        metadata_path = _metadata_path(response_path)
+        for path, role in ((response_path, "response"), (metadata_path, "metadata")):
+            files.append({
+                "role": role,
+                "filename": path.name,
+                "sha256": _sha256(path),
+                "bytes": path.stat().st_size,
+            })
+    pages = []
+    for provenance, response_path in zip(page_provenance, artifacts):
+        returned = int(provenance["returned"])
+        start = int(provenance["start"])
+        pages.append({
+            "page": int(provenance["page"]),
+            "start": start,
+            "returned": returned,
+            "range": [start, start + returned - 1] if returned else [],
+            "response": response_path.name,
+            "metadata": _metadata_path(response_path).name,
+            "status": "complete",
+        })
+    manifest = {
+        "manifest_version": 1,
+        "query_id": query_id,
+        "branch": branch,
+        "query_version": query_version,
+        "database": "Scopus",
+        "retrieval_mechanism": "Scopus Search API offset pagination",
+        "run_identifier": run_timestamp,
+        "totalResults": total_results,
+        "raw_captured_records": raw_captured_records,
+        "api_calls": api_calls,
+        "reconciliation": "Complete",
+        "pages": pages,
+        "raw_artifacts": files,
+        "raw_storage": "local-private",
+        "status": "complete",
+    }
+    _write_immutable(manifest_path, (json.dumps(manifest, indent=2, sort_keys=True) + "\n").encode())
+    return manifest_path
+
+
 def retrieve(
-    *, query_id: str, query: str, api_key: str, raw_dir: Path,
+    *, query_id: str, query: str, api_key: str, raw_dir: Path = DEFAULT_RAW_DIR,
     count: int = DEFAULT_COUNT, call_limit: int = DEFAULT_CALL_LIMIT,
     pace_seconds: float = DEFAULT_PACE_SECONDS, retries: int = 3,
     expected_total_results: int | None = None,
@@ -134,6 +223,8 @@ def retrieve(
     cursor_available: bool = CURSOR_PAGINATION_AVAILABLE,
     run_timestamp: str | None = None, opener: Callable[..., Any] = urlopen,
     sleeper: Callable[[float], None] = time.sleep,
+    manifest_dir: Path | None = None, branch: str | None = None,
+    query_version: str | None = None,
 ) -> RetrievalSummary:
     """Retrieve untouched Scopus pages without deduplication or screening.
 
@@ -147,6 +238,7 @@ def retrieve(
         raise RetrievalError("the exact frozen Scopus query is required")
     if not api_key:
         raise RetrievalError(f"{API_KEY_ENV} is not set")
+    _validate_raw_dir(raw_dir)
     requested_view = view.upper() if view else None
     effective_view = requested_view or DEFAULT_VIEW
     if requested_view not in {None, *VIEW_LIMITS} or count < 1 or count > VIEW_LIMITS[effective_view]:
@@ -168,6 +260,7 @@ def retrieve(
     captured = 0
     calls = 0
     artifacts: list[Path] = []
+    page_provenance: list[Mapping[str, Any]] = []
     last_call_at: float | None = None
 
     while total is None or captured < total:
@@ -248,6 +341,7 @@ def retrieve(
         _write_immutable(response_path, payload_bytes)
         _write_immutable(_metadata_path(response_path), (json.dumps(metadata, sort_keys=True) + "\n").encode())
         artifacts.append(response_path)
+        page_provenance.append({"page": page, "start": start, "returned": returned})
         if expected_total_results is not None and page_total != expected_total_results:
             raise RetrievalError(
                 f"API totalResults drift: expected {expected_total_results}, received {page_total}"
@@ -269,7 +363,15 @@ def retrieve(
         if returned == 0 and captured < total:
             raise RetrievalError("incomplete retrieval: pagination made no progress")
 
-    summary = RetrievalSummary(total or 0, captured, calls, tuple(artifacts))
+    manifest_path = None
+    if manifest_dir is not None:
+        manifest_path = _write_manifest(
+            manifest_dir=manifest_dir, query_id=query_id, branch=branch,
+            query_version=query_version, run_timestamp=timestamp,
+            artifacts=artifacts, page_provenance=page_provenance,
+            total_results=total or 0, raw_captured_records=captured, api_calls=calls,
+        )
+    summary = RetrievalSummary(total or 0, captured, calls, tuple(artifacts), manifest_path)
     if not summary.reconciled:
         raise RetrievalError("raw captured record count does not reconcile with totalResults")
     return summary
@@ -320,7 +422,10 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--view", choices=tuple(VIEW_LIMITS))
     parser.add_argument("--pagination", choices=("auto", "offset", "cursor"), default=DEFAULT_PAGINATION)
     parser.add_argument("--expected-total-results", type=int)
-    parser.add_argument("--raw-dir", type=Path, default=Path("research/raw/systematic-search"))
+    parser.add_argument("--raw-dir", type=Path, default=DEFAULT_RAW_DIR)
+    parser.add_argument("--manifest-dir", type=Path, default=DEFAULT_MANIFEST_DIR)
+    parser.add_argument("--branch")
+    parser.add_argument("--query-version")
     parser.add_argument("--dry-run", action="store_true")
     return parser
 
@@ -333,8 +438,8 @@ def main(argv: Sequence[str] | None = None) -> int:
             return 0
         if not args.query:
             raise ValueError("--query is required unless --dry-run is used")
-        summary = retrieve(query_id=args.query_id, query=args.query, api_key=os.environ.get(API_KEY_ENV, ""), raw_dir=args.raw_dir, count=args.count, expected_total_results=args.expected_total_results, view=args.view, pagination=args.pagination)
-        print(json.dumps({"totalResults": summary.total_results, "raw_captured_records": summary.raw_captured_records, "api_calls": summary.api_calls, "reconciliation": "Complete", "raw_artifacts": [str(path) for path in summary.artifacts]}, indent=2))
+        summary = retrieve(query_id=args.query_id, query=args.query, api_key=os.environ.get(API_KEY_ENV, ""), raw_dir=args.raw_dir, count=args.count, expected_total_results=args.expected_total_results, view=args.view, pagination=args.pagination, manifest_dir=args.manifest_dir, branch=args.branch, query_version=args.query_version)
+        print(json.dumps({"totalResults": summary.total_results, "raw_captured_records": summary.raw_captured_records, "api_calls": summary.api_calls, "reconciliation": "Complete", "raw_artifacts": [str(path) for path in summary.artifacts], "manifest": str(summary.manifest) if summary.manifest else None}, indent=2))
         return 0
     except (ValueError, RetrievalError) as error:
         print(f"error: {redact_secret(error, os.environ.get(API_KEY_ENV))}", file=sys.stderr)

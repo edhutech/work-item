@@ -3,3 +3,8 @@
 !.env.example
 __pycache__/
 *.py[cod]
+
+# Licensed database raw data is local/private and must never enter Git.
+research/raw-local/scopus/
+research/raw/systematic-search/*SCOPUS*.json
+research/raw/systematic-search/*SCOPUS*.csv

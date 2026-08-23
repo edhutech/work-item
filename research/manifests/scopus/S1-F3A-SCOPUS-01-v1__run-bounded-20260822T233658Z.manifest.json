@@ -1,0 +1,44 @@
+{
+  "api_calls": 1,
+  "branch": "F3A",
+  "database": "Scopus",
+  "execution_datetime": "2026-08-22T23:36:58Z",
+  "manifest_version": 1,
+  "pages": [
+    {
+      "metadata": "S1-F3A-SCOPUS-01-v1__run-bounded-20260822T233658Z__api-start-000000.metadata.json",
+      "page": 1,
+      "range": [
+        0,
+        0
+      ],
+      "response": "S1-F3A-SCOPUS-01-v1__run-bounded-20260822T233658Z__api-start-000000.json",
+      "returned": 1,
+      "start": 0,
+      "status": "diagnostic-probe"
+    }
+  ],
+  "query_id": "S1-F3A-SCOPUS-01-v1",
+  "query_version": "v1",
+  "raw_artifacts": [
+    {
+      "bytes": 3637,
+      "filename": "S1-F3A-SCOPUS-01-v1__run-bounded-20260822T233658Z__api-start-000000.json",
+      "role": "response",
+      "sha256": "9db115955fb9ad13bf5d2196b7e10556d6170a45b9e293eb33b29eac1dac4a12"
+    },
+    {
+      "bytes": 683,
+      "filename": "S1-F3A-SCOPUS-01-v1__run-bounded-20260822T233658Z__api-start-000000.metadata.json",
+      "role": "metadata",
+      "sha256": "9a1910440b2f1e255f0911c138fd0dce8cf06f06a0bf736a700b40c2f7985287"
+    }
+  ],
+  "raw_captured_records": 1,
+  "raw_storage": "local-private",
+  "reconciliation": "Not a complete retrieval",
+  "retrieval_mechanism": "Scopus Search API bounded count probe",
+  "run_identifier": "bounded-20260822T233658Z",
+  "status": "diagnostic-probe",
+  "totalResults": 29
+}

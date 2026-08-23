@@ -132,6 +132,8 @@ The two F1 query-piece raw outputs are retained as independent provenance and fo
 - **Raw captured records:** `2596`
 - **Pagination:** `104` API calls/pages, `count=25`, starts `0` through `2575` in increments of `25`; final page contained `21` records
 - **Raw artifacts:** `research/raw/systematic-search/S1-F1-SCOPUS-01-v1__run-20260821T231713Z__api-start-000000.json` through `research/raw/systematic-search/S1-F1-SCOPUS-01-v1__run-20260821T231713Z__api-start-002575.json`, with one immutable metadata sidecar per response
+- **Public provenance manifest:** `research/manifests/scopus/S1-F1-SCOPUS-01-v1__run-20260821T231713Z.manifest.json`
+- **Raw data policy:** Record-level Scopus data and sidecar files are retained locally/private; the public manifest contains provenance and hashes only.
 - **Reconciliation:** `2596` API-reported results / `2596` raw captured records
 - **Reconciliation status:** `Complete`
 - **Missing pagination ranges:** `No`; starts were contiguous and complete
@@ -226,6 +228,8 @@ The two F1 query-piece raw outputs are retained as independent provenance and fo
 - **Raw artifacts:**
   - `research/raw/systematic-search/S1-F2A-SCOPUS-01-v1__run-20260822T012337__scopus-web__years-1964-2019.csv`
   - `research/raw/systematic-search/S1-F2A-SCOPUS-01-v1__run-20260822T012337__scopus-web__years-2020-2027.csv`
+- **Public provenance manifest:** `research/manifests/scopus/S1-F2A-SCOPUS-01-v1__run-20260822T012337__scopus-web.manifest.json`
+- **Raw data policy:** Record-level Scopus Web exports are retained locally/private; the public manifest contains partition provenance and hashes only.
 - **Reconciliation:** `Complete`; `17216 + 6228 = 23444`, matching the final observed Scopus Web full-query count
 - **Execution-time deduplication:** `None`; the raw artifacts remain unchanged and no record was removed
 - **Screening:** `Not started`
@@ -255,7 +259,74 @@ The two F1 query-piece raw outputs are retained as independent provenance and fo
 - **Raw captured records:** `743`
 - **Pagination:** `30` API calls/pages, starts `0` through `725` in increments of `25`; final page contained `18` records
 - **Raw artifacts:** `research/raw/systematic-search/S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000000.json` through `research/raw/systematic-search/S1-F2B-SCOPUS-01-v1__run-20260822T231916Z__api-start-000725.json`, with one immutable metadata sidecar per response
+- **Public provenance manifests:** Complete run `research/manifests/scopus/S1-F2B-SCOPUS-01-v1__run-20260822T231916Z.manifest.json`; bounded probe `research/manifests/scopus/S1-F2B-SCOPUS-01-v1__run-bounded-20260822T231845Z.manifest.json`
+- **Raw data policy:** Record-level Scopus data and sidecar files are retained locally/private; public manifests contain provenance and hashes only.
 - **Reconciliation:** `743` API-reported results / `743` raw captured records
+- **Reconciliation status:** `Complete`
+- **Missing pagination ranges:** `No`; starts were contiguous and complete
+- **Duplicate pagination ranges:** `No`
+- **Execution-time deduplication:** `None`
+- **Screening:** `Not started`
+- **Evidence extraction:** `None`
+- **Synthesis:** `None`
+- **Unique corpus count:** Not derived beyond this single-query raw retrieval
+- **Operational notes:** The exact frozen query was submitted unchanged. The bounded count established that the complete set fit the available non-cursor offset boundary. Raw API JSON responses were preserved before transformation with Query ID, Scopus source, page, start position, count, totalResults, run timestamp, and exact query in non-secret metadata sidecars. The API key was not written to responses, sidecars, filenames, or logs. No deduplication, screening, or evidence extraction occurred.
+
+### S1-F3C-SCOPUS-01-v1 (repeat execution)
+
+- **Query ID:** `S1-F3C-SCOPUS-01-v1`
+- **Branch ID:** `F3C`
+- **Branch:** Supplementary allocation, interdependence, and crowdsourced software work
+- **Database:** Scopus
+- **Execution mechanism:** Scopus Search API
+- **Query version:** `v1`
+- **Execution date:** `2026-08-22`
+- **Execution role:** Latest complete execution associated with this systematic-search log
+- **Exact frozen query:** `TITLE-ABS-KEY(("software development" OR "crowdsourcing software development") AND ("task allocation" OR "work allocation" OR "task interdependence" OR "parallel tasks"))`
+- **Request route:** STANDARD/default; no explicit `view` parameter
+- **Bounded API request:** HTTP `200`; `count=1`, offset pagination, `totalResults=180`; raw response preserved as `research/raw/systematic-search/S1-F3C-SCOPUS-01-v1__run-bounded-20260822T235137Z__api-start-000000.json` with metadata sidecar
+- **Complete retrieval request:** HTTP `200`; offset pagination, `count=25`; cursor pagination was not attempted
+- **Execution status:** `Completed`
+- **Database-reported API result count:** `180`
+- **Raw captured records:** `180`
+- **Pagination:** `8` API calls/pages, starts `0` through `175` in increments of `25`; final page contained `5` records
+- **Raw artifacts:** `research/raw/systematic-search/S1-F3C-SCOPUS-01-v1__run-20260822T235149Z__api-start-000000.json` through `research/raw/systematic-search/S1-F3C-SCOPUS-01-v1__run-20260822T235149Z__api-start-000175.json`, with one immutable metadata sidecar per response
+- **Public provenance manifests:** Complete run `research/manifests/scopus/S1-F3C-SCOPUS-01-v1__run-20260822T235149Z.manifest.json`; bounded probe `research/manifests/scopus/S1-F3C-SCOPUS-01-v1__run-bounded-20260822T235137Z.manifest.json`
+- **Raw data policy:** Record-level Scopus data and sidecar files are retained locally/private; public manifests contain provenance and hashes only.
+- **Reconciliation:** `180` API-reported results / `180` raw captured records
+- **Reconciliation status:** `Complete`
+- **Missing pagination ranges:** `No`; starts were contiguous and complete
+- **Duplicate pagination ranges:** `No`
+- **Execution-time deduplication:** `None`
+- **Screening:** `Not started`
+- **Evidence extraction:** `None`
+- **Operational notes:** This repeat execution used the exact frozen query unchanged. Raw API JSON responses were preserved before transformation with Query ID, Scopus source, page, start position, count, totalResults, run timestamp, and exact query in non-secret metadata sidecars. The API key was not written to responses, sidecars, filenames, or logs. No deduplication, screening, or evidence extraction occurred.
+
+### S1-F3C-SCOPUS-01-v1
+
+- **Query ID:** `S1-F3C-SCOPUS-01-v1`
+- **Branch ID:** `F3C`
+- **Branch:** Supplementary allocation, interdependence, and crowdsourced software work
+- **Branch status:** `Primary`
+- **Database:** Scopus
+- **Execution mechanism:** Scopus Search API
+- **Query version:** `v1`
+- **Execution date:** `2026-08-22`
+- **Execution role:** Historical complete execution; retained as separate execution provenance, not a duplicate-corpus operation
+- **Exact frozen query:** `TITLE-ABS-KEY(("software development" OR "crowdsourcing software development") AND ("task allocation" OR "work allocation" OR "task interdependence" OR "parallel tasks"))`
+- **Fields:** Title, abstract, and author keywords through Scopus `TITLE-ABS-KEY(...)`
+- **Filters:** None; no date, publication-type, language, subject, or additional result filter
+- **Request route:** STANDARD/default; no explicit `view` parameter
+- **Bounded API request:** HTTP `200`; `count=1`, offset pagination, `totalResults=180`; raw response preserved as `research/raw/systematic-search/S1-F3C-SCOPUS-01-v1__run-bounded-20260822T234902Z__api-start-000000.json` with metadata sidecar
+- **Complete retrieval request:** HTTP `200`; offset pagination, `count=25`; cursor pagination was not attempted
+- **Execution status:** `Completed`
+- **Database-reported API result count:** `180`
+- **Raw captured records:** `180`
+- **Pagination:** `8` API calls/pages, starts `0` through `175` in increments of `25`; final page contained `5` records
+- **Raw artifacts:** `research/raw/systematic-search/S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000000.json` through `research/raw/systematic-search/S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000175.json`, with one immutable metadata sidecar per response
+- **Public provenance manifests:** Complete run `research/manifests/scopus/S1-F3C-SCOPUS-01-v1__run-20260822T234914Z.manifest.json`; bounded probe `research/manifests/scopus/S1-F3C-SCOPUS-01-v1__run-bounded-20260822T234902Z.manifest.json`
+- **Raw data policy:** Record-level Scopus data and sidecar files are retained locally/private; public manifests contain provenance and hashes only.
+- **Reconciliation:** `180` API-reported results / `180` raw captured records
 - **Reconciliation status:** `Complete`
 - **Missing pagination ranges:** `No`; starts were contiguous and complete
 - **Duplicate pagination ranges:** `No`
@@ -287,6 +358,8 @@ The two F1 query-piece raw outputs are retained as independent provenance and fo
 - **Raw captured records:** `50`
 - **Pagination:** `2` API calls/pages, starts `0` and `25` in increments of `25`; final page contained `25` records
 - **Raw artifacts:** `research/raw/systematic-search/S1-F3B-SCOPUS-01-v1__run-20260822T234430Z__api-start-000000.json` and `research/raw/systematic-search/S1-F3B-SCOPUS-01-v1__run-20260822T234430Z__api-start-000025.json`, with one immutable metadata sidecar per response
+- **Public provenance manifests:** Complete run `research/manifests/scopus/S1-F3B-SCOPUS-01-v1__run-20260822T234430Z.manifest.json`; bounded probe `research/manifests/scopus/S1-F3B-SCOPUS-01-v1__run-bounded-20260822T233910Z.manifest.json`
+- **Raw data policy:** Record-level Scopus data and sidecar files are retained locally/private; public manifests contain provenance and hashes only.
 - **Reconciliation:** `50` API-reported results / `50` raw captured records
 - **Reconciliation status:** `Complete`
 - **Missing pagination ranges:** `No`; starts were contiguous and complete
@@ -319,6 +392,8 @@ The two F1 query-piece raw outputs are retained as independent provenance and fo
 - **Raw captured records:** `29`
 - **Pagination:** `2` API calls/pages, starts `0` and `25` in increments of `25`; final page contained `4` records
 - **Raw artifacts:** `research/raw/systematic-search/S1-F3A-SCOPUS-01-v1__run-20260822T233712Z__api-start-000000.json` and `research/raw/systematic-search/S1-F3A-SCOPUS-01-v1__run-20260822T233712Z__api-start-000025.json`, with one immutable metadata sidecar per response
+- **Public provenance manifests:** Complete run `research/manifests/scopus/S1-F3A-SCOPUS-01-v1__run-20260822T233712Z.manifest.json`; bounded probe `research/manifests/scopus/S1-F3A-SCOPUS-01-v1__run-bounded-20260822T233658Z.manifest.json`
+- **Raw data policy:** Record-level Scopus data and sidecar files are retained locally/private; public manifests contain provenance and hashes only.
 - **Reconciliation:** `29` API-reported results / `29` raw captured records
 - **Reconciliation status:** `Complete`
 - **Missing pagination ranges:** `No`; starts were contiguous and complete
@@ -351,6 +426,8 @@ The two F1 query-piece raw outputs are retained as independent provenance and fo
 - **Raw captured records:** `540`
 - **Pagination:** `22` API calls/pages, starts `0` through `525` in increments of `25`; final page contained `15` records
 - **Raw artifacts:** `research/raw/systematic-search/S1-F2C-SCOPUS-01-v1__run-20260822T233210Z__api-start-000000.json` through `research/raw/systematic-search/S1-F2C-SCOPUS-01-v1__run-20260822T233210Z__api-start-000525.json`, with one immutable metadata sidecar per response
+- **Public provenance manifests:** Complete run `research/manifests/scopus/S1-F2C-SCOPUS-01-v1__run-20260822T233210Z.manifest.json`; bounded probe `research/manifests/scopus/S1-F2C-SCOPUS-01-v1__run-bounded-20260822T233156Z.manifest.json`
+- **Raw data policy:** Record-level Scopus data and sidecar files are retained locally/private; public manifests contain provenance and hashes only.
 - **Reconciliation:** `540` API-reported results / `540` raw captured records
 - **Reconciliation status:** `Complete`
 - **Missing pagination ranges:** `No`; starts were contiguous and complete

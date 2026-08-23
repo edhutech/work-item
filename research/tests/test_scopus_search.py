@@ -5,8 +5,11 @@ from pathlib import Path
 
 from research.tools.scopus_search import (
     DEFAULT_COUNT,
+    DEFAULT_MANIFEST_DIR,
+    DEFAULT_RAW_DIR,
     RetrievalError,
     artifact_path,
+    build_parser,
     cursor_artifact_path,
     dry_run,
     equivalence_report,
@@ -94,6 +97,40 @@ class ScopusSearchTests(unittest.TestCase):
         self.assertNotIn("view=", requests[0].full_url)
         self.assertIn(f"count={DEFAULT_COUNT}", requests[0].full_url)
         self.assertEqual(requests[0].get_header("X-els-apikey"), "secret")
+
+    def test_manifest_contains_provenance_and_hashes_only(self):
+        def opener(_request, timeout):
+            return FakeResponse(response([{"eid": "1"}], total=1))
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            raw_dir = root / "raw"
+            manifest_dir = root / "manifests"
+            summary = retrieve(
+                query_id="S1-F3C-SCOPUS-01-v1", query="exact frozen query",
+                api_key="secret", raw_dir=raw_dir, manifest_dir=manifest_dir,
+                branch="F3C", query_version="v1", count=25, pace_seconds=0,
+                run_timestamp="20260822T000000Z", opener=opener,
+                sleeper=lambda _seconds: None,
+            )
+            manifest = json.loads(summary.manifest.read_text())
+            self.assertEqual(manifest["totalResults"], 1)
+            self.assertEqual(manifest["raw_captured_records"], 1)
+            self.assertEqual(manifest["reconciliation"], "Complete")
+            self.assertEqual(len(manifest["pages"]), 1)
+            self.assertEqual(len(manifest["raw_artifacts"]), 2)
+            self.assertTrue(all(item["sha256"] and item["bytes"] > 0 for item in manifest["raw_artifacts"]))
+            self.assertNotIn("exact frozen query", summary.manifest.read_text())
+            self.assertNotIn("eid", summary.manifest.read_text())
+
+    def test_repository_raw_dir_must_be_private(self):
+        with self.assertRaisesRegex(RetrievalError, "raw data must be stored"):
+            retrieve(query_id="S1-F1-SCOPUS-01-v1", query="candidate", api_key="secret", raw_dir=Path("research/raw/systematic-search"))
+
+    def test_cli_defaults_to_private_raw_and_public_manifest_paths(self):
+        args = build_parser().parse_args(["--query-id", "S1-F3C-SCOPUS-01-v1", "--dry-run"])
+        self.assertEqual(args.raw_dir, DEFAULT_RAW_DIR)
+        self.assertEqual(args.manifest_dir, DEFAULT_MANIFEST_DIR)
 
     def test_default_pagination_is_offset_and_cursor_is_unavailable(self):
         requests = []

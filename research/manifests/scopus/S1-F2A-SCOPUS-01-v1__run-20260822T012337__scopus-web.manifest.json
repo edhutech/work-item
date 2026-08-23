@@ -1,0 +1,52 @@
+{
+  "api_calls": 0,
+  "branch": "F2A",
+  "database": "Scopus",
+  "execution_datetime": "2026-08-22T01:23:37Z",
+  "manifest_version": 1,
+  "partitions": [
+    {
+      "artifact": "S1-F2A-SCOPUS-01-v1__run-20260822T012337__scopus-web__years-1964-2019.csv",
+      "partition": "1964-2019",
+      "range": [
+        1,
+        17216
+      ],
+      "returned": 17216,
+      "status": "complete"
+    },
+    {
+      "artifact": "S1-F2A-SCOPUS-01-v1__run-20260822T012337__scopus-web__years-2020-2027.csv",
+      "partition": "2020-2027",
+      "range": [
+        17217,
+        23444
+      ],
+      "returned": 6228,
+      "status": "complete"
+    }
+  ],
+  "query_id": "S1-F2A-SCOPUS-01-v1",
+  "query_version": "v1",
+  "raw_artifacts": [
+    {
+      "bytes": 95211670,
+      "filename": "S1-F2A-SCOPUS-01-v1__run-20260822T012337__scopus-web__years-1964-2019.csv",
+      "role": "web-csv",
+      "sha256": "397547c04958126b36f68f7ff91562ca71e8f58477d958841d6ceb5b7539c3e0"
+    },
+    {
+      "bytes": 56461512,
+      "filename": "S1-F2A-SCOPUS-01-v1__run-20260822T012337__scopus-web__years-2020-2027.csv",
+      "role": "web-csv",
+      "sha256": "e29535675b44ad68f06fe8f0c5d98aba0269bfc6f78c1d57e1c9da74dbbfeedf"
+    }
+  ],
+  "raw_captured_records": 23444,
+  "raw_storage": "local-private",
+  "reconciliation": "Complete; 17216 + 6228 = 23444",
+  "retrieval_mechanism": "Scopus Web CSV export",
+  "run_identifier": "20260822T012337__scopus-web",
+  "status": "complete",
+  "totalResults": 23444
+}

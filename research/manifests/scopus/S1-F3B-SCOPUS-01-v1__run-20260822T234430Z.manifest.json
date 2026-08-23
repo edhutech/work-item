@@ -1,0 +1,68 @@
+{
+  "api_calls": 2,
+  "branch": "F3B",
+  "database": "Scopus",
+  "execution_datetime": "2026-08-22T23:44:30Z",
+  "manifest_version": 1,
+  "pages": [
+    {
+      "metadata": "S1-F3B-SCOPUS-01-v1__run-20260822T234430Z__api-start-000000.metadata.json",
+      "page": 1,
+      "range": [
+        0,
+        24
+      ],
+      "response": "S1-F3B-SCOPUS-01-v1__run-20260822T234430Z__api-start-000000.json",
+      "returned": 25,
+      "start": 0,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F3B-SCOPUS-01-v1__run-20260822T234430Z__api-start-000025.metadata.json",
+      "page": 2,
+      "range": [
+        25,
+        49
+      ],
+      "response": "S1-F3B-SCOPUS-01-v1__run-20260822T234430Z__api-start-000025.json",
+      "returned": 25,
+      "start": 25,
+      "status": "complete"
+    }
+  ],
+  "query_id": "S1-F3B-SCOPUS-01-v1",
+  "query_version": "v1",
+  "raw_artifacts": [
+    {
+      "bytes": 41678,
+      "filename": "S1-F3B-SCOPUS-01-v1__run-20260822T234430Z__api-start-000000.json",
+      "role": "response",
+      "sha256": "2c094e3514aa21cd68b68cc4350cff907787be0183480f608fa764061ab1d96a"
+    },
+    {
+      "bytes": 659,
+      "filename": "S1-F3B-SCOPUS-01-v1__run-20260822T234430Z__api-start-000000.metadata.json",
+      "role": "metadata",
+      "sha256": "d055111067ba6326caba5d3f4a8523a9f7ddae47703bb8df11e6367e329087b2"
+    },
+    {
+      "bytes": 39976,
+      "filename": "S1-F3B-SCOPUS-01-v1__run-20260822T234430Z__api-start-000025.json",
+      "role": "response",
+      "sha256": "a46ee5c7e2705a4ceefdbda91abb11001a0e515ce27b3e86e992efd4ed7e7260"
+    },
+    {
+      "bytes": 660,
+      "filename": "S1-F3B-SCOPUS-01-v1__run-20260822T234430Z__api-start-000025.metadata.json",
+      "role": "metadata",
+      "sha256": "5c6529e07c476c2e548fc71d0127f9d728119b7670f0c59392dfefc1b844731d"
+    }
+  ],
+  "raw_captured_records": 50,
+  "raw_storage": "local-private",
+  "reconciliation": "Complete",
+  "retrieval_mechanism": "Scopus Search API offset pagination",
+  "run_identifier": "20260822T234430Z",
+  "status": "complete",
+  "totalResults": 50
+}

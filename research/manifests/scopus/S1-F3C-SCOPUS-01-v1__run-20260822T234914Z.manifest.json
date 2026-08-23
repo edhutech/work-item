@@ -1,0 +1,212 @@
+{
+  "api_calls": 8,
+  "branch": "F3C",
+  "database": "Scopus",
+  "execution_datetime": "2026-08-22T23:49:14Z",
+  "manifest_version": 1,
+  "pages": [
+    {
+      "metadata": "S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000000.metadata.json",
+      "page": 1,
+      "range": [
+        0,
+        24
+      ],
+      "response": "S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000000.json",
+      "returned": 25,
+      "start": 0,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000025.metadata.json",
+      "page": 2,
+      "range": [
+        25,
+        49
+      ],
+      "response": "S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000025.json",
+      "returned": 25,
+      "start": 25,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000050.metadata.json",
+      "page": 3,
+      "range": [
+        50,
+        74
+      ],
+      "response": "S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000050.json",
+      "returned": 25,
+      "start": 50,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000075.metadata.json",
+      "page": 4,
+      "range": [
+        75,
+        99
+      ],
+      "response": "S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000075.json",
+      "returned": 25,
+      "start": 75,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000100.metadata.json",
+      "page": 5,
+      "range": [
+        100,
+        124
+      ],
+      "response": "S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000100.json",
+      "returned": 25,
+      "start": 100,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000125.metadata.json",
+      "page": 6,
+      "range": [
+        125,
+        149
+      ],
+      "response": "S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000125.json",
+      "returned": 25,
+      "start": 125,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000150.metadata.json",
+      "page": 7,
+      "range": [
+        150,
+        174
+      ],
+      "response": "S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000150.json",
+      "returned": 25,
+      "start": 150,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000175.metadata.json",
+      "page": 8,
+      "range": [
+        175,
+        179
+      ],
+      "response": "S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000175.json",
+      "returned": 5,
+      "start": 175,
+      "status": "complete"
+    }
+  ],
+  "query_id": "S1-F3C-SCOPUS-01-v1",
+  "query_version": "v1",
+  "raw_artifacts": [
+    {
+      "bytes": 40911,
+      "filename": "S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000000.json",
+      "role": "response",
+      "sha256": "9cb37bb4aa951dbe22d462a5695436a566fddfefa8188a4f91d74b25978dd278"
+    },
+    {
+      "bytes": 627,
+      "filename": "S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000000.metadata.json",
+      "role": "metadata",
+      "sha256": "0dfd19c6629c584b695b74dabbb6e8cfd7c3659eeeaab459573ca1f3dcd99519"
+    },
+    {
+      "bytes": 40774,
+      "filename": "S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000025.json",
+      "role": "response",
+      "sha256": "048500da9904980e422a03127f63018180595d9f4864531c29b8db559638ca44"
+    },
+    {
+      "bytes": 628,
+      "filename": "S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000025.metadata.json",
+      "role": "metadata",
+      "sha256": "d60afb50eeb419725afb73c7aa20c905f92dd5f133b9a84173936eeee6c69ad0"
+    },
+    {
+      "bytes": 40987,
+      "filename": "S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000050.json",
+      "role": "response",
+      "sha256": "dbc775582db1909598a19d261cbb83229e979679fa9b55952775da1704b4c777"
+    },
+    {
+      "bytes": 628,
+      "filename": "S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000050.metadata.json",
+      "role": "metadata",
+      "sha256": "9be1f28a0332becaca7d69a8967022ee3b38994d51fc14807a416d418823af92"
+    },
+    {
+      "bytes": 40040,
+      "filename": "S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000075.json",
+      "role": "response",
+      "sha256": "97c737c354b6e17dd6de476435d8180a035980030b6fb1da3c9be5d225663bc0"
+    },
+    {
+      "bytes": 628,
+      "filename": "S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000075.metadata.json",
+      "role": "metadata",
+      "sha256": "d92a294f5ebd560f8ed47342af02038dedf09d5bb751f9bdaf13d4a2e4b79da6"
+    },
+    {
+      "bytes": 40129,
+      "filename": "S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000100.json",
+      "role": "response",
+      "sha256": "888cd87e067e0021ee6d71029397323bbb5642ceced0a8ae27d600d88060eb83"
+    },
+    {
+      "bytes": 629,
+      "filename": "S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000100.metadata.json",
+      "role": "metadata",
+      "sha256": "6410201d60329f35e6a7444118cf0669bf99fc8232afbddb5ab054ec6785f713"
+    },
+    {
+      "bytes": 40238,
+      "filename": "S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000125.json",
+      "role": "response",
+      "sha256": "f78bcb7a5f61cd3f72aed5f809c8e6e1c0c5b2c97fb5a77a59d72ed31faee309"
+    },
+    {
+      "bytes": 629,
+      "filename": "S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000125.metadata.json",
+      "role": "metadata",
+      "sha256": "ff2806f7de3c04c4257f463c2346bbba78a6bf37a3c4d6587bce362bacb663b7"
+    },
+    {
+      "bytes": 38935,
+      "filename": "S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000150.json",
+      "role": "response",
+      "sha256": "fa3766bb7f0fb0b3a0b6a8f23675771e4301d2306e06fce1ee378addda65800b"
+    },
+    {
+      "bytes": 629,
+      "filename": "S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000150.metadata.json",
+      "role": "metadata",
+      "sha256": "b9262ea504df7c8ea6c498523df636af1deb2f7a9bb22ba62449a0ab486a4091"
+    },
+    {
+      "bytes": 9323,
+      "filename": "S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000175.json",
+      "role": "response",
+      "sha256": "b53cf362e7c4f454179865f20ff6ed59c4da3e1786d238b34d8f095377d5d9bd"
+    },
+    {
+      "bytes": 628,
+      "filename": "S1-F3C-SCOPUS-01-v1__run-20260822T234914Z__api-start-000175.metadata.json",
+      "role": "metadata",
+      "sha256": "0177fb3cb0489be88e9047d22849cfee371cfee1c145d03fd3f74551c4d505e2"
+    }
+  ],
+  "raw_captured_records": 180,
+  "raw_storage": "local-private",
+  "reconciliation": "Complete",
+  "retrieval_mechanism": "Scopus Search API offset pagination",
+  "run_identifier": "20260822T234914Z",
+  "status": "historical-complete",
+  "totalResults": 180
+}
