@@ -12,6 +12,23 @@ This log records real systematic-search execution provenance. It is separate fro
 - **Historical execution source of truth:** This log is authoritative for completed, failed, superseded, and reused historical executions. Other documents define reuse rules and must not duplicate the complete execution inventory.
 - **Current amendment status:** No new database/API request, screening, deduplication, evidence extraction, or synthesis was performed while recording this boundary.
 
+## Protocol v1.1 Operational Feasibility Event: ACM Digital Library
+
+- **Event date:** `2026-08-23`
+- **Event type:** Operational feasibility validation only; not systematic-search execution.
+- **Database:** ACM Digital Library
+- **Human-access observation:** Search was accessible in Basic Edition; results displayed up to `50` records per page; `Export Citations` was explicitly labeled as a Premium feature; the current account lacked Premium export capability.
+- **Official systematic-search API:** No official documented public ACM Digital Library systematic-search API equivalent to the other evaluated database APIs was established.
+- **Complete systematic capture:** Not currently demonstrated; the available access does not support complete bulk citation capture.
+- **Seven-branch calibration:** ACM does not participate automatically under current access.
+- **Gate classification:** `Conditional targeted / gap-filling source`
+- **Activation triggers:** Research-question coverage gap; contradictory or boundary evidence requiring follow-up; ACM-specific literature cluster identified by snowballing; relevant paper or venue requiring targeted follow-up; or evidence of unique ACM studies not adequately covered elsewhere.
+- **Study handling:** Any ACM study identified through targeted retrieval remains subject to the same screening, eligibility, quality-assessment, and evidence rules as other academic sources.
+- **Gate reopening conditions:** Authorized ACM Premium access; an official documented systematic-search API; or another authorized complete-capture mechanism demonstrating reproducible reconciliation between reported and captured results.
+- **Systematic execution status:** No corpus retrieval, screening, deduplication, evidence extraction, or manifest creation occurred.
+- **Frozen queries:** Unchanged.
+- **Detailed record:** [`database-validation.md`](./database-validation.md#protocol-v11-operational-feasibility-event-acm-digital-library)
+
 ## Protocol v1.1 Operational Feasibility Event: ScienceDirect
 
 - **Event date:** `2026-08-23`

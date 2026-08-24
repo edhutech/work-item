@@ -37,6 +37,30 @@ ACM Digital Library uses a separate feasibility gate. Basic Edition manual page-
 
 Feasibility validation is not a systematic corpus execution, and its records are not screened, deduplicated, extracted, or synthesized.
 
+## Protocol v1.1 Operational Feasibility Event: ACM Digital Library
+
+**Validation date:** 2026-08-23
+
+**Event type:** Operational feasibility validation only; no systematic corpus retrieval.
+
+**Database:** ACM Digital Library
+
+**Human-access observation:** ACM Digital Library search was accessible in Basic Edition. Search results displayed up to 50 records per page. `Export Citations` was explicitly labeled as a Premium feature, and the current account did not have that capability.
+
+**Official systematic-search API:** No official documented public ACM Digital Library systematic-search API equivalent to the other evaluated database APIs was established.
+
+### Gate decision
+
+**Current complete systematic capture route:** Unavailable. Complete bulk citation capture could not be demonstrated through the available access. Manual page-by-page browsing of large result sets is not the default systematic calibration route.
+
+**Gate classification:** `Conditional targeted / gap-filling source`.
+
+ACM Digital Library remains in the research but does not participate automatically in the seven-branch systematic calibration. ACM may be activated only when a documented trigger exists: a research-question coverage gap; contradictory or boundary evidence requiring follow-up; snowballing that identifies an ACM-specific literature cluster; a relevant paper or venue requiring targeted follow-up; or evidence that ACM contains unique studies not adequately covered elsewhere. Any study identified through targeted ACM retrieval remains subject to the same screening, eligibility, quality-assessment, and evidence rules as other academic sources.
+
+The ACM systematic feasibility gate may be reopened if authorized ACM Premium access becomes available, an official documented systematic-search API becomes available, or another authorized complete-capture mechanism demonstrates reproducible reconciliation between reported and captured results. No undocumented API, scraping, browser automation intended to bypass restrictions, or access circumvention is authorized.
+
+This event did not execute a systematic corpus retrieval, change frozen queries, screen or deduplicate records, extract evidence, or alter the 28-branch inventory or research protocol criteria.
+
 ## Protocol v1.1 Operational Feasibility Event: ScienceDirect
 
 **Validation date:** 2026-08-23
@@ -332,14 +356,14 @@ Not every record type exposes the same fields in the list view. DOI and author d
 
 | Candidate | Cost | Completeness and structure | Provenance and reproducibility | Burden, failure modes, and risk | Decision |
 |---|---|---|---|---|---|
-| **Basic Edition manual, page-by-page and record-by-record capture** | Free; account requirement unknown | Can capture the full set only if every result page is traversed and every displayed record is captured. Structured fields are limited to what the page exposes, but can include title, authors, publication, year, DOI, ACM URL/identifier, abstract when visible, page number, and capture order | Strong when each row stores Search ID, query ID, execution timestamp, reported count, page URL, page number, ordinal, and ACM locator. The ACM row remains the identification record | High. Transcription errors, changed ordering, duplicate display rows, stale URLs, interrupted sessions, and missed pages are possible; high effort across 33 queries. Count/page reconciliation and position records mitigate these risks | **Preferred no-cost workflow**, human-verified |
+| **Basic Edition manual, page-by-page and record-by-record capture** | Free; account requirement unknown | Can capture the full set only if every result page is traversed and every displayed record is captured. Structured fields are limited to what the page exposes, but can include title, authors, publication, year, DOI, ACM URL/identifier, abstract when visible, page number, and capture order | Strong when each row stores Search ID, query ID, execution timestamp, reported count, page URL, page number, ordinal, and ACM locator. The ACM row remains the identification record | High. Transcription errors, changed ordering, duplicate display rows, stale URLs, interrupted sessions, and missed pages are possible; high effort across 33 queries. Count/page reconciliation and position records mitigate these risks | **Not the default systematic calibration route**; may support documented targeted retrieval |
 | **Basic Edition individual record inspection plus DOI enrichment** | Free or service-specific limits; account requirement unknown | ACM still identifies each record. Crossref can return one DOI record and RIS/BibTeX/CSL representations; OpenAlex can return DOI-linked bibliographic metadata. Neither service can recover ACM records that were not captured or records without DOI | ACM raw fields and ACM locator remain authoritative; enrichment is a separate nullable layer with source, request date, response status, and match key | Moderate to high. DOI absence, malformed DOI, version mismatch, missing abstracts, stale or conflicting metadata, rate limits, and false DOI matches require explicit failure states. DOI coverage cannot be presumed sufficient | Permitted enrichment after capture, never a replacement retrieval path |
 | **Premium bulk citation/result export** | Requires paid Premium access; availability to the researcher is unknown | Explicitly intended to export search-result citations in bulk and is the most direct route to complete structured capture, subject to export limits/batching and count reconciliation | Strong if the original ACM query, count, export batch, and raw files are preserved | Low to moderate, but export truncation, batch limits, format changes, and account entitlement remain risks | **Fallback** if Basic manual capture fails the pilot or paid access is independently approved |
 | **Unofficial HTTP extraction, scraping, or browser automation** | Unknown | Could appear complete but has no verified completeness guarantee and may omit dynamically loaded or access-controlled records | Weak unless ACM permits it and the capture can be independently audited | Maintenance, throttling, terms/access uncertainty, changed markup, silent omissions, and possible circumvention of Premium restrictions | Rejected for this run; no implementation or recommendation |
 
-### Preferred workflow and execution controls
+### Candidate workflow and execution controls
 
-The preferred workflow is **Basic Edition manual, page-by-page and record-by-record capture**, with optional DOI enrichment only after the ACM capture passes integrity checks. The completed diagnostic verification establishes this as a reproducible no-cost systematic-identification workflow: result totals are visible, page ranges are deterministic for the observed configuration, page size is selectable, complete pagination is navigable, stable individual-record URLs are available, and deeper record inspection supplies metadata when the list view is incomplete. Manual capture remains high-burden and more error-prone than native bulk export, so the controls below are mandatory rather than optional. The observed 44-result diagnostic count must never be recorded as a systematic-search result count.
+Basic Edition manual, page-by-page and record-by-record capture is retained as a candidate method for documented targeted retrieval, with optional DOI enrichment only after capture passes integrity checks. It is not the default systematic calibration route because complete capture at systematic scale is not currently demonstrated. The observed 44-result diagnostic count must never be recorded as a systematic-search result count.
 
 For each later frozen Query ID, the operator will:
 
@@ -364,13 +388,13 @@ Enrichment must store the service, request timestamp, lookup key, response statu
 
 ### Premium assessment and limitations
 
-Premium specifically enables the bulk citation/search-result export that Basic Edition lacks. It would materially reduce transcription burden and improve structured metadata capture, but it is not methodologically necessary because the manual workflow and its page/count controls were human-verified. Paid access is therefore **not required by the selected workflow** and must not be assumed. If Premium is later used, preserve the same Query ID, execution timestamp, ACM reported count, export batch boundaries, raw files, and reconciliation controls; Premium does not remove the need to check truncation or batch completeness.
+Premium specifically enables the bulk citation/search-result export that Basic Edition lacks. Authorized Premium access would be a condition for reopening the systematic feasibility gate, not an assumed route. If Premium is later used, preserve the same Query ID, execution timestamp, ACM reported count, export batch boundaries, raw files, and reconciliation controls; Premium does not remove the need to check truncation or batch completeness.
 
 No automation is authorized by this decision. Any future technical automation would require a separate human review of ACM terms, documented access rules, robots/access constraints where relevant, rate limits, incomplete-capture risk, and maintenance burden. It must not circumvent Premium restrictions.
 
 ### Operational status
 
-ACM search capability, frozen-query compatibility, deterministic complete-result pagination for the observed diagnostic configuration, stable record locators, article/paper metadata capture, and proceeding metadata capture are human-verified. Basic Edition still has no native bulk citation export; Premium export remains an optional fallback. No paid access is required to proceed. Manual workload and human-error risk remain high relative to native export, but they are controlled by page coverage, count reconciliation, ordering, position, locator, raw-field, interruption, and rerun records rather than treated as an unresolved access blocker.
+ACM search capability, frozen-query compatibility, page-size observation up to 50, stable record locators, and article/paper metadata visibility are human-verified. Basic Edition still has no native bulk citation export, and no official documented systematic-search API was established. Complete systematic capture is not currently demonstrated. ACM remains a conditional targeted / gap-filling source and does not participate automatically in seven-branch calibration.
 
 No frozen ACM query requires revision as a result of this verification. The limitation is operational only. No scraping, crawler, or browser automation is authorized merely to bypass Premium export restrictions.
 
