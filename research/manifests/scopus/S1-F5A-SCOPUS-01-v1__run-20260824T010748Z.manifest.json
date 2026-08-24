@@ -1,0 +1,115 @@
+{
+  "api_calls": 4,
+  "branch": "F5A",
+  "database": "Scopus",
+  "manifest_version": 1,
+  "pages": [
+    {
+      "metadata": "S1-F5A-SCOPUS-01-v1__run-20260824T010748Z__api-start-000000.metadata.json",
+      "page": 1,
+      "range": [
+        0,
+        24
+      ],
+      "response": "S1-F5A-SCOPUS-01-v1__run-20260824T010748Z__api-start-000000.json",
+      "returned": 25,
+      "start": 0,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F5A-SCOPUS-01-v1__run-20260824T010748Z__api-start-000025.metadata.json",
+      "page": 2,
+      "range": [
+        25,
+        49
+      ],
+      "response": "S1-F5A-SCOPUS-01-v1__run-20260824T010748Z__api-start-000025.json",
+      "returned": 25,
+      "start": 25,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F5A-SCOPUS-01-v1__run-20260824T010748Z__api-start-000050.metadata.json",
+      "page": 3,
+      "range": [
+        50,
+        74
+      ],
+      "response": "S1-F5A-SCOPUS-01-v1__run-20260824T010748Z__api-start-000050.json",
+      "returned": 25,
+      "start": 50,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F5A-SCOPUS-01-v1__run-20260824T010748Z__api-start-000075.metadata.json",
+      "page": 4,
+      "range": [
+        75,
+        78
+      ],
+      "response": "S1-F5A-SCOPUS-01-v1__run-20260824T010748Z__api-start-000075.json",
+      "returned": 4,
+      "start": 75,
+      "status": "complete"
+    }
+  ],
+  "query_id": "S1-F5A-SCOPUS-01-v1",
+  "query_version": "v1",
+  "raw_artifacts": [
+    {
+      "bytes": 42234,
+      "filename": "S1-F5A-SCOPUS-01-v1__run-20260824T010748Z__api-start-000000.json",
+      "role": "response",
+      "sha256": "2ab586b8e6086212cb6a5ef93c418ed0d6627077729e500f0a7a284b02105d47"
+    },
+    {
+      "bytes": 610,
+      "filename": "S1-F5A-SCOPUS-01-v1__run-20260824T010748Z__api-start-000000.metadata.json",
+      "role": "metadata",
+      "sha256": "820a3661de7bd535a7d954a8e7e37e671c3854d8e935fe11a1de2b47f671ad02"
+    },
+    {
+      "bytes": 42587,
+      "filename": "S1-F5A-SCOPUS-01-v1__run-20260824T010748Z__api-start-000025.json",
+      "role": "response",
+      "sha256": "d3f7bf624a7d879aba56b0a9ed42773368e2ae5ffae5ea7ed332c66eefccbc44"
+    },
+    {
+      "bytes": 611,
+      "filename": "S1-F5A-SCOPUS-01-v1__run-20260824T010748Z__api-start-000025.metadata.json",
+      "role": "metadata",
+      "sha256": "52adc53907af2600fa0e9d6cc65e05242653b7504a1fc7200f43f1da4a2cf01c"
+    },
+    {
+      "bytes": 40642,
+      "filename": "S1-F5A-SCOPUS-01-v1__run-20260824T010748Z__api-start-000050.json",
+      "role": "response",
+      "sha256": "be838e5be791357e999d738cbb08f1869bc79af427938aa1653b642f1a50f5df"
+    },
+    {
+      "bytes": 611,
+      "filename": "S1-F5A-SCOPUS-01-v1__run-20260824T010748Z__api-start-000050.metadata.json",
+      "role": "metadata",
+      "sha256": "a7c713cf809bf3c0e5b4e2868caa3731415c1e2eaa2686b00de029c89a3c4d98"
+    },
+    {
+      "bytes": 7537,
+      "filename": "S1-F5A-SCOPUS-01-v1__run-20260824T010748Z__api-start-000075.json",
+      "role": "response",
+      "sha256": "ab20af7046991d78af4f8354087244828d71a352ad2876f1ffb8a99a9b82cc1f"
+    },
+    {
+      "bytes": 610,
+      "filename": "S1-F5A-SCOPUS-01-v1__run-20260824T010748Z__api-start-000075.metadata.json",
+      "role": "metadata",
+      "sha256": "3cbd49eaf7f8344017178b8aa94d5309c8cbd3bb9ae6d14eaf019de980cceefb"
+    }
+  ],
+  "raw_captured_records": 79,
+  "raw_storage": "local-private",
+  "reconciliation": "Complete",
+  "retrieval_mechanism": "Scopus Search API offset pagination",
+  "run_identifier": "20260824T010748Z",
+  "status": "complete",
+  "totalResults": 79
+}

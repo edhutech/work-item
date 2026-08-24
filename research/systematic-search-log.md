@@ -344,6 +344,41 @@ The two F1 query-piece raw outputs are retained as independent provenance and fo
 - **Unique corpus count:** Not derived beyond this single-query raw retrieval
 - **Operational notes:** The exact frozen query was submitted unchanged. The bounded count established that the complete set fit the available non-cursor offset boundary. Raw API JSON responses were preserved before transformation with Query ID, Scopus source, page, start position, count, totalResults, run timestamp, and exact query in non-secret metadata sidecars. The API key was not written to responses, sidecars, filenames, or logs. No deduplication, screening, or evidence extraction occurred.
 
+### S1-F5A-SCOPUS-01-v1
+
+- **Query ID:** `S1-F5A-SCOPUS-01-v1`
+- **Branch ID:** `F5A`
+- **Branch:** Coding-agent population
+- **Branch status:** `Primary`
+- **Database:** Scopus
+- **Execution mechanism:** Scopus Search API
+- **Execution date:** `2026-08-24`
+- **Exact frozen query:** `TITLE-ABS-KEY(("coding agent" OR "AI coding agent" OR "agentic coding") AND ("software development" OR "software engineering" OR "repository-level task"))`
+- **Fields:** Title, abstract, and author keywords through Scopus `TITLE-ABS-KEY(...)`
+- **Filters:** None; no date, publication-type, language, subject, or additional result filter
+- **Request route:** STANDARD/default; no explicit `view` parameter
+- **Bounded API request:** HTTP `200`; `count=1`; `totalResults=79`; no raw bounded artifact was retained
+- **Complete retrieval request:** HTTP `200`; offset pagination; `count=25`; cursor pagination was not attempted
+- **Execution status:** `Completed`
+- **Database-reported API result count:** `79`
+- **Raw captured records:** `79`
+- **Pagination:** `4` API calls/pages, starts `0` through `75` in increments of `25`; final page contained `4` records
+- **Raw artifacts:** `research/raw-local/scopus/S1-F5A-SCOPUS-01-v1__run-20260824T010748Z__api-start-000000.json` through `research/raw-local/scopus/S1-F5A-SCOPUS-01-v1__run-20260824T010748Z__api-start-000075.json`, with one immutable provenance sidecar per response
+- **Public provenance manifest:** `research/manifests/scopus/S1-F5A-SCOPUS-01-v1__run-20260824T010748Z.manifest.json`
+- **SHA-256 provenance:** Recorded for every local raw response and provenance sidecar in the public manifest; byte sizes are recorded there as well
+- **Raw data policy:** Record-level Scopus data and sidecar files are retained locally/private; the public manifest contains provenance and hashes only
+- **Reconciliation:** `79` API-reported results / `79` raw captured records
+- **Reconciliation status:** `Complete`
+- **Missing pagination ranges:** `No`; starts were contiguous and complete
+- **Duplicate pagination ranges:** `No`
+- **Execution-time deduplication:** `None`
+- **Screening:** `Not started`
+- **Evidence extraction:** `None`
+- **Synthesis:** `None`
+- **Unique corpus count:** Not derived beyond this single-query raw retrieval
+- **Known-item results:** `Not verified`; no separate known-item retrieval was performed during this execution
+- **Operational notes:** The exact frozen query was submitted unchanged. `ELSEVIER_API_KEY` was loaded only into the execution process from the ignored local `.env.local` file and was not printed, persisted, or written to responses, sidecars, filenames, manifests, or logs. No deduplication, screening, or evidence extraction occurred. F5B and all Supplementary branches were not executed.
+
 ### S1-F4D-SCOPUS-01-v1
 
 - **Query ID:** `S1-F4D-SCOPUS-01-v1`
