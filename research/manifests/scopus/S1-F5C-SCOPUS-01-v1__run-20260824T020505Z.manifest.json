@@ -1,0 +1,67 @@
+{
+  "api_calls": 2,
+  "branch": "F5C",
+  "database": "Scopus",
+  "manifest_version": 1,
+  "pages": [
+    {
+      "metadata": "S1-F5C-SCOPUS-01-v1__run-20260824T020505Z__api-start-000000.metadata.json",
+      "page": 1,
+      "range": [
+        0,
+        24
+      ],
+      "response": "S1-F5C-SCOPUS-01-v1__run-20260824T020505Z__api-start-000000.json",
+      "returned": 25,
+      "start": 0,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F5C-SCOPUS-01-v1__run-20260824T020505Z__api-start-000025.metadata.json",
+      "page": 2,
+      "range": [
+        25,
+        41
+      ],
+      "response": "S1-F5C-SCOPUS-01-v1__run-20260824T020505Z__api-start-000025.json",
+      "returned": 17,
+      "start": 25,
+      "status": "complete"
+    }
+  ],
+  "query_id": "S1-F5C-SCOPUS-01-v1",
+  "query_version": "v1",
+  "raw_artifacts": [
+    {
+      "bytes": 41378,
+      "filename": "S1-F5C-SCOPUS-01-v1__run-20260824T020505Z__api-start-000000.json",
+      "role": "response",
+      "sha256": "eebb6eb4c7414ce7dc3c83191e1536eae23436054cadf0e6b2faf2d6397c2456"
+    },
+    {
+      "bytes": 590,
+      "filename": "S1-F5C-SCOPUS-01-v1__run-20260824T020505Z__api-start-000000.metadata.json",
+      "role": "metadata",
+      "sha256": "21a072b9668004bd20bf42075a475c1def22cae09353a74bde0fb5528a7535b0"
+    },
+    {
+      "bytes": 27342,
+      "filename": "S1-F5C-SCOPUS-01-v1__run-20260824T020505Z__api-start-000025.json",
+      "role": "response",
+      "sha256": "f7995ff2ab59d5d49d3b929bd01d1f13d5e933aa64fe237ac12e5ca214887513"
+    },
+    {
+      "bytes": 591,
+      "filename": "S1-F5C-SCOPUS-01-v1__run-20260824T020505Z__api-start-000025.metadata.json",
+      "role": "metadata",
+      "sha256": "a4c61407188936d34aab055fcdf6704175796cf5a539998fcb0e228808a858ca"
+    }
+  ],
+  "raw_captured_records": 42,
+  "raw_storage": "local-private",
+  "reconciliation": "Complete",
+  "retrieval_mechanism": "Scopus Search API offset pagination",
+  "run_identifier": "20260824T020505Z",
+  "status": "complete",
+  "totalResults": 42
+}
