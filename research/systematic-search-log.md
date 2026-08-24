@@ -12,6 +12,24 @@ This log records real systematic-search execution provenance. It is separate fro
 - **Historical execution source of truth:** This log is authoritative for completed, failed, superseded, and reused historical executions. Other documents define reuse rules and must not duplicate the complete execution inventory.
 - **Current amendment status:** No new database/API request, screening, deduplication, evidence extraction, or synthesis was performed while recording this boundary.
 
+## Protocol v1.1 Operational Feasibility Event: Web of Science API Expanded
+
+- **Event date:** `2026-08-24`
+- **Event type:** Operational feasibility validation only; not systematic-search execution.
+- **Database:** Web of Science Core Collection
+- **API route:** Web of Science API Expanded
+- **Access-request decision:** The API Expanded subscription request was processed but not approved because the requested plan requires an eligible Web of Science subscription/API entitlement. No usable API credential was issued.
+- **API request executed:** No
+- **Systematic corpus retrieval executed:** No
+- **Seven-branch calibration through API Expanded:** Unavailable under current authorized access
+- **Current API classification:** `BLOCKED — entitlement unavailable`
+- **Technical API failure:** No; the blocker is unavailable entitlement
+- **Web of Science research status:** Not excluded. Web of Science remains available for possible conditional targeted, gap-filling, snowballing, or manually accessed use when a documented methodological trigger exists and the access method is authorized.
+- **Gate reopening conditions:** Authorized Web of Science API Expanded entitlement; an eligible Clarivate API plan; or another officially documented Web of Science API route shown through separate feasibility validation to represent the frozen search semantics adequately under authorized access. A lower-tier or different Clarivate API is not assumed equivalent to API Expanded.
+- **Systematic execution status:** No query, API request, corpus retrieval, screening, deduplication, evidence extraction, synthesis, or manifest creation occurred.
+- **Frozen queries:** Unchanged.
+- **Detailed record:** [`database-validation.md`](./database-validation.md#protocol-v11-operational-feasibility-event-web-of-science-api-expanded)
+
 ## Protocol v1.1 Operational Feasibility Event: ACM Digital Library
 
 - **Event date:** `2026-08-23`

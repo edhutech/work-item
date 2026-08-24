@@ -37,6 +37,32 @@ ACM Digital Library uses a separate feasibility gate. Basic Edition manual page-
 
 Feasibility validation is not a systematic corpus execution, and its records are not screened, deduplicated, extracted, or synthesized.
 
+## Protocol v1.1 Operational Feasibility Event: Web of Science API Expanded
+
+**Validation date:** 2026-08-24
+
+**Event type:** Operational feasibility validation only; no systematic corpus retrieval.
+
+**Database:** Web of Science Core Collection
+
+**API route:** Web of Science API Expanded
+
+**Access-request decision:** The API Expanded subscription request was processed but not approved because the requested plan requires an eligible Web of Science subscription/API entitlement. No usable API credential was issued.
+
+**API request status:** No Web of Science API request was executed. No query, result count, identifier sample, or record-level API response exists for this event.
+
+**Systematic execution status:** No systematic API corpus retrieval, screening, deduplication, evidence extraction, synthesis, or manifest creation occurred.
+
+### Gate decision
+
+**Current API route classification:** `BLOCKED — entitlement unavailable`
+
+Web of Science API Expanded cannot participate in the Protocol v1.1 seven-branch cross-database calibration under the current authorized access. This is an entitlement blocker, not a technical API failure. The Web of Science database is not excluded from the research: its existing Web route remains documented separately, and Web of Science may be considered later as a conditional targeted, gap-filling, snowballing, or manually accessed source when a documented methodological trigger exists and the access method is authorized.
+
+**Gate reopening conditions:** Authorized Web of Science API Expanded entitlement becomes available; Clarivate grants an eligible API plan; or another officially documented Web of Science API route is shown through a separate feasibility validation to represent the frozen search semantics adequately and is available under authorized access. A lower-tier or different Clarivate API must not be assumed equivalent to API Expanded.
+
+This event did not change frozen queries, branch inventory, inclusion or exclusion criteria, contradictory-evidence policy, stopping rules, or research questions.
+
 ## Protocol v1.1 Operational Feasibility Event: ACM Digital Library
 
 **Validation date:** 2026-08-23
