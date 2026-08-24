@@ -62,6 +62,15 @@ class ScopusSearchTests(unittest.TestCase):
             with self.assertRaisesRegex(RetrievalError, "short page"):
                     retrieve(query_id="S1-F1-SCOPUS-01-v1", query="candidate", api_key="secret", raw_dir=Path(directory), count=2, pagination="offset", pace_seconds=0, opener=opener, sleeper=lambda _seconds: None)
 
+    def test_empty_result_error_sentinel_is_not_counted_as_record(self):
+        def opener(_request, timeout):
+            return FakeResponse(response([{"@_fa": "true", "error": "empty"}], total=0))
+
+        with tempfile.TemporaryDirectory() as directory:
+            summary = retrieve(query_id="S1-F1-SCOPUS-01-v1", query="candidate", api_key="secret", raw_dir=Path(directory), count=25, pagination="offset", pace_seconds=0, opener=opener, sleeper=lambda _seconds: None)
+            self.assertEqual(summary.raw_captured_records, 0)
+            self.assertTrue(summary.reconciled)
+
     def test_filename_generation(self):
         self.assertEqual(artifact_path(Path("raw"), "S1-F1-SCOPUS-01-v1", "20260821T000000Z", 0).name, "S1-F1-SCOPUS-01-v1__run-20260821T000000Z__api-start-000000.json")
         self.assertEqual(cursor_artifact_path(Path("raw"), "S1-F1-SCOPUS-01-v1", "20260821T000000Z", 1).name, "S1-F1-SCOPUS-01-v1__run-20260821T000000Z__api-page-000001.json")

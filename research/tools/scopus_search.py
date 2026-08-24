@@ -78,11 +78,19 @@ def _total_results(payload: Mapping[str, Any]) -> int:
 
 
 def _entries(payload: Mapping[str, Any]) -> list[Any]:
-    entries = payload["search-results"].get("entry")
+    search_results = payload["search-results"]
+    entries = search_results.get("entry")
     if entries is None:
         return []
     if not isinstance(entries, list):
         raise RetrievalError("Scopus response entry is not a list")
+    if (
+        str(search_results.get("opensearch:totalResults")) == "0"
+        and len(entries) == 1
+        and isinstance(entries[0], Mapping)
+        and "error" in entries[0]
+    ):
+        return []
     return entries
 
 
