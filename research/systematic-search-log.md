@@ -344,6 +344,146 @@ The two F1 query-piece raw outputs are retained as independent provenance and fo
 - **Unique corpus count:** Not derived beyond this single-query raw retrieval
 - **Operational notes:** The exact frozen query was submitted unchanged. The bounded count established that the complete set fit the available non-cursor offset boundary. Raw API JSON responses were preserved before transformation with Query ID, Scopus source, page, start position, count, totalResults, run timestamp, and exact query in non-secret metadata sidecars. The API key was not written to responses, sidecars, filenames, or logs. No deduplication, screening, or evidence extraction occurred.
 
+### S1-F7C-SCOPUS-01-v1
+
+- **Query ID:** `S1-F7C-SCOPUS-01-v1`
+- **Branch ID:** `F7C`
+- **Branch:** Rework and revision, variant 01: software-process rework
+- **Branch status:** `Primary`
+- **Database:** Scopus
+- **Execution mechanism:** Scopus Search API
+- **Query version:** `v1`
+- **Execution date:** `2026-08-24`
+- **Exact frozen query:** `TITLE-ABS-KEY("software development" AND "software rework")`
+- **Fields:** Title, abstract, and author keywords through Scopus `TITLE-ABS-KEY(...)`
+- **Filters:** None; no date, publication-type, language, subject, or additional result filter
+- **Request route:** STANDARD/default; no explicit `view` parameter
+- **Bounded API request:** HTTP `200`; `count=1`, no cursor, `totalResults=8`; no bounded raw artifact was retained
+- **Complete retrieval request:** HTTP `200`; offset pagination, `count=25`; cursor pagination was not attempted
+- **Execution status:** `Completed`
+- **Database-reported API result count:** `8`
+- **Raw captured records:** `8`
+- **Pagination:** `1` API call/page, start `0`; final page contained `8` records
+- **Raw artifacts:** `research/raw-local/scopus/S1-F7C-SCOPUS-01-v1__run-20260824T231515Z__api-start-000000.json`, with one immutable metadata sidecar
+- **Public provenance manifest:** `research/manifests/scopus/S1-F7C-SCOPUS-01-v1__run-20260824T231515Z.manifest.json`
+- **SHA-256 provenance:** Recorded for the local raw response and provenance sidecar in the public manifest; byte sizes are recorded there as well
+- **Raw data policy:** Record-level Scopus data and sidecar files are retained locally/private; the public manifest contains provenance and hashes only
+- **Reconciliation:** `8` API-reported results / `8` raw captured records
+- **Reconciliation status:** `Complete`
+- **Missing pagination ranges:** `No`; the only required offset was `0`
+- **Duplicate pagination ranges:** `No`
+- **Execution-time deduplication:** `None`
+- **Screening:** `Not started`
+- **Evidence extraction:** `None`
+- **Synthesis:** `None`
+- **Unique corpus count:** Not derived; this variant remains independent from F7C variants 02-04
+- **Operational notes:** The exact frozen query was submitted unchanged. `ELSEVIER_API_KEY` was loaded only into the execution process from the ignored local `.env.local` file and was not printed, persisted, or written to responses, sidecars, filenames, manifests, or logs. No within-variant or cross-variant deduplication, screening, evidence extraction, interpretation, or downstream branch execution occurred. F7D was not executed.
+
+### S1-F7C-SCOPUS-02-v1
+
+- **Query ID:** `S1-F7C-SCOPUS-02-v1`
+- **Branch ID:** `F7C`
+- **Branch:** Rework and revision, variant 02: review-induced revision
+- **Branch status:** `Primary`
+- **Database:** Scopus
+- **Execution mechanism:** Scopus Search API
+- **Query version:** `v1`
+- **Execution date:** `2026-08-24`
+- **Exact frozen query:** `TITLE-ABS-KEY("pull request" AND ("pull request revision" OR "review iteration" OR "review-induced change"))`
+- **Fields:** Title, abstract, and author keywords through Scopus `TITLE-ABS-KEY(...)`
+- **Filters:** None; no date, publication-type, language, subject, or additional result filter
+- **Request route:** STANDARD/default; no explicit `view` parameter
+- **Bounded API request:** HTTP `200`; `count=1`, no cursor, `totalResults=2`; no bounded raw artifact was retained
+- **Complete retrieval request:** HTTP `200`; offset pagination, `count=25`; cursor pagination was not attempted
+- **Execution status:** `Completed`
+- **Database-reported API result count:** `2`
+- **Raw captured records:** `2`
+- **Pagination:** `1` API call/page, start `0`; final page contained `2` records
+- **Raw artifacts:** `research/raw-local/scopus/S1-F7C-SCOPUS-02-v1__run-20260824T231516Z__api-start-000000.json`, with one immutable metadata sidecar
+- **Public provenance manifest:** `research/manifests/scopus/S1-F7C-SCOPUS-02-v1__run-20260824T231516Z.manifest.json`
+- **SHA-256 provenance:** Recorded for the local raw response and provenance sidecar in the public manifest; byte sizes are recorded there as well
+- **Raw data policy:** Record-level Scopus data and sidecar files are retained locally/private; the public manifest contains provenance and hashes only
+- **Reconciliation:** `2` API-reported results / `2` raw captured records
+- **Reconciliation status:** `Complete`
+- **Missing pagination ranges:** `No`; the only required offset was `0`
+- **Duplicate pagination ranges:** `No`
+- **Execution-time deduplication:** `None`
+- **Screening:** `Not started`
+- **Evidence extraction:** `None`
+- **Synthesis:** `None`
+- **Unique corpus count:** Not derived; this variant remains independent from F7C variants 01, 03, and 04
+- **Operational notes:** The exact frozen query was submitted unchanged. `ELSEVIER_API_KEY` was loaded only into the execution process from the ignored local `.env.local` file and was not printed, persisted, or written to responses, sidecars, filenames, manifests, or logs. No within-variant or cross-variant deduplication, screening, evidence extraction, interpretation, or downstream branch execution occurred. F7D was not executed.
+
+### S1-F7C-SCOPUS-03-v1
+
+- **Query ID:** `S1-F7C-SCOPUS-03-v1`
+- **Branch ID:** `F7C`
+- **Branch:** Rework and revision, variant 03: corrective maintenance
+- **Branch status:** `Primary`
+- **Database:** Scopus
+- **Execution mechanism:** Scopus Search API
+- **Query version:** `v1`
+- **Execution date:** `2026-08-24`
+- **Exact frozen query:** `TITLE-ABS-KEY("software maintenance" AND ("corrective change" OR "corrective maintenance"))`
+- **Fields:** Title, abstract, and author keywords through Scopus `TITLE-ABS-KEY(...)`
+- **Filters:** None; no date, publication-type, language, subject, or additional result filter
+- **Request route:** STANDARD/default; no explicit `view` parameter
+- **Bounded API request:** HTTP `200`; `count=1`, no cursor, `totalResults=165`; no bounded raw artifact was retained
+- **Complete retrieval request:** HTTP `200`; offset pagination, `count=25`; cursor pagination was not attempted
+- **Execution status:** `Completed`
+- **Database-reported API result count:** `165`
+- **Raw captured records:** `165`
+- **Pagination:** `7` API calls/pages, starts `0` through `150` in increments of `25`; final page contained `15` records
+- **Raw artifacts:** `research/raw-local/scopus/S1-F7C-SCOPUS-03-v1__run-20260824T231517Z__api-start-000000.json` through `research/raw-local/scopus/S1-F7C-SCOPUS-03-v1__run-20260824T231517Z__api-start-000150.json`, with one immutable metadata sidecar per response
+- **Public provenance manifest:** `research/manifests/scopus/S1-F7C-SCOPUS-03-v1__run-20260824T231517Z.manifest.json`
+- **SHA-256 provenance:** Recorded for every local raw response and provenance sidecar in the public manifest; byte sizes are recorded there as well
+- **Raw data policy:** Record-level Scopus data and sidecar files are retained locally/private; the public manifest contains provenance and hashes only
+- **Reconciliation:** `165` API-reported results / `165` raw captured records
+- **Reconciliation status:** `Complete`
+- **Missing pagination ranges:** `No`; starts were contiguous and complete
+- **Duplicate pagination ranges:** `No`
+- **Execution-time deduplication:** `None`
+- **Screening:** `Not started`
+- **Evidence extraction:** `None`
+- **Synthesis:** `None`
+- **Unique corpus count:** Not derived; this variant remains independent from F7C variants 01, 02, and 04
+- **Operational notes:** The exact frozen query was submitted unchanged. `ELSEVIER_API_KEY` was loaded only into the execution process from the ignored local `.env.local` file and was not printed, persisted, or written to responses, sidecars, filenames, manifests, or logs. No within-variant or cross-variant deduplication, screening, evidence extraction, interpretation, or downstream branch execution occurred. F7D was not executed.
+
+### S1-F7C-SCOPUS-04-v1
+
+- **Query ID:** `S1-F7C-SCOPUS-04-v1`
+- **Branch ID:** `F7C`
+- **Branch:** Rework and revision, variant 04: post-initial/post-reopening change
+- **Branch status:** `Primary`
+- **Database:** Scopus
+- **Execution mechanism:** Scopus Search API
+- **Query version:** `v1`
+- **Execution date:** `2026-08-24`
+- **Exact frozen query:** `TITLE-ABS-KEY(("software repository" OR "pull request") AND ("post-initial-commit edit" OR "issue reopening"))`
+- **Fields:** Title, abstract, and author keywords through Scopus `TITLE-ABS-KEY(...)`
+- **Filters:** None; no date, publication-type, language, subject, or additional result filter
+- **Request route:** STANDARD/default; no explicit `view` parameter
+- **Bounded API request:** HTTP `200`; `count=1`, no cursor, `totalResults=0`; no bounded raw artifact was retained
+- **Complete retrieval request:** HTTP `200`; offset pagination, `count=25`; cursor pagination was not attempted
+- **Execution status:** `Completed`
+- **Database-reported API result count:** `0`
+- **Raw captured records:** `0`
+- **Pagination:** `1` API call/page, start `0`; empty-result response preserved
+- **Raw artifacts:** `research/raw-local/scopus/S1-F7C-SCOPUS-04-v1__run-20260824T231518Z__api-start-000000.json`, with one immutable metadata sidecar
+- **Public provenance manifest:** `research/manifests/scopus/S1-F7C-SCOPUS-04-v1__run-20260824T231518Z.manifest.json`
+- **SHA-256 provenance:** Recorded for the local raw response and provenance sidecar in the public manifest; byte sizes are recorded there as well
+- **Raw data policy:** Record-level Scopus data and sidecar files are retained locally/private; the public manifest contains provenance and hashes only
+- **Reconciliation:** `0` API-reported results / `0` raw captured records
+- **Reconciliation status:** `Complete`
+- **Missing pagination ranges:** `No`; the only required offset was `0`
+- **Duplicate pagination ranges:** `No`
+- **Execution-time deduplication:** `None`
+- **Screening:** `Not started`
+- **Evidence extraction:** `None`
+- **Synthesis:** `None`
+- **Unique corpus count:** Not derived; this variant remains independent from F7C variants 01-03
+- **Operational notes:** The exact frozen query was submitted unchanged. The Scopus empty-result sentinel was preserved and reconciled as zero records. `ELSEVIER_API_KEY` was loaded only into the execution process from the ignored local `.env.local` file and was not printed, persisted, or written to responses, sidecars, filenames, manifests, or logs. No within-variant or cross-variant deduplication, screening, evidence extraction, interpretation, or downstream branch execution occurred. F7D was not executed.
+
 ### S1-F7B-SCOPUS-01-v1
 
 - **Query ID:** `S1-F7B-SCOPUS-01-v1`

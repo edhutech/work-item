@@ -1,0 +1,43 @@
+{
+  "api_calls": 1,
+  "branch": "F7C",
+  "database": "Scopus",
+  "manifest_version": 1,
+  "pages": [
+    {
+      "metadata": "S1-F7C-SCOPUS-02-v1__run-20260824T231516Z__api-start-000000.metadata.json",
+      "page": 1,
+      "range": [
+        0,
+        1
+      ],
+      "response": "S1-F7C-SCOPUS-02-v1__run-20260824T231516Z__api-start-000000.json",
+      "returned": 2,
+      "start": 0,
+      "status": "complete"
+    }
+  ],
+  "query_id": "S1-F7C-SCOPUS-02-v1",
+  "query_version": "v1",
+  "raw_artifacts": [
+    {
+      "bytes": 3944,
+      "filename": "S1-F7C-SCOPUS-02-v1__run-20260824T231516Z__api-start-000000.json",
+      "role": "response",
+      "sha256": "aec53e68c799ca8ff86e7027231e83640e8b1900b2941595a4f0b9a8de4032a0"
+    },
+    {
+      "bytes": 558,
+      "filename": "S1-F7C-SCOPUS-02-v1__run-20260824T231516Z__api-start-000000.metadata.json",
+      "role": "metadata",
+      "sha256": "51c93f7f30f7b9b175263318a1a550d07c742864d1b2b1bc8d8b2de379cee2b5"
+    }
+  ],
+  "raw_captured_records": 2,
+  "raw_storage": "local-private",
+  "reconciliation": "Complete",
+  "retrieval_mechanism": "Scopus Search API offset pagination",
+  "run_identifier": "20260824T231516Z",
+  "status": "complete",
+  "totalResults": 2
+}
