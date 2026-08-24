@@ -1,0 +1,67 @@
+{
+  "api_calls": 2,
+  "branch": "F7D",
+  "database": "Scopus",
+  "manifest_version": 1,
+  "pages": [
+    {
+      "metadata": "S1-F7D-SCOPUS-01-v1__run-20260824T233516Z__api-start-000000.metadata.json",
+      "page": 1,
+      "range": [
+        0,
+        24
+      ],
+      "response": "S1-F7D-SCOPUS-01-v1__run-20260824T233516Z__api-start-000000.json",
+      "returned": 25,
+      "start": 0,
+      "status": "complete"
+    },
+    {
+      "metadata": "S1-F7D-SCOPUS-01-v1__run-20260824T233516Z__api-start-000025.metadata.json",
+      "page": 2,
+      "range": [
+        25,
+        36
+      ],
+      "response": "S1-F7D-SCOPUS-01-v1__run-20260824T233516Z__api-start-000025.json",
+      "returned": 12,
+      "start": 25,
+      "status": "complete"
+    }
+  ],
+  "query_id": "S1-F7D-SCOPUS-01-v1",
+  "query_version": "v1",
+  "raw_artifacts": [
+    {
+      "bytes": 41760,
+      "filename": "S1-F7D-SCOPUS-01-v1__run-20260824T233516Z__api-start-000000.json",
+      "role": "response",
+      "sha256": "1ae6d4e2a737653f40c145f9fa466eaed1cebfb12a655f6e2a0ba35c89abb1e0"
+    },
+    {
+      "bytes": 650,
+      "filename": "S1-F7D-SCOPUS-01-v1__run-20260824T233516Z__api-start-000000.metadata.json",
+      "role": "metadata",
+      "sha256": "fa86ec045b0c13a083794e68f801ce39e6bd5c19cd1cfb2cf3c8793bf20555d5"
+    },
+    {
+      "bytes": 19983,
+      "filename": "S1-F7D-SCOPUS-01-v1__run-20260824T233516Z__api-start-000025.json",
+      "role": "response",
+      "sha256": "d3a18a9df8a09bc33b7841e9e12c43cced48ae29ddf08524b0653b3dc7eac130"
+    },
+    {
+      "bytes": 651,
+      "filename": "S1-F7D-SCOPUS-01-v1__run-20260824T233516Z__api-start-000025.metadata.json",
+      "role": "metadata",
+      "sha256": "b77abcc3f3f9629e76447c031240f4c638a49b5b58fc3af4fcad61610120fed6"
+    }
+  ],
+  "raw_captured_records": 37,
+  "raw_storage": "local-private",
+  "reconciliation": "Complete",
+  "retrieval_mechanism": "Scopus Search API offset pagination",
+  "run_identifier": "20260824T233516Z",
+  "status": "complete",
+  "totalResults": 37
+}
