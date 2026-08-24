@@ -344,6 +344,42 @@ The two F1 query-piece raw outputs are retained as independent provenance and fo
 - **Unique corpus count:** Not derived beyond this single-query raw retrieval
 - **Operational notes:** The exact frozen query was submitted unchanged. The bounded count established that the complete set fit the available non-cursor offset boundary. Raw API JSON responses were preserved before transformation with Query ID, Scopus source, page, start position, count, totalResults, run timestamp, and exact query in non-secret metadata sidecars. The API key was not written to responses, sidecars, filenames, or logs. No deduplication, screening, or evidence extraction occurred.
 
+### S1-F6A1-SCOPUS-01-v1
+
+- **Query ID:** `S1-F6A1-SCOPUS-01-v1`
+- **Branch ID:** `F6A1`
+- **Branch:** Context quantity, long-context behavior, and memory
+- **Branch status:** `Primary`
+- **Database:** Scopus
+- **Execution mechanism:** Scopus Search API
+- **Query version:** `v1`
+- **Execution date:** `2026-08-24`
+- **Exact frozen query:** `TITLE-ABS-KEY(("coding agent" OR "software engineering agent" OR "SWE agent") AND ("long-context" OR "context compression" OR "context budget" OR "memory management"))`
+- **Fields:** Title, abstract, and author keywords through Scopus `TITLE-ABS-KEY(...)`
+- **Filters:** None; no date, publication-type, language, subject, or additional result filter
+- **Request route:** STANDARD/default; no explicit `view` parameter
+- **Bounded API request:** HTTP `200`; `count=1`, no cursor, `totalResults=0`; no bounded raw artifact was retained
+- **Initial complete attempt:** HTTP `200`; the API returned the Scopus empty-result error sentinel with `totalResults=0`; no artifact was written. Retrieval was rerun after the utility was corrected to treat this sentinel as zero records.
+- **Complete retrieval request:** HTTP `200`; offset pagination, `count=25`; cursor pagination was not attempted
+- **Execution status:** `Completed`
+- **Database-reported API result count:** `0`
+- **Raw captured records:** `0`
+- **Pagination:** `1` API call/page, start `0`; empty-result response preserved
+- **Raw artifacts:** `research/raw-local/scopus/S1-F6A1-SCOPUS-01-v1__run-20260824T021151Z__api-start-000000.json`, with one immutable provenance sidecar
+- **Public provenance manifest:** `research/manifests/scopus/S1-F6A1-SCOPUS-01-v1__run-20260824T021151Z.manifest.json`
+- **SHA-256 provenance:** Recorded for the local raw response and provenance sidecar in the public manifest; byte sizes are recorded there as well
+- **Raw data policy:** Record-level Scopus data and sidecar files are retained locally/private; the public manifest contains provenance and hashes only
+- **Reconciliation:** `0` API-reported results / `0` raw captured records
+- **Reconciliation status:** `Complete`
+- **Missing pagination ranges:** `No`; the only required offset was `0`
+- **Duplicate pagination ranges:** `No`
+- **Execution-time deduplication:** `None`
+- **Screening:** `Not started`
+- **Evidence extraction:** `None`
+- **Synthesis:** `None`
+- **Unique corpus count:** Not derived beyond this single-query raw retrieval
+- **Operational notes:** The exact frozen query was submitted unchanged. `ELSEVIER_API_KEY` was loaded only into the execution process from the ignored local `.env.local` file and was not printed, persisted, or written to responses, sidecars, filenames, manifests, or logs. No deduplication, screening, evidence extraction, interpretation, or downstream branch execution occurred. The empty-result response contained no Scopus record.
+
 ### S1-F5C-SCOPUS-01-v1
 
 - **Query ID:** `S1-F5C-SCOPUS-01-v1`
