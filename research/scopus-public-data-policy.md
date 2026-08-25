@@ -16,24 +16,25 @@ Scopus metadata.
 This policy changes publication handling, not the frozen search strategy,
 retrieval policy, screening boundary, or no-deduplication rule.
 
-## Current Inventory
+## Current Public Inventory
 
-The current `main` tree contains the following tracked Scopus artifacts:
+The current public `main` tree and reachable public refs contain the following tracked Scopus artifacts:
 
 | Category | Files | Git/LFS | Record-level content | Current public exposure |
 | --- | ---: | --- | --- | --- |
-| Scopus API response JSON | 164 | Git blobs | Yes | Public in current tree |
+| Scopus API response JSON | 0 | None | No | Not present in current public tree or reachable public refs |
 | Scopus API metadata sidecars | 164 | Git blobs | No, provenance only | Public in current tree |
-| Scopus Web CSV exports | 2 | Git LFS | Yes | Public in current tree through LFS pointers and objects |
+| Scopus Web CSV exports | 0 | None | No | Not present in current public tree or reachable public refs |
 
-The tracked API responses cover F1, F2B, F2C, F3A, and F3B. The two tracked
-CSV files are the F2A Scopus Web partitions. No other database policy is
-changed by this document.
+The tracked sidecars cover the prior public Scopus API provenance. Public
+manifests remain tracked, including the F2A and F4B Web provenance manifests.
+The completed F4B Web CSV is local/private under the ignored
+`research/raw-local/scopus/` directory and is not a public artifact.
 
-Ten reachable historical commits contain Scopus raw paths. Deleting a raw
-file in a new commit would remove it from the tip tree only; the content would
-remain recoverable from earlier commits, Git objects, hosting caches, clones,
-or LFS storage.
+The current public-ref audit found no reachable record-level Scopus JSON or CSV
+paths. This statement is limited to the inspected public refs and does not
+claim physical deletion from every external clone, cache, hosting backup, or
+unreachable Git object.
 
 ## F3C Local Provenance
 
@@ -71,9 +72,17 @@ Default public manifest location: `research/manifests/scopus/`.
 
 Default local/private raw location: `research/raw-local/scopus/`.
 
-## Remediation Plan
+## Remediation Status
 
-This plan is prepared but not executed.
+The public-ref remediation is complete for the inspected current public refs:
+record-level Scopus API responses and Web CSV exports are absent from the
+current public tree and reachable public history, while provenance-only
+sidecars, manifests, frozen queries, and execution logs remain public. The
+local/private raw files remain available only under ignored local storage.
+
+No claim is made about external clones, caches, hosting backups, or unreachable
+objects. The following historical plan is retained as context for the controls
+that established this boundary.
 
 1. Freeze and review the current-tree inventory and the manifest/checksum
    records before any history operation.
@@ -86,9 +95,10 @@ This plan is prepared but not executed.
    content from every affected historical commit, including API JSON and Web
    CSV paths. A new deletion commit is insufficient.
 5. Coordinate the rewrite with all collaborators and the hosting service.
-   Rewriting shared history requires a force update; use `--force-with-lease`
-   only after the expected remote state has been verified. This task does not
-   perform that update.
+    Rewriting shared history requires a force update; use `--force-with-lease`
+    only after the expected remote state has been verified. The current claim
+    is limited to the inspected public refs and does not assert an external
+    hosting-side purge.
 6. Apply any hosting-specific LFS object purge or repository garbage
    collection request after the rewritten references are published. Removing
    pointers alone does not guarantee removal of retained LFS objects.
@@ -99,5 +109,5 @@ This plan is prepared but not executed.
    other record-level content remains reachable from the public refs or LFS
    storage before treating remediation as complete.
 
-No history rewrite, force-push, current-tree raw deletion, or LFS purge is
-authorized by this preparation change.
+The current repository state must continue to be checked before publication;
+future raw files must remain under ignored local/private paths.

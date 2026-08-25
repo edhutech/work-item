@@ -68,20 +68,25 @@ license would require a fresh review.
   they contain no titles, authors, identifiers, keywords, abstracts, or other
   record-level fields.
 - The public search log points to the private/local raw location and manifests.
-- Existing reachable history still contains the five original files. Current
-  tree remediation does not purge public history.
+- The five restricted raw paths were removed from the current public main tree
+  and are not reachable from the inspected current public refs. Public
+  provenance manifests remain. Raw IEEE content is local/private under the
+  ignored `research/raw-local/ieee/` path.
+- This public-ref statement does not claim physical destruction from intentional
+  local recovery artifacts, stale external clones, hosting caches, backups, or
+  unreachable Git objects.
 
-## Proposed history action
+## Completed Public-Ref Remediation
 
-No history rewrite is executed by this audit. Human approval would be required
-before removing these paths from reachable public history. The proposed purge
-scope is five exact paths matching:
+Git evidence for the current public refs establishes that the approved
+remediation removed the five restricted raw paths from public reachability. The
+purge scope was the five exact paths matching:
 
 `research/raw/systematic-search/S1-F1-IEEE-01-v1.1__run-20260821T134155__page-*.txt`
 
 `research/raw/systematic-search/S1-F1-IEEE-02-v1.1__run-20260821T155348__page-*.txt`
 
-The rewrite should touch no unrelated files, remove the blobs from all public
-refs, and be verified from a fresh clone. Stale clones can retain and
-reintroduce the old commits or blobs; collaborators must not push old history
-after the rewrite.
+The remediation was limited to those raw paths. Stale clones or intentional
+local recovery artifacts remain outside the public-ref claim and must not be
+used to infer that every historical Git object or hosting cache was physically
+destroyed.

@@ -437,7 +437,35 @@ The following entries record the controlled completion attempt for the two Prima
 - **Screening:** `Not started`
 - **Evidence extraction:** `None`
 - **Synthesis:** `None`
-- **Operational blocker:** The existing retrieval tooling correctly aborts when Scopus `totalResults` changes during retrieval. Repeated F4B attempts observed changing totals (`700`, `701`, and `702`) during the same frozen-query retrieval window. No tooling change was introduced; the F4B systematic retrieval remains incomplete and requires a stable complete API run or the established complete Scopus Web route.
+- **Historical API status:** The existing retrieval tooling correctly aborted when Scopus `totalResults` changed during retrieval. Repeated F4B attempts observed changing totals (`700`, `701`, and `702`) during the same frozen-query retrieval window. No tooling change was introduced; these API attempts remain incomplete historical provenance and are superseded for closure by the separate Scopus Web snapshot below.
+
+### S1-F4B-SCOPUS-01-v1 Web retrieval snapshot
+
+- **Query ID:** `S1-F4B-SCOPUS-01-v1`
+- **Branch ID:** `F4B`
+- **Branch:** Developer information needs and context
+- **Branch status:** `Primary`
+- **Database:** Scopus
+- **Retrieval mechanism:** Scopus Web
+- **Query version:** `v1`
+- **Execution date:** `2026-08-25`
+- **Exact frozen query:** `TITLE-ABS-KEY(("software developer" OR "software engineer" OR "software maintenance") AND ("developer information needs" OR "information seeking" OR "information foraging" OR "program comprehension"))`
+- **Fields:** Citation information; bibliographical information; abstract and keywords
+- **Filters:** None
+- **Execution status:** `Completed`
+- **Observed pre-export Scopus count:** `699`
+- **Captured raw records:** `699`
+- **Post-export database count:** Not recorded
+- **Retrieval snapshot:** `699`
+- **Raw artifact:** `research/raw-local/scopus/S1-F4B-SCOPUS-01-v1__run-20260825T163300Z__scopus-web.csv` (local/private)
+- **Public provenance manifest:** `research/manifests/scopus/S1-F4B-SCOPUS-01-v1__run-20260825T163300Z__scopus-web.manifest.json`
+- **Reconciliation:** `Complete`; the observed pre-export count equals the verified captured raw record count. The raw CSV SHA-256 and byte size are recorded in the public manifest.
+- **Database drift context:** Earlier API attempts remain separate incomplete executions because Scopus `totalResults` changed during offset pagination (`700`, `701`, and `702`). This is operational provenance, not a defect in the frozen query. Their partial records were not merged into this Web snapshot.
+- **Execution-time deduplication:** `None`
+- **Screening:** `Not started`
+- **Evidence extraction:** `None`
+- **Synthesis:** `None`
+- **Research conclusions:** `None`
 
 ### S1-F7D-SCOPUS-01-v1
 

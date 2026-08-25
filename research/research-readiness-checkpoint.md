@@ -1,12 +1,12 @@
 # Research Readiness Checkpoint
 
-**Checkpoint date:** 2026-08-24  
+**Checkpoint date:** 2026-08-25
 **Protocol authority:** Research Protocol v1.1  
 **Repository state:** `main`, clean worktree at the checkpoint start; no protocol, query, or search-log changes made by this checkpoint.
 
 ## Executive Status
 
-The research is in the post-freeze, tiered-retrieval phase. The research questions, provisional Work Item definition, evidence-stream boundaries, frozen query inventory, database-validation records, and Protocol v1.1 execution policy are established. Retrieval and provenance work has progressed, but the retrieval closure gate is not met.
+The research is in the post-freeze, tiered-retrieval phase. The research questions, provisional Work Item definition, evidence-stream boundaries, frozen query inventory, database-validation records, and Protocol v1.1 execution policy are established. The Scopus Primary retrieval closure gate is met; cross-database calibration remains open.
 
 **Current decision:** Not ready for calibration deduplication, screening, evidence extraction, synthesis, or Work Item-characteristic derivation.
 
@@ -17,7 +17,7 @@ The research is in the post-freeze, tiered-retrieval phase. The research questio
 | Method and protocol | Complete | [`protocol.md`](./protocol.md), [`research-plan.md`](../research-plan.md) |
 | Research questions and provisional definition | Frozen as provisional | [`research-questions.md`](./research-questions.md), [`protocol.md`](./protocol.md) |
 | Query design | Frozen; 28 branches, 22 Primary and 6 Supplementary | [`systematic-queries.md`](./systematic-queries.md), [`systematic-search-design.md`](./systematic-search-design.md) |
-| Scopus route | Operational; retrieval incomplete | [`database-validation.md`](./database-validation.md), [`systematic-search-log.md`](./systematic-search-log.md) |
+| Scopus route | Operational; Primary core retrieval complete | [`database-validation.md`](./database-validation.md), [`systematic-search-log.md`](./systematic-search-log.md) |
 | Additional-database feasibility | Evaluated; no additional route currently qualifies for calibration | [`database-validation.md`](./database-validation.md) |
 | IEEE F1 historical retrieval | Complete and reconciled as two independent query pieces; Protocol v1 provenance retained | [`systematic-search-log.md`](./systematic-search-log.md), [`manifests/ieee/`](./manifests/ieee/) |
 | Practitioner evidence | Nine pilot records captured across Aider, Claude Code, Codex, and Hacker News; no themes derived | [`../practitioner-evidence/methodology.md`](../practitioner-evidence/methodology.md) |
@@ -33,22 +33,19 @@ The following remain deliberately unchanged: Protocol v1.1, the frozen queries, 
 
 ## Scopus Primary Closure
 
-Protocol v1.1 requires all 22 Scopus Primary branches before calibration (Protocol v1.1, tiered execution step 1). The search log documents completed Scopus retrievals for the other Primary branches, including all four required F7C variants. The required Scopus Primary executions still missing from the log are:
-
-- `F4A` — Information-quality properties.
-- `F4B` — Developer information needs and context.
+Protocol v1.1 requires all 22 Scopus Primary branches before calibration (Protocol v1.1, tiered execution step 1). The search log documents completed Scopus retrievals for all Primary branches, including all four required F7C variants.
 
 `F3C` is Supplementary in the frozen inventory and must not be counted as a missing Primary branch. The completed zero-result branches are retained as completed retrievals where the log provides their zero-result reconciliation; zero is not treated as an execution failure.
 
-**Scopus Primary status: incomplete, 20 of 22 branches evidenced as completed.** No overall unique Scopus corpus count is reported because no cross-branch deduplication has occurred.
+**Scopus Primary status: complete, 22 of 22 branches evidenced as completed.** The 25 required active Scopus variants are reconciled, including all four deliberate F7C variants. No overall unique Scopus corpus count is reported because no cross-branch deduplication has occurred.
 
-There is one documentation inconsistency to resolve during ordinary provenance maintenance: an older execution-readiness handoff reports an earlier F2A total than the later authoritative search-log completion record. The search log records the final reconciled execution state; neither value is treated as a unique corpus count.
+The older execution-readiness handoff value for F2A is superseded by the later authoritative search-log completion record. The search log records the final reconciled execution state; neither value is treated as a unique corpus count.
 
 ## Database Feasibility And Role
 
 | Database | Feasibility status | Eligible for seven-branch calibration now? | Unresolved dependency |
 |---|---|---:|---|
-| Scopus | Operational systematic-core route | Core source, not an additional calibration gate | Complete F4A and F4B; preserve private raw data and public-safe manifests |
+| Scopus | Operational systematic-core route | Core source, not an additional calibration gate | Primary core complete; preserve private raw data and public-safe manifests |
 | Web of Science Core Collection | Blocked: API Expanded entitlement unavailable; not excluded from future targeted use | No | Authorized qualifying API or another officially documented equivalent route |
 | IEEE Xplore | Official route and corrected F1 retrieval demonstrated, but seven-branch feasibility gate is not closed | No | Complete seven-branch feasibility/calibration decision with the required field, identifier, capture, reconciliation, and licensing evidence |
 | ACM Digital Library | Conditional targeted/gap-filling source; complete bulk capture not demonstrated | No | Authorized Premium export, official systematic API, or authorized complete reconciled capture |
@@ -82,9 +79,9 @@ The Scopus core is still required to close. Once it is closed, the current proto
 
 ### Public/private boundary
 
-The intended boundary is technically documented: record-level licensed files belong under ignored `research/raw-local/` paths, while public manifests contain provenance and hashes. The direct `HEAD` path inventory currently lists the tracked Scopus provenance sidecars but no Scopus response JSON or CSV export. However, [`scopus-public-data-policy.md`](./scopus-public-data-policy.md) still reports 164 response JSON files and two CSV exports in the current tree. That policy/tree inventory disagreement must be resolved before the boundary can be declared clean.
+The intended boundary is technically documented: record-level licensed files belong under ignored `research/raw-local/` paths, while public manifests and provenance-only sidecars remain public. The current public tree and reachable public refs contain no record-level Scopus or IEEE raw files; the Scopus sidecar and manifest inventories are reconciled in [`scopus-public-data-policy.md`](./scopus-public-data-policy.md).
 
-Reachable history contains 164 historical Scopus raw paths and five historical IEEE raw paths. The IEEE policy states that no history rewrite has been executed. Current `.gitignore` rules protect future local raw files but do not remove already tracked files or reachable historical objects.
+Current `.gitignore` rules protect future local raw files. Public-ref history inspection found no reachable record-level Scopus or IEEE raw paths; this does not make claims about unrelated external clones, caches, or unreachable objects.
 
 ### Provenance
 
@@ -102,21 +99,18 @@ Academic retrieval, authoritative sources, practitioner pilots, and descriptive 
 
 **Blocking findings:**
 
-1. Scopus Primary retrieval closure is not met: `F4A` and `F4B` remain unexecuted.
-2. The Scopus public-data policy and direct current-tree inventory disagree about whether response JSON and CSV exports remain at the tip; this must be reconciled.
-3. Reachable history still contains Scopus and IEEE raw-data paths; no purge/rewrite has been executed.
-4. IEEE is not yet qualified for the seven-branch calibration.
-5. If IEEE fails qualification, the current protocol provides no automatic zero-qualified-secondary-database calibration rule.
+1. IEEE is not yet qualified for the seven-branch calibration.
+2. If IEEE fails qualification, the current protocol provides no automatic zero-qualified-secondary-database calibration rule.
 
 **Non-blocking maintenance findings:**
 
-- The older F2A readiness-handoff count conflicts with the later authoritative search-log completion record and should be explicitly reconciled in provenance maintenance.
+- The older F2A readiness-handoff count (`23439`) is superseded by the later authoritative search-log completion record (`23444`); neither value is a unique corpus count.
 - A manifest audit must distinguish forbidden record-level object keys from legitimate textual values such as export-format descriptions.
 
 **Activation decision:** Do not activate the real review pipeline. Do not deduplicate, screen, extract, synthesize, or derive characteristics.
 
 ## Exact Next Executable Stage
 
-The immediate executable research stage is **Scopus Primary retrieval closure**, specifically the controlled execution and reconciliation of `F4A` and `F4B`, using private raw storage and public-safe manifests. Only after that closure and the public/private data boundary are repaired should the researcher make the IEEE qualification decision operational through the Path A or Path B sequence above.
+The immediate executable research stage is **IEEE feasibility resolution** for the seven frozen calibration branches. Scopus Primary retrieval closure and the public/private boundary audit are complete. No calibration retrieval set is closed, and no real deduplication, screening, extraction, or synthesis may begin until the IEEE decision and any zero-qualified-secondary-database methodological decision are recorded.
 
 This checkpoint identifies additional blockers before IEEE resolution; it does not claim that IEEE is the only remaining activation dependency.

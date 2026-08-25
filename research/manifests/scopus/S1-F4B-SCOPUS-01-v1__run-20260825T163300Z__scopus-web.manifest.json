@@ -1,0 +1,22 @@
+{
+  "manifest_version": 1,
+  "query_id": "S1-F4B-SCOPUS-01-v1",
+  "branch": "F4B",
+  "branch_status": "Primary",
+  "query_version": "v1",
+  "database": "Scopus",
+  "retrieval_mechanism": "Scopus Web retrieval snapshot",
+  "run_identifier": "20260825T163300Z",
+  "status": "Completed",
+  "observed_pre_export_count": 699,
+  "raw_captured_records": 699,
+  "post_export_count": null,
+  "post_export_count_status": "not recorded",
+  "raw_local_filename": "S1-F4B-SCOPUS-01-v1__run-20260825T163300Z__scopus-web.csv",
+  "raw_byte_size": 1886422,
+  "raw_sha256": "4ce1ce94579323069772c239ee4f143b4d92a5d31743653bcefd2739623c5f9f",
+  "reconciliation": "Complete",
+  "reconciliation_basis": "Observed pre-export Scopus count equals captured raw record count",
+  "database_drift_provenance": "Earlier Scopus API attempts observed changing totalResults during offset pagination (700, 701, and 702); those incomplete attempts remain separate historical provenance and were not merged into this Web snapshot.",
+  "raw_storage": "local-private"
+}
