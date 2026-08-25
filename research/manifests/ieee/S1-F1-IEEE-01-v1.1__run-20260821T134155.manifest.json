@@ -1,0 +1,19 @@
+{
+  "manifest_version": 1,
+  "query_id": "S1-F1-IEEE-01-v1.1",
+  "run_identifier": "20260821T134155",
+  "database": "IEEE Xplore",
+  "status": "complete",
+  "raw_storage": "local-private",
+  "export_mechanism": "IEEE Xplore Citation export",
+  "export_format": "Plain Text; Citation and Abstract",
+  "database_reported_count": 228,
+  "captured_record_count": 228,
+  "reconciliation": "228 database-reported results / 228 raw captured records",
+  "reconciliation_status": "Complete",
+  "pages": [
+    {"page": 1, "captured_records": 100, "original_local_filename": "S1-F1-IEEE-01-v1.1__run-20260821T134155__page-001.txt", "bytes": 170618, "sha256": "b83a23f53d7e5f99acb356a7516468f40bec1bf115ba3e011d204b3bf1279596"},
+    {"page": 2, "captured_records": 100, "original_local_filename": "S1-F1-IEEE-01-v1.1__run-20260821T134155__page-002.txt", "bytes": 190696, "sha256": "4064d7e0b4254fe08741e6dde51ddd4c8529694f06a7093db8aae4aeb8802124"},
+    {"page": 3, "captured_records": 28, "original_local_filename": "S1-F1-IEEE-01-v1.1__run-20260821T134155__page-003.txt", "bytes": 43150, "sha256": "5ee8c9bdbed34c02e9e0f04e8ec2b6f5b5636c1182b2f18e6b18caee12c5c1e4"}
+  ]
+}

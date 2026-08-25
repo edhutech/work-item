@@ -2,6 +2,11 @@
 
 This log records real systematic-search execution provenance. It is separate from the historical pilot and database-validation record in [`search-log.md`](./search-log.md).
 
+**IEEE raw-data policy:** Record-level IEEE Citation-and-Abstract exports are
+local/private under [`ieee-public-data-policy.md`](./ieee-public-data-policy.md).
+The preserved local files are under `research/raw-local/ieee/`; public
+provenance-only manifests are under `research/manifests/ieee/`.
+
 ## Protocol v1.1 Amendment Boundary
 
 - **Protocol version:** `Research Protocol v1.1`
@@ -162,9 +167,10 @@ This log records real systematic-search execution provenance. It is separate fro
 - **Database-reported result count:** `228`
 - **Export format:** IEEE Xplore Citation export; Plain Text; Citation and Abstract
 - **Raw artifacts:**
-  - `research/raw/systematic-search/S1-F1-IEEE-01-v1.1__run-20260821T134155__page-001.txt` — 100 raw records
-  - `research/raw/systematic-search/S1-F1-IEEE-01-v1.1__run-20260821T134155__page-002.txt` — 100 raw records
-  - `research/raw/systematic-search/S1-F1-IEEE-01-v1.1__run-20260821T134155__page-003.txt` — 28 raw records
+  - `research/raw-local/ieee/S1-F1-IEEE-01-v1.1__run-20260821T134155__page-001.txt` — 100 raw records
+  - `research/raw-local/ieee/S1-F1-IEEE-01-v1.1__run-20260821T134155__page-002.txt` — 100 raw records
+  - `research/raw-local/ieee/S1-F1-IEEE-01-v1.1__run-20260821T134155__page-003.txt` — 28 raw records
+- **Public provenance manifest:** `research/manifests/ieee/S1-F1-IEEE-01-v1.1__run-20260821T134155.manifest.json`
 - **Total raw captured records:** `228`
 - **Reconciliation:** `228` database-reported results / `228` raw captured records
 - **Reconciliation status:** `Complete`
@@ -188,8 +194,9 @@ This log records real systematic-search execution provenance. It is separate fro
 - **Database-reported result count:** `171`
 - **Export format:** IEEE Xplore Citation export; Plain Text; Citation and Abstract
 - **Raw artifacts:**
-  - `research/raw/systematic-search/S1-F1-IEEE-02-v1.1__run-20260821T155348__page-001.txt` — 100 raw records
-  - `research/raw/systematic-search/S1-F1-IEEE-02-v1.1__run-20260821T155348__page-002.txt` — 71 raw records
+  - `research/raw-local/ieee/S1-F1-IEEE-02-v1.1__run-20260821T155348__page-001.txt` — 100 raw records
+  - `research/raw-local/ieee/S1-F1-IEEE-02-v1.1__run-20260821T155348__page-002.txt` — 71 raw records
+- **Public provenance manifest:** `research/manifests/ieee/S1-F1-IEEE-02-v1.1__run-20260821T155348.manifest.json`
 - **Total raw captured records:** `171`
 - **Reconciliation:** `171` database-reported results / `171` raw captured records
 - **Reconciliation status:** `Complete`
