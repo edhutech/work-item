@@ -1,7 +1,11 @@
 # Other Communities Evidence
 
-This document will record qualitative practitioner evidence from other relevant communities and tools identified by the research plan.
+This document records deferred source contexts for the initial practitioner
+pilot. The pilot did not force records from Cursor, OpenCode, OpenSpec, Spec
+Kit, or other communities without a sufficiently contextual public record.
 
 ## Evidence Records
 
-TBD — to be established through research.
+No additional record was captured here. The initial pilot uses GitHub project
+repositories and Hacker News as the four represented source contexts; the
+records remain in their platform-specific files.
