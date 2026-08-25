@@ -1,0 +1,90 @@
+[
+  {
+    "source_database": "SyntheticDB-A",
+    "query_id": "SYN-F1-A",
+    "run_identifier": "synthetic-run-01",
+    "source_record_id": "A-001",
+    "doi": "https://doi.org/10.5555/SYN.001",
+    "title": "A Safe Work Unit",
+    "authors": ["Example Author"],
+    "publication_year": 2024,
+    "publication_type": "journal",
+    "url": "https://synthetic.example/a-001",
+    "abstract": "Synthetic abstract A."
+  },
+  {
+    "source_database": "SyntheticDB-B",
+    "query_id": "SYN-F1-B",
+    "run_identifier": "synthetic-run-02",
+    "source_record_id": "B-009",
+    "doi": "doi:10.5555/syn.001.",
+    "title": "A Safe Work Unit",
+    "authors": ["Example Author"],
+    "publication_year": 2024,
+    "publication_type": "conference",
+    "url": "https://synthetic.example/b-009",
+    "abstract": "Synthetic abstract B."
+  },
+  {
+    "source_database": "SyntheticDB-A",
+    "query_id": "SYN-F2-A",
+    "run_identifier": "synthetic-run-01",
+    "source_record_id": "A-002",
+    "doi": "10.5555/SYN.002",
+    "title": "A Safe Work Unit: Extended Edition",
+    "authors": ["Example Author"],
+    "publication_year": 2025,
+    "publication_type": "journal",
+    "url": "https://synthetic.example/a-002",
+    "abstract": "Synthetic abstract C."
+  },
+  {
+    "source_database": "SyntheticDB-A",
+    "query_id": "SYN-F3-A",
+    "run_identifier": "synthetic-run-01",
+    "source_record_id": "A-003",
+    "title": "A Safe Work Unit",
+    "authors": ["Example Author"],
+    "publication_year": 2027,
+    "publication_type": "report",
+    "url": "https://synthetic.example/a-003",
+    "abstract": "Synthetic abstract D."
+  },
+  {
+    "source_database": "SyntheticDB-A",
+    "query_id": "SYN-F4-A",
+    "run_identifier": "synthetic-run-01",
+    "source_record_id": "A-004",
+    "title": "A Safe Work Unit With Flexible Context",
+    "authors": ["Different Author"],
+    "publication_year": 2024,
+    "publication_type": "preprint",
+    "url": "https://synthetic.example/a-004"
+  },
+  {
+    "source_database": "SyntheticDB-A",
+    "query_id": "SYN-F5-A",
+    "run_identifier": "synthetic-run-01",
+    "source_record_id": "A-005",
+    "doi": "10.5555/SYN.003",
+    "title": "Synthetic Clarification Study",
+    "authors": ["Version Author"],
+    "publication_year": 2023,
+    "publication_type": "preprint",
+    "url": "https://synthetic.example/a-005",
+    "abstract": "Synthetic preprint abstract."
+  },
+  {
+    "source_database": "SyntheticDB-B",
+    "query_id": "SYN-F5-B",
+    "run_identifier": "synthetic-run-02",
+    "source_record_id": "B-005",
+    "doi": "10.5555/SYN.004",
+    "title": "Synthetic Clarification Study",
+    "authors": ["Version Author"],
+    "publication_year": 2024,
+    "publication_type": "journal",
+    "url": "https://synthetic.example/b-005",
+    "abstract": "Synthetic published abstract."
+  }
+]
