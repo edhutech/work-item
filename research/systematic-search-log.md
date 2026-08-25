@@ -369,6 +369,76 @@ The two F1 query-piece raw outputs are retained as independent provenance and fo
 - **Unique corpus count:** Not derived beyond this single-query raw retrieval
 - **Operational notes:** The exact frozen query was submitted unchanged. The bounded count established that the complete set fit the available non-cursor offset boundary. Raw API JSON responses were preserved before transformation with Query ID, Scopus source, page, start position, count, totalResults, run timestamp, and exact query in non-secret metadata sidecars. The API key was not written to responses, sidecars, filenames, or logs. No deduplication, screening, or evidence extraction occurred.
 
+## Scopus Primary Closure Attempt: F4A and F4B
+
+The following entries record the controlled completion attempt for the two Primary branches identified as missing by [`research-readiness-checkpoint.md`](./research-readiness-checkpoint.md). The active frozen register contains exactly one Scopus Query ID for each branch: `S1-F4A-SCOPUS-01-v1` and `S1-F4B-SCOPUS-01-v1`. No IEEE, additional-database, or Supplementary query was executed in this closure attempt.
+
+### S1-F4A-SCOPUS-01-v1
+
+- **Query ID:** `S1-F4A-SCOPUS-01-v1`
+- **Branch ID:** `F4A`
+- **Branch:** Information-quality properties
+- **Branch status:** `Primary`
+- **Database:** Scopus
+- **Execution mechanism:** Scopus Search API
+- **Query version:** `v1`
+- **Execution date:** `2026-08-25`
+- **Exact frozen query:** `TITLE-ABS-KEY(("software requirements" OR "requirements engineering") AND ("requirements ambiguity" OR "ambiguity detection" OR "requirements completeness" OR "requirements coverage" OR "traceability completeness"))`
+- **Fields:** Title, abstract, and author keywords through Scopus `TITLE-ABS-KEY(...)`
+- **Filters:** None; no date, publication-type, language, subject, or additional result filter
+- **Request route:** STANDARD/default; no explicit `view` parameter
+- **Bounded API probe:** HTTP `200`; `count=1`, offset `0`; `totalResults=163`; probe response was not retained as a corpus artifact
+- **Complete retrieval:** HTTP `200`; offset pagination, `count=25`; cursor pagination was not attempted
+- **Execution status:** `Completed`
+- **Database-reported API result count:** `163`
+- **Raw captured records:** `163`
+- **Pagination:** `7` response pages; starts `0`, `25`, `50`, `75`, `100`, `125`, and `150`; final page contained `13` records
+- **API calls:** `10` including transient retry attempts
+- **Raw artifacts:** `research/raw-local/scopus/S1-F4A-SCOPUS-01-v1__run-20260825T024023Z__api-start-000000.json` through `research/raw-local/scopus/S1-F4A-SCOPUS-01-v1__run-20260825T024023Z__api-start-000150.json`, with one immutable metadata sidecar per response
+- **Public provenance manifest:** `research/manifests/scopus/S1-F4A-SCOPUS-01-v1__run-20260825T024023Z.manifest.json`
+- **Raw data policy:** Record-level Scopus data and sidecar files are retained locally/private; the public manifest contains provenance and hashes only.
+- **Reconciliation:** `163` API-reported results / `163` raw captured records
+- **Missing pagination ranges:** `No`
+- **Duplicate pagination ranges:** `No`
+- **Final-page size:** `13`
+- **Reconciliation status:** `Complete`
+- **Execution-time deduplication:** `None`
+- **Screening:** `Not started`
+- **Evidence extraction:** `None`
+- **Synthesis:** `None`
+- **Unique corpus count:** Not derived beyond this single-query raw retrieval
+- **Operational notes:** The exact frozen query was submitted unchanged. The API key was not written to responses, sidecars, filenames, manifests, or logs. No deduplication, screening, evidence extraction, or synthesis occurred.
+
+### S1-F4B-SCOPUS-01-v1
+
+- **Query ID:** `S1-F4B-SCOPUS-01-v1`
+- **Branch ID:** `F4B`
+- **Branch:** Developer information needs and context
+- **Branch status:** `Primary`
+- **Database:** Scopus
+- **Execution mechanism:** Scopus Search API
+- **Query version:** `v1`
+- **Execution date:** `2026-08-25`
+- **Exact frozen query:** `TITLE-ABS-KEY(("software developer" OR "software engineer" OR "software maintenance") AND ("developer information needs" OR "information seeking" OR "information foraging" OR "program comprehension"))`
+- **Fields:** Title, abstract, and author keywords through Scopus `TITLE-ABS-KEY(...)`
+- **Filters:** None; no date, publication-type, language, subject, or additional result filter
+- **Request route:** STANDARD/default; no explicit `view` parameter
+- **Bounded API probes:** HTTP `200`; `count=1`, offset `0`; observed `totalResults=700` initially and `702` on a later probe. Probe responses were not retained as corpus artifacts.
+- **Complete retrieval status:** `Incomplete — Scopus API totalResults changed during offset pagination`
+- **Attempt 1:** A transport/DNS failure occurred before any raw artifact was written; no run or manifest was created.
+- **Attempt 2 run:** `20260825T025032Z`; `4` pages at starts `0`, `25`, `50`, and `75`; `100` records captured; all returned `totalResults=701`; no manifest was created because the subsequent API response changed the total.
+- **Attempt 3 run:** `20260825T025257Z`; `3` pages at starts `0`, `25`, and `50`; `75` records captured; all returned `totalResults=702`; no manifest was created because the subsequent API response changed the total.
+- **Attempt 4 run:** `20260825T025932Z`; `13` pages at starts `0` through `300` in increments of `25`; `325` records captured; all returned `totalResults=702`; no manifest was created because the subsequent API response changed the total.
+- **Raw artifacts:** The partial response JSON files and immutable metadata sidecars from failed attempts remain under `research/raw-local/scopus/` for private diagnostic provenance. They are not a completed corpus and are not referenced by a public completed-run manifest.
+- **Reconciliation:** Not complete; no valid completed `totalResults`/raw-captured equality was established.
+- **Missing pagination ranges:** Not determinable until the API total stabilizes.
+- **Duplicate pagination ranges:** No duplicate starts within any individual failed attempt; cross-attempt deduplication was not performed.
+- **Execution-time deduplication:** `None`
+- **Screening:** `Not started`
+- **Evidence extraction:** `None`
+- **Synthesis:** `None`
+- **Operational blocker:** The existing retrieval tooling correctly aborts when Scopus `totalResults` changes during retrieval. Repeated F4B attempts observed changing totals (`700`, `701`, and `702`) during the same frozen-query retrieval window. No tooling change was introduced; the F4B systematic retrieval remains incomplete and requires a stable complete API run or the established complete Scopus Web route.
+
 ### S1-F7D-SCOPUS-01-v1
 
 - **Query ID:** `S1-F7D-SCOPUS-01-v1`
